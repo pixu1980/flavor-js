@@ -1,10 +1,9 @@
 {
   "name": "flavor-js",
-  "version": "0.0.1",
-  "description": "FlavorJS the definitive JS natives chainable extensions methods",
+  "version": "0.0.2",
+  "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash)",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blackmirror1980/flavor-js.git"
@@ -20,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/blackmirror1980/flavor-js/issues"
   },
-  "homepage": "https://github.com/blackmirror1980/flavor-js#readme"
+  "homepage": "https://github.com/blackmirror1980/flavor-js#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }

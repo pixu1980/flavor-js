@@ -4,8 +4,10 @@ import _basePullAll from 'lodash/_basePullAll';
 import _toFinite from 'lodash/toFinite';
 
 /**
- * @namespace FlavorJS
- * @description FlavorJS the definitive JS natives extensions framework
+ * constructs FlavorJS class & extends the js natives
+ * @class FlavorJS
+ * @classdesc FlavorJS the definitive JS natives chainable extensions methods
+ * @public
  */
 export default class FlavorJS {
   constructor() {
@@ -1177,7 +1179,7 @@ export default class FlavorJS {
   }
 
   /**
-   * init
+   * initialize all
    * @memberOf FlavorJS
    * @method init
    * @instance
