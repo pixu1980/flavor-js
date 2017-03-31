@@ -1,0 +1,24 @@
+{
+  "name": "flavor-js",
+  "version": "0.0.1",
+  "description": "FlavorJS the definitive JS natives chainable extensions methods",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackmirror1980/flavor-js.git"
+  },
+  "keywords": [
+    "extend",
+    "natives",
+    "javascript",
+    "flavor-js"
+  ],
+  "author": "Black Mirror",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blackmirror1980/flavor-js/issues"
+  },
+  "homepage": "https://github.com/blackmirror1980/flavor-js#readme"
+}
