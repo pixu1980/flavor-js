@@ -24,7 +24,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist', 'build']),
     //new webpack.IgnorePlugin(/lodash/),
     new webpack.optimize.OccurrenceOrderPlugin,
-    new webpack.optimize.UglifyJsPlugin,
+    //new webpack.optimize.UglifyJsPlugin,
   ],
 
   module: {
@@ -48,10 +48,6 @@ module.exports = {
         }
       },
     ],
-  },
-
-  externals: {
-    lodash: 'lodash',
   },
 
   resolve: {
