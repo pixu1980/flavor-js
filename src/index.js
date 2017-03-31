@@ -1,4 +1,4 @@
-import FlavorJS from './src/Flavor';
+import FlavorJS from './flavor';
 
 if(!window.ƒ) {
   window.ƒ = window.FlavorJS = new FlavorJS();
