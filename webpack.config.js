@@ -22,9 +22,9 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist', 'build']),
-    new webpack.IgnorePlugin(/lodash/),
+    //new webpack.IgnorePlugin(/lodash/),
     new webpack.optimize.OccurrenceOrderPlugin,
-    //new webpack.optimize.UglifyJsPlugin,
+    new webpack.optimize.UglifyJsPlugin,
   ],
 
   module: {
@@ -49,10 +49,10 @@ module.exports = {
       },
     ],
   },
-  //
-  //externals: {
-  //  lodash: 'lodash',
-  //},
+
+  externals: {
+    lodash: 'lodash',
+  },
 
   resolve: {
     root: path.resolve(__dirname),
