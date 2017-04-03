@@ -1,4 +1,4 @@
 # flavor-js
 FlavorJS the definitive JS natives chainable extensions methods (based on lodash)
 
-v0.0.9
+v0.1.0
