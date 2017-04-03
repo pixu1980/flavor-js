@@ -4,6 +4,16 @@ import _basePullAll from 'lodash/_basePullAll';
 import _toFinite from 'lodash/toFinite';
 
 /**
+ * Array or Object threated as a collection by FlavorJS & Lodash
+ * @typedef {Array|Object} Collection
+ */
+
+/**
+ * the prototype of a class
+ * @typedef {Object} Prototype
+ */
+
+/**
  * constructs FlavorJS class & extends the js natives
  * @class FlavorJS
  * @classdesc FlavorJS the definitive JS natives chainable extensions methods
@@ -101,7 +111,7 @@ export default class FlavorJS {
        * </pre>
        * @memberOf Lodash
        * @method isPercentage
-       * @instance
+       * @static
        * @param {String} s - the string
        * @return {Boolean}
        */
@@ -132,6 +142,29 @@ export default class FlavorJS {
 
         return null;
       },
+      /**
+       * filters a collection with a list of values specified for one property<br><br>
+       * eg. usage<br>
+       * <pre>
+       *   var collection = [{
+       *    id: 1, status: 'active'
+       *   }, {
+       *    id: 2, status: 'disabled'
+       *   }, {
+       *    id: 3, status: 'unactive'
+       *   }];
+       *   var allowedValues = ['active', 'unactive'];
+       *
+       *   console.log(_.filterByValues(collection, 'status', allowedValues); // [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
+       * </pre>
+       * @memberOf Lodash
+       * @method filterByValues
+       * @static
+       * @param {Collection|Array} collection - the collection to filter
+       * @param {String} key - the key to be used as property name
+       * @param {Array} values - the list of values to check
+       * @return {Array}
+       */
       filterByValues(collection, key, values) {
         return _.filter(collection, (o) => {
           return values.contains(o.path(key));
