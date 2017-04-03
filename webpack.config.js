@@ -24,10 +24,11 @@ module.exports = {
     new CleanWebpackPlugin(['dist', 'build']),
     //new webpack.IgnorePlugin(/lodash/),
     new webpack.optimize.OccurrenceOrderPlugin,
-    //new webpack.optimize.UglifyJsPlugin,
+    new webpack.optimize.UglifyJsPlugin,
   ],
 
   module: {
+    noParse: /node_modules\/lodash\/lodash\.js/,
     preLoaders: [
       {
         test: /\.js$/,
@@ -49,6 +50,8 @@ module.exports = {
       },
     ],
   },
+
+  externals: /^(lodash)/i,
 
   resolve: {
     root: path.resolve(__dirname),
