@@ -23,7 +23,7 @@ export default class FlavorJS {
    * @param {String} prop - the name of the property to be defined or modified
    * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (Number, Function, etc...) or what you want
    * @param {Object} [options={}] - options to be used as parameters in the descriptor for the property<br>
-   * possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Javascript|MDN docs</a><br>
+   * possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">Javascript|MDN docs</a>)<br>
    * @param {Boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object.
    * @param {Boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding object.
    * @param {Boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
@@ -132,6 +132,7 @@ export default class FlavorJS {
 
         return null;
       },
+
       /**
        * filters a collection with a list of values specified for one property<br><br>
        * eg. usage<br>
@@ -162,6 +163,7 @@ export default class FlavorJS {
           return values.contains(o.path(key));
         });
       },
+
       /**
        * deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
        * eg. usage<br>
@@ -216,6 +218,7 @@ export default class FlavorJS {
           return mapCallback(item);
         });
       },
+
       /**
        * deeply searches in a recursive tree structure with (same structure) childrenPropName or 'children' property<br>
        * looking for an item with the propName === propValue<br><br>
@@ -291,6 +294,7 @@ export default class FlavorJS {
 
         return found;
       },
+
       /**
        * deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
        * eg. usage<br>
@@ -384,20 +388,93 @@ export default class FlavorJS {
 
         return collection;
       },
-      pullAllByComparator(array, values, comparator, iteratee) {
-        return (array && array.length && values && values.length)
-          ? _basePullAll(array, values, _baseIteratee(iteratee, 2), comparator)
-          : array;
+
+      /**
+       * @todo document method
+       * @memberOf Lodash
+       * @method pullAllByComparator
+       * @instance
+       * @param {Collection} collection
+       * @param {Array} values
+       * @param {Function} comparator
+       * @param {Function} iteratee
+       * @return {Array}
+       */
+      pullAllByComparator(collection, values, comparator, iteratee) {
+        return (collection && collection.length && values && values.length)
+          ? _basePullAll(collection, values, _baseIteratee(iteratee, 2), comparator)
+          : collection;
       },
-      timesReverse(n, fn) {
-        let index = n;
+
+      /**
+       * a reverse implementation of _.times by Lodash<br><br>
+       * eg. usage<br>
+       * <pre>
+       * _.timesReverse(5, function(i) {
+       *   console.log(i);
+       * });
+       *
+       * // logs
+       * 5
+       * 4
+       * 3
+       * 2
+       * 1
+       * </pre>
+       * @memberOf Lodash
+       * @method timesReverse
+       * @instance
+       * @param {Number} times - num of times to invoke iteratee
+       * @param {Function} iteratee - the iteratee function to invoke
+       */
+      timesReverse(times, iteratee) {
+        let index = times;
 
         while(--index >= 0) {
-          _.isFunction(fn) && fn(index);
+          _.isFunction(iteratee) && iteratee(index);
         }
       },
-      timesRange(start, end, fn = null, reverse = false) {
-        if(_.isFunction(fn)) {
+
+      /**
+       * an implementation of _.times by Lodash, where you can specify start & end numbers<br><br>
+       * eg. usage<br>
+       * <pre>
+       * _.timesRange(5, 10, function(i) {
+       *   console.log(i);
+       * });
+       *
+       * // logs
+       * 5
+       * 6
+       * 7
+       * 8
+       * 9
+       * 10
+       * </pre>
+       * or<br>
+       * <pre>
+       * _.timesRange(5, 10, function(i) {
+       *   console.log(i);
+       * }, true);
+       *
+       * // logs
+       * 10
+       * 9
+       * 8
+       * 7
+       * 6
+       * 5
+       * </pre>
+       * @memberOf Lodash
+       * @method timesRange
+       * @instance
+       * @param {Number} start - start num of times to invoke iteratee
+       * @param {Number} end - end num of times to invoke iteratee
+       * @param {Function} iteratee - the iteratee function to invoke
+       * @param {Boolean} reverse - specify if you want reverse cycle
+       */
+      timesRange(start, end, iteratee = null, reverse = false) {
+        if(_.isFunction(iteratee)) {
           // Ensure the sign of `-0` is preserved.
           start = _toFinite(start);
 
@@ -411,7 +488,7 @@ export default class FlavorJS {
           let index = (reverse ? end : start);
 
           while((reverse ? index-- >= start : index++ <= end)) {
-            fn(index + (reverse ? 1 : -1));
+            iteratee(index + (reverse ? 1 : -1));
           }
         }
       },
@@ -435,9 +512,12 @@ export default class FlavorJS {
        *   prop2: 'a',
        * };
        *
-       * console.log(Object.isObject(o)); // true<br>
-       * console.log(Object.isObject(2)); // true<br>
-       * console.log(Object.isObject('2')); // true<br>
+       * console.log(Object.isObject(o)); // true
+       *
+       * console.log(Object.isObject(2)); // true
+       *
+       * console.log(Object.isObject('2')); // true
+       *
        * console.log(Object.isObject(null)); // false
        * </pre>
        * @memberOf Object
@@ -451,38 +531,39 @@ export default class FlavorJS {
 
       /**
        * deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   o.inherit({
-       *     prop1: 2,
-       *     prop3: new Date(),
-       *   }, {
-       *     prop4: 7.52,
-       *   });
+       * o.inherit({
+       *   prop1: 2,
+       *   prop3: new Date(),
+       * }, {
+       *   prop4: 7.52,
+       * });
        *
-       *   console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
        * </pre><br>
-       *   or<br>
+       * or<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   var p = o.inherit(true, {
-       *     prop1: 2,
-       *     prop3: new Date(),
-       *   }, {
-       *     prop4: 7.52,
-       *   });
+       * var p = o.inherit(true, {
+       *   prop1: 2,
+       *   prop3: new Date(),
+       * }, {
+       *   prop4: 7.52,
+       * });
        *
-       *   console.log(o); // o = {prop1: 1, prop2: 'a'}<br>
-       *   console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       * console.log(o); // o = {prop1: 1, prop2: 'a'}
+       *
+       * console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
        * </pre>
        * @memberOf Object
        * @method inherit
@@ -514,26 +595,31 @@ export default class FlavorJS {
 
       /**
        * returns a new object that omits the specified properties<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   o.inherit({
-       *     prop1: 2,
-       *     prop3: new Date(),
-       *   }, {
-       *     prop4: 7.52,
-       *   });
+       * o.inherit({
+       *   prop1: 2,
+       *   prop3: new Date(),
+       * }, {
+       *   prop4: 7.52,
+       * });
        *
-       *   console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}<br>
-       *   console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}<br>
-       *   console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}<br>
-       *   console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}<br>
-       *   console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}<br>
-       *   console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       *
+       * console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}
+       *
+       * console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}
+       *
+       * console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}
+       *
+       * console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
+       *
+       * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
        * </pre>
        * @memberOf Object
        * @method omit
@@ -544,28 +630,34 @@ export default class FlavorJS {
       omit(...args) {
         return _.omit(this, ...args);
       },
+
       /**
        * returns a new object that picks only the specified properties<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   o.inherit({
-       *     prop1: 2,
-       *     prop3: new Date(),
-       *   }, {
-       *     prop4: 7.52,
-       *   });
+       * o.inherit({
+       *   prop1: 2,
+       *   prop3: new Date(),
+       * }, {
+       *   prop4: 7.52,
+       * });
        *
-       *   console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}<br>
-       *   console.log(o.pick('prop1')); // {prop1: 2}<br>
-       *   console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}<br>
-       *   console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}<br>
-       *   console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}<br>
-       *   console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+       *
+       * console.log(o.pick('prop1')); // {prop1: 2}
+       *
+       * console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+       *
+       * console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+       *
+       * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+       *
+       * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
        * </pre>
        * @memberOf Object
        * @method pick
@@ -579,17 +671,18 @@ export default class FlavorJS {
 
       /**
        * clones an object<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   var p = o.clone();
+       * var p = o.clone();
        *
-       *   console.log(o == p); // true<br>
-       *   console.log(o === p); // false
+       * console.log(o == p); // true
+       *
+       * console.log(o === p); // false
        * </pre>
        * @memberOf Object
        * @method clone
@@ -602,43 +695,49 @@ export default class FlavorJS {
 
       /**
        * returns the value at the specified path of the object, with a default value<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *     prop3: {
-       *       prop31: 2.52,
-       *       prop32: 'b',
-       *     },
-       *     prop4: new Date(),
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       *   prop3: {
+       *     prop31: 2.52,
+       *     prop32: 'b',
+       *   },
+       *   prop4: new Date(),
+       * };
        *
-       *   console.log(o.path('prop1')); // 1<br>
-       *   console.log(o.path('prop3.prop31')); // 2.52<br>
-       *   console.log(o.path('prop3.prop34')); // null<br>
-       *   console.log(o.path('prop3.prop34', 'c')); // c
+       * console.log(o.path('prop1')); // 1
+       *
+       * console.log(o.path('prop3.prop31')); // 2.52
+       *
+       * console.log(o.path('prop3.prop34')); // null
+       *
+       * console.log(o.path('prop3.prop34', 'c')); // c
        * </pre><br>
-       *   you can also use array paths<br>
+       * you can also use array paths<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *     prop3: {
-       *       prop31: 2.52,
-       *       prop32: [{
-       *        propO1: 'b',
-       *       }, {
-       *        propO1: 'c',
-       *       }],
-       *     },
-       *     prop4: new Date(),
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       *   prop3: {
+       *     prop31: 2.52,
+       *     prop32: [{
+       *       propO1: 'b',
+       *     }, {
+       *       propO1: 'c',
+       *     }],
+       *   },
+       *   prop4: new Date(),
+       * };
        *
-       *   console.log(o.path('prop3.prop32[0].propO1')); // 'b'<br>
-       *   console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}<br>
-       *   console.log(o.path('prop3.prop31[2]')); // null<br>
-       *   console.log(o.path('prop3.prop31[2]', {})); // {}
+       * console.log(o.path('prop3.prop32[0].propO1')); // 'b'
+       *
+       * console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
+       *
+       * console.log(o.path('prop3.prop31[2]')); // null
+       *
+       * console.log(o.path('prop3.prop31[2]', {})); // {}
        * </pre>
        * @memberOf Object
        * @method path
@@ -657,33 +756,32 @@ export default class FlavorJS {
 
       /**
        * executes function for every property in the object<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *     prop3: 'b',
-       *     prop4: new Date(),
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       *   prop3: 'b',
+       *   prop4: new Date(),
+       * };
        *
-       *   o.each(function(value, key) {
-       *     console.log(key, value);
-       *   });
+       * o.each(function(value, key) {
+       *   console.log(key, value);
+       * });
        *
-       *   // it logs
-       *
-       *   'prop1', 1
-       *   'prop2', 'a'
-       *   'prop3', 'b'
-       *   'prop4', Date
+       * // it logs
+       * 'prop1', 1
+       * 'prop2', 'a'
+       * 'prop3', 'b'
+       * 'prop4', Date
        * </pre>
        * @memberOf Object
        * @method each
        * @instance
        * @param {Function} iteratee - the iteratee callback will be invoked with the following parameters<br>
-       *   so your callback has to be something like this<br><br>
+       * so your callback has to be something like this<br><br>
        * <pre>
-       *   function iteratee(value, key) {}
+       * function iteratee(value, key) {}
        * </pre>
        * @param {*} iteratee.value - the property value of the object
        * @param {String} iteratee.key - the property key of the object
@@ -804,7 +902,29 @@ export default class FlavorJS {
       isArray() {
         return _.isArray(this);
       },
-      contains(item, all) {
+
+      /**
+       * checks if an Array contains an item<br><br>
+       * eg. usage<br>
+       * <pre>
+       * var arr = ['a', 'e', 'i', 'o', 'u'];
+       *
+       * console.log(arr.contains('b')); // false
+       *
+       * console.log(arr.contains('a')); // true
+       *
+       * console.log(arr.contains(['a', 'b', 'e']); // true
+       *
+       * console.log(arr.contains(['a', 'b', 'e'], true); // false
+       * </pre>
+       * @memberOf Array
+       * @method contains
+       * @instance
+       * @param {Array|*} item - can be anything or an array of anything
+       * @param {Boolean} [all=false] - specify to check if the array must contain all items
+       * @return {Boolean}
+       */
+      contains(item, all = false) {
         if(_.isArray(item)) {
           if(!!all) {
             return _.difference(item, this).length === 0;
@@ -815,6 +935,21 @@ export default class FlavorJS {
 
         return _.includes(this, item);
       },
+
+      /**
+       * concatenates two arrays<br><br>
+       * eg. usage<br>
+       * <pre>
+       * var arr = ['a', 'e', 'i', 'o', 'u'];
+       *
+       * console.log(arr.concat(['b', 'c', 'd']); // ['a', 'e', 'i', 'o', 'u', 'b', 'c', 'd']
+       * </pre>
+       * @memberOf Array
+       * @method concat
+       * @instance
+       * @param {Array} arr - the array to concatenate
+       * @return {Array}
+       */
       concat(arr) {
         return _.concat(this, arr);
       },

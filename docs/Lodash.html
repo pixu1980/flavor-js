@@ -1613,6 +1613,622 @@ console.log(_.parsePercentage(25.3)); // null
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="pullAllByComparator"><span class="type-signature"></span>pullAllByComparator(collection, values, comparator, iteratee)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Collection">Collection</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>comparator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-todo method-doc-label method-doc-details-label">To Do:</dt>
+	<dd class="tag-todo">
+		<ul>
+			<li>document method</li>
+			</ul>
+	</dd>
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Array.html">Array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="timesRange"><span class="type-signature"></span>timesRange(start, end, iteratee, reverse)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        an implementation of _.times by Lodash, where you can specify start & end numbers<br><br>
+eg. usage<br>
+<pre>
+_.timesRange(5, 10, function(i) {
+  console.log(i);
+});
+
+// logs
+5
+6
+7
+8
+9
+10
+</pre>
+or<br>
+<pre>
+_.timesRange(5, 10, function(i) {
+  console.log(i);
+}, true);
+
+// logs
+10
+9
+8
+7
+6
+5
+</pre>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Number.html">Number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">start num of times to invoke iteratee</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Number.html">Number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">end num of times to invoke iteratee</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the iteratee function to invoke</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reverse</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">specify if you want reverse cycle</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="timesReverse"><span class="type-signature"></span>timesReverse(times, iteratee)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        a reverse implementation of _.times by Lodash<br><br>
+eg. usage<br>
+<pre>
+_.timesReverse(5, function(i) {
+  console.log(i);
+});
+
+// logs
+5
+4
+3
+2
+1
+</pre>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>times</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Number.html">Number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">num of times to invoke iteratee</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the iteratee function to invoke</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
         </dl>
     
 
@@ -1667,7 +2283,7 @@ console.log(_.parsePercentage(25.3)); // null
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T18:27:12+02:00
+		on 2017-04-03T18:48:55+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
