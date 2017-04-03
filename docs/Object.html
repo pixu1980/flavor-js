@@ -171,17 +171,18 @@
     
     <div class="description">
         clones an object<br><br>
-  eg. usage<br>
+eg. usage<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+};
 
-  var p = o.clone();
+var p = o.clone();
 
-  console.log(o == p); // true<br>
-  console.log(o === p); // false
+console.log(o == p); // true
+
+console.log(o === p); // false
 </pre>
     </div>
     
@@ -281,25 +282,24 @@
     
     <div class="description">
         executes function for every property in the object<br><br>
-  eg. usage<br>
+eg. usage<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-    prop3: 'b',
-    prop4: new Date(),
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: 'b',
+  prop4: new Date(),
+};
 
-  o.each(function(value, key) {
-    console.log(key, value);
-  });
+o.each(function(value, key) {
+  console.log(key, value);
+});
 
-  // it logs
-
-  'prop1', 1
-  'prop2', 'a'
-  'prop3', 'b'
-  'prop4', Date
+// it logs
+'prop1', 1
+'prop2', 'a'
+'prop3', 'b'
+'prop4', Date
 </pre>
     </div>
     
@@ -353,9 +353,9 @@
             
 
             <td class="description last">the iteratee callback will be invoked with the following parameters<br>
-  so your callback has to be something like this<br><br>
+so your callback has to be something like this<br><br>
 <pre>
-  function iteratee(value, key) {}
+function iteratee(value, key) {}
 </pre>
                 <h6 class="method-params-label method-subparams-label">Properties</h6>
                 
@@ -872,26 +872,31 @@ console.log(Object.isObject(null)); // false
     
     <div class="description">
         returns a new object that omits the specified properties<br><br>
-  eg. usage<br>
+eg. usage<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+};
 
-  o.inherit({
-    prop1: 2,
-    prop3: new Date(),
-  }, {
-    prop4: 7.52,
-  });
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
 
-  console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}<br>
-  console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}<br>
-  console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}<br>
-  console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}<br>
-  console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}<br>
-  console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 </pre>
     </div>
     
@@ -1053,43 +1058,49 @@ console.log(Object.isObject(null)); // false
     
     <div class="description">
         returns the value at the specified path of the object, with a default value<br><br>
-  eg. usage<br>
+eg. usage<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-    prop3: {
-      prop31: 2.52,
-      prop32: 'b',
-    },
-    prop4: new Date(),
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: {
+    prop31: 2.52,
+    prop32: 'b',
+  },
+  prop4: new Date(),
+};
 
-  console.log(o.path('prop1')); // 1<br>
-  console.log(o.path('prop3.prop31')); // 2.52<br>
-  console.log(o.path('prop3.prop34')); // null<br>
-  console.log(o.path('prop3.prop34', 'c')); // c
+console.log(o.path('prop1')); // 1
+
+console.log(o.path('prop3.prop31')); // 2.52
+
+console.log(o.path('prop3.prop34')); // null
+
+console.log(o.path('prop3.prop34', 'c')); // c
 </pre><br>
-  you can also use array paths<br>
+you can also use array paths<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-    prop3: {
-      prop31: 2.52,
-      prop32: [{
-       propO1: 'b',
-      }, {
-       propO1: 'c',
-      }],
-    },
-    prop4: new Date(),
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: {
+    prop31: 2.52,
+    prop32: [{
+      propO1: 'b',
+    }, {
+      propO1: 'c',
+    }],
+  },
+  prop4: new Date(),
+};
 
-  console.log(o.path('prop3.prop32[0].propO1')); // 'b'<br>
-  console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}<br>
-  console.log(o.path('prop3.prop31[2]')); // null<br>
-  console.log(o.path('prop3.prop31[2]', {})); // {}
+console.log(o.path('prop3.prop32[0].propO1')); // 'b'
+
+console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
+
+console.log(o.path('prop3.prop31[2]')); // null
+
+console.log(o.path('prop3.prop31[2]', {})); // {}
 </pre>
     </div>
     
@@ -1298,26 +1309,31 @@ console.log(Object.isObject(null)); // false
     
     <div class="description">
         returns a new object that picks only the specified properties<br><br>
-  eg. usage<br>
+eg. usage<br>
 <pre>
-  var o = {
-    prop1: 1,
-    prop2: 'a',
-  };
+var o = {
+  prop1: 1,
+  prop2: 'a',
+};
 
-  o.inherit({
-    prop1: 2,
-    prop3: new Date(),
-  }, {
-    prop4: 7.52,
-  });
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
 
-  console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}<br>
-  console.log(o.pick('prop1')); // {prop1: 2}<br>
-  console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}<br>
-  console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}<br>
-  console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}<br>
-  console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.pick('prop1')); // {prop1: 2}
+
+console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+
+console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+
+console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 </pre>
     </div>
     
@@ -1520,7 +1536,7 @@ console.log(Object.isObject(null)); // false
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T18:48:55+02:00
+		on 2017-04-03T19:02:38+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
