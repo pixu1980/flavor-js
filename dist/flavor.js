@@ -46,6 +46,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _flavor = __webpack_require__(37);
 
 	var _flavor2 = _interopRequireDefault(_flavor);
@@ -56,7 +60,7 @@
 	  window.ƒ = window.FlavorJS = new _flavor2.default();
 	}
 
-	module.exports = {
+	exports.default = {
 	  ƒ: window.ƒ,
 	  FlavorJS: window.FlavorJS
 	};
@@ -1191,7 +1195,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.FlavorJS = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -1225,7 +1228,7 @@
 	 * @classdesc FlavorJS the definitive JS natives chainable extensions methods
 	 * @public
 	 */
-	var FlavorJS = exports.FlavorJS = function () {
+	var FlavorJS = function () {
 	  function FlavorJS() {
 	    _classCallCheck(this, FlavorJS);
 
@@ -2507,6 +2510,8 @@
 
 	  return FlavorJS;
 	}();
+
+	exports.default = FlavorJS;
 
 /***/ },
 /* 38 */
