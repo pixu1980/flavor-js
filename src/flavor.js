@@ -23,36 +23,36 @@ export default class FlavorJS {
    * @param {String} prop - the name of the property to be defined or modified
    * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (Number, Function, etc...) or what you want
    * @param {Object} [options={}] - options to be used as parameters in the descriptor for the property<br>
-   *   possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Javascript|MDN docs</a><br>
+   * possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Javascript|MDN docs</a><br>
    * @param {Boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object.
    * @param {Boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding object.
    * @param {Boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
    * @param {Function} [options.get=undefined] get - A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property.<br>
-   *   for example...<br>
-   *   <pre>
-   *     function ClassName() {
-   *       var privateProp = null;
+   * for example...<br>
+   * <pre>
+   * function ClassName() {
+   *   var privateProp = null;
    *
-   *       Object.defineProperty(this, 'publicProp', {
-   *         get: function() {
-   *           return privateProp;
-   *         }
-   *       });
+   *   Object.defineProperty(this, 'publicProp', {
+   *     get: function() {
+   *       return privateProp;
    *     }
-   *   </pre>
+   *   });
+   * }
+   * </pre>
    * @param {Function} [options.set=undefined] set - A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being assigned to the property.<br>
-   *   for example...<br>
-   *   <pre>
-   *     function ClassName() {
-   *       var privateProp = null;
+   * for example...<br>
+   * <pre>
+   * function ClassName() {
+   *   var privateProp = null;
    *
-   *       Object.defineProperty(this, 'publicProp', {
-   *         set: function(value) {
-   *           privateProp = value;
-   *         }
-   *       });
+   *   Object.defineProperty(this, 'publicProp', {
+   *     set: function(value) {
+   *       privateProp = value;
    *     }
-   *   </pre>
+   *   });
+   * }
+   * </pre>
    */
   extendPrototypeProperty(proto, prop, val, options = {}) {
     Object.defineProperty(proto, prop, {
@@ -91,13 +91,13 @@ export default class FlavorJS {
     _.mixin({
       /**
        * checks if a string is a percentage value<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var s = '23.97%';
+       * var s = '23.97%';
        *
-       *   console.log(_.isPercentage(s)); // true<br>
-       *   console.log(_.isPercentage('50%')); // true<br>
-       *   console.log(_.isPercentage(10)); // false
+       * console.log(_.isPercentage(s)); // true<br>
+       * console.log(_.isPercentage('50%')); // true<br>
+       * console.log(_.isPercentage(10)); // false
        * </pre>
        * @memberOf Lodash
        * @method isPercentage
@@ -111,13 +111,13 @@ export default class FlavorJS {
 
       /**
        * parses float value in a percentage string<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var p = '50.5%';
+       * var p = '50.5%';
        *
-       *   console.log(_.parsePercentage(p)); // 50.5<br>
-       *   console.log(_.parsePercentage('100%')); // 100<br>
-       *   console.log(_.parsePercentage(25.3)); // null<br>
+       * console.log(_.parsePercentage(p)); // 50.5<br>
+       * console.log(_.parsePercentage('100%')); // 100<br>
+       * console.log(_.parsePercentage(25.3)); // null<br>
        * </pre>
        * @memberOf Lodash
        * @method parsePercentage
@@ -245,17 +245,17 @@ export default class FlavorJS {
     this.extendPrototype(Object.prototype, {
       /**
        * isObject<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var o = {
-       *     prop1: 1,
-       *     prop2: 'a',
-       *   };
+       * var o = {
+       *   prop1: 1,
+       *   prop2: 'a',
+       * };
        *
-       *   console.log(Object.isObject(o)); // true<br>
-       *   console.log(Object.isObject(2)); // true<br>
-       *   console.log(Object.isObject('2')); // true<br>
-       *   console.log(Object.isObject(null)); // false
+       * console.log(Object.isObject(o)); // true<br>
+       * console.log(Object.isObject(2)); // true<br>
+       * console.log(Object.isObject('2')); // true<br>
+       * console.log(Object.isObject(null)); // false
        * </pre>
        * @memberOf Object
        * @method isObject
@@ -612,14 +612,14 @@ export default class FlavorJS {
     this.extendPrototype(Array.prototype, {
       /**
        * isArray<br><br>
-       *   eg. usage<br>
+       * eg. usage<br>
        * <pre>
-       *   var a = new Array();
+       * var a = new Array();
        *
-       *   console.log(Array.isArray(a)); // true<br>
-       *   console.log(Array.isArray(2)); // false<br>
-       *   console.log(Array.isArray([])); // true<br>
-       *   console.log(Array.isArray(null)); // false
+       * console.log(Array.isArray(a)); // true<br>
+       * console.log(Array.isArray(2)); // false<br>
+       * console.log(Array.isArray([])); // true<br>
+       * console.log(Array.isArray(null)); // false
        * </pre>
        * @memberOf Array
        * @method isArray
