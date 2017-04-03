@@ -84,10 +84,6 @@ export default class FlavorJS {
    * @instance
    */
   initLodashMixins() {
-    /**
-     * @namespace Lodash
-     * @description all the mixins added to _
-     */
     _.mixin({
       /**
        * checks if a string is a percentage value<br><br>
@@ -267,7 +263,7 @@ export default class FlavorJS {
        * @method deepFindBy
        * @instance
        * @param {Array|Object} collection - the collection
-       * @param {Function|String} propName - the property name or the predicate function to invoke (item will be passed as parameter to the predicate)
+       * @param {String|Function} propName - the property name or the predicate function to invoke (item will be passed as parameter to the predicate)
        * @param {*} propValue - the property value
        * @param {String} [childrenPropName='children'] - the children prop name
        * @return {*}
@@ -429,10 +425,6 @@ export default class FlavorJS {
    * @instance
    */
   initObjectPrototype() {
-    /**
-     * @namespace Object
-     * @description the JS native Object class
-     */
     this.extendPrototype(Object.prototype, {
       /**
        * isObject<br><br>
@@ -714,10 +706,6 @@ export default class FlavorJS {
    * @instance
    */
   initFunctionPrototype() {
-    /**
-     * @namespace Function
-     * @description the JS native Function class
-     */
     this.extendPrototype(Function.prototype, {
       /**
        * isFunction<br><br>
@@ -796,10 +784,6 @@ export default class FlavorJS {
    * @instance
    */
   initArrayPrototype() {
-    /**
-     * @namespace Array
-     * @description the JS native Array class
-     */
     this.extendPrototype(Array.prototype, {
       /**
        * isArray<br><br>
@@ -1031,10 +1015,6 @@ export default class FlavorJS {
    * @instance
    */
   initStringPrototype() {
-    /**
-     * @namespace String
-     * @description the JS native String class
-     */
     this.extendPrototype(String.prototype, {
       /**
        * isString<br><br>
@@ -1241,10 +1221,6 @@ export default class FlavorJS {
    * @instance
    */
   initNumberPrototype() {
-    /**
-     * @namespace Number
-     * @description the JS native Number class
-     */
     this.extendPrototype(Number.prototype, {
       /**
        * isNumber<br><br>
@@ -1337,10 +1313,6 @@ export default class FlavorJS {
    * @instance
    */
   initBooleanPrototype() {
-    /**
-     * @namespace Boolean
-     * @description the JS native Boolean class
-     */
     this.extendPrototype(Boolean.prototype, {
       /**
        * isBoolean<br><br>
