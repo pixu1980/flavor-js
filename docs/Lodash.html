@@ -44,13 +44,6 @@
 				</ul>
 			</li>
 			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
-				</ul>
-			</li>
-			
 		</ul>
         
             <div class="col-sm-3 col-md-3">
@@ -162,7 +155,929 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".filterByValues"><span class="type-signature">&lt;static> </span>filterByValues(collection, key, values)</h4>
+    <h4 class="name" id="deepFindBy"><span class="type-signature"></span>deepFindBy(collection, propName, propValue [, childrenPropName])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply searches in a recursive tree structure with (same structure) childrenPropName or 'children' property<br>
+looking for an item with the propName === propValue<br><br>
+eg. usage<br>
+<pre>
+var tree = [{
+ id: '1', status: 'enabled', items: [{
+   id: '1.1', status: 'enabled', items: [{
+     id: '1.1.1', status: 'enabled'
+   }, {
+     id: '1.1.2', status: 'disabled'
+   }]
+ }, {
+   id: '1.2', status: 'disabled'
+ }]
+}, {
+ id: '2', status: 'disabled', items: [{
+   id: '2.1', status: 'enabled'
+ }, {
+   id: '2.2', status: 'enabled'
+ }]
+}, {
+ id: '3', status: 'enabled', items: [{
+   id: '3.1', status: 'disabled'
+ }, {
+   id: '3.2', status: 'enabled'
+ }, {
+   id: '3.3', status: 'enabled'
+ }]
+}];
+
+console.log(_.deepFindBy(tree, 'id', '1.1.1', 'items');
+// logs {
+  id: '1.1.1', status: 'enabled'
+}
+
+console.log(_.deepFindBy(tree, function(item) {
+  return item.id === '3.2'
+}, null, 'items');
+// logs {
+  id: '3.2', status: 'enabled'
+}
+</pre>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="Object.html">Object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the property name or the predicate function to invoke (item will be passed as parameter to the predicate)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the property value</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last">the children prop name</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="deepMap"><span class="type-signature"></span>deepMap(collection [, childrenPropName], mapCallback)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+eg. usage<br>
+<pre>
+var tree = [{
+ id: '1', status: 'enabled', items: [{
+   id: '1.1', status: 'enabled', items: [{
+     id: '1.1.1', status: 'enabled'
+   }, {
+     id: '1.1.2', status: 'disabled'
+   }]
+ }, {
+   id: '1.2', status: 'disabled'
+ }]
+}];
+
+console.log(_.deepMap(tree, 'items', function(treeItem) {
+  return {
+    id: treeItem.id,
+    status: treeItem.status,
+    combo: treeItem.id + '-' + treeItem.status
+  };
+});
+// logs [{
+ id: '1', status: 'enabled', combo: '1-enabled' items: [{
+   id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
+     id: '1.1.1', status: 'enabled', combo: '1.1.1-enabled'
+   }, {
+     id: '1.1.2', status: 'disabled', combo: '1.1.2-disabled'
+   }]
+ }, {
+   id: '1.2', status: 'disabled', combo: '1.2-disabled'
+ }]
+}]
+</pre>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="Object.html">Object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the collection to use for the deep mapping</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last">the property name to use for children collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the item mapping callback</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="deepOrderBy"><span class="type-signature"></span>deepOrderBy(collection, propNames, propDirections [, childrenPropName])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+eg. usage<br>
+<pre>
+var tree = [{
+ id: '1', status: 'enabled', items: [{
+   id: '1.1', status: 'enabled', items: [{
+     id: '1.1.1', status: 'enabled'
+   }, {
+     id: '1.1.2', status: 'disabled'
+   }]
+ }, {
+   id: '1.2', status: 'disabled'
+ }]
+}, {
+ id: '2', status: 'disabled', items: [{
+   id: '2.1', status: 'enabled'
+ }, {
+   id: '2.2', status: 'enabled'
+ }]
+}, {
+ id: '3', status: 'enabled', items: [{
+   id: '3.1', status: 'disabled'
+ }, {
+   id: '3.2', status: 'enabled'
+ }, {
+   id: '3.3', status: 'enabled'
+ }]
+}];
+
+console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
+// logs [{
+ id: '3', status: 'enabled', items: [{
+   id: '3.3', status: 'enabled'
+ }, {
+   id: '3.2', status: 'disabled'
+ }, {
+   id: '3.1', status: 'enabled'
+ }]
+}, {
+ id: '2', status: 'disabled', items: [{
+   id: '2.2', status: 'enabled'
+ }, {
+   id: '2.1', status: 'enabled'
+ }]
+}, {
+ id: '1', status: 'enabled', items: [{
+   id: '1.2', status: 'disabled'
+ }, {
+   id: '1.1', status: 'enabled', items: [{
+     id: '1.1.2', status: 'enabled'
+   }, {
+     id: '1.1.1', status: 'disabled'
+   }]
+ }]
+}]
+</pre>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="Object.html">Object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the list of property names to sort</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propDirections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the list of order by direction to use with propNames</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last">the children prop name</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Array.html">Array</a></span>
+|
+
+<span class="param-type"><a href="Object.html">Object</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="filterByValues"><span class="type-signature"></span>filterByValues(collection, key, values)</h4>
     
     
 </dt>
@@ -173,16 +1088,18 @@
         filters a collection with a list of values specified for one property<br><br>
 eg. usage<br>
 <pre>
-  var collection = [{
-   id: 1, status: 'active'
-  }, {
-   id: 2, status: 'disabled'
-  }, {
-   id: 3, status: 'unactive'
-  }];
-  var allowedValues = ['active', 'unactive'];
+var collection = [{
+ id: 1, status: 'active'
+}, {
+ id: 2, status: 'disabled'
+}, {
+ id: 3, status: 'unactive'
+}];
 
-  console.log(_.filterByValues(collection, 'status', allowedValues); // [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
+var allowedValues = ['active', 'unactive'];
+
+console.log(_.filterByValues(collection, 'status', allowedValues); 
+// logs [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
 </pre>
     </div>
     
@@ -224,10 +1141,10 @@ eg. usage<br>
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Collection">Collection</a></span>
+<span class="param-type"><a href="Array.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Object.html">Object</a></span>
 
 
 
@@ -374,7 +1291,7 @@ eg. usage<br>
             
 <hr>
 <dt>
-    <h4 class="name" id=".isPercentage"><span class="type-signature">&lt;static> </span>isPercentage(s)</h4>
+    <h4 class="name" id="isPercentage"><span class="type-signature"></span>isPercentage(s)</h4>
     
     
 </dt>
@@ -387,8 +1304,10 @@ eg. usage<br>
 <pre>
 var s = '23.97%';
 
-console.log(_.isPercentage(s)); // true<br>
-console.log(_.isPercentage('50%')); // true<br>
+console.log(_.isPercentage(s)); // true
+
+console.log(_.isPercentage('50%')); // true
+
 console.log(_.isPercentage(10)); // false
 </pre>
     </div>
@@ -543,9 +1462,11 @@ eg. usage<br>
 <pre>
 var p = '50.5%';
 
-console.log(_.parsePercentage(p)); // 50.5<br>
-console.log(_.parsePercentage('100%')); // 100<br>
-console.log(_.parsePercentage(25.3)); // null<br>
+console.log(_.parsePercentage(p)); // 50.5
+
+console.log(_.parsePercentage('100%')); // 100
+
+console.log(_.parsePercentage(25.3)); // null
 </pre>
     </div>
     
@@ -739,7 +1660,7 @@ console.log(_.parsePercentage(25.3)); // null<br>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T17:32:11+02:00
+		on 2017-04-03T18:12:06+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

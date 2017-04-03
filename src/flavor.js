@@ -4,16 +4,6 @@ import _basePullAll from 'lodash/_basePullAll';
 import _toFinite from 'lodash/toFinite';
 
 /**
- * Array or Object threated as a collection by FlavorJS & Lodash
- * @typedef {Array|Object} Collection
- */
-
-/**
- * the prototype of a class
- * @typedef {Object} Prototype
- */
-
-/**
  * constructs FlavorJS class & extends the js natives
  * @class FlavorJS
  * @classdesc FlavorJS the definitive JS natives chainable extensions methods
@@ -105,13 +95,15 @@ export default class FlavorJS {
        * <pre>
        * var s = '23.97%';
        *
-       * console.log(_.isPercentage(s)); // true<br>
-       * console.log(_.isPercentage('50%')); // true<br>
+       * console.log(_.isPercentage(s)); // true
+       * 
+       * console.log(_.isPercentage('50%')); // true
+       * 
        * console.log(_.isPercentage(10)); // false
        * </pre>
        * @memberOf Lodash
        * @method isPercentage
-       * @static
+       * @instance
        * @param {String} s - the string
        * @return {Boolean}
        */
@@ -125,9 +117,11 @@ export default class FlavorJS {
        * <pre>
        * var p = '50.5%';
        *
-       * console.log(_.parsePercentage(p)); // 50.5<br>
-       * console.log(_.parsePercentage('100%')); // 100<br>
-       * console.log(_.parsePercentage(25.3)); // null<br>
+       * console.log(_.parsePercentage(p)); // 50.5
+       * 
+       * console.log(_.parsePercentage('100%')); // 100
+       * 
+       * console.log(_.parsePercentage(25.3)); // null
        * </pre>
        * @memberOf Lodash
        * @method parsePercentage
@@ -146,21 +140,23 @@ export default class FlavorJS {
        * filters a collection with a list of values specified for one property<br><br>
        * eg. usage<br>
        * <pre>
-       *   var collection = [{
-       *    id: 1, status: 'active'
-       *   }, {
-       *    id: 2, status: 'disabled'
-       *   }, {
-       *    id: 3, status: 'unactive'
-       *   }];
-       *   var allowedValues = ['active', 'unactive'];
+       * var collection = [{
+       *  id: 1, status: 'active'
+       * }, {
+       *  id: 2, status: 'disabled'
+       * }, {
+       *  id: 3, status: 'unactive'
+       * }];
+       * 
+       * var allowedValues = ['active', 'unactive'];
        *
-       *   console.log(_.filterByValues(collection, 'status', allowedValues); // [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
+       * console.log(_.filterByValues(collection, 'status', allowedValues); 
+       * // logs [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
        * </pre>
        * @memberOf Lodash
        * @method filterByValues
-       * @static
-       * @param {Collection|Array} collection - the collection to filter
+       * @instance
+       * @param {Array|Object} collection - the collection to filter
        * @param {String} key - the key to be used as property name
        * @param {Array} values - the list of values to check
        * @return {Array}
@@ -170,8 +166,49 @@ export default class FlavorJS {
           return values.contains(o.path(key));
         });
       },
-      deepMap(collection, childrenPropName, mapCallback) {
-        childrenPropName = childrenPropName || 'children';
+      /**
+       * deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+       * eg. usage<br>
+       * <pre>
+       * var tree = [{
+       *  id: '1', status: 'enabled', items: [{
+       *    id: '1.1', status: 'enabled', items: [{
+       *      id: '1.1.1', status: 'enabled'
+       *    }, {
+       *      id: '1.1.2', status: 'disabled'
+       *    }]
+       *  }, {
+       *    id: '1.2', status: 'disabled'
+       *  }]
+       * }];
+       *
+       * console.log(_.deepMap(tree, 'items', function(treeItem) {
+       *   return {
+       *     id: treeItem.id,
+       *     status: treeItem.status,
+       *     combo: treeItem.id + '-' + treeItem.status
+       *   };
+       * });
+       * // logs [{
+       *  id: '1', status: 'enabled', combo: '1-enabled' items: [{
+       *    id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
+       *      id: '1.1.1', status: 'enabled', combo: '1.1.1-enabled'
+       *    }, {
+       *      id: '1.1.2', status: 'disabled', combo: '1.1.2-disabled'
+       *    }]
+       *  }, {
+       *    id: '1.2', status: 'disabled', combo: '1.2-disabled'
+       *  }]
+       * }]
+       * </pre>
+       * @memberOf Lodash
+       * @method deepMap
+       * @instance
+       * @param {Array|Object} collection - the collection to use for the deep mapping
+       * @param {String} [childrenPropName='children'] - the property name to use for children collection
+       * @param {Function} mapCallback - the item mapping callback
+       */
+      deepMap(collection, childrenPropName = 'children', mapCallback) {
 
         return _.map(collection, (item) => {
           if(!!item[childrenPropName]) {
@@ -183,13 +220,70 @@ export default class FlavorJS {
           return mapCallback(item);
         });
       },
-      deepFindBy(collection, propName, propValue, childrenPropName) {
+      /**
+       * deeply searches in a recursive tree structure with (same structure) childrenPropName or 'children' property<br>
+       * looking for an item with the propName === propValue<br><br>
+       * eg. usage<br>
+       * <pre>
+       * var tree = [{
+       *  id: '1', status: 'enabled', items: [{
+       *    id: '1.1', status: 'enabled', items: [{
+       *      id: '1.1.1', status: 'enabled'
+       *    }, {
+       *      id: '1.1.2', status: 'disabled'
+       *    }]
+       *  }, {
+       *    id: '1.2', status: 'disabled'
+       *  }]
+       * }, {
+       *  id: '2', status: 'disabled', items: [{
+       *    id: '2.1', status: 'enabled'
+       *  }, {
+       *    id: '2.2', status: 'enabled'
+       *  }]
+       * }, {
+       *  id: '3', status: 'enabled', items: [{
+       *    id: '3.1', status: 'disabled'
+       *  }, {
+       *    id: '3.2', status: 'enabled'
+       *  }, {
+       *    id: '3.3', status: 'enabled'
+       *  }]
+       * }];
+       *
+       * console.log(_.deepFindBy(tree, 'id', '1.1.1', 'items');
+       * // logs {
+       *   id: '1.1.1', status: 'enabled'
+       * }
+       *
+       * console.log(_.deepFindBy(tree, function(item) {
+       *   return item.id === '3.2'
+       * }, null, 'items');
+       * // logs {
+       *   id: '3.2', status: 'enabled'
+       * }
+       * </pre>
+       * @memberOf Lodash
+       * @method deepFindBy
+       * @instance
+       * @param {Array|Object} collection - the collection
+       * @param {Function|String} propName - the property name or the predicate function to invoke (item will be passed as parameter to the predicate)
+       * @param {*} propValue - the property value
+       * @param {String} [childrenPropName='children'] - the children prop name
+       * @return {*}
+       */
+      deepFindBy(collection, propName, propValue, childrenPropName = 'children') {
         let found = null;
-        childrenPropName = childrenPropName || 'children';
 
         collection.each((item) => {
           if(!found) {
-            if(item[propName] === propValue) {
+
+            if(_.isFunction(propName)) {
+              /**
+               * use propName ad predicate
+               */
+              found = propName(item);
+            } else if(item[propName] === propValue) {
               found = item;
             } else if(!!item[childrenPropName]) {
               if(_.isArray(item[childrenPropName])) {
@@ -201,9 +295,73 @@ export default class FlavorJS {
 
         return found;
       },
-      deepOrderBy(collection, propNames, propDirections, childrenPropName) {
-        childrenPropName = childrenPropName || 'children';
-
+      /**
+       * deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+       * eg. usage<br>
+       * <pre>
+       * var tree = [{
+       *  id: '1', status: 'enabled', items: [{
+       *    id: '1.1', status: 'enabled', items: [{
+       *      id: '1.1.1', status: 'enabled'
+       *    }, {
+       *      id: '1.1.2', status: 'disabled'
+       *    }]
+       *  }, {
+       *    id: '1.2', status: 'disabled'
+       *  }]
+       * }, {
+       *  id: '2', status: 'disabled', items: [{
+       *    id: '2.1', status: 'enabled'
+       *  }, {
+       *    id: '2.2', status: 'enabled'
+       *  }]
+       * }, {
+       *  id: '3', status: 'enabled', items: [{
+       *    id: '3.1', status: 'disabled'
+       *  }, {
+       *    id: '3.2', status: 'enabled'
+       *  }, {
+       *    id: '3.3', status: 'enabled'
+       *  }]
+       * }];
+       *
+       * console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
+       * // logs [{
+       *  id: '3', status: 'enabled', items: [{
+       *    id: '3.3', status: 'enabled'
+       *  }, {
+       *    id: '3.2', status: 'disabled'
+       *  }, {
+       *    id: '3.1', status: 'enabled'
+       *  }]
+       * }, {
+       *  id: '2', status: 'disabled', items: [{
+       *    id: '2.2', status: 'enabled'
+       *  }, {
+       *    id: '2.1', status: 'enabled'
+       *  }]
+       * }, {
+       *  id: '1', status: 'enabled', items: [{
+       *    id: '1.2', status: 'disabled'
+       *  }, {
+       *    id: '1.1', status: 'enabled', items: [{
+       *      id: '1.1.2', status: 'enabled'
+       *    }, {
+       *      id: '1.1.1', status: 'disabled'
+       *    }]
+       *  }]
+       * }]
+       * </pre>
+       * @memberOf Lodash
+       * @method deepOrderBy
+       * @instance
+       * @param {Array|Object} collection - the collection
+       * @param {Array|String} propNames - the list of property names to sort
+       * @param {Array|String} propDirections - the list of order by direction to use with propNames
+       * @param {String} [childrenPropName='children'] - the children prop name
+       * @return {Array|Object}
+       */
+      deepOrderBy(collection, propNames, propDirections, childrenPropName = 'children') {
         if(_.isString(propNames)) {
           propNames = [propNames];
         }
