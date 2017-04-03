@@ -51,7 +51,7 @@ module.exports = {
     ],
   },
 
-  externals: /^(lodash)/i,
+  externals: /^(lodash)$/i,
 
   resolve: {
     root: path.resolve(__dirname),
