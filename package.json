@@ -1,6 +1,6 @@
 {
   "name": "flavor-js",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.js",
   "scripts": {
@@ -29,6 +29,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-add-jsdoc-properties": "^0.1.4",
     "babel-plugin-lodash": "^3.2.11",
@@ -39,10 +40,14 @@
     "copy-webpack-plugin": "^4.0.1",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-standard": "^7.1.0",
     "eslint-loader": "^1.6.1",
+    "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.6.0",
+    "eslint-plugin-standard": "^2.1.1",
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",

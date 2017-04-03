@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const packageJSON = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 //const CompressionPlugin = require("compression-webpack-plugin");
 
@@ -17,17 +18,19 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve('dist'),
+    path: path.join(__dirname, 'dist'),
     filename: './flavor.js',
+    library: 'flavor-js',
+    libraryTarget: 'umd',
   },
 
   plugins: [
     new CleanWebpackPlugin(['dist', 'build']),
     //new webpack.IgnorePlugin(/lodash/),
     new webpack.optimize.OccurrenceOrderPlugin,
-    //new webpack.optimize.UglifyJsPlugin,
+    new webpack.optimize.UglifyJsPlugin,
     //new CompressionPlugin({
-    //  asset: "[path].gz[query]",
+    //  asset: "[path].[query]",
     //  algorithm: "gzip",
     //  test: /\.(js|html)$/,
     //  threshold: 10240,
@@ -36,7 +39,6 @@ module.exports = {
   ],
 
   module: {
-    noParse: /node_modules\/lodash\/lodash\.js/,
     preLoaders: [
       {
         test: /\.js$/,
@@ -59,7 +61,7 @@ module.exports = {
     ],
   },
 
-  externals: /^(lodash)$/i,
+  externals: packageJSON.peerDependencies ? Object.keys(packageJSON.peerDependencies) : [],
 
   resolve: {
     root: path.resolve(__dirname),
