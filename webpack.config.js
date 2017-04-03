@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const packageJSON = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-//const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   context: path.resolve('src'),
@@ -29,13 +28,6 @@ module.exports = {
     //new webpack.IgnorePlugin(/lodash/),
     new webpack.optimize.OccurrenceOrderPlugin,
     new webpack.optimize.UglifyJsPlugin,
-    //new CompressionPlugin({
-    //  asset: "[path].[query]",
-    //  algorithm: "gzip",
-    //  test: /\.(js|html)$/,
-    //  threshold: 10240,
-    //  minRatio: 0.8
-    //})
   ],
 
   module: {
