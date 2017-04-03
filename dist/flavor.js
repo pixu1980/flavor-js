@@ -56,14 +56,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var flavorJS = new _flavor2.default();
+
 	if (!window.ƒ) {
-	  window.ƒ = window.FlavorJS = new _flavor2.default();
+	  window.ƒ = window.FlavorJS = flavorJS;
 	}
 
-	exports.default = {
-	  ƒ: window.ƒ,
-	  FlavorJS: window.FlavorJS
-	};
+	exports.default = flavorJS;
 
 /***/ },
 /* 1 */
