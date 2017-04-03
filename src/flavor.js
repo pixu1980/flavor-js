@@ -864,6 +864,9 @@ export default class FlavorJS {
       isString() {
         return _.isString(this);
       },
+      parsePercentage() {
+        return _.parsePercentage(this);
+      },
       toArray(separator) {
         return _.split(this, separator);
       },
@@ -1006,11 +1009,17 @@ export default class FlavorJS {
         return result;
       },
     });
+
     this.extendPrototypeProperty(String, 'isString', (s) => {
       return String.prototype.isString.call(s);
     });
+
     this.extendPrototypeProperty(String, 'isPercentage', (s) => {
       return String.prototype.isPercentage.call(s);
+    });
+
+    this.extendPrototypeProperty(String, 'parsePercentage', (s) => {
+      return String.prototype.parsePercentage.call(s);
     });
   }
 

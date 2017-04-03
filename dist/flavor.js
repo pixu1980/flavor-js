@@ -2140,6 +2140,9 @@
 	        isString: function isString() {
 	          return _lodash2.default.isString(this);
 	        },
+	        parsePercentage: function parsePercentage() {
+	          return _lodash2.default.parsePercentage(this);
+	        },
 	        toArray: function toArray(separator) {
 	          return _lodash2.default.split(this, separator);
 	        },
@@ -2284,11 +2287,17 @@
 	          return result;
 	        }
 	      });
+
 	      this.extendPrototypeProperty(String, 'isString', function (s) {
 	        return String.prototype.isString.call(s);
 	      });
+
 	      this.extendPrototypeProperty(String, 'isPercentage', function (s) {
 	        return String.prototype.isPercentage.call(s);
+	      });
+
+	      this.extendPrototypeProperty(String, 'parsePercentage', function (s) {
+	        return String.prototype.parsePercentage.call(s);
 	      });
 	    }
 
