@@ -207,7 +207,6 @@ export default class FlavorJS {
        * @param {Function} mapCallback - the item mapping callback
        */
       deepMap(collection, childrenPropName = 'children', mapCallback) {
-
         return _.map(collection, (item) => {
           if(!!item[childrenPropName]) {
             if(_.isArray(item[childrenPropName])) {
@@ -276,7 +275,6 @@ export default class FlavorJS {
 
         collection.each((item) => {
           if(!found) {
-
             if(_.isFunction(propName)) {
               /**
                * use propName ad predicate
@@ -1139,6 +1137,9 @@ export default class FlavorJS {
       },
       clone() {
         return [...this];
+      },
+      maxBy(prop) {
+        return _.maxBy(this, prop);
       },
     });
   }
