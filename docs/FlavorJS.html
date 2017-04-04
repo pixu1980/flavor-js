@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Array.html">Array</a></li><li><a href="Boolean.html">Boolean</a></li><li><a href="Date.html">Date</a></li><li><a href="Function.html">Function</a></li><li><a href="Lodash.html">Lodash</a></li><li><a href="Number.html">Number</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
+					<li><a href="array.html">array</a></li><li><a href="boolean.html">boolean</a></li><li><a href="date.html">date</a></li><li><a href="function.html">function</a></li><li><a href="lodash.html">lodash</a></li><li><a href="number.html">number</a></li><li><a href="object.html">object</a></li><li><a href="string.html">string</a></li>
 				</ul>
 			</li>
 			
@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
 				</ul>
 			</li>
 			
@@ -196,6 +196,190 @@
             
 <hr>
 <dt>
+    <h4 class="name" id="delay"><span class="type-signature"></span>delay(fn, ms)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        delays a function by specified ms
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">function to invoke</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ms</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">time to wait in milliseconds</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">ƒ.delay(function() {
+  console.log(&#x27;ended&#x27;)
+}, 1000);
+
+// it logs &#x27;ended&#x27; after 1000ms</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="extendPrototype"><span class="type-signature"></span>extendPrototype(proto, extend)</h4>
     
     
@@ -245,10 +429,10 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Prototype">Prototype</a></span>
+<span class="param-type"><a href="global.html#prototype">prototype</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -272,7 +456,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -404,10 +588,10 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Prototype">Prototype</a></span>
+<span class="param-type"><a href="global.html#prototype">prototype</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -443,7 +627,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -502,7 +686,7 @@
                 </td>
             
 
-            <td class="description last">val to be used as value in the descriptor for the property, can be any kind of native (Number, Function, etc...) or what you want</td>
+            <td class="description last">val to be used as value in the descriptor for the property, can be any kind of native (number, function, etc...) or what you want</td>
         </tr>
 
     
@@ -515,7 +699,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -543,7 +727,7 @@
             
 
             <td class="description last">options to be used as parameters in the descriptor for the property<br>
-possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">Javascript|MDN docs</a>)<br>
+possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/object/defineProperty" target="_blank">Javascript|MDN docs</a>)<br>
                 <h6 class="method-params-label method-subparams-label">Properties</h6>
                 
 
@@ -579,7 +763,7 @@ possible options are (source documentation from <a href="https://developer.mozil
             <td class="type">
             
                 
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -606,7 +790,7 @@ possible options are (source documentation from <a href="https://developer.mozil
                 </td>
             
 
-            <td class="description last">configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object.</td>
+            <td class="description last">configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding Object.</td>
         </tr>
 
     
@@ -619,7 +803,7 @@ possible options are (source documentation from <a href="https://developer.mozil
             <td class="type">
             
                 
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -646,7 +830,7 @@ possible options are (source documentation from <a href="https://developer.mozil
                 </td>
             
 
-            <td class="description last">enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding object.</td>
+            <td class="description last">enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding Object.</td>
         </tr>
 
     
@@ -659,7 +843,7 @@ possible options are (source documentation from <a href="https://developer.mozil
             <td class="type">
             
                 
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -699,7 +883,7 @@ possible options are (source documentation from <a href="https://developer.mozil
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -749,7 +933,7 @@ function ClassName() {
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -1613,7 +1797,7 @@ function ClassName() {
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T19:02:38+02:00
+		on 2017-04-04T18:32:33+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

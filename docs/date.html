@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>FlavorJS Namespace: Function</title>
+	<title>FlavorJS Namespace: date</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Array.html">Array</a></li><li><a href="Boolean.html">Boolean</a></li><li><a href="Date.html">Date</a></li><li><a href="Function.html">Function</a></li><li><a href="Lodash.html">Lodash</a></li><li><a href="Number.html">Number</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
+					<li><a href="array.html">array</a></li><li><a href="boolean.html">boolean</a></li><li><a href="date.html">date</a></li><li><a href="function.html">function</a></li><li><a href="lodash.html">lodash</a></li><li><a href="number.html">number</a></li><li><a href="object.html">object</a></li><li><a href="string.html">string</a></li>
 				</ul>
 			</li>
 			
@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
 				</ul>
 			</li>
 			
@@ -79,13 +79,13 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: Function</h1>
+	<h1 class="page-title">Namespace: date</h1>
 <section>
 
 <header>
     
         <h2>
-        Function
+        date
         </h2>
         
     
@@ -96,7 +96,7 @@
     <div class="container-overview">
     
         
-            <div class="description">the JS native Function class</div>
+            <div class="description">the JS native Date class</div>
         
 
         
@@ -162,7 +162,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="isFunction"><span class="type-signature"></span>isFunction()</h4>
+    <h4 class="name" id="isDate"><span class="type-signature"></span>isDate()</h4>
     
     
 </dt>
@@ -170,16 +170,7 @@
 
     
     <div class="description">
-        isFunction<br><br>
-  eg. usage<br>
-<pre>
-  var f = function(){};
-
-  console.log(Function.isFunction(f)); // true<br>
-  console.log(Function.isFunction(2)); // false<br>
-  console.log(Function.isFunction(function(){})); // true<br>
-  console.log(Function.isFunction(null)); // false
-</pre>
+        checks if something is a date
     </div>
     
 
@@ -241,26 +232,16 @@
     
 
     
-    <h5>Returns:</h5>
+
     
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
+        <h5>Example</h5>
         
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+        <p class="code-caption">eg.usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(Date.isDate(new Date())); // true
 
+console.log(Date.isDate(0)); // false</pre>
 
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
@@ -269,7 +250,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="proxy"><span class="type-signature"></span>proxy(scope, proxyArgs)</h4>
+    <h4 class="name" id="timestamp"><span class="type-signature"></span>timestamp()</h4>
     
     
 </dt>
@@ -277,36 +258,7 @@
 
     
     <div class="description">
-        proxies a function width scope and optional arguments<br><br>
-  eg. usage<br>
-<pre>
-  var a = 1;
-  var b = new Date();
-  var c = function() {};
-
-  var scope = {
-    prop1: 2.53,
-    prop2: 'foo';
-  };
-
-  var f = function(a, b, c) {
-    console.log(this.prop1, a, b, c);
-  }
-
-  f(a, b, c);
-  // it logs
-  undefined, 1, Date, function()
-
-  var pf = f.proxy(scope);
-  pf(a, b, c);
-  // it logs
-  2.53, 1, Date, function()
-
-  pf = f.proxy(scope, 2, null);
-  pf(a, b, c);
-  // it logs
-  2.53, 2, null, function()
-</pre>
+        transforms a date in a UTC timestamp integer
     </div>
     
 
@@ -315,100 +267,6 @@
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Object.html">Object</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">the scope object (will be `this` inside the function)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>proxyArgs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Object.html">Object</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last">pass one or more arguments to override the original handled arguments</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -473,7 +331,7 @@
     </dt>
     <dd>
         
-<span class="param-type">function</span>
+<span class="param-type"><a href="global.html#timestamp">timestamp</a></span>
 
 
 
@@ -482,6 +340,14 @@
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log((new Date()).toUTC()); // 1491317811925 @ 2017-04-4-16:57</pre>
+
 
     
 </dd>
@@ -540,7 +406,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T19:02:38+02:00
+		on 2017-04-04T18:32:33+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

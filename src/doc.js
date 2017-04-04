@@ -1,41 +1,45 @@
 /**
- * @namespace Lodash
+ * @namespace lodash
  * @description all the mixins added to _
  */
 /**
- * @namespace Object
+ * @namespace object
  * @description the JS native Object class
  */
 /**
- * @namespace Function
+ * @namespace function
  * @description the JS native Function class
  */
 /**
- * @namespace Array
+ * @namespace array
  * @description the JS native Array class
  */
 /**
- * @namespace String
+ * @namespace string
  * @description the JS native String class
  */
 /**
- * @namespace Date
+ * @namespace date
  * @description the JS native Date class
  */
 /**
- * @namespace Number
+ * @namespace number
  * @description the JS native Number class
  */
 /**
- * @namespace Boolean
+ * @namespace boolean
  * @description the JS native Boolean class
  */
 
 /**
- * @typedef {Array|Object} Collection
+ * @typedef {array|object} collection
  * @description an array or an object to be used as collection
  */
 /**
- * @typedef {Object} Prototype
+ * @typedef {object} prototype
  * @description the prototype of a class
+ */
+/**
+ * @typedef {number} timestamp
+ * @description the number that identifies a specific time as a timestamp
  */

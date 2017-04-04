@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>FlavorJS Namespace: Lodash</title>
+	<title>FlavorJS Namespace: lodash</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Array.html">Array</a></li><li><a href="Boolean.html">Boolean</a></li><li><a href="Date.html">Date</a></li><li><a href="Function.html">Function</a></li><li><a href="Lodash.html">Lodash</a></li><li><a href="Number.html">Number</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
+					<li><a href="array.html">array</a></li><li><a href="boolean.html">boolean</a></li><li><a href="date.html">date</a></li><li><a href="function.html">function</a></li><li><a href="lodash.html">lodash</a></li><li><a href="number.html">number</a></li><li><a href="object.html">object</a></li><li><a href="string.html">string</a></li>
 				</ul>
 			</li>
 			
@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
 				</ul>
 			</li>
 			
@@ -79,13 +79,13 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: Lodash</h1>
+	<h1 class="page-title">Namespace: lodash</h1>
 <section>
 
 <header>
     
         <h2>
-        Lodash
+        lodash
         </h2>
         
     
@@ -172,46 +172,6 @@
     <div class="description">
         deeply searches in a recursive tree structure with (same structure) childrenPropName or 'children' property<br>
 looking for an item with the propName === propValue<br><br>
-eg. usage<br>
-<pre>
-var tree = [{
- id: '1', status: 'enabled', items: [{
-   id: '1.1', status: 'enabled', items: [{
-     id: '1.1.1', status: 'enabled'
-   }, {
-     id: '1.1.2', status: 'disabled'
-   }]
- }, {
-   id: '1.2', status: 'disabled'
- }]
-}, {
- id: '2', status: 'disabled', items: [{
-   id: '2.1', status: 'enabled'
- }, {
-   id: '2.2', status: 'enabled'
- }]
-}, {
- id: '3', status: 'enabled', items: [{
-   id: '3.1', status: 'disabled'
- }, {
-   id: '3.2', status: 'enabled'
- }, {
-   id: '3.3', status: 'enabled'
- }]
-}];
-
-console.log(_.deepFindBy(tree, 'id', '1.1.1', 'items');
-// logs {
-  id: '1.1.1', status: 'enabled'
-}
-
-console.log(_.deepFindBy(tree, function(item) {
-  return item.id === '3.2'
-}, null, 'items');
-// logs {
-  id: '3.2', status: 'enabled'
-}
-</pre>
     </div>
     
 
@@ -256,10 +216,10 @@ console.log(_.deepFindBy(tree, function(item) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -295,10 +255,10 @@ console.log(_.deepFindBy(tree, function(item) {
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 |
 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -370,7 +330,7 @@ console.log(_.deepFindBy(tree, function(item) {
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -479,6 +439,50 @@ console.log(_.deepFindBy(tree, function(item) {
         
 
     
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var tree = [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
+ }]
+}, {
+ id: &#x27;2&#x27;, status: &#x27;disabled&#x27;, items: [{
+   id: &#x27;2.1&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;2.2&#x27;, status: &#x27;enabled&#x27;
+ }]
+}, {
+ id: &#x27;3&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;3.1&#x27;, status: &#x27;disabled&#x27;
+ }, {
+   id: &#x27;3.2&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;3.3&#x27;, status: &#x27;enabled&#x27;
+ }]
+}];
+
+console.log(_.deepFindBy(tree, &#x27;id&#x27;, &#x27;1.1.1&#x27;, &#x27;items&#x27;);
+// logs {
+  id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
+}
+
+console.log(_.deepFindBy(tree, function(item) {
+  return item.id === &#x27;3.2&#x27;
+}, null, &#x27;items&#x27;);
+// logs {
+  id: &#x27;3.2&#x27;, status: &#x27;enabled&#x27;
+}</pre>
+
+
+    
 </dd>
 
         
@@ -494,39 +498,6 @@ console.log(_.deepFindBy(tree, function(item) {
     
     <div class="description">
         deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
-eg. usage<br>
-<pre>
-var tree = [{
- id: '1', status: 'enabled', items: [{
-   id: '1.1', status: 'enabled', items: [{
-     id: '1.1.1', status: 'enabled'
-   }, {
-     id: '1.1.2', status: 'disabled'
-   }]
- }, {
-   id: '1.2', status: 'disabled'
- }]
-}];
-
-console.log(_.deepMap(tree, 'items', function(treeItem) {
-  return {
-    id: treeItem.id,
-    status: treeItem.status,
-    combo: treeItem.id + '-' + treeItem.status
-  };
-});
-// logs [{
- id: '1', status: 'enabled', combo: '1-enabled' items: [{
-   id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
-     id: '1.1.1', status: 'enabled', combo: '1.1.1-enabled'
-   }, {
-     id: '1.1.2', status: 'disabled', combo: '1.1.2-disabled'
-   }]
- }, {
-   id: '1.2', status: 'disabled', combo: '1.2-disabled'
- }]
-}]
-</pre>
     </div>
     
 
@@ -571,10 +542,10 @@ console.log(_.deepMap(tree, 'items', function(treeItem) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -610,7 +581,7 @@ console.log(_.deepMap(tree, 'items', function(treeItem) {
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -650,7 +621,7 @@ console.log(_.deepMap(tree, 'items', function(treeItem) {
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -735,6 +706,44 @@ console.log(_.deepMap(tree, 'items', function(treeItem) {
     
 
     
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var tree = [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
+ }]
+}];
+
+console.log(_.deepMap(tree, &#x27;items&#x27;, function(treeItem) {
+  return {
+    id: treeItem.id,
+    status: treeItem.status,
+    combo: treeItem.id + &#x27;-&#x27; + treeItem.status
+  };
+});
+
+// logs [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1-enabled&#x27; items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1-enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1.1-enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.1.2-disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.2-disabled&#x27;
+ }]
+}]</pre>
+
+
+    
 </dd>
 
         
@@ -750,61 +759,6 @@ console.log(_.deepMap(tree, 'items', function(treeItem) {
     
     <div class="description">
         deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
-eg. usage<br>
-<pre>
-var tree = [{
- id: '1', status: 'enabled', items: [{
-   id: '1.1', status: 'enabled', items: [{
-     id: '1.1.1', status: 'enabled'
-   }, {
-     id: '1.1.2', status: 'disabled'
-   }]
- }, {
-   id: '1.2', status: 'disabled'
- }]
-}, {
- id: '2', status: 'disabled', items: [{
-   id: '2.1', status: 'enabled'
- }, {
-   id: '2.2', status: 'enabled'
- }]
-}, {
- id: '3', status: 'enabled', items: [{
-   id: '3.1', status: 'disabled'
- }, {
-   id: '3.2', status: 'enabled'
- }, {
-   id: '3.3', status: 'enabled'
- }]
-}];
-
-console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
-// logs [{
- id: '3', status: 'enabled', items: [{
-   id: '3.3', status: 'enabled'
- }, {
-   id: '3.2', status: 'disabled'
- }, {
-   id: '3.1', status: 'enabled'
- }]
-}, {
- id: '2', status: 'disabled', items: [{
-   id: '2.2', status: 'enabled'
- }, {
-   id: '2.1', status: 'enabled'
- }]
-}, {
- id: '1', status: 'enabled', items: [{
-   id: '1.2', status: 'disabled'
- }, {
-   id: '1.1', status: 'enabled', items: [{
-     id: '1.1.2', status: 'enabled'
-   }, {
-     id: '1.1.1', status: 'disabled'
-   }]
- }]
-}]
-</pre>
     </div>
     
 
@@ -849,10 +803,10 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -888,10 +842,10 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -927,10 +881,10 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -966,7 +920,7 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1064,10 +1018,10 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
     </dt>
     <dd>
         
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1076,6 +1030,65 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var tree = [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
+ }]
+}, {
+ id: &#x27;2&#x27;, status: &#x27;disabled&#x27;, items: [{
+   id: &#x27;2.1&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;2.2&#x27;, status: &#x27;enabled&#x27;
+ }]
+}, {
+ id: &#x27;3&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;3.1&#x27;, status: &#x27;disabled&#x27;
+ }, {
+   id: &#x27;3.2&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;3.3&#x27;, status: &#x27;enabled&#x27;
+ }]
+}];
+
+console.log(_.deepOrderBy(tree, [&#x27;id&#x27;], [&#x27;desc&#x27;], &#x27;items&#x27;);
+// logs [{
+ id: &#x27;3&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;3.3&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;3.2&#x27;, status: &#x27;disabled&#x27;
+ }, {
+   id: &#x27;3.1&#x27;, status: &#x27;enabled&#x27;
+ }]
+}, {
+ id: &#x27;2&#x27;, status: &#x27;disabled&#x27;, items: [{
+   id: &#x27;2.2&#x27;, status: &#x27;enabled&#x27;
+ }, {
+   id: &#x27;2.1&#x27;, status: &#x27;enabled&#x27;
+ }]
+}, {
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
+ }, {
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
+     id: &#x27;1.1.2&#x27;, status: &#x27;enabled&#x27;
+   }, {
+     id: &#x27;1.1.1&#x27;, status: &#x27;disabled&#x27;
+   }]
+ }]
+}]</pre>
+
 
     
 </dd>
@@ -1093,21 +1106,6 @@ console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
     
     <div class="description">
         filters a collection with a list of values specified for one property<br><br>
-eg. usage<br>
-<pre>
-var collection = [{
- id: 1, status: 'active'
-}, {
- id: 2, status: 'disabled'
-}, {
- id: 3, status: 'unactive'
-}];
-
-var allowedValues = ['active', 'unactive'];
-
-console.log(_.filterByValues(collection, 'status', allowedValues); 
-// logs [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
-</pre>
     </div>
     
 
@@ -1148,10 +1146,10 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 |
 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1175,7 +1173,7 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1199,7 +1197,7 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 
 
 
@@ -1281,7 +1279,7 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
     </dt>
     <dd>
         
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="Array_.html">Array</a></span>
 
 
 
@@ -1290,6 +1288,25 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var collection = [{
+ id: 1, status: &#x27;active&#x27;
+}, {
+ id: 2, status: &#x27;disabled&#x27;
+}, {
+ id: 3, status: &#x27;unactive&#x27;
+}];
+
+var allowedValues = [&#x27;active&#x27;, &#x27;unactive&#x27;];
+
+console.log(_.filterByValues(collection, &#x27;status&#x27;, allowedValues);
+// logs [{id: 1, status: &#x27;active&#x27;}, {id: 3, status: &#x27;unactive&#x27;}]</pre>
+
 
     
 </dd>
@@ -1307,16 +1324,6 @@ console.log(_.filterByValues(collection, 'status', allowedValues);
     
     <div class="description">
         checks if a string is a percentage value<br><br>
-eg. usage<br>
-<pre>
-var s = '23.97%';
-
-console.log(_.isPercentage(s)); // true
-
-console.log(_.isPercentage('50%')); // true
-
-console.log(_.isPercentage(10)); // false
-</pre>
     </div>
     
 
@@ -1357,7 +1364,7 @@ console.log(_.isPercentage(10)); // false
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1439,7 +1446,7 @@ console.log(_.isPercentage(10)); // false
     </dt>
     <dd>
         
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -1448,6 +1455,20 @@ console.log(_.isPercentage(10)); // false
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var s = &#x27;23.97%&#x27;;
+
+console.log(_.isPercentage(s)); // true
+
+console.log(_.isPercentage(&#x27;50%&#x27;)); // true
+
+console.log(_.isPercentage(10)); // false</pre>
+
 
     
 </dd>
@@ -1465,16 +1486,6 @@ console.log(_.isPercentage(10)); // false
     
     <div class="description">
         parses float value in a percentage string<br><br>
-eg. usage<br>
-<pre>
-var p = '50.5%';
-
-console.log(_.parsePercentage(p)); // 50.5
-
-console.log(_.parsePercentage('100%')); // 100
-
-console.log(_.parsePercentage(25.3)); // null
-</pre>
     </div>
     
 
@@ -1515,7 +1526,7 @@ console.log(_.parsePercentage(25.3)); // null
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1600,7 +1611,7 @@ console.log(_.parsePercentage(25.3)); // null
 <span class="param-type">null</span>
 |
 
-<span class="param-type"><a href="Number.html">Number</a></span>
+<span class="param-type"><a href="number.html">number</a></span>
 
 
 
@@ -1609,6 +1620,20 @@ console.log(_.parsePercentage(25.3)); // null
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var p = &#x27;50.5%&#x27;;
+
+console.log(_.parsePercentage(p)); // 50.5
+
+console.log(_.parsePercentage(&#x27;100%&#x27;)); // 100
+
+console.log(_.parsePercentage(25.3)); // null</pre>
+
 
     
 </dd>
@@ -1662,7 +1687,7 @@ console.log(_.parsePercentage(25.3)); // null
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Collection">Collection</a></span>
+<span class="param-type"><a href="global.html#collection">collection</a></span>
 
 
 
@@ -1686,7 +1711,7 @@ console.log(_.parsePercentage(25.3)); // null
             <td class="type">
             
                 
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="array.html">array</a></span>
 
 
 
@@ -1710,7 +1735,7 @@ console.log(_.parsePercentage(25.3)); // null
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -1734,7 +1759,7 @@ console.log(_.parsePercentage(25.3)); // null
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -1823,7 +1848,7 @@ console.log(_.parsePercentage(25.3)); // null
     </dt>
     <dd>
         
-<span class="param-type"><a href="Array.html">Array</a></span>
+<span class="param-type"><a href="array.html">array</a></span>
 
 
 
@@ -1848,35 +1873,7 @@ console.log(_.parsePercentage(25.3)); // null
 
     
     <div class="description">
-        an implementation of _.times by Lodash, where you can specify start & end numbers<br><br>
-eg. usage<br>
-<pre>
-_.timesRange(5, 10, function(i) {
-  console.log(i);
-});
-
-// logs
-5
-6
-7
-8
-9
-10
-</pre>
-or<br>
-<pre>
-_.timesRange(5, 10, function(i) {
-  console.log(i);
-}, true);
-
-// logs
-10
-9
-8
-7
-6
-5
-</pre>
+        an implementation of _.times by lodash, where you can specify start & end numbers<br><br>
     </div>
     
 
@@ -1917,7 +1914,7 @@ _.timesRange(5, 10, function(i) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Number.html">Number</a></span>
+<span class="param-type"><a href="number.html">number</a></span>
 
 
 
@@ -1941,7 +1938,7 @@ _.timesRange(5, 10, function(i) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Number.html">Number</a></span>
+<span class="param-type"><a href="number.html">number</a></span>
 
 
 
@@ -1965,7 +1962,7 @@ _.timesRange(5, 10, function(i) {
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -1976,7 +1973,12 @@ _.timesRange(5, 10, function(i) {
 
             
 
-            <td class="description last">the iteratee function to invoke</td>
+            <td class="description last">the iteratee function to invoke<br>
+the iteratee will be invoked passing che cycle indicator as i<br>
+so the iteratee has to be something like this<br>
+<pre>
+function(i) {}
+</pre></td>
         </tr>
 
     
@@ -1989,7 +1991,7 @@ _.timesRange(5, 10, function(i) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -2062,6 +2064,38 @@ _.timesRange(5, 10, function(i) {
     
 
     
+        <h5>Examples</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">_.timesRange(5, 10, function(i) {
+  console.log(i);
+});
+
+// logs
+5
+6
+7
+8
+9
+10</pre>
+
+        <p class="code-caption">or</p>
+    
+    <pre class="sunlight-highlight-javascript">_.timesRange(5, 10, function(i) {
+  console.log(i);
+}, true);
+
+// logs
+10
+9
+8
+7
+6
+5</pre>
+
+
+    
 </dd>
 
         
@@ -2076,20 +2110,7 @@ _.timesRange(5, 10, function(i) {
 
     
     <div class="description">
-        a reverse implementation of _.times by Lodash<br><br>
-eg. usage<br>
-<pre>
-_.timesReverse(5, function(i) {
-  console.log(i);
-});
-
-// logs
-5
-4
-3
-2
-1
-</pre>
+        a reverse implementation of _.times by lodash<br><br>
     </div>
     
 
@@ -2130,7 +2151,7 @@ _.timesReverse(5, function(i) {
             <td class="type">
             
                 
-<span class="param-type"><a href="Number.html">Number</a></span>
+<span class="param-type"><a href="number.html">number</a></span>
 
 
 
@@ -2154,7 +2175,7 @@ _.timesReverse(5, function(i) {
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -2165,7 +2186,12 @@ _.timesReverse(5, function(i) {
 
             
 
-            <td class="description last">the iteratee function to invoke</td>
+            <td class="description last">the iteratee function to invoke<br>
+the iteratee will be invoked passing che cycle indicator as i<br>
+so the iteratee has to be something like this<br>
+<pre>
+function(i) {}
+</pre></td>
         </tr>
 
     
@@ -2227,6 +2253,23 @@ _.timesReverse(5, function(i) {
     
 
     
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">_.timesReverse(5, function(i) {
+  console.log(i);
+});
+
+// logs
+5
+4
+3
+2
+1</pre>
+
+
+    
 </dd>
 
         </dl>
@@ -2283,7 +2326,7 @@ _.timesReverse(5, function(i) {
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T19:02:38+02:00
+		on 2017-04-04T18:32:33+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

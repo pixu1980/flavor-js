@@ -1,6 +1,6 @@
 {
   "name": "flavor-js",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.js",
   "scripts": {

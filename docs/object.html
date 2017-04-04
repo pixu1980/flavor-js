@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>FlavorJS Namespace: Object</title>
+	<title>FlavorJS Namespace: object</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Array.html">Array</a></li><li><a href="Boolean.html">Boolean</a></li><li><a href="Date.html">Date</a></li><li><a href="Function.html">Function</a></li><li><a href="Lodash.html">Lodash</a></li><li><a href="Number.html">Number</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
+					<li><a href="array.html">array</a></li><li><a href="boolean.html">boolean</a></li><li><a href="date.html">date</a></li><li><a href="function.html">function</a></li><li><a href="lodash.html">lodash</a></li><li><a href="number.html">number</a></li><li><a href="object.html">object</a></li><li><a href="string.html">string</a></li>
 				</ul>
 			</li>
 			
@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
 				</ul>
 			</li>
 			
@@ -79,13 +79,13 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: Object</h1>
+	<h1 class="page-title">Namespace: object</h1>
 <section>
 
 <header>
     
         <h2>
-        Object
+        object
         </h2>
         
     
@@ -171,19 +171,6 @@
     
     <div class="description">
         clones an object<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-var p = o.clone();
-
-console.log(o == p); // true
-
-console.log(o === p); // false
-</pre>
     </div>
     
 
@@ -256,7 +243,7 @@ console.log(o === p); // false
     </dt>
     <dd>
         
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -265,6 +252,23 @@ console.log(o === p); // false
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+var p = o.clone();
+
+console.log(o == p); // true
+
+console.log(o === p); // false</pre>
+
 
     
 </dd>
@@ -282,25 +286,6 @@ console.log(o === p); // false
     
     <div class="description">
         executes function for every property in the object<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-  prop3: 'b',
-  prop4: new Date(),
-};
-
-o.each(function(value, key) {
-  console.log(key, value);
-});
-
-// it logs
-'prop1', 1
-'prop2', 'a'
-'prop3', 'b'
-'prop4', Date
-</pre>
     </div>
     
 
@@ -341,7 +326,7 @@ o.each(function(value, key) {
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -354,9 +339,6 @@ o.each(function(value, key) {
 
             <td class="description last">the iteratee callback will be invoked with the following parameters<br>
 so your callback has to be something like this<br><br>
-<pre>
-function iteratee(value, key) {}
-</pre>
                 <h6 class="method-params-label method-subparams-label">Properties</h6>
                 
 
@@ -412,7 +394,7 @@ function iteratee(value, key) {}
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -505,7 +487,7 @@ function iteratee(value, key) {}
     </dt>
     <dd>
         
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -514,6 +496,31 @@ function iteratee(value, key) {}
 
 
         
+
+    
+        <h5>Examples</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+  prop3: &#x27;b&#x27;,
+  prop4: new Date(),
+};
+
+o.each(function(value, key) {
+  console.log(key, value);
+});
+
+// it logs
+&#x27;prop1&#x27;, 1
+&#x27;prop2&#x27;, &#x27;a&#x27;
+&#x27;prop3&#x27;, &#x27;b&#x27;
+&#x27;prop4&#x27;, Date</pre>
+
+    <pre class="sunlight-highlight-javascript">function iteratee(value, key) {}</pre>
+
 
     
 </dd>
@@ -531,40 +538,6 @@ function iteratee(value, key) {}
     
     <div class="description">
         deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-o.inherit({
-  prop1: 2,
-  prop3: new Date(),
-}, {
-  prop4: 7.52,
-});
-
-console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-</pre><br>
-or<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-var p = o.inherit(true, {
-  prop1: 2,
-  prop3: new Date(),
-}, {
-  prop4: 7.52,
-});
-
-console.log(o); // o = {prop1: 1, prop2: 'a'}
-
-console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-</pre>
     </div>
     
 
@@ -607,7 +580,7 @@ console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
             <td class="type">
             
                 
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -641,7 +614,7 @@ console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -733,7 +706,7 @@ console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
     </dt>
     <dd>
         
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -742,6 +715,44 @@ console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 
 
         
+
+    
+        <h5>Examples</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+
+        <p class="code-caption">or</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+var p = o.inherit(true, {
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 1, prop2: &#x27;a&#x27;}
+
+console.log(p); // p = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+
 
     
 </dd>
@@ -759,21 +770,6 @@ console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
     
     <div class="description">
         isObject<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-console.log(Object.isObject(o)); // true
-
-console.log(Object.isObject(2)); // true
-
-console.log(Object.isObject('2')); // true
-
-console.log(Object.isObject(null)); // false
-</pre>
     </div>
     
 
@@ -846,7 +842,7 @@ console.log(Object.isObject(null)); // false
     </dt>
     <dd>
         
-<span class="param-type"><a href="Boolean.html">Boolean</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -855,6 +851,25 @@ console.log(Object.isObject(null)); // false
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+console.log(Object.isObject(o)); // true
+
+console.log(Object.isObject(2)); // true
+
+console.log(Object.isObject(&#x27;2&#x27;)); // true
+
+console.log(Object.isObject(null)); // false</pre>
+
 
     
 </dd>
@@ -872,32 +887,6 @@ console.log(Object.isObject(null)); // false
     
     <div class="description">
         returns a new object that omits the specified properties<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-o.inherit({
-  prop1: 2,
-  prop3: new Date(),
-}, {
-  prop4: 7.52,
-});
-
-console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-
-console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}
-
-console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}
-
-console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}
-
-console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
-
-console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-</pre>
     </div>
     
 
@@ -940,7 +929,7 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1032,7 +1021,7 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
     </dt>
     <dd>
         
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1041,6 +1030,36 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}
+
+console.log(o.omit(&#x27;prop1&#x27;)); // {prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}
+
+console.log(o.omit(&#x27;prop1&#x27;, &#x27;prop2&#x27;)); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit([&#x27;prop1&#x27;, &#x27;prop2&#x27;])); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit([&#x27;prop1&#x27;], [&#x27;prop2&#x27;])); // {prop3: Date, prop4: 7.52}
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+
 
     
 </dd>
@@ -1058,50 +1077,6 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
     
     <div class="description">
         returns the value at the specified path of the object, with a default value<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-  prop3: {
-    prop31: 2.52,
-    prop32: 'b',
-  },
-  prop4: new Date(),
-};
-
-console.log(o.path('prop1')); // 1
-
-console.log(o.path('prop3.prop31')); // 2.52
-
-console.log(o.path('prop3.prop34')); // null
-
-console.log(o.path('prop3.prop34', 'c')); // c
-</pre><br>
-you can also use array paths<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-  prop3: {
-    prop31: 2.52,
-    prop32: [{
-      propO1: 'b',
-    }, {
-      propO1: 'c',
-    }],
-  },
-  prop4: new Date(),
-};
-
-console.log(o.path('prop3.prop32[0].propO1')); // 'b'
-
-console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
-
-console.log(o.path('prop3.prop31[2]')); // null
-
-console.log(o.path('prop3.prop31[2]', {})); // {}
-</pre>
     </div>
     
 
@@ -1146,7 +1121,7 @@ console.log(o.path('prop3.prop31[2]', {})); // {}
             <td class="type">
             
                 
-<span class="param-type"><a href="String.html">String</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1182,7 +1157,7 @@ console.log(o.path('prop3.prop31[2]', {})); // {}
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1294,6 +1269,54 @@ console.log(o.path('prop3.prop31[2]', {})); // {}
         
 
     
+        <h5>Examples</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+  prop3: {
+    prop31: 2.52,
+    prop32: &#x27;b&#x27;,
+  },
+  prop4: new Date(),
+};
+
+console.log(o.path(&#x27;prop1&#x27;)); // 1
+
+console.log(o.path(&#x27;prop3.prop31&#x27;)); // 2.52
+
+console.log(o.path(&#x27;prop3.prop34&#x27;)); // null
+
+console.log(o.path(&#x27;prop3.prop34&#x27;, &#x27;c&#x27;)); // c</pre>
+
+        <p class="code-caption">you can also use array paths</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+  prop3: {
+    prop31: 2.52,
+    prop32: [{
+      propO1: &#x27;b&#x27;,
+    }, {
+      propO1: &#x27;c&#x27;,
+    }],
+  },
+  prop4: new Date(),
+};
+
+console.log(o.path(&#x27;prop3.prop32[0].propO1&#x27;)); // &#x27;b&#x27;
+
+console.log(o.path(&#x27;prop3.prop32[1]&#x27;)); // {propO1: &#x27;c&#x27;}
+
+console.log(o.path(&#x27;prop3.prop31[2]&#x27;)); // null
+
+console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
+
+
+    
 </dd>
 
         
@@ -1309,32 +1332,6 @@ console.log(o.path('prop3.prop31[2]', {})); // {}
     
     <div class="description">
         returns a new object that picks only the specified properties<br><br>
-eg. usage<br>
-<pre>
-var o = {
-  prop1: 1,
-  prop2: 'a',
-};
-
-o.inherit({
-  prop1: 2,
-  prop3: new Date(),
-}, {
-  prop4: 7.52,
-});
-
-console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-
-console.log(o.pick('prop1')); // {prop1: 2}
-
-console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
-
-console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
-
-console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
-
-console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-</pre>
     </div>
     
 
@@ -1377,7 +1374,7 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
             <td class="type">
             
                 
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1469,7 +1466,7 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
     </dt>
     <dd>
         
-<span class="param-type"><a href="Object.html">Object</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
 
@@ -1478,6 +1475,36 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 
 
         
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}
+
+console.log(o.pick(&#x27;prop1&#x27;)); // {prop1: 2}
+
+console.log(o.pick(&#x27;prop1&#x27;, &#x27;prop2&#x27;)); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o.pick([&#x27;prop1&#x27;, &#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o.pick([&#x27;prop1&#x27;], [&#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+
 
     
 </dd>
@@ -1536,7 +1563,7 @@ console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-03T19:02:38+02:00
+		on 2017-04-04T18:32:33+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

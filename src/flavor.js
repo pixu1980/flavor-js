@@ -19,15 +19,15 @@ export default class FlavorJS {
    * @memberOf FlavorJS
    * @method extendPrototypeProperty
    * @instance
-   * @param {Prototype|Object} proto - the prototype/object to extend
-   * @param {String} prop - the name of the property to be defined or modified
-   * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (Number, Function, etc...) or what you want
-   * @param {Object} [options={}] - options to be used as parameters in the descriptor for the property<br>
-   * possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">Javascript|MDN docs</a>)<br>
-   * @param {Boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object.
-   * @param {Boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding object.
-   * @param {Boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
-   * @param {Function} [options.get=undefined] get - A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property.<br>
+   * @param {prototype|object} proto - the prototype/object to extend
+   * @param {string} prop - the name of the property to be defined or modified
+   * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (number, function, etc...) or what you want
+   * @param {object} [options={}] - options to be used as parameters in the descriptor for the property<br>
+   * possible options are (source documentation from <a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/object/defineProperty" target="_blank">Javascript|MDN docs</a>)<br>
+   * @param {boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding Object.
+   * @param {boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding Object.
+   * @param {boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
+   * @param {function} [options.get=undefined] get - A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property.<br>
    * for example...<br>
    * <pre>
    * function ClassName() {
@@ -40,7 +40,7 @@ export default class FlavorJS {
    *   });
    * }
    * </pre>
-   * @param {Function} [options.set=undefined] set - A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being assigned to the property.<br>
+   * @param {function} [options.set=undefined] set - A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being assigned to the property.<br>
    * for example...<br>
    * <pre>
    * function ClassName() {
@@ -68,8 +68,8 @@ export default class FlavorJS {
    * @memberOf FlavorJS
    * @method extendPrototype
    * @instance
-   * @param {Prototype|Object} proto - the prototype/object to extend
-   * @param {Object} extend - the extend object to be merged in prototype
+   * @param {prototype|object} proto - the prototype/object to extend
+   * @param {object} extend - the extend object to be merged in prototype
    */
   extendPrototype(proto, extend) {
     _.forOwn(extend, (value, key) => {
@@ -87,47 +87,43 @@ export default class FlavorJS {
     _.mixin({
       /**
        * checks if a string is a percentage value<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var s = '23.97%';
        *
        * console.log(_.isPercentage(s)); // true
-       * 
+       *
        * console.log(_.isPercentage('50%')); // true
-       * 
+       *
        * console.log(_.isPercentage(10)); // false
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method isPercentage
        * @instance
-       * @param {String} s - the string
-       * @return {Boolean}
+       * @param {string} s - the string
+       * @return {boolean}
        */
       isPercentage(s) {
-        return _.isString(s) && s.isPercentage();
+        return String.isString(s) && String.isPercentage(s);
       },
 
       /**
        * parses float value in a percentage string<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var p = '50.5%';
        *
        * console.log(_.parsePercentage(p)); // 50.5
-       * 
+       *
        * console.log(_.parsePercentage('100%')); // 100
-       * 
+       *
        * console.log(_.parsePercentage(25.3)); // null
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method parsePercentage
        * @instance
-       * @param {String} s - the percentage string
-       * @return {null|Number}
+       * @param {string} s - the percentage string
+       * @return {null|number}
        */
       parsePercentage(s) {
-        if(_.isPercentage(s)) {
-          return parseFloat(s) / 100.00;
+        if(String.isString(s) && String.isPercentage(s)) {
+          return String.parsePercentage(s);
         }
 
         return null;
@@ -135,8 +131,7 @@ export default class FlavorJS {
 
       /**
        * filters a collection with a list of values specified for one property<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var collection = [{
        *  id: 1, status: 'active'
        * }, {
@@ -144,17 +139,16 @@ export default class FlavorJS {
        * }, {
        *  id: 3, status: 'unactive'
        * }];
-       * 
+       *
        * var allowedValues = ['active', 'unactive'];
        *
-       * console.log(_.filterByValues(collection, 'status', allowedValues); 
+       * console.log(_.filterByValues(collection, 'status', allowedValues);
        * // logs [{id: 1, status: 'active'}, {id: 3, status: 'unactive'}]
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method filterByValues
        * @instance
-       * @param {Array|Object} collection - the collection to filter
-       * @param {String} key - the key to be used as property name
+       * @param {Array|object} collection - the collection to filter
+       * @param {string} key - the key to be used as property name
        * @param {Array} values - the list of values to check
        * @return {Array}
        */
@@ -166,8 +160,7 @@ export default class FlavorJS {
 
       /**
        * deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var tree = [{
        *  id: '1', status: 'enabled', items: [{
        *    id: '1.1', status: 'enabled', items: [{
@@ -187,6 +180,7 @@ export default class FlavorJS {
        *     combo: treeItem.id + '-' + treeItem.status
        *   };
        * });
+       *
        * // logs [{
        *  id: '1', status: 'enabled', combo: '1-enabled' items: [{
        *    id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
@@ -198,13 +192,12 @@ export default class FlavorJS {
        *    id: '1.2', status: 'disabled', combo: '1.2-disabled'
        *  }]
        * }]
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method deepMap
        * @instance
-       * @param {Array|Object} collection - the collection to use for the deep mapping
-       * @param {String} [childrenPropName='children'] - the property name to use for children collection
-       * @param {Function} mapCallback - the item mapping callback
+       * @param {Array|object} collection - the collection to use for the deep mapping
+       * @param {string} [childrenPropName='children'] - the property name to use for children collection
+       * @param {function} mapCallback - the item mapping callback
        */
       deepMap(collection, childrenPropName = 'children', mapCallback) {
         return _.map(collection, (item) => {
@@ -221,8 +214,7 @@ export default class FlavorJS {
       /**
        * deeply searches in a recursive tree structure with (same structure) childrenPropName or 'children' property<br>
        * looking for an item with the propName === propValue<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var tree = [{
        *  id: '1', status: 'enabled', items: [{
        *    id: '1.1', status: 'enabled', items: [{
@@ -260,14 +252,13 @@ export default class FlavorJS {
        * // logs {
        *   id: '3.2', status: 'enabled'
        * }
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method deepFindBy
        * @instance
-       * @param {Array|Object} collection - the collection
-       * @param {String|Function} propName - the property name or the predicate function to invoke (item will be passed as parameter to the predicate)
+       * @param {Array|object} collection - the collection
+       * @param {string|function} propName - the property name or the predicate function to invoke (item will be passed as parameter to the predicate)
        * @param {*} propValue - the property value
-       * @param {String} [childrenPropName='children'] - the children prop name
+       * @param {string} [childrenPropName='children'] - the children prop name
        * @return {*}
        */
       deepFindBy(collection, propName, propValue, childrenPropName = 'children') {
@@ -295,8 +286,7 @@ export default class FlavorJS {
 
       /**
        * deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var tree = [{
        *  id: '1', status: 'enabled', items: [{
        *    id: '1.1', status: 'enabled', items: [{
@@ -349,15 +339,14 @@ export default class FlavorJS {
        *    }]
        *  }]
        * }]
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method deepOrderBy
        * @instance
-       * @param {Array|Object} collection - the collection
-       * @param {Array|String} propNames - the list of property names to sort
-       * @param {Array|String} propDirections - the list of order by direction to use with propNames
-       * @param {String} [childrenPropName='children'] - the children prop name
-       * @return {Array|Object}
+       * @param {Array|object} collection - the collection
+       * @param {Array|string} propNames - the list of property names to sort
+       * @param {Array|string} propDirections - the list of order by direction to use with propNames
+       * @param {string} [childrenPropName='children'] - the children prop name
+       * @return {Array|object}
        */
       deepOrderBy(collection, propNames, propDirections, childrenPropName = 'children') {
         if(_.isString(propNames)) {
@@ -389,14 +378,14 @@ export default class FlavorJS {
 
       /**
        * @todo document method
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method pullAllByComparator
        * @instance
-       * @param {Collection} collection
-       * @param {Array} values
-       * @param {Function} comparator
-       * @param {Function} iteratee
-       * @return {Array}
+       * @param {collection} collection
+       * @param {array} values
+       * @param {function} comparator
+       * @param {function} iteratee
+       * @return {array}
        */
       pullAllByComparator(collection, values, comparator, iteratee) {
         return (collection && collection.length && values && values.length)
@@ -405,9 +394,8 @@ export default class FlavorJS {
       },
 
       /**
-       * a reverse implementation of _.times by Lodash<br><br>
-       * eg. usage<br>
-       * <pre>
+       * a reverse implementation of _.times by lodash<br><br>
+       * @example <caption>eg. usage</caption>
        * _.timesReverse(5, function(i) {
        *   console.log(i);
        * });
@@ -418,12 +406,16 @@ export default class FlavorJS {
        * 3
        * 2
        * 1
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method timesReverse
        * @instance
-       * @param {Number} times - num of times to invoke iteratee
-       * @param {Function} iteratee - the iteratee function to invoke
+       * @param {number} times - num of times to invoke iteratee
+       * @param {function} iteratee - the iteratee function to invoke<br>
+       * the iteratee will be invoked passing che cycle indicator as i<br>
+       * so the iteratee has to be something like this<br>
+       * <pre>
+       * function(i) {}
+       * </pre>
        */
       timesReverse(times, iteratee) {
         let index = times;
@@ -434,9 +426,8 @@ export default class FlavorJS {
       },
 
       /**
-       * an implementation of _.times by Lodash, where you can specify start & end numbers<br><br>
-       * eg. usage<br>
-       * <pre>
+       * an implementation of _.times by lodash, where you can specify start & end numbers<br><br>
+       * @example <caption>eg. usage</caption>
        * _.timesRange(5, 10, function(i) {
        *   console.log(i);
        * });
@@ -448,9 +439,7 @@ export default class FlavorJS {
        * 8
        * 9
        * 10
-       * </pre>
-       * or<br>
-       * <pre>
+       * @example <caption>or</caption>
        * _.timesRange(5, 10, function(i) {
        *   console.log(i);
        * }, true);
@@ -462,14 +451,18 @@ export default class FlavorJS {
        * 7
        * 6
        * 5
-       * </pre>
-       * @memberOf Lodash
+       * @memberOf lodash
        * @method timesRange
        * @instance
-       * @param {Number} start - start num of times to invoke iteratee
-       * @param {Number} end - end num of times to invoke iteratee
-       * @param {Function} iteratee - the iteratee function to invoke
-       * @param {Boolean} reverse - specify if you want reverse cycle
+       * @param {number} start - start num of times to invoke iteratee
+       * @param {number} end - end num of times to invoke iteratee
+       * @param {function} iteratee - the iteratee function to invoke<br>
+       * the iteratee will be invoked passing che cycle indicator as i<br>
+       * so the iteratee has to be something like this<br>
+       * <pre>
+       * function(i) {}
+       * </pre>
+       * @param {boolean} reverse - specify if you want reverse cycle
        */
       timesRange(start, end, iteratee = null, reverse = false) {
         if(_.isFunction(iteratee)) {
@@ -503,8 +496,7 @@ export default class FlavorJS {
     this.extendPrototype(Object.prototype, {
       /**
        * isObject<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -517,11 +509,10 @@ export default class FlavorJS {
        * console.log(Object.isObject('2')); // true
        *
        * console.log(Object.isObject(null)); // false
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method isObject
        * @instance
-       * @return {Boolean}
+       * @return {boolean}
        */
       isObject() {
         return _.isPlainObject(this);
@@ -529,8 +520,7 @@ export default class FlavorJS {
 
       /**
        * deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -544,9 +534,7 @@ export default class FlavorJS {
        * });
        *
        * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-       * </pre><br>
-       * or<br>
-       * <pre>
+       * @example <caption>or</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -562,13 +550,12 @@ export default class FlavorJS {
        * console.log(o); // o = {prop1: 1, prop2: 'a'}
        *
        * console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method inherit
        * @instance
-       * @param {Boolean} [createNew] - specifies to create a new object to merge
-       * @param {...Object} args - the list of objects to merge
-       * @return {Object}
+       * @param {boolean} [createNew] - specifies to create a new object to merge
+       * @param {...object} args - the list of objects to merge
+       * @return {object}
        */
       inherit(...args) {
         const createNew = _.isBoolean(args[0]) ? args[0] : false;
@@ -593,8 +580,7 @@ export default class FlavorJS {
 
       /**
        * returns a new object that omits the specified properties<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -618,12 +604,11 @@ export default class FlavorJS {
        * console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
        *
        * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method omit
        * @instance
-       * @param {...Object} args - the list of properties to omit
-       * @return {Object}
+       * @param {...object} args - the list of properties to omit
+       * @return {object}
        */
       omit(...args) {
         return _.omit(this, ...args);
@@ -631,8 +616,7 @@ export default class FlavorJS {
 
       /**
        * returns a new object that picks only the specified properties<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -656,12 +640,11 @@ export default class FlavorJS {
        * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
        *
        * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method pick
        * @instance
-       * @param {...Object} args - the list of properties to omit
-       * @return {Object}
+       * @param {...object} args - the list of properties to omit
+       * @return {object}
        */
       pick(...args) {
         return _.pick(this, ...args);
@@ -669,8 +652,7 @@ export default class FlavorJS {
 
       /**
        * clones an object<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -681,11 +663,10 @@ export default class FlavorJS {
        * console.log(o == p); // true
        *
        * console.log(o === p); // false
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method clone
        * @instance
-       * @return {Object}
+       * @return {object}
        */
       clone() {
         return _.cloneDeep(this);
@@ -693,8 +674,7 @@ export default class FlavorJS {
 
       /**
        * returns the value at the specified path of the object, with a default value<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -712,9 +692,7 @@ export default class FlavorJS {
        * console.log(o.path('prop3.prop34')); // null
        *
        * console.log(o.path('prop3.prop34', 'c')); // c
-       * </pre><br>
-       * you can also use array paths<br>
-       * <pre>
+       * @example <caption>you can also use array paths</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -736,16 +714,15 @@ export default class FlavorJS {
        * console.log(o.path('prop3.prop31[2]')); // null
        *
        * console.log(o.path('prop3.prop31[2]', {})); // {}
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method path
        * @instance
-       * @param {String} path - the path to search inside the object
-       * @param {Object} [defVal=null] - the default value to return if path is not found
+       * @param {string} path - the path to search inside the object
+       * @param {object} [defVal=null] - the default value to return if path is not found
        * @return {*|null}
        */
       path(path, defVal = null) {
-        if(typeof this === 'object' && this instanceof Object) {
+        if(typeof this === 'object' && this instanceof object) {
           return _.get(this, path, defVal);
         }
 
@@ -754,8 +731,7 @@ export default class FlavorJS {
 
       /**
        * executes function for every property in the object<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var o = {
        *   prop1: 1,
        *   prop2: 'a',
@@ -772,25 +748,23 @@ export default class FlavorJS {
        * 'prop2', 'a'
        * 'prop3', 'b'
        * 'prop4', Date
-       * </pre>
-       * @memberOf Object
+       * @memberOf object
        * @method each
        * @instance
-       * @param {Function} iteratee - the iteratee callback will be invoked with the following parameters<br>
+       * @param {function} iteratee - the iteratee callback will be invoked with the following parameters<br>
        * so your callback has to be something like this<br><br>
-       * <pre>
+       * @example
        * function iteratee(value, key) {}
-       * </pre>
        * @param {*} iteratee.value - the property value of the object
-       * @param {String} iteratee.key - the property key of the object
-       * @return {Object} to make chainable the method
+       * @param {string} iteratee.key - the property key of the object
+       * @return {object} to make chainable the method
        */
       each(iteratee) {
         return _.each(this, iteratee);
       },
     });
 
-    this.extendPrototypeProperty(Object, 'isObject', (o) => {
+    this.extendPrototypeProperty(object, 'isObject', (o) => {
       return Object.prototype.isObject.call(o);
     });
   }
@@ -805,60 +779,59 @@ export default class FlavorJS {
     this.extendPrototype(Function.prototype, {
       /**
        * isFunction<br><br>
-       *   eg. usage<br>
-       * <pre>
-       *   var f = function(){};
+       * @example <caption>eg. usage</caption>
+       * var f = function(){};
        *
-       *   console.log(Function.isFunction(f)); // true<br>
-       *   console.log(Function.isFunction(2)); // false<br>
-       *   console.log(Function.isFunction(function(){})); // true<br>
-       *   console.log(Function.isFunction(null)); // false
-       * </pre>
-       * @memberOf Function
+       * console.log(Function.isFunction(f)); // true
+       *
+       * console.log(Function.isFunction(2)); // false
+       *
+       * console.log(Function.isFunction(function(){})); // true
+       *
+       * console.log(Function.isFunction(null)); // false
+       * @memberOf function
        * @method isFunction
        * @instance
-       * @return {Boolean}
+       * @return {boolean}
        */
       isFunction() {
         return _.isFunction(this);
       },
       /**
        * proxies a function width scope and optional arguments<br><br>
-       *   eg. usage<br>
-       * <pre>
-       *   var a = 1;
-       *   var b = new Date();
-       *   var c = function() {};
+       * @example <caption>eg. usage</caption>
+       * var a = 1;
+       * var b = new Date();
+       * var c = function() {};
        *
-       *   var scope = {
-       *     prop1: 2.53,
-       *     prop2: 'foo';
-       *   };
+       * var scope = {
+       *   prop1: 2.53,
+       *   prop2: 'foo';
+       * };
        *
-       *   var f = function(a, b, c) {
-       *     console.log(this.prop1, a, b, c);
-       *   }
+       * var f = function(a, b, c) {
+       *   console.log(this.prop1, a, b, c);
+       * }
        *
-       *   f(a, b, c);
-       *   // it logs
-       *   undefined, 1, Date, function()
+       * f(a, b, c);
+       * // it logs
+       * undefined, 1, Date, function()
        *
-       *   var pf = f.proxy(scope);
-       *   pf(a, b, c);
-       *   // it logs
-       *   2.53, 1, Date, function()
+       * var pf = f.proxy(scope);
+       * pf(a, b, c);
+       * // it logs
+       * 2.53, 1, Date, function()
        *
-       *   pf = f.proxy(scope, 2, null);
-       *   pf(a, b, c);
-       *   // it logs
-       *   2.53, 2, null, function()
-       * </pre>
-       * @memberOf Function
+       * pf = f.proxy(scope, 2, null);
+       * pf(a, b, c);
+       * // it logs
+       * 2.53, 2, null, function()
+       * @memberOf function
        * @method proxy
        * @instance
-       * @param {Object} scope - the scope object (will be `this` inside the function)
-       * @param {...Object} proxyArgs - pass one or more arguments to override the original handled arguments
-       * @return {Function}
+       * @param {object} scope - the scope object (will be `this` inside the function)
+       * @param {...object} proxyArgs - pass one or more arguments to override the original handled arguments
+       * @return {function}
        */
       proxy(scope, ...proxyArgs) {
         const func = this;
@@ -883,19 +856,17 @@ export default class FlavorJS {
     this.extendPrototype(Array.prototype, {
       /**
        * isArray<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var a = new Array();
        *
        * console.log(Array.isArray(a)); // true<br>
        * console.log(Array.isArray(2)); // false<br>
        * console.log(Array.isArray([])); // true<br>
        * console.log(Array.isArray(null)); // false
-       * </pre>
        * @memberOf Array
        * @method isArray
        * @instance
-       * @return {Boolean}
+       * @return {boolean}
        */
       isArray() {
         return _.isArray(this);
@@ -903,8 +874,7 @@ export default class FlavorJS {
 
       /**
        * checks if an Array contains an item<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var arr = ['a', 'e', 'i', 'o', 'u'];
        *
        * console.log(arr.contains('b')); // false
@@ -914,13 +884,12 @@ export default class FlavorJS {
        * console.log(arr.contains(['a', 'b', 'e']); // true
        *
        * console.log(arr.contains(['a', 'b', 'e'], true); // false
-       * </pre>
        * @memberOf Array
        * @method contains
        * @instance
        * @param {Array|*} item - can be anything or an array of anything
-       * @param {Boolean} [all=false] - specify to check if the array must contain all items
-       * @return {Boolean}
+       * @param {boolean} [all=false] - specify to check if the array must contain all items
+       * @return {boolean}
        */
       contains(item, all = false) {
         if(_.isArray(item)) {
@@ -936,12 +905,10 @@ export default class FlavorJS {
 
       /**
        * concatenates two arrays<br><br>
-       * eg. usage<br>
-       * <pre>
+       * @example <caption>eg. usage</caption>
        * var arr = ['a', 'e', 'i', 'o', 'u'];
        *
        * console.log(arr.concat(['b', 'c', 'd']); // ['a', 'e', 'i', 'o', 'u', 'b', 'c', 'd']
-       * </pre>
        * @memberOf Array
        * @method concat
        * @instance
@@ -1152,28 +1119,6 @@ export default class FlavorJS {
    */
   initStringPrototype() {
     this.extendPrototype(String.prototype, {
-      /**
-       * isString<br><br>
-       *   eg. usage<br>
-       * <pre>
-       *   var s = new String('foo');
-       *
-       *   console.log(String.isString(s)); // true<br>
-       *   console.log(String.isString(2)); // false<br>
-       *   console.log(String.isString('')); // true<br>
-       *   console.log(String.isString(null)); // false
-       * </pre>
-       * @memberOf String
-       * @method isString
-       * @instance
-       * @return {Boolean}
-       */
-      isString() {
-        return _.isString(this);
-      },
-      parsePercentage() {
-        return _.parsePercentage(this);
-      },
       toArray(separator) {
         return _.split(this, separator);
       },
@@ -1258,15 +1203,40 @@ export default class FlavorJS {
 
         return dashed ? returnString : returnString.replaceAll('-', '');
       },
+
+      /**
+       * camel cases a string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.camelCase('Foo Bar')); // 'fooBar'
+       *
+       * console.log(String.camelCase('--foo-bar--')); // 'fooBar'
+       *
+       * console.log(String.camelCase('__FOO_BAR__')); // 'fooBar'
+       * @memberOf string
+       * @method camelCase
+       * @instance
+       */
       camelCase() {
         return _.camelCase(this);
       },
+
+      /**
+       * @inheritDoc String.capitalize
+       */
       capitalize() {
         return _.capitalize(this);
       },
+
+      /**
+       * @inheritDoc String.getFileExtension
+       */
       getFileExtension() {
         return this.substring(this.lastIndexOf('.') + 1).toLowerCase();
       },
+
+      /**
+       * @inheritDoc String.stripTags
+       */
       stripTags() {
         const div = document.createElement('div');
         div.innerHTML = this;
@@ -1275,58 +1245,301 @@ export default class FlavorJS {
       // lorem(count, units) {
       //   return holderIpsum[units](count);
       // },
+      /**
+       * @inheritDoc String.pad
+       */
       pad(length, chars) {
         return _.pad(this, length, chars);
       },
+
+      /**
+       * @inheritDoc String.padLeft
+       */
       padLeft(length, chars) {
         return _.padStart(this, length, chars);
       },
+
+      /**
+       * @inheritDoc String.padRight
+       */
       padRight(length, chars) {
         return _.padEnd(this, length, chars);
       },
+
+      /**
+       * @inheritDoc String.toInt
+       */
       toInt() {
-        return _.parseInt(this);
+        return Number.parse(this);
       },
+
+      /**
+       * @inheritDoc String.isUrl
+       */
       isUrl() {
         return /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i.test(this);
       },
+
+      /**
+       * @inheritDoc String.isRoman
+       */
       isRoman() {
-        return !!this.fromRoman();
+        return !!Number.fromRoman(this);
       },
+
+
+      /**
+       * @inheritDoc String.isPercentage
+       */
       isPercentage() {
         return /^\d+(\.\d+)?%$/.test(this);
       },
-      fromRoman() {
-        let str = this;
-        let result = null;
-        // the result is now a number, not a string
-        const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-        const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 
-        _.times(decimal.length, (i) => {
-          while(str.indexOf(roman[i]) === 0) {
-            if(!result) {
-              result = 0;
-            }
-            result += decimal[i];
-            str = str.replace(roman[i], '');
-          }
-        });
+      /**
+       * @inheritDoc String.parsePercentage
+       */
+      parsePercentage() {
+        if(this.isPercentage()) {
+          return parseFloat(this) / 100.00;
+        }
 
-        return result;
+        return this;
       },
     });
 
-    this.extendPrototypeProperty(String, 'isString', (s) => {
-      return String.prototype.isString.call(s);
-    });
+    this.extendPrototype(String, {
+      /**
+       * isString<br><br>
+       * @example <caption>eg. usage</caption>
+       * var s = new string('foo');
+       *
+       * console.log(String.isString(s)); // true
+       *
+       * console.log(String.isString(2)); // false
+       *
+       * console.log(String.isString('')); // true
+       *
+       * console.log(String.isString(null)); // false
+       * @memberOf string
+       * @method isString
+       * @instance
+       * @param {string} s - the string to be checked
+       * @return {boolean}
+       */
+      isString(s) {
+        return _.isString(s);
+      },
 
-    this.extendPrototypeProperty(String, 'isPercentage', (s) => {
-      return String.prototype.isPercentage.call(s);
-    });
+      /**
+       * checks if a string is a roman number string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.isRoman('MCMLXXX')); // true
+       *
+       * console.log(String.isRoman('50,25')); // false
+       *
+       * console.log(String.isRoman(5)); // false
+       * @memberOf string
+       * @method isRoman
+       * @instance
+       * @param {string} s - the string to be checked
+       * @return {boolean}
+       */
+      isRoman(s) {
+        return String.prototype.isRoman.call(s);
+      },
 
-    this.extendPrototypeProperty(String, 'parsePercentage', (s) => {
-      return String.prototype.parsePercentage.call(s);
+      /**
+       * checks if a string is an url string (URI)
+       * @example <caption>eg. usage</caption>
+       * console.log(String.isUrl('http://www.google.it')); // true
+       *
+       * console.log(String.isUrl('50,25')); // false
+       *
+       * console.log(String.isUrl(5)); // false
+       * @memberOf string
+       * @method isUrl
+       * @instance
+       * @param {string} s - the string to check
+       * @return {*|boolean}
+       */
+      isUrl(s) {
+        return String.prototype.isUrl.call(s);
+      },
+
+      /**
+       * checks if a string is a percentage string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.isPercentage('50,25%')); // true
+       *
+       * console.log(String.isPercentage('50,25')); // false
+       *
+       * console.log(String.isPercentage(5)); // false
+       * @memberOf string
+       * @method parsePercentage
+       * @instance
+       * @param {string} s - the string to be checked
+       * @return {boolean}
+       */
+      isPercentage(s) {
+        return String.prototype.isPercentage.call(s);
+      },
+
+      /**
+       * capitalizes a string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.capitalize('we\'re happy to use flavorJS')); // We're Happy To Use Flavorjs
+       *
+       * console.log(String.capitalize('we\'re happy to use flavorJS', false)); // We're happy to use flavorjs
+       *
+       * console.log(String.capitalize('flavorJS')); // Flavorjs
+       * @memberOf string
+       * @method capitalize
+       * @instance
+       * @param {string} s
+       * @param {boolean} [all=true]
+       * @return {string}
+       */
+      capitalize(s, all = true) {
+        return String.prototype.capitalize.call(s, all);
+      },
+
+      /**
+       * extracts the file extension from a filename/path string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.getFileExtension('file.jpg')); // 'jpg'
+       *
+       * console.log(String.getFileExtension('file')); // ''
+       *
+       * console.log(String.getFileExtension(1)); // 1
+       * @memberOf string
+       * @method getFileExtension
+       * @instance
+       * @param s
+       * @return {*}
+       */
+      getFileExtension(s) {
+        return String.prototype.getFileExtension.call(s);
+      },
+      /**
+       * pads string on the left and right sides if it's shorter than length. Padding characters are truncated if they can't be evenly divided by length.
+       * @example <caption>eg. usage</caption>
+       * console.log(String.pad('5', 5)); // '  5  '
+       *
+       * console.log(String.pad('5', 5, '0')); // '00500'
+       *
+       * console.log(String.pad(4, 5, '01')); // '01401'
+       *
+       * console.log(String.pad(true, 5, '01')); // '1true'
+       *
+       * console.log(String.pad(4, 5, '01')); // '01401'
+       *
+       * console.log(String.pad(new Date(), 50, '--') // '-----Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)-----'
+       * @memberOf string
+       * @method pad
+       * @instance
+       * @param length
+       * @param chars
+       * @return {string}
+       */
+      pad(length, chars) {
+        return _.pad(this, length, chars);
+      },
+
+      /**
+       * pads left a string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.padLeft('5', 4)); // '   5'
+       *
+       * console.log(String.padLeft('5', 4, '0')); // '0005'
+       *
+       * console.log(String.padLeft('5', 5, '01')); // '01015'
+       *
+       * console.log(String.padLeft(5, 4, '0')); // '0005'
+       *
+       * console.log(String.padLeft(true, 5, '0')); // '0true'
+       *
+       * console.log(String.padLeft(new Date(), 50, '--') // '----------Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)'
+       * @memberOf string
+       * @method padLeft
+       * @instance
+       * @param length
+       * @param chars
+       * @return {string}
+       */
+      padLeft(length, chars) {
+        return _.padStart(this, length, chars);
+      },
+
+      /**
+       * pads right a string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.padRight('5', 4)); // '5   '
+       *
+       * console.log(String.padRight('5', 4, '0')); // '5000'
+       *
+       * console.log(String.padRight('5', 5, '01')); // '50101'
+       *
+       * console.log(String.padRight(5, 4, '0')); // '5000'
+       *
+       * console.log(String.padRight(true, 5, '0')); // 'true0'
+       *
+       * console.log(String.padRight(new Date(), 50, '--') // 'Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)----------'
+       * @memberOf string
+       * @method padRight
+       * @instance
+       * @param length
+       * @param chars
+       * @return {string}
+       */
+      padRight(length, chars) {
+        return _.padEnd(this, length, chars);
+      },
+
+      /**
+       * parses a percentage string to a number
+       * @example <caption>eg. usage</caption>
+       * console.log(String.parsePercentage('50,25%')); // 50.25
+       *
+       * console.log(String.parsePercentage('50,25')); // '50,25'
+       *
+       * console.log(String.parsePercentage(5)); // 5
+       * @memberOf string
+       * @method parsePercentage
+       * @instance
+       * @param {string} s - the string to be parsed
+       * @return {number}
+       */
+      parsePercentage(s) {
+        return String.prototype.parsePercentage.call(s);
+      },
+
+      /**
+       * strips all html tags from an html code string
+       * @example <caption>eg. usage</caption>
+       * console.log(String.stripTags('<div>flavorJS</div>')); // 'flavorJS'
+       *
+       * console.log(String.stripTags('flavorJS')); // 'flavorJS'
+       * @memberOf string
+       * @method stripTags
+       * @instance
+       * @return {string}
+       */
+      stripTags(s) {
+        return String.prototype.stripTags.call(s);
+      },
+
+      /**
+       * converts a string to a number
+       * @example <caption>eg. usage</caption>
+       * console.log(String.toInt('550')); // 550
+       * @memberOf string
+       * @method toInt
+       * @instance
+       * @return {number}
+       */
+      toInt(s) {
+        return String.prototype.toInt.call(s);
+      },
     });
   }
 
@@ -1338,15 +1551,34 @@ export default class FlavorJS {
    */
   initDatePrototype() {
     this.extendPrototype(Date.prototype, {
-      isDate() {
-        return _.isDate(this);
-      },
-      toUTC() {
+      /**
+       * transforms a date in a UTC timestamp integer
+       * @example <caption>eg. usage</caption>
+       * console.log((new Date()).toUTC()); // 1491317811925 @ 2017-04-4-16:57
+       * @memberOf date
+       * @method timestamp
+       * @instance
+       * @return {timestamp}
+       */
+      timestamp() {
         return Math.round(this);
       },
     });
-    this.extendPrototypeProperty(Date, 'isDate', (d) => {
-      return Date.prototype.isDate.call(d);
+
+    this.extendPrototype(Date, {
+      /**
+       * checks if something is a date
+       * @example <caption>eg.usage</caption>
+       * console.log(Date.isDate(new Date())); // true
+       *
+       * console.log(Date.isDate(0)); // false
+       * @memberOf date
+       * @method isDate
+       * @instance
+       */
+      isDate() {
+        return _.isDate(this);
+      },
     });
   }
 
@@ -1359,38 +1591,69 @@ export default class FlavorJS {
   initNumberPrototype() {
     this.extendPrototype(Number.prototype, {
       /**
-       * isNumber<br><br>
-       *   eg. usage<br>
-       * <pre>
-       *   var n = 1;
+       * checks if your number is between a range
+       * @example <caption>eg. usage</caption>
+       * console.log((5).between(1, 10)); // true
        *
-       *   console.log(Number.isNumber(n)); // true<br>
-       *   console.log(Number.isNumber(2)); // true<br>
-       *   console.log(Number.isNumber('')); // false<br>
-       *   console.log(Number.isNumber(null)); // false
-       * </pre>
-       * @memberOf Number
-       * @method isNumber
+       * console.log((5).between(1, 4)); // false
+       * @memberOf number
+       * @method between
        * @instance
-       * @return {Boolean}
+       * @param {number} [from=Number.MIN_VALUE] - the from number
+       * @param {number} [to=Number.MAX_VALUE] - the to number
+       * @return {boolean}
        */
-      isNumber() {
-        return _.isNumber(this);
-      },
-      between(from, to) {
+      between(from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
         return from <= this && this <= to;
       },
-      random(min, max, float) {
-        return _.random(min || Number.MIN_VALUE, max || Number.MAX_VALUE, !!float);
+
+      /**
+       * repeats a function n times
+       * @example <caption>eg. usage</caption>
+       * (5).times(function(i) {
+       *   console.log(i);
+       * });
+       *
+       * // logs
+       * 1
+       * 2
+       * 3
+       * 4
+       * 5
+       * @example <caption>or</caption>
+       * (5).times(function(i) {
+       *   console.log(i);
+       * }, true);
+       *
+       * // logs
+       * 5
+       * 4
+       * 3
+       * 2
+       * 1
+       * @memberOf number
+       * @method times
+       * @instance
+       * @param {function} iteratee - the iteratee function to invoke<br>
+       * the iteratee will be invoked passing che cycle indicator as i<br>
+       * so the iteratee has to be something like this<br>
+       * @example
+       * function(i) {}
+       * @param {boolean} reverse - true if you want to do a times reverse cycle
+       */
+      times(iteratee, reverse) {
+        (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
       },
 
-      times(fn, reverse) {
-        if(!!reverse) {
-          _.timesReverse(this, fn);
-        } else {
-          _.times(this, fn);
-        }
-      },
+      /**
+       * converts a number in a Roman Number String
+       * @example <caption>eg. usage</caption>
+       * console.log((1980).toRoman()); // 'MCMLXXX'
+       * @memberOf number
+       * @method toRoman
+       * @instance
+       * @return {string}
+       */
       toRoman() {
         let num = this;
         let result = '';
@@ -1406,38 +1669,172 @@ export default class FlavorJS {
 
         return result;
       },
-      toFileSize(decimals) {
-        let fileSizeString = '0 Bytes';
+
+      /**
+       * converts a number of bytes in a human readable file size string
+       * @example <caption>eg. usage</caption>
+       * console.log((1024).toFileSize()); // 1kb
+       * @memberOf number
+       * @method toFileSize
+       * @instance
+       * @param {number} precision - the precision number
+       * @return {string}
+       */
+      toFileSize(precision = 0) {
+        let fileSizeString = '0 B';
 
         if(!!this) {
-          decimals = decimals || 3;
-          const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+          const sizes = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
           const i = Math.floor(Math.log(this) / Math.log(1024));
-          fileSizeString = parseFloat((this / Math.pow(1024, i)).toFixed(decimals)) + ' ' + sizes[i];
+          fileSizeString = parseFloat((this / Math.pow(1024, i)).toFixed(precision)) + sizes[i];
         }
 
         return fileSizeString;
       },
-      toFloat(decimals = 0) {
-        return _.floor(this, decimals);
+
+      /**
+       * floors a value
+       * @example <caption>eg. usage</caption>
+       * console.log((5.076).floor()); // 4
+       *
+       * console.log((5.076).floor(2)); // 5.07
+       *
+       * console.log((5070).floor(-2)); // 5000
+       * @memberOf number
+       * @method floor
+       * @instance
+       * @param {number} [precision=0] - the precision number
+       * @return {number}
+       */
+      floor(precision = 0) {
+        return _.floor(this, precision);
       },
+
+      /**
+       * absolutes a number
+       * @example <caption>eg. usage</caption>
+       * console.log((1).toAbsolute()); // 1
+       *
+       * console.log((1.56).toAbsolute()); // 1.56
+       *
+       * console.log((-1.56).toAbsolute()); // 1.56
+       * @memberOf number
+       * @method toAbsolute
+       * @instance
+       * @return {number}
+       */
       toAbsolute() {
         return Math.abs(this);
       },
-      round() {
-        return _.round(this);
+
+      /**
+       * rounds a value
+       * @example <caption>eg. usage</caption>
+       * console.log((5.007).round()); // 5
+       *
+       * console.log((5.007).round(2)); // 5.01
+       *
+       * console.log((5070).round(-2)); // 5100
+       * @memberOf number
+       * @method round
+       * @instance
+       * @param {number} [precision=0] - the precision number
+       * @return {number}
+       */
+      round(precision = 0) {
+        return _.round(this, precision);
       },
     });
 
     this.extendPrototype(Number, {
+      /**
+       * check if something is a number
+       * @example <caption>eg. usage</caption>
+       * var n = 1;
+       *
+       * console.log(Number.isNumber(n)); // true
+       *
+       * console.log(Number.isNumber(2)); // true
+       *
+       * console.log(Number.isNumber('')); // false
+       *
+       * console.log(Number.isNumber(null)); // false
+       * @memberOf number
+       * @method isNumber
+       * @instance
+       * @return {boolean}
+       */
       isNumber(n) {
-        return Number.prototype.isNumber.call(n);
+        return _.isNumber(n);
       },
+
+      /**
+       * parse a number value, returns null if parsing failes
+       * @example <caption>eg. usage</caption>
+       * console.log(Number.parse("1")); // 1
+       *
+       * console.log(Number.parse("1,25")); // 1.25
+       *
+       * console.log(Number.parse({})); // null
+       * @memberOf number
+       * @method parse
+       * @instance
+       * @param {*} n - the value to be parsed
+       * @return {number|null}
+       */
       parse(n) {
         return _.parseInt(n);
       },
-      random(lower = 0, upper = 1, floating = false) {
+
+      /**
+       * randomizes a number
+       * @example <caption>eg. usage</caption>
+       * console.log(Number.random(1, 5)); // a number between 1 and 5
+       *
+       * console.log(Number.random(1, 5, true)); // a number between 1.0 and 5.0
+       *
+       * console.log(Number.random()); // a number between Number.MIN_VALUE and Number.MAX_VALUE
+       * @memberOf number
+       * @method random
+       * @instance
+       * @param {number} [lower=Number.MIN_VALUE] - the lower number
+       * @param {number} [upper=Number.MAX_VALUE] - the upper number
+       * @param {boolean} [floating=false] - ask to return a floating number value
+       * @return {number}
+       */
+      random(lower = Number.MIN_VALUE, upper = Number.MAX_VALUE, floating = false) {
         return _.random(lower, upper, floating);
+      },
+
+      /**
+       * converts a Romans Number String in a Decimal Number
+       * @example <caption>eg. usage</caption>
+       * console.log(Number.fromRoman('MCMLXXX')); // 1980
+       * @memberOf number
+       * @method fromRoman
+       * @instance
+       * @param {string} s - the roman number string
+       * @return {number}
+       */
+      fromRoman(s) {
+        let str = s;
+        let result = null;
+        // the result is now a number, not a string
+        const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+        const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+        decimal.length.times((i) => {
+          while(str.indexOf(roman[i]) === 0) {
+            if(!result) {
+              result = 0;
+            }
+
+            result += decimal[i];
+            str = str.replace(roman[i], '');
+          }
+        });
+
+        return result;
       },
     });
   }
@@ -1449,38 +1846,61 @@ export default class FlavorJS {
    * @instance
    */
   initBooleanPrototype() {
-    this.extendPrototype(Boolean.prototype, {
+    this.extendPrototype(Boolean, {
       /**
-       * isBoolean<br><br>
-       *   eg. usage<br>
-       * <pre>
-       *   var b = true;
+       * isBoolean
+       * @example <caption>eg. usage</caption>
+       * var b = true;
        *
-       *   console.log(Boolean.isBoolean(b)); // true<br>
-       *   console.log(Boolean.isBoolean(2)); // false<br>
-       *   console.log(Boolean.isBoolean(false)); // true<br>
-       *   console.log(Boolean.isBoolean(null)); // false
-       * </pre>
-       * @memberOf Boolean
+       * console.log(Boolean.isBoolean(b)); // true
+       * 
+       * console.log(Boolean.isBoolean(2)); // false
+       * 
+       * console.log(Boolean.isBoolean(false)); // true
+       * 
+       * console.log(Boolean.isBoolean(null)); // false
+       * @memberOf boolean
        * @method isBoolean
        * @instance
-       * @return {Boolean}
+       * @return {boolean}
        */
-      isBoolean() {
-        return _.isBoolean(this);
+      isBoolean(b) {
+        return Boolean.prototype.isBoolean.call(b);
       },
+
+      /**
+       * randomizes a boolean value
+       * @example <caption>eg. usage</caption>
+       * console.log(Boolean.random()); // it logs true or false
+       * @memberOf boolean
+       * @method random
+       * @instance
+       * @return {boolean}
+       */
       random() {
         return Math.random() >= 0.5;
-      },
-    });
-    this.extendPrototypeProperty(Boolean, 'isBoolean', (b) => {
-      return Boolean.prototype.isBoolean.call(b);
+      }
     });
   }
 
   initUtils() {
     this.inherit({
-      delay: (fn, ms) => {
+      /**
+       * delays a function by specified ms
+       * @example <caption>eg. usage</caption>
+       * ƒ.delay(function() {
+       *   console.log('ended')
+       * }, 1000);
+       *
+       * // it logs 'ended' after 1000ms
+       * @memberOf FlavorJS
+       * @method delay
+       * @instance
+       * @param {function} fn - function to invoke
+       * @param {number} ms - time to wait in milliseconds
+       * @return {function}
+       */
+      delay(fn, ms) {
         return _.delay(fn, ms);
       },
     });
