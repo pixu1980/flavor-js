@@ -199,10 +199,14 @@ export default class FlavorJS {
     this.extendString();
     this.extendArray();
 
-    this.inherit({
+    const flavorJSStatus = {
       initialized: true,
       version: config.version,
       build: config.build,
-    });
+    };
+
+    Object.inherit(this, flavorJSStatus);
+
+    console.log('FlavorJS initialized', flavorJSStatus);
   }
 }
