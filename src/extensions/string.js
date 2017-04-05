@@ -585,21 +585,21 @@ export default {
      * @inheritDoc String.contains
      */
     contains(value, insensitive = false) {
-      return (new RegExp(value, 'm' + (!!insensitive ? 'i' : ''))).test(this);
+      return (new RegExp(_.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : ''))).test(this);
     },
 
     /**
      * @inheritDoc String.startsWith
      */
     startsWith(value, insensitive = false) {
-      return new RegExp('^' + value, 'm' + (!!insensitive ? 'i' : '')).test(this);
+      return new RegExp('^' + _.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
 
     /**
      * @inheritDoc String.endsWith
      */
     endsWith(value, insensitive = false) {
-      return new RegExp(value + '$', 'm' + (!!insensitive ? 'i' : '')).test(this);
+      return new RegExp(_.escapeRegExp(value) + '$', 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
 
     /**
@@ -620,7 +620,7 @@ export default {
      * @inheritDoc String.replaceAll
      */
     replaceAll(needle, replacement = '', insensitive = false) {
-      return this.replace(new RegExp(needle, 'mg' + (!!insensitive ? 'i' : '')), replacement);
+      return this.replace(new RegExp(_.escapeRegExp(needle), 'mg' + (!!insensitive ? 'i' : '')), replacement);
     },
 
     /**
