@@ -7,7 +7,7 @@ import _ from 'lodash';
 export default {
   native: {
     /**
-     * isFunction<br><br>
+     * checked if something is a function
      * @example <caption>eg. usage</caption>
      * var f = function(){};
      *
@@ -21,6 +21,7 @@ export default {
      * @memberOf function
      * @method isFunction
      * @instance
+     * @param {function} f - the function to be checked
      * @return {boolean}
      */
     isFunction(f) {

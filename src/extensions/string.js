@@ -93,13 +93,13 @@ export default {
      *
      * console.log(String.contains('flavorJS Is tasty', 'JS is', true)); // true
      *
-     * console.log(('FlavorJS is tasty').contains('JS is')); // true
+     * console.log('FlavorJS is tasty'.contains('JS is')); // true
      *
-     * console.log(('FlavorJS is tasty').contains('js is')); // false
+     * console.log('FlavorJS is tasty'.contains('js is')); // false
      *
-     * console.log(('FlavorJS is tasty').contains('js is', true)); // true
+     * console.log('FlavorJS is tasty'.contains('js is', true)); // true
      *
-     * console.log(('flavorJS is tasty').contains('JS is', true)); // true
+     * console.log('flavorJS is tasty'.contains('JS is', true)); // true
      * @memberOf string
      * @method contains
      * @instance
@@ -123,13 +123,13 @@ export default {
      *
      * console.log(String.startsWith('flavorJS is tasty', 'Flavor', true)); // true
      *
-     * console.log(('FlavorJS is tasty').startsWith('Flavor')); // true
+     * console.log('FlavorJS is tasty'.startsWith('Flavor')); // true
      *
-     * console.log(('FlavorJS is tasty').startsWith('flavor')); // false
+     * console.log('FlavorJS is tasty'.startsWith('flavor')); // false
      *
-     * console.log(('FlavorJS is tasty').startsWith('flavor', true)); // true
+     * console.log('FlavorJS is tasty'.startsWith('flavor', true)); // true
      *
-     * console.log(('flavorJS is tasty').startsWith('Flavor', true)); // true
+     * console.log('flavorJS is tasty'.startsWith('Flavor', true)); // true
      * @memberOf string
      * @method startsWith
      * @instance
