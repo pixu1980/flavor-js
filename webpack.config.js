@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const packageJSON = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const config = require('./config.js');
 
 module.exports = {
   context: path.resolve('src'),

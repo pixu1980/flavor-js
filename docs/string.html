@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -162,7 +162,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="camelCase"><span class="type-signature"></span>camelCase()</h4>
+    <h4 class="name" id="isString"><span class="type-signature"></span>isString(s)</h4>
     
     
 </dt>
@@ -170,7 +170,7 @@
 
     
     <div class="description">
-        camel cases a string
+        checks if something is a string
     </div>
     
 
@@ -179,6 +179,56 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string to be checked</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -232,217 +282,21 @@
     
 
     
-
+    <h5>Returns:</h5>
     
-        <h5>Example</h5>
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
         
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">console.log(String.camelCase(&#x27;Foo Bar&#x27;)); // &#x27;fooBar&#x27;
-
-console.log(String.camelCase(&#x27;--foo-bar--&#x27;)); // &#x27;fooBar&#x27;
-
-console.log(String.camelCase(&#x27;__FOO_BAR__&#x27;)); // &#x27;fooBar&#x27;</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="capitalize"><span class="type-signature"></span>capitalize(s [, all])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        capitalizes a string
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>s</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>all</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
     </dd>
 </dl>
 
@@ -454,11 +308,15 @@ console.log(String.camelCase(&#x27;__FOO_BAR__&#x27;)); // &#x27;fooBar&#x27;</p
         
         <p class="code-caption">eg. usage</p>
     
-    <pre class="sunlight-highlight-javascript">console.log(String.capitalize(&#x27;we\&#x27;re happy to use flavorJS&#x27;)); // We&#x27;re Happy To Use Flavorjs
+    <pre class="sunlight-highlight-javascript">var s = &#x27;foo&#x27;;
 
-console.log(String.capitalize(&#x27;we\&#x27;re happy to use flavorJS&#x27;, false)); // We&#x27;re happy to use flavorjs
+console.log(String.isString(s)); // true
 
-console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
+console.log(String.isString(2)); // false
+
+console.log(String.isString(&#x27;&#x27;)); // true
+
+console.log(String.isString(null)); // false</pre>
 
 
     
@@ -468,7 +326,7 @@ console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="getFileExtension"><span class="type-signature"></span>getFileExtension(s)</h4>
+    <h4 class="name" id="parsePercentage"><span class="type-signature"></span>parsePercentage(s)</h4>
     
     
 </dt>
@@ -476,7 +334,7 @@ console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
 
     
     <div class="description">
-        extracts the file extension from a filename/path string
+        checks if a string is a percentage string
     </div>
     
 
@@ -516,13 +374,19 @@ console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
 
             <td class="type">
             
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the string to be checked</td>
         </tr>
 
     
@@ -593,7 +457,7 @@ console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
     </dt>
     <dd>
         
-<span class="param-type">*</span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -608,11 +472,11 @@ console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
         
         <p class="code-caption">eg. usage</p>
     
-    <pre class="sunlight-highlight-javascript">console.log(String.getFileExtension(&#x27;file.jpg&#x27;)); // &#x27;jpg&#x27;
+    <pre class="sunlight-highlight-javascript">console.log(String.isPercentage(&#x27;50,25%&#x27;)); // true
 
-console.log(String.getFileExtension(&#x27;file&#x27;)); // &#x27;&#x27;
+console.log(String.isPercentage(&#x27;50,25&#x27;)); // false
 
-console.log(String.getFileExtension(1)); // 1</pre>
+console.log(String.isPercentage(5)); // false</pre>
 
 
     
@@ -773,170 +637,6 @@ console.log(String.getFileExtension(1)); // 1</pre>
 console.log(String.isRoman(&#x27;50,25&#x27;)); // false
 
 console.log(String.isRoman(5)); // false</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="isString"><span class="type-signature"></span>isString(s)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        isString<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>s</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the string to be checked</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var s = new string(&#x27;foo&#x27;);
-
-console.log(String.isString(s)); // true
-
-console.log(String.isString(2)); // false
-
-console.log(String.isString(&#x27;&#x27;)); // true
-
-console.log(String.isString(null)); // false</pre>
 
 
     
@@ -1109,7 +809,2205 @@ console.log(String.isUrl(5)); // false</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="pad"><span class="type-signature"></span>pad(length, chars)</h4>
+    <h4 class="name" id="contains"><span class="type-signature"></span>contains(s, value [, insensitive])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if a string contains another string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string to be checked</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string value to check</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>insensitive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">true if you want to do an insensitive check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.contains(&#x27;FlavorJS is tasty&#x27;, &#x27;JS is&#x27;)); // true
+
+console.log(String.contains(&#x27;FlavorJS is tasty&#x27;, &#x27;js is&#x27;)); // false
+
+console.log(String.contains(&#x27;FlavorJS is tasty&#x27;, &#x27;js is&#x27;, true)); // true
+
+console.log(String.contains(&#x27;flavorJS Is tasty&#x27;, &#x27;JS is&#x27;, true)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).contains(&#x27;JS is&#x27;)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).contains(&#x27;js is&#x27;)); // false
+
+console.log((&#x27;FlavorJS is tasty&#x27;).contains(&#x27;js is&#x27;, true)); // true
+
+console.log((&#x27;flavorJS is tasty&#x27;).contains(&#x27;JS is&#x27;, true)); // true</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="startsWith"><span class="type-signature"></span>startsWith(s, value [, insensitive])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if a string starts with another string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string to be checked</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the value to check</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>insensitive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">true if you want to do an insensitive check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.startsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;Flavor&#x27;)); // true
+
+console.log(String.startsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;flavor&#x27;)); // false
+
+console.log(String.startsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;flavor&#x27;, true)); // true
+
+console.log(String.startsWith(&#x27;flavorJS is tasty&#x27;, &#x27;Flavor&#x27;, true)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).startsWith(&#x27;Flavor&#x27;)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).startsWith(&#x27;flavor&#x27;)); // false
+
+console.log((&#x27;FlavorJS is tasty&#x27;).startsWith(&#x27;flavor&#x27;, true)); // true
+
+console.log((&#x27;flavorJS is tasty&#x27;).startsWith(&#x27;Flavor&#x27;, true)); // true</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="endsWith"><span class="type-signature"></span>endsWith(s, value [, insensitive])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if a string ends with another string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string to be checked</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the value to check</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>insensitive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">true if you want to do an insensitive check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.endsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;Tasty&#x27;)); // false
+
+console.log(String.endsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;tasty&#x27;)); // true
+
+console.log(String.endsWith(&#x27;FlavorJS is tasty&#x27;, &#x27;Tasty&#x27;, true)); // true
+
+console.log(String.endsWith(&#x27;FlavorJS is Tasty&#x27;, &#x27;tasty&#x27;, true)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).endsWith(&#x27;Tasty&#x27;)); // false
+
+console.log((&#x27;FlavorJS is tasty&#x27;).endsWith(&#x27;tasty&#x27;)); // true
+
+console.log((&#x27;FlavorJS is tasty&#x27;).endsWith(&#x27;Tasty&#x27;, true)); // true
+
+console.log((&#x27;flavorJS is Tasty&#x27;).endsWith(&#x27;tasty&#x27;, true)); // true</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="guid"><span class="type-signature"></span>guid()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        stubs a GUID
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.guid()); // &#x27;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="camelCase"><span class="type-signature"></span>camelCase(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        camel cases a string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.camelCase(&#x27;Foo Bar&#x27;)); // &#x27;fooBar&#x27;
+
+console.log(String.camelCase(&#x27;--foo-bar--&#x27;)); // &#x27;fooBar&#x27;
+
+console.log(String.camelCase(&#x27;__FOO_BAR__&#x27;)); // &#x27;fooBar&#x27;
+
+console.log(&#x27;Foo Bar&#x27;.camelCase()); // &#x27;fooBar&#x27;
+
+console.log(&#x27;--foo-bar--&#x27;.camelCase()); // &#x27;fooBar&#x27;
+
+console.log(&#x27;__FOO_BAR__&#x27;.camelCase()); // &#x27;fooBar&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="capitalize"><span class="type-signature"></span>capitalize(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        capitalizes a string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.capitalize(&#x27;we\&#x27;re happy to use flavorJS&#x27;)); // Were Happy To Use Flavor JS
+
+console.log(String.capitalize(&#x27;we\&#x27;re happy to use flavorJS&#x27;)); // We&#x27;re happy to use flavorjs
+
+console.log(String.capitalize(&#x27;flavorJS&#x27;)); // Flavorjs</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="decodeURI"><span class="type-signature"></span>decodeURI(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        decodes an URI string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the URI string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.decodeURI(&#x27;https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com&#x27;)); // &#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;
+
+console.log((&#x27;https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com&#x27;).decodeURI()); // &#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="encodeURI"><span class="type-signature"></span>encodeURI(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        encodes an URI string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the URI string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.encodeURI(&#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;)); // &#x27;https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com&#x27;
+
+console.log((&#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;).encodeURI()); // &#x27;https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="escapeHTML"><span class="type-signature"></span>escapeHTML(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        escapes an HTML code string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the HTML code string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.escapeHTML(&#x27;&lt;div&gt;flavor &amp; js = tasty&lt;/div&gt;&#x27;)); // &#x27;&amp;lt;div&amp;gt;flavor &amp;amp; js = tasty&amp;lt;/div&amp;gt;&#x27;
+
+console.log((&#x27;&lt;div&gt;flavor &amp; js = tasty&lt;/div&gt;&#x27;).escapeHTML()); // &#x27;&amp;lt;div&amp;gt;flavor &amp;amp; js = tasty&amp;lt;/div&amp;gt;&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="extractDomain"><span class="type-signature"></span>extractDomain(s, level, exclude_www)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        extracts a domain from an URI string with level parameter
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the URI string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>level</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the domain level to extract, starting from right obviously</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>exclude_www</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true if you want to exclude the www. from che extraction</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.extractDomain(&#x27;http://www.google.com&#x27;)); // google.com
+
+console.log(String.extractDomain(&#x27;http://www.google.com&#x27;, )); // google.com</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="extractFileExtension"><span class="type-signature"></span>extractFileExtension(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        extracts the file extension from a filename/path string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.extractFileExtension(&#x27;file.jpg&#x27;)); // &#x27;jpg&#x27;
+
+console.log(String.extractFileExtension(&#x27;file&#x27;)); // &#x27;&#x27;
+
+console.log(String.extractFileExtension(1)); // 1
+
+console.log((&#x27;file.jpg&#x27;).extractFileExtension()); // &#x27;jpg&#x27;
+
+console.log((&#x27;file&#x27;).extractFileExtension()); // &#x27;&#x27;
+
+console.log((1).extractFileExtension()); // throws error</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="extractQueryString"><span class="type-signature"></span>extractQueryString(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        extracts the query string object from an URI string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the URI string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">&lt;caption&gt;eg. usage&lt;/caption&gt;</pre>
+
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.extractQueryString(&#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;)); // {name: &#x27;black mirror&#x27;, email: &#x27;username@example.com&#x27;}
+
+console.log((&#x27;https://flavorjs.io/page.html?name=black mirror&amp;email=username@example.com&#x27;).extractQueryString()); // {name: &#x27;black mirror&#x27;, email: &#x27;username@example.com&#x27;}</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="pad"><span class="type-signature"></span>pad(s, length, chars)</h4>
     
     
 </dt>
@@ -1152,10 +3050,16 @@ console.log(String.isUrl(5)); // false</pre>
 
         <tr>
             
-                <td class="name"><code>length</code></td>
+                <td class="name"><code>s</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
             
             </td>
 
@@ -1163,7 +3067,31 @@ console.log(String.isUrl(5)); // false</pre>
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the string to be padded</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string length you need</td>
         </tr>
 
     
@@ -1175,13 +3103,19 @@ console.log(String.isUrl(5)); // false</pre>
 
             <td class="type">
             
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the char/chars to be used to pad the string</td>
         </tr>
 
     
@@ -1287,7 +3221,7 @@ console.log(String.pad(new Date(), 50, &#x27;--&#x27;) // &#x27;-----Tue Apr 04 
             
 <hr>
 <dt>
-    <h4 class="name" id="padLeft"><span class="type-signature"></span>padLeft(length, chars)</h4>
+    <h4 class="name" id="padLeft"><span class="type-signature"></span>padLeft(s, length, chars)</h4>
     
     
 </dt>
@@ -1330,10 +3264,16 @@ console.log(String.pad(new Date(), 50, &#x27;--&#x27;) // &#x27;-----Tue Apr 04 
 
         <tr>
             
-                <td class="name"><code>length</code></td>
+                <td class="name"><code>s</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
             
             </td>
 
@@ -1341,7 +3281,31 @@ console.log(String.pad(new Date(), 50, &#x27;--&#x27;) // &#x27;-----Tue Apr 04 
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the string to be padded</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string length you need</td>
         </tr>
 
     
@@ -1353,13 +3317,19 @@ console.log(String.pad(new Date(), 50, &#x27;--&#x27;) // &#x27;-----Tue Apr 04 
 
             <td class="type">
             
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the char/chars to be used to pad the string</td>
         </tr>
 
     
@@ -1465,7 +3435,7 @@ console.log(String.padLeft(new Date(), 50, &#x27;--&#x27;) // &#x27;----------Tu
             
 <hr>
 <dt>
-    <h4 class="name" id="padRight"><span class="type-signature"></span>padRight(length, chars)</h4>
+    <h4 class="name" id="padRight"><span class="type-signature"></span>padRight(s, length, chars)</h4>
     
     
 </dt>
@@ -1508,10 +3478,16 @@ console.log(String.padLeft(new Date(), 50, &#x27;--&#x27;) // &#x27;----------Tu
 
         <tr>
             
-                <td class="name"><code>length</code></td>
+                <td class="name"><code>s</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
             
             </td>
 
@@ -1519,7 +3495,31 @@ console.log(String.padLeft(new Date(), 50, &#x27;--&#x27;) // &#x27;----------Tu
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the string to be padded</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string length you need</td>
         </tr>
 
     
@@ -1531,13 +3531,19 @@ console.log(String.padLeft(new Date(), 50, &#x27;--&#x27;) // &#x27;----------Tu
 
             <td class="type">
             
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the char/chars to be used to pad the string</td>
         </tr>
 
     
@@ -1634,166 +3640,6 @@ console.log(String.padRight(5, 4, &#x27;0&#x27;)); // &#x27;5000&#x27;
 console.log(String.padRight(true, 5, &#x27;0&#x27;)); // &#x27;true0&#x27;
 
 console.log(String.padRight(new Date(), 50, &#x27;--&#x27;) // &#x27;Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)----------&#x27;</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="parsePercentage"><span class="type-signature"></span>parsePercentage(s)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        checks if a string is a percentage string
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>s</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the string to be checked</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">console.log(String.isPercentage(&#x27;50,25%&#x27;)); // true
-
-console.log(String.isPercentage(&#x27;50,25&#x27;)); // false
-
-console.log(String.isPercentage(5)); // false</pre>
 
 
     
@@ -1963,6 +3809,516 @@ console.log(String.parsePercentage(5)); // 5</pre>
             
 <hr>
 <dt>
+    <h4 class="name" id="replaceAll"><span class="type-signature"></span>replaceAll(haystack, needle [, replacement] [, insensitive])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        replaces all occurrences of the needle inside the haystack with replacement
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>haystack</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the haystack string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>needle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the needle string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>replacement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last">the replacement string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>insensitive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">true if you want to do an insensitive check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.replaceAll(&#x27;FlavorJS is really really tasty&#x27;, &#x27;really&#x27;, &#x27;&#x27;)); // &#x27;FlavorJS is   tasty&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="slugify"><span class="type-signature"></span>slugify(s [, dashed])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        slugifies any string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dashed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">false if you don't want dashed in the resulting string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.slugify(&#x27;it\&#x27;s so good to be FlavorJS&#x27;)); // &#x27;its-so-good-to-be-flavor-js&#x27;
+
+console.log(String.slugify(&#x27;it\&#x27;s so gòòd - to_be | FlavorJS&#x27;)); // &#x27;its-so-good-to-be-flavor-js&#x27;
+
+console.log(String.slugify(&#x27;it\&#x27;s so gòòd - to_be | FlavorJS&#x27;, false)); // &#x27;itssogoodtobeflavorjs&#x27;
+
+console.log(&#x27;it\&#x27;s so good to be FlavorJS&#x27;.slugify()); // &#x27;its-so-good-to-be-flavor-js&#x27;
+
+console.log(&#x27;it\&#x27;s so gòòd - to_be | FlavorJS&#x27;.slugify()); // &#x27;its-so-good-to-be-flavor-js&#x27;
+
+console.log(&#x27;it\&#x27;s so gòòd - to_be | FlavorJS&#x27;.slugify(false)); // &#x27;itssogoodtobeflavorjs&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="stripTags"><span class="type-signature"></span>stripTags()</h4>
     
     
@@ -2062,6 +4418,164 @@ console.log(String.parsePercentage(5)); // 5</pre>
     <pre class="sunlight-highlight-javascript">console.log(String.stripTags(&#x27;&lt;div&gt;flavorJS&lt;/div&gt;&#x27;)); // &#x27;flavorJS&#x27;
 
 console.log(String.stripTags(&#x27;flavorJS&#x27;)); // &#x27;flavorJS&#x27;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="escapeHTML"><span class="type-signature"></span>escapeHTML(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        unescapes an HTML code string
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the HTML code string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.unescapeHTML(&#x27;&amp;lt;div&amp;gt;flavor &amp;amp; js = tasty&amp;lt;/div&amp;gt;&#x27;)); // &#x27;&lt;div&gt;flavor &amp; js = tasty&lt;/div&gt;&#x27;
+
+console.log((&#x27;&amp;lt;div&amp;gt;flavor &amp;amp; js = tasty&amp;lt;/div&amp;gt;&#x27;).unescapeHTML()); // &#x27;&lt;div&gt;flavor &amp; js = tasty&lt;/div&gt;&#x27;</pre>
 
 
     
@@ -2173,6 +4687,268 @@ console.log(String.stripTags(&#x27;flavorJS&#x27;)); // &#x27;flavorJS&#x27;</pr
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray(s [, separator] [, limit])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        transforms a string in an array of chars/words
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>separator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last">the separator to use for the splitting</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">the limit of items to extract starting from left</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(String.toArray(&#x27;FlavorJS&#x27;)); // [&#x27;F&#x27;,&#x27;l&#x27;,&#x27;a&#x27;,&#x27;v&#x27;,&#x27;o&#x27;,&#x27;r&#x27;,&#x27;J&#x27;,&#x27;S&#x27;]
+
+console.log(String.toArray(&#x27;FlavorJS, is really, really tasty&#x27;, &#x27;,&#x27;)); // [&#x27;FlavorJS&#x27;,&#x27; is really&#x27;,&#x27; really tasty&#x27;]
+
+console.log(String.toArray(&#x27;FlavorJS, is really, really tasty&#x27;, &#x27;,&#x27;, 2)); // [&#x27;FlavorJS&#x27;,&#x27; is really&#x27;]
+
+console.log(&#x27;FlavorJS&#x27;.toArray()); // [&#x27;F&#x27;,&#x27;l&#x27;,&#x27;a&#x27;,&#x27;v&#x27;,&#x27;o&#x27;,&#x27;r&#x27;,&#x27;J&#x27;,&#x27;S&#x27;]
+
+console.log(&#x27;FlavorJS, is really, really tasty&#x27;.toArray(&#x27;,&#x27;)); // [&#x27;FlavorJS&#x27;,&#x27; is really&#x27;,&#x27; really tasty&#x27;]
+
+console.log(&#x27;FlavorJS, is really, really tasty&#x27;.toArray(&#x27;,&#x27;, 2)); // [&#x27;FlavorJS&#x27;,&#x27; is really&#x27;]</pre>
+
+
+    
+</dd>
+
         </dl>
     
 
@@ -2227,7 +5003,7 @@ console.log(String.stripTags(&#x27;flavorJS&#x27;)); // &#x27;flavorJS&#x27;</pr
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-04T18:32:33+02:00
+		on 2017-04-05T15:45:41+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

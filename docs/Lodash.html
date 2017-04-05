@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -159,6 +159,812 @@
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="isPercentage"><span class="type-signature"></span>isPercentage(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if a string is a percentage value<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var s = &#x27;23.97%&#x27;;
+
+console.log(_.isPercentage(s)); // true
+
+console.log(_.isPercentage(&#x27;50%&#x27;)); // true
+
+console.log(_.isPercentage(10)); // false</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="parsePercentage"><span class="type-signature"></span>parsePercentage(s)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        parses float value in a percentage string<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the percentage string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">null</span>
+|
+
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var p = &#x27;50.5%&#x27;;
+
+console.log(_.parsePercentage(p)); // 50.5
+
+console.log(_.parsePercentage(&#x27;100%&#x27;)); // 100
+
+console.log(_.parsePercentage(25.3)); // null</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="filterByValues"><span class="type-signature"></span>filterByValues(collection, key, values)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        filters a collection with a list of values specified for one property<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array_.html">Array</a></span>
+|
+
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the collection to filter</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the key to be used as property name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array_.html">Array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the list of values to check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Array_.html">Array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var collection = [{
+ id: 1, status: &#x27;active&#x27;
+}, {
+ id: 2, status: &#x27;disabled&#x27;
+}, {
+ id: 3, status: &#x27;unactive&#x27;
+}];
+
+var allowedValues = [&#x27;active&#x27;, &#x27;unactive&#x27;];
+
+console.log(_.filterByValues(collection, &#x27;status&#x27;, allowedValues);
+// logs [{id: 1, status: &#x27;active&#x27;}, {id: 3, status: &#x27;unactive&#x27;}]</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="deepMap"><span class="type-signature"></span>deepMap(collection [, childrenPropName], mapCallback)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Array_.html">Array</a></span>
+|
+
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the collection to use for the deep mapping</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last">the property name to use for children collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the item mapping callback</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var tree = [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
+ }]
+}];
+
+console.log(_.deepMap(tree, &#x27;items&#x27;, function(treeItem) {
+  return {
+    id: treeItem.id,
+    status: treeItem.status,
+    combo: treeItem.id + &#x27;-&#x27; + treeItem.status
+  };
+});
+
+// logs [{
+ id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1-enabled&#x27; items: [{
+   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1-enabled&#x27;, items: [{
+     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1.1-enabled&#x27;
+   }, {
+     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.1.2-disabled&#x27;
+   }]
+ }, {
+   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.2-disabled&#x27;
+ }]
+}]</pre>
+
+
+    
+</dd>
+
+        
             
 <hr>
 <dt>
@@ -480,267 +1286,6 @@ console.log(_.deepFindBy(tree, function(item) {
 // logs {
   id: &#x27;3.2&#x27;, status: &#x27;enabled&#x27;
 }</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="deepMap"><span class="type-signature"></span>deepMap(collection [, childrenPropName], mapCallback)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>collection</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Array_.html">Array</a></span>
-|
-
-<span class="param-type"><a href="object.html">object</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">the collection to use for the deep mapping</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>childrenPropName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    'children'
-                
-                </td>
-            
-
-            <td class="description last">the property name to use for children collection</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mapCallback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="function.html">function</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">the item mapping callback</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var tree = [{
- id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, items: [{
-   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, items: [{
-     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;
-   }, {
-     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;
-   }]
- }, {
-   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;
- }]
-}];
-
-console.log(_.deepMap(tree, &#x27;items&#x27;, function(treeItem) {
-  return {
-    id: treeItem.id,
-    status: treeItem.status,
-    combo: treeItem.id + &#x27;-&#x27; + treeItem.status
-  };
-});
-
-// logs [{
- id: &#x27;1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1-enabled&#x27; items: [{
-   id: &#x27;1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1-enabled&#x27;, items: [{
-     id: &#x27;1.1.1&#x27;, status: &#x27;enabled&#x27;, combo: &#x27;1.1.1-enabled&#x27;
-   }, {
-     id: &#x27;1.1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.1.2-disabled&#x27;
-   }]
- }, {
-   id: &#x27;1.2&#x27;, status: &#x27;disabled&#x27;, combo: &#x27;1.2-disabled&#x27;
- }]
-}]</pre>
 
 
     
@@ -1097,551 +1642,6 @@ console.log(_.deepOrderBy(tree, [&#x27;id&#x27;], [&#x27;desc&#x27;], &#x27;item
             
 <hr>
 <dt>
-    <h4 class="name" id="filterByValues"><span class="type-signature"></span>filterByValues(collection, key, values)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        filters a collection with a list of values specified for one property<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>collection</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Array_.html">Array</a></span>
-|
-
-<span class="param-type"><a href="object.html">object</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the collection to filter</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the key to be used as property name</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>values</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Array_.html">Array</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the list of values to check</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Array_.html">Array</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var collection = [{
- id: 1, status: &#x27;active&#x27;
-}, {
- id: 2, status: &#x27;disabled&#x27;
-}, {
- id: 3, status: &#x27;unactive&#x27;
-}];
-
-var allowedValues = [&#x27;active&#x27;, &#x27;unactive&#x27;];
-
-console.log(_.filterByValues(collection, &#x27;status&#x27;, allowedValues);
-// logs [{id: 1, status: &#x27;active&#x27;}, {id: 3, status: &#x27;unactive&#x27;}]</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="isPercentage"><span class="type-signature"></span>isPercentage(s)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        checks if a string is a percentage value<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>s</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the string</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var s = &#x27;23.97%&#x27;;
-
-console.log(_.isPercentage(s)); // true
-
-console.log(_.isPercentage(&#x27;50%&#x27;)); // true
-
-console.log(_.isPercentage(10)); // false</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="parsePercentage"><span class="type-signature"></span>parsePercentage(s)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        parses float value in a percentage string<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>s</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the percentage string</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">null</span>
-|
-
-<span class="param-type"><a href="number.html">number</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var p = &#x27;50.5%&#x27;;
-
-console.log(_.parsePercentage(p)); // 50.5
-
-console.log(_.parsePercentage(&#x27;100%&#x27;)); // 100
-
-console.log(_.parsePercentage(25.3)); // null</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
     <h4 class="name" id="pullAllByComparator"><span class="type-signature"></span>pullAllByComparator(collection, values, comparator, iteratee)</h4>
     
     
@@ -1857,6 +1857,180 @@ console.log(_.parsePercentage(25.3)); // null</pre>
 
 
         
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="timesReverse"><span class="type-signature"></span>timesReverse(times, iteratee)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        a reverse implementation of _.times by lodash<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>times</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">num of times to invoke iteratee</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the iteratee function to invoke<br>
+the iteratee will be invoked passing che cycle indicator as i<br>
+so the iteratee has to be something like this<br>
+<pre>
+function(i) {}
+</pre></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">_.timesReverse(5, function(i) {
+  console.log(i);
+});
+
+// logs
+5
+4
+3
+2
+1</pre>
+
 
     
 </dd>
@@ -2098,180 +2272,6 @@ function(i) {}
     
 </dd>
 
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="timesReverse"><span class="type-signature"></span>timesReverse(times, iteratee)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        a reverse implementation of _.times by lodash<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>times</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="number.html">number</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">num of times to invoke iteratee</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>iteratee</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="function.html">function</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the iteratee function to invoke<br>
-the iteratee will be invoked passing che cycle indicator as i<br>
-so the iteratee has to be something like this<br>
-<pre>
-function(i) {}
-</pre></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">_.timesReverse(5, function(i) {
-  console.log(i);
-});
-
-// logs
-5
-4
-3
-2
-1</pre>
-
-
-    
-</dd>
-
         </dl>
     
 
@@ -2326,7 +2326,7 @@ function(i) {}
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-04T18:32:33+02:00
+		on 2017-04-05T15:45:41+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

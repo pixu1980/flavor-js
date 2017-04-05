@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#getFileExtension">getFileExtension</a></li><li><a href="global.html#isPercentage">isPercentage</a></li><li><a href="global.html#isRoman">isRoman</a></li><li><a href="global.html#isUrl">isUrl</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#padLeft">padLeft</a></li><li><a href="global.html#padRight">padRight</a></li><li><a href="global.html#parsePercentage">parsePercentage</a></li><li><a href="global.html#stripTags">stripTags</a></li><li><a href="global.html#toInt">toInt</a></li>
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -162,7 +162,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="clone"><span class="type-signature"></span>clone()</h4>
+    <h4 class="name" id="isObject"><span class="type-signature"></span>isObject()</h4>
     
     
 </dt>
@@ -170,7 +170,7 @@
 
     
     <div class="description">
-        clones an object<br><br>
+        isObject<br><br>
     </div>
     
 
@@ -243,7 +243,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="object.html">object</a></span>
+<span class="param-type"><a href="boolean.html">boolean</a></span>
 
 
 
@@ -263,11 +263,13 @@
   prop2: &#x27;a&#x27;,
 };
 
-var p = o.clone();
+console.log(Object.isObject(o)); // true
 
-console.log(o == p); // true
+console.log(Object.isObject(2)); // true
 
-console.log(o === p); // false</pre>
+console.log(Object.isObject(&#x27;2&#x27;)); // true
+
+console.log(Object.isObject(null)); // false</pre>
 
 
     
@@ -277,259 +279,7 @@ console.log(o === p); // false</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="each"><span class="type-signature"></span>each(iteratee)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        executes function for every property in the object<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>iteratee</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="function.html">function</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the iteratee callback will be invoked with the following parameters<br>
-so your callback has to be something like this<br><br>
-                <h6 class="method-params-label method-subparams-label">Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the property value of the object</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the property key of the object</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    to make chainable the method
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="object.html">object</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Examples</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var o = {
-  prop1: 1,
-  prop2: &#x27;a&#x27;,
-  prop3: &#x27;b&#x27;,
-  prop4: new Date(),
-};
-
-o.each(function(value, key) {
-  console.log(key, value);
-});
-
-// it logs
-&#x27;prop1&#x27;, 1
-&#x27;prop2&#x27;, &#x27;a&#x27;
-&#x27;prop3&#x27;, &#x27;b&#x27;
-&#x27;prop4&#x27;, Date</pre>
-
-    <pre class="sunlight-highlight-javascript">function iteratee(value, key) {}</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="inherit"><span class="type-signature"></span>inherit( [createNew], args)</h4>
+    <h4 class="name" id="inherit"><span class="type-signature"></span>inherit(o [, createNew], args)</h4>
     
     
 </dt>
@@ -570,6 +320,38 @@ o.each(function(value, key) {
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object to extend</td>
+        </tr>
+
     
 
         <tr>
@@ -761,124 +543,7 @@ console.log(p); // p = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
             
 <hr>
 <dt>
-    <h4 class="name" id="isObject"><span class="type-signature"></span>isObject()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        isObject<br><br>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="sunlight-highlight-javascript">var o = {
-  prop1: 1,
-  prop2: &#x27;a&#x27;,
-};
-
-console.log(Object.isObject(o)); // true
-
-console.log(Object.isObject(2)); // true
-
-console.log(Object.isObject(&#x27;2&#x27;)); // true
-
-console.log(Object.isObject(null)); // false</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="omit"><span class="type-signature"></span>omit(args)</h4>
+    <h4 class="name" id="omit"><span class="type-signature"></span>omit(o, args)</h4>
     
     
 </dt>
@@ -919,6 +584,38 @@ console.log(Object.isObject(null)); // false</pre>
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
     
 
         <tr>
@@ -1068,7 +765,344 @@ console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
             
 <hr>
 <dt>
-    <h4 class="name" id="path"><span class="type-signature"></span>path(path [, defVal])</h4>
+    <h4 class="name" id="pick"><span class="type-signature"></span>pick(o, args)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        returns a new object that picks only the specified properties<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the list of properties to omit</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}
+
+console.log(o.pick(&#x27;prop1&#x27;)); // {prop1: 2}
+
+console.log(o.pick(&#x27;prop1&#x27;, &#x27;prop2&#x27;)); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o.pick([&#x27;prop1&#x27;, &#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o.pick([&#x27;prop1&#x27;], [&#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
+
+console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="clone"><span class="type-signature"></span>clone()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply clones an object in a new object<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var o = {
+  prop1: 1,
+  prop2: &#x27;a&#x27;,
+};
+
+var p = o.clone();
+
+console.log(o == p); // true
+
+console.log(o === p); // false</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="path"><span class="type-signature"></span>path(o, path [, def])</h4>
     
     
 </dt>
@@ -1115,6 +1149,42 @@ console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
 
         <tr>
             
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>path</code></td>
             
 
@@ -1151,7 +1221,7 @@ console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
 
         <tr>
             
-                <td class="name"><code>defVal</code></td>
+                <td class="name"><code>def</code></td>
             
 
             <td class="type">
@@ -1256,9 +1326,6 @@ console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
     <dd>
         
 <span class="param-type">*</span>
-|
-
-<span class="param-type">null</span>
 
 
 
@@ -1323,7 +1390,7 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="pick"><span class="type-signature"></span>pick(args)</h4>
+    <h4 class="name" id="each"><span class="type-signature"></span>each(o, iteratee)</h4>
     
     
 </dt>
@@ -1331,7 +1398,7 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
 
     
     <div class="description">
-        returns a new object that picks only the specified properties<br><br>
+        executes function for every property in the object<br><br>
     </div>
     
 
@@ -1354,8 +1421,6 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
         <th>Type</th>
 
         
-        <th>Argument</th>
-        
 
         
 
@@ -1368,7 +1433,7 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
 
         <tr>
             
-                <td class="name"><code>args</code></td>
+                <td class="name"><code>o</code></td>
             
 
             <td class="type">
@@ -1382,20 +1447,112 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
             </td>
 
             
-                <td class="attributes">
-                
 
-                
+            
 
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
                 
-                    &lt;repeatable><br>
-                
-                </td>
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
             
 
             
 
-            <td class="description last">the list of properties to omit</td>
+            <td class="description last">the iteratee callback will be invoked with the following parameters<br>
+so your callback has to be something like this<br><br>
+<pre>
+function iteratee(value, key) {}
+</pre>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the property value of the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the property key of the object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -1458,6 +1615,10 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    to make chainable the method
+</div>
+
 
 
 <dl>
@@ -1466,7 +1627,7 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
     </dt>
     <dd>
         
-<span class="param-type"><a href="object.html">object</a></span>
+<span class="param-type">*</span>
 
 
 
@@ -1484,26 +1645,19 @@ console.log(o.path(&#x27;prop3.prop31[2]&#x27;, {})); // {}</pre>
     <pre class="sunlight-highlight-javascript">var o = {
   prop1: 1,
   prop2: &#x27;a&#x27;,
+  prop3: &#x27;b&#x27;,
+  prop4: new Date(),
 };
 
-o.inherit({
-  prop1: 2,
-  prop3: new Date(),
-}, {
-  prop4: 7.52,
+o.each(function(value, key) {
+  console.log(key, value);
 });
 
-console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}
-
-console.log(o.pick(&#x27;prop1&#x27;)); // {prop1: 2}
-
-console.log(o.pick(&#x27;prop1&#x27;, &#x27;prop2&#x27;)); // {prop1: 2, prop2: &#x27;a&#x27;}
-
-console.log(o.pick([&#x27;prop1&#x27;, &#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
-
-console.log(o.pick([&#x27;prop1&#x27;], [&#x27;prop2&#x27;])); // {prop1: 2, prop2: &#x27;a&#x27;}
-
-console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52}</pre>
+// it logs
+&#x27;prop1&#x27;, 1
+&#x27;prop2&#x27;, &#x27;a&#x27;
+&#x27;prop3&#x27;, &#x27;b&#x27;
+&#x27;prop4&#x27;, Date</pre>
 
 
     
@@ -1563,7 +1717,7 @@ console.log(o); // o = {prop1: 2, prop2: &#x27;a&#x27;, prop3: Date, prop4: 7.52
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-04T18:32:33+02:00
+		on 2017-04-05T15:45:41+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

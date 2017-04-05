@@ -1,6 +1,6 @@
 {
   "name": "flavor-js",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.js",
   "scripts": {
@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/blackmirror1980/flavor-js#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "underscore.string": "^3.3.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",
