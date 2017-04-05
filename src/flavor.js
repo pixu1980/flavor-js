@@ -87,16 +87,6 @@ export default class FlavorJS {
   }
 
   /**
-   * initCore
-   * @memberOf FlavorJS
-   * @method initCore
-   * @instance
-   */
-  initCore() {
-    this.inherit(CoreExt);
-  }
-
-  /**
    * extendLodash
    * @memberOf FlavorJS
    * @method extendLodash
@@ -189,7 +179,6 @@ export default class FlavorJS {
    * @instance
    */
   init() {
-    this.initCore();
     this.extendLodash();
     this.extendObject();
     this.extendFunction();
@@ -205,7 +194,7 @@ export default class FlavorJS {
       build: config.build,
     };
 
-    Object.inherit(this, flavorJSStatus);
+    Object.inherit(this, CoreExt, flavorJSStatus);
 
     console.log('FlavorJS initialized', flavorJSStatus);
   }
