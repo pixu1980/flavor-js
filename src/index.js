@@ -21,6 +21,7 @@ import FlavorJS from './flavor';
   // Pass this if window is not defined yet
 })(typeof window !== 'undefined' ? window : this, (window) => {
   let flavorJS;
+
   if(!window.ƒ) {
     flavorJS = new FlavorJS();
     window.ƒ = window.FlavorJS = flavorJS;
