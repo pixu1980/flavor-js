@@ -70,7 +70,11 @@ export default {
      * @return {Array}
      */
     concat(arr) {
-      return _.concat(this, arr);
+      if(!!arr) {
+        return _.concat(this, arr);
+      }
+
+      return this;
     },
     distinct() {
       return _.uniqWith(this, _.isEqual);
