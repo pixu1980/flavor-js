@@ -156,6 +156,1902 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="isArray"><span class="type-signature"></span>isArray(a)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if something is an array
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array to be checked</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = new Array();
+
+console.log(Array.isArray(a)); // true&lt;br&gt;
+console.log(Array.isArray(2)); // false&lt;br&gt;
+console.log(Array.isArray([])); // true&lt;br&gt;
+console.log(Array.isArray(null)); // false</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="contains"><span class="type-signature"></span>contains(a, item [, all])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        checks if an Array contains something
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array to be checked</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">can be anything or an array of anything</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>all</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">specify to check if the array must contain all items</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var arr = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;];
+
+console.log(Array.contains(arr, &#x27;b&#x27;)); // false
+
+console.log(Array.contains(arr, &#x27;a&#x27;)); // true
+
+console.log(Array.contains(arr, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;e&#x27;]); // true
+
+console.log(Array.contains(arr, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;e&#x27;], true); // false
+
+console.log(arr.contains(&#x27;b&#x27;)); // false
+
+console.log(arr.contains(&#x27;a&#x27;)); // true
+
+console.log(arr.contains([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;e&#x27;]); // true
+
+console.log(arr.contains([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;e&#x27;], true); // false</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="concat"><span class="type-signature"></span>concat(a, ac)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        concatenates two arrays
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array to be concatenated</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ac</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array to concatenate or the item to concatenate</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var arr = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;];
+
+console.log(Array.concat(arr, [&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+
+console.log(arr.concat([&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="distinct"><span class="type-signature"></span>distinct(a)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        distincts an array<br><br>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array to be distincted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var arr = [&#x27;a&#x27;, &#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;];
+
+console.log(Array.distinct(arr); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;]
+
+console.log(arr.distinct(]); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;]</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="diff"><span class="type-signature"></span>diff(a, b [, fn])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Creates an array of unique array values not included in the other provided arrays
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the first array to use for the diff</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the second array to use for the diff</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">function to use as comparator for the diff or the propname to check for the equality or nothing for standard equality<br>
+the function will be invoked with an item from the first array and an item from the second array,<br>
+so the funciton has to look like this<br>
+<pre>
+function(aitem, bitem) {}
+</pre>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>aitem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+|
+
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the item from the first array</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bitem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+|
+
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the item from the second array</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var arr = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;];
+var arr2 = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;];
+
+console.log(Array.diff(arr, arr2)); // [&#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;]
+
+console.log(arr.diff(arr2)); // [&#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;]
+
+console.log(Array.diff(arr2, arr)); // [&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+
+console.log(arr2.diff(arr)); // [&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+
+var collection = [{id: 1, type: &#x27;a&#x27;}, {id: 2, type: &#x27;e&#x27;}, {id: 3, type: &#x27;i&#x27;}, {id: 4, type: &#x27;o&#x27;}, {id: 5, type: &#x27;u&#x27;}];
+var collection2 = [{id: 1, type: &#x27;a&#x27;}, {id: 2, type: &#x27;b&#x27;}, {id: 3, type: &#x27;c&#x27;}, {id: 4, type: &#x27;d&#x27;}, {id: 5, type: &#x27;e&#x27;}];
+
+console.log(Array.diff(collection, collection2)); // [{id: 2, type: &#x27;e&#x27;}, {id: 3, type: &#x27;i&#x27;}, {id: 4, type: &#x27;o&#x27;}, {id: 5, type: &#x27;u&#x27;}]
+
+console.log(collection.diff(collection2)); // same as above
+
+console.log(Array.diff(collection, collection2, &#x27;type&#x27;); // [{id: 3, type: &#x27;i&#x27;}, {id: 4, type: &#x27;o&#x27;}, {id: 5, type: &#x27;u&#x27;}]
+
+console.log(collection.diff(collection2, &#x27;type&#x27;); // same as above
+
+console.log(Array.diff(collection, collection2, function(aitem, bitem) {
+  return aitem.type === bitem.type;
+})); // same as above
+
+console.log(collection.diff(collection2, function(aitem, bitem) {
+  return aitem.type === bitem.type;
+})); // same as above</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="diffBy"><span class="type-signature"></span>diffBy(a, b, propName)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Creates an array of unique array values not included in the other provided arrays based on a field equality (aliases Array.diff)
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the first array to use for the diff</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the second array to use for the diff</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the property name to be used in comparator for the diff</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">&lt;caption&gt;eg. usage&lt;/caption&gt;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="sortBy"><span class="type-signature"></span>sortBy(propNames, propDirections)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        sorts an array
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>propNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propDirections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var collection = [
+  {id: 1, type: &#x27;a&#x27;}, 
+  {id: 3, type: &#x27;i&#x27;}, 
+  {id: 5, type: &#x27;u&#x27;}, 
+  {id: 4, type: &#x27;o&#x27;}, 
+  {id: 2, type: &#x27;e&#x27;}
+];
+
+console.log(Array.sortBy(collection, &#x27;type&#x27;)); // [{id: 1, type: &#x27;a&#x27;}, {id: 2, type: &#x27;e&#x27;}, {id: 3, type: &#x27;i&#x27;}, {id: 4, type: &#x27;o&#x27;}, {id: 5, type: &#x27;u&#x27;}] 
+
+console.log(collection.sortBy(&#x27;type&#x27;)); // same as above
+
+console.log(Array.sortBy(collection, &#x27;id&#x27;, &#x27;desc&#x27;)); // [{id: 5, type: &#x27;u&#x27;}, {id: 4, type: &#x27;o&#x27;}, {id: 3, type: &#x27;i&#x27;}, {id: 2, type: &#x27;e&#x27;}, {id: 1, type: &#x27;a&#x27;}] 
+
+console.log(collection.softBy(&#x27;id&#x27;, &#x27;desc&#x27;)); // same as above
+
+var collection = [
+  {type: &#x27;a&#x27;, value: &#x27;a&#x27;}, 
+  {type: &#x27;a&#x27;, value: &#x27;a-2-1&#x27;}, 
+  {type: &#x27;a&#x27;, value: &#x27;a-1-3&#x27;}, 
+  {type: &#x27;c&#x27;, value: &#x27;c&#x27;}, 
+  {type: &#x27;a&#x27;, value: &#x27;a-1-1&#x27;}, 
+  {type: &#x27;b&#x27;, value: &#x27;b&#x27;},
+];
+
+console.log(Array.sortBy(collection, [&#x27;type&#x27;, &#x27;value&#x27;])); 
+// [
+//   {type: &#x27;a&#x27;, value: &#x27;a&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-1-1&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-1-3&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-2-1&#x27;}, 
+//   {type: &#x27;b&#x27;, value: &#x27;b&#x27;},
+//   {type: &#x27;c&#x27;, value: &#x27;c&#x27;}, 
+// ];
+
+console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;])); // same as above
+
+console.log(Array.sortBy(collection, [&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&#x27;, &#x27;desc&#x27;])); 
+// [
+//   {type: &#x27;a&#x27;, value: &#x27;a&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-2-1&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-1-3&#x27;}, 
+//   {type: &#x27;a&#x27;, value: &#x27;a-1-1&#x27;}, 
+//   {type: &#x27;b&#x27;, value: &#x27;b&#x27;},
+//   {type: &#x27;c&#x27;, value: &#x27;c&#x27;}, 
+// ];
+
+console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&#x27;, &#x27;desc&#x27;])); // same as above</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="deepSortBy"><span class="type-signature"></span>deepSortBy(propNames [, propDirections] [, childrenPropName])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        deeply sorts an array
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>propNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propDirections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var collection = [
+  {type: &#x27;b&#x27;, value: &#x27;b&#x27;, items: [
+    {type: &#x27;b&#x27;, value: &#x27;b-1&#x27;},
+    {type: &#x27;b&#x27;, value: &#x27;b-5&#x27;},
+    {type: &#x27;b&#x27;, value: &#x27;b-2&#x27;},
+    {type: &#x27;b&#x27;, value: &#x27;b-4&#x27;},
+    {type: &#x27;b&#x27;, value: &#x27;b-3&#x27;},
+  ]}, 
+  {type: &#x27;d&#x27;, value: &#x27;d&#x27;}, 
+  {type: &#x27;a&#x27;, value: &#x27;a&#x27;, items: [
+    {type: &#x27;a&#x27;, value: &#x27;a-1&#x27;, items: [
+      {type: &#x27;a&#x27;, value: &#x27;a-1-1&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-1-3&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-1-2&#x27;},
+    ]}},
+    {type: &#x27;a&#x27;, value: &#x27;a-5&#x27;, items: [
+      {type: &#x27;a&#x27;, value: &#x27;a-5-1&#x27;},
+    ]}},
+    {type: &#x27;a&#x27;, value: &#x27;a-2&#x27;, items: [
+      {type: &#x27;a&#x27;, value: &#x27;a-2-1&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-2-3&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-2-2&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-2-4&#x27;},
+    ]}},
+    {type: &#x27;a&#x27;, value: &#x27;a-4&#x27;, items: [
+      {type: &#x27;a&#x27;, value: &#x27;a-4-1&#x27;},
+    ]}},
+    {type: &#x27;a&#x27;, value: &#x27;a-3&#x27;, items: [
+      {type: &#x27;a&#x27;, value: &#x27;a-3-2&#x27;},
+      {type: &#x27;a&#x27;, value: &#x27;a-3-1&#x27;},
+    ]}},
+  ]}, 
+  {type: &#x27;c&#x27;, value: &#x27;c&#x27;, items: []}, 
+];
+
+console.log(Array.deepSortBy(collection, [&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&#x27;, &#x27;desc&#x27;], &#x27;items&#x27;)); 
+// [
+//   {type: &#x27;a&#x27;, value: &#x27;a&#x27;, items: [
+//     {type: &#x27;a&#x27;, value: &#x27;a-5&#x27;, items: [
+//       {type: &#x27;a&#x27;, value: &#x27;a-5-1&#x27;},
+//     ]}},
+//     {type: &#x27;a&#x27;, value: &#x27;a-4&#x27;, items: [
+//       {type: &#x27;a&#x27;, value: &#x27;a-4-1&#x27;},
+//     ]}},
+//     {type: &#x27;a&#x27;, value: &#x27;a-3&#x27;, items: [
+//       {type: &#x27;a&#x27;, value: &#x27;a-3-2&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-3-1&#x27;},
+//     ]}},
+//     {type: &#x27;a&#x27;, value: &#x27;a-2&#x27;, items: [
+//       {type: &#x27;a&#x27;, value: &#x27;a-2-4&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-2-3&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-2-2&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-2-1&#x27;},
+//     ]}},
+//     {type: &#x27;a&#x27;, value: &#x27;a-1&#x27;, items: [
+//       {type: &#x27;a&#x27;, value: &#x27;a-1-3&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-1-2&#x27;},
+//       {type: &#x27;a&#x27;, value: &#x27;a-1-1&#x27;},
+//     ]}},
+//   ]}, 
+//   {type: &#x27;b&#x27;, value: &#x27;b&#x27;, items: [
+//     {type: &#x27;b&#x27;, value: &#x27;b-5&#x27;},
+//     {type: &#x27;b&#x27;, value: &#x27;b-4&#x27;},
+//     {type: &#x27;b&#x27;, value: &#x27;b-3&#x27;},
+//     {type: &#x27;b&#x27;, value: &#x27;b-2&#x27;},
+//     {type: &#x27;b&#x27;, value: &#x27;b-1&#x27;},
+//   ]}, 
+//   {type: &#x27;c&#x27;, value: &#x27;c&#x27;, items: []}, 
+//   {type: &#x27;d&#x27;, value: &#x27;d&#x27;}, 
+// ]</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
 
     
 
@@ -208,7 +2104,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-07T16:08:16+02:00
+		on 2017-04-09T13:39:02+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
