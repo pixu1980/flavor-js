@@ -98,6 +98,8 @@ export default {
       if (Number.isNumber(n) && Number.isInteger(n)) {
         return Number.prototype.times.call(n, iteratee, reverse);
       }
+
+      return n;
     },
 
     /**
