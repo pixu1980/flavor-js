@@ -22,11 +22,7 @@ export default {
      * @return {boolean}
      */
     isArray(a) {
-      if (Array.isArray(a)) {
-        return Array.prototype.isArray.call(a);
-      }
-
-      return false;
+      return Array.prototype.isArray.call(a);
     },
 
     /**
