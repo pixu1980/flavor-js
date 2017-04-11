@@ -96,7 +96,7 @@ export default {
      */
     times(n, iteratee, reverse = false) {
       if (Number.isNumber(n) && Number.isInteger(n)) {
-        Number.prototype.times.call(n, iteratee, reverse);
+        return Number.prototype.times.call(n, iteratee, reverse);
       }
     },
 
@@ -319,7 +319,7 @@ export default {
      * @inheritDoc Number.times
      */
     times(iteratee, reverse = false) {
-      (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
+      return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
     },
 
     /**
