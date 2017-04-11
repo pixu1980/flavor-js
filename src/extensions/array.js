@@ -82,7 +82,7 @@ export default {
      */
     concat(a, ac) {
       if (Array.isArray(a)) {
-        return Array.prototype.concat.call(a, item, all);
+        return Array.prototype.concat.call(a, ac);
       }
 
       return a;
@@ -448,7 +448,7 @@ export default {
      * 
      * @param {any} a 
      */
-    random(a, ) {
+    random(a) {
     },
     /**
      * 
@@ -472,7 +472,7 @@ export default {
      * 
      * @param {any} a 
      */
-    first(a, ) {
+    first(a) {
     },
     /**
      * 
@@ -488,7 +488,7 @@ export default {
      * 
      * @param {any} a 
      */
-    last(a, ) {
+    last(a) {
     },
     /**
      * 
@@ -539,7 +539,7 @@ export default {
      * 
      * @param {any} a 
      */
-    shuffle(a, ) {
+    shuffle(a) {
     },
     /**
      * 
@@ -562,14 +562,14 @@ export default {
      * 
      * @param {any} a 
      */
-    tail(a, ) {
+    tail(a) {
     },
     /**
      * 
      * 
      * @param {any} a 
      */
-    cut(a, ) {
+    cut(a) {
     },
     /**
      * 
@@ -585,7 +585,7 @@ export default {
      * 
      * @param {any} a 
      */
-    clone(a, ) {
+    clone(a) {
     },
     /**
      * 
@@ -645,8 +645,9 @@ export default {
         let predicate = _.isEqual;
 
         if (String.isString(fn)) {
+          const propName = fn;
           predicate = (aitem, bitem) => {
-            return item[propName] === bitem[propName];
+            return aitem[propName] === bitem[propName];
           };
         }
 
@@ -712,15 +713,15 @@ export default {
     filterBy(propNames, propValues) {
       let predicate = null;
 
-      if (Function.isFunction(propName)) {
-        predicate = propName;
+      if (Function.isFunction(propNames)) {
+        predicate = propNames;
         return _.filter(this, predicate);
-      } else if (Array.isArray(propValue)) {
-        return _.filterByValues(this, propName, propValue);
+      } else if (Array.isArray(propValues)) {
+        return _.filterByValues(this, propNames, propValues);
       }
 
       predicate = {};
-      predicate[propName] = propValue;
+      predicate[propNames] = propValues;
       return _.filter(this, predicate) || [];
     },
 

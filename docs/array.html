@@ -1506,7 +1506,7 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
             
 <hr>
 <dt>
-    <h4 class="name" id="sortBy"><span class="type-signature"></span>sortBy(propNames, propDirections)</h4>
+    <h4 class="name" id="sortBy"><span class="type-signature"></span>sortBy(a, propNames [, propDirections])</h4>
     
     
 </dt>
@@ -1537,7 +1537,11 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1549,7 +1553,7 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
 
         <tr>
             
-                <td class="name"><code>propNames</code></td>
+                <td class="name"><code>a</code></td>
             
 
             <td class="type">
@@ -1563,10 +1567,61 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array to be sorted</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the propName(s) you want to use for sorting</td>
         </tr>
 
     
@@ -1580,6 +1635,12 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
             
                 
 <span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
+|
+
+<span class="param-type">null</span>
 
 
 
@@ -1587,10 +1648,26 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">the propDirection(s) you want to use for sorting (respect propName(s) order)</td>
         </tr>
 
     
@@ -1733,7 +1810,7 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
             
 <hr>
 <dt>
-    <h4 class="name" id="deepSortBy"><span class="type-signature"></span>deepSortBy(propNames [, propDirections] [, childrenPropName])</h4>
+    <h4 class="name" id="deepSortBy"><span class="type-signature"></span>deepSortBy(a, propNames [, propDirections] [, childrenPropName])</h4>
     
     
 </dt>
@@ -1780,7 +1857,7 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
 
         <tr>
             
-                <td class="name"><code>propNames</code></td>
+                <td class="name"><code>a</code></td>
             
 
             <td class="type">
@@ -1809,7 +1886,46 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">the array to be sorted</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the propName(s) you want to use for sorting</td>
         </tr>
 
     
@@ -1823,6 +1939,12 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
             
                 
 <span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
+|
+
+<span class="param-type">null</span>
 
 
 
@@ -1849,7 +1971,7 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">the propDirection(s) you want to use for sorting (respect propName(s) order)</td>
         </tr>
 
     
@@ -1862,7 +1984,7 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
             <td class="type">
             
                 
-<span class="param-type"><a href="array.html">array</a></span>
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -1889,7 +2011,7 @@ console.log(collection.sortBy([&#x27;type&#x27;, &#x27;value&#x27;], [&#x27;asc&
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">the childrenPropName to be used for sorting</td>
         </tr>
 
     
@@ -2050,6 +2172,214 @@ console.log(Array.deepSortBy(collection, [&#x27;type&#x27;, &#x27;value&#x27;], 
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="filterBy"><span class="type-signature"></span>filterBy(a, propName, propValue)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        filters an array by propName or predicate
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+|
+
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">&lt;caption&gt;eg. usage&lt;/caption&gt;</pre>
+
+
+    
+</dd>
+
         </dl>
     
 
@@ -2104,7 +2434,7 @@ console.log(Array.deepSortBy(collection, [&#x27;type&#x27;, &#x27;value&#x27;], 
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-04-09T13:39:02+02:00
+		on 2017-04-11T09:32:12+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -42,7 +42,7 @@ export default {
      * @return {*|boolean}
      */
     isBetween(n, from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
-      if(!Number.isNumber(n)) {
+      if (!Number.isNumber(n)) {
         return false;
       }
 
@@ -95,7 +95,7 @@ export default {
      * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
      */
     times(n, iteratee, reverse = false) {
-      if(Number.isNumber(n) && Number.isInteger(n)) {
+      if (Number.isNumber(n) && Number.isInteger(n)) {
         Number.prototype.times.call(n, iteratee, reverse);
       }
     },
@@ -138,8 +138,8 @@ export default {
       const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 
       decimal.length.times((i) => {
-        while(str.indexOf(roman[i]) === 0) {
-          if(!result) {
+        while (str.indexOf(roman[i]) === 0) {
+          if (!result) {
             result = 0;
           }
 
@@ -233,7 +233,71 @@ export default {
      * @return {number}
      */
     round(n, precision = 0) {
-      return Number.prototype.round.call(n, precision);
+      if (Number.isNumber(n)) {
+        return Number.prototype.round.call(n, precision);
+      }
+      return n;
+    },
+
+    /**
+     * Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end. A step of -1 is used if a negative start is specified without an end or step. If end is not specified, it's set to start with start then set to 0.
+     * @example <caption>eg. usage</caption>
+     * console.log(Array.range(4));
+     * // [0, 1, 2, 3]
+     *       
+     * console.log(Array.range(-4));
+     * // [0, -1, -2, -3]
+     *  
+     * console.log(Array.range(1, 5));
+     * // [1, 2, 3, 4]
+     *  
+     * console.log(Array.range(0, 20, 5));
+     * // [0, 5, 10, 15]
+     *  
+     * console.log(Array.range(0, -4, -1));
+     * // [0, -1, -2, -3]
+     *  
+     * console.log(Array.range(1, 4, 0));
+     * // [1, 1, 1]
+     *  
+     * console.log(Array.range(0);
+     * // []
+     * @example <caption>eg. usage (reverse)</caption>
+     * console.log(Array.rangeRight(4));
+     * // [3, 2, 1, 0]
+     *  
+     * console.log(Array.rangeRight(-4));
+     * // [-3, -2, -1, 0]
+     *  
+     * console.log(Array.rangeRight(1, 5));
+     * // [4, 3, 2, 1]
+     *  
+     * console.log(Array.rangeRight(0, 20, 5));
+     * // [15, 10, 5, 0]
+     *  
+     * console.log(Array.rangeRight(0, -4, -1));
+     * // [-3, -2, -1, 0]
+     *  
+     * console.log(Array.rangeRight(1, 4, 0));
+     * // [1, 1, 1]
+     *  
+     * console.log(Array.rangeRight(0));
+     * // []
+     * @memberOf number
+     * @method range
+     * @instance
+     * @param {number} [start=0] - the start of the range
+     * @param {number} end - the end of the range
+     * @param {boolean} reverse - true, if ou want a reverse range
+     * @param {number} [step=1] - the value to increment or decrement by
+     * @return {array}
+     */
+    range(start, end = null, reverse = false, step = 1) {
+      if (Number.isNumber(start)) {
+        return Number.prototype.range.call(start, end, reverse, step);
+      }
+
+      return start;
     },
   },
   prototype: {
@@ -268,7 +332,7 @@ export default {
       const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 
       _.times(decimal.length, (i) => {
-        while(num % decimal[i] < num) {
+        while (num % decimal[i] < num) {
           result += roman[i];
           num -= decimal[i];
         }
@@ -283,7 +347,7 @@ export default {
     toFileSize(precision = 0) {
       let fileSizeString = '0 B';
 
-      if(!!this) {
+      if (!!this) {
         const sizes = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
         const i = Math.floor(Math.log(this) / Math.log(1024));
         fileSizeString = parseFloat((this / Math.pow(1024, i)).toFixed(precision)) + sizes[i];
@@ -311,6 +375,17 @@ export default {
      */
     round(precision = 0) {
       return _.round(this, precision);
+    },
+
+    /**
+     * @inheritDoc Number.range
+     */
+    range(end = null, reverse = false, step = 1) {
+      const rangeStart = Number.isNumber(end) ? this : 0;
+      const rangeEnd = Number.isNumber(end) ? end : this;
+      const method = reverse ? 'rangeRight' : 'range';
+
+      return _[method](rangeStart, rangeEnd, step);
     },
   },
 };
