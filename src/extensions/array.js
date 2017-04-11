@@ -345,7 +345,7 @@ export default {
      * @return {array}
      */
     filterBy(a, propName, propValue) {
-      if(Array.isArray(a)) {
+      if (Array.isArray(a)) {
         return Array.prototype.filterBy.call(a, propName, propValue);
       }
 
@@ -357,8 +357,7 @@ export default {
      * @param {any} a 
      * @param {any} item 
      */
-    pull(a, item) {
-    },
+    pull(a, item) {},
     /**
      * 
      * 
@@ -366,8 +365,7 @@ export default {
      * @param {any} propName 
      * @param {any} propValue 
      */
-    pullBy(a, propName, propValue) {
-    },
+    pullBy(a, propName, propValue) {},
     /**
      * 
      * 
@@ -375,8 +373,7 @@ export default {
      * @param {any} propName 
      * @param {any} propValue 
      */
-    findBy(a, propName, propValue) {
-    },
+    findBy(a, propName, propValue) {},
     /**
      * 
      * 
@@ -385,8 +382,7 @@ export default {
      * @param {any} propValue 
      * @param {any} childrenPropName 
      */
-    deepFindBy(a, propName, propValue, childrenPropName) {
-    },
+    deepFindBy(a, propName, propValue, childrenPropName) {},
     /**
      * 
      * 
@@ -394,8 +390,7 @@ export default {
      * @param {any} propName 
      * @param {any} propValue 
      */
-    indexBy(a, propName, propValue) {
-    },
+    indexBy(a, propName, propValue) {},
     /**
      * 
      * 
@@ -403,8 +398,7 @@ export default {
      * @param {any} propName 
      * @param {any} propValue 
      */
-    containsBy(a, propName, propValue) {
-    },
+    containsBy(a, propName, propValue) {},
     /**
      * 
      * 
@@ -413,39 +407,34 @@ export default {
      * @param {any} propValue 
      * @param {any} falseValues 
      */
-    countBy(a, propName, propValue, falseValues) {
-    },
+    countBy(a, propName, propValue, falseValues) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} value 
      */
-    intersection(a, value) {
-    },
+    intersection(a, value) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} value 
      */
-    union(a, value) {
-    },
+    union(a, value) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} callback 
      */
-    removeBy(a, callback) {
-    },
+    removeBy(a, callback) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    random(a) {
-    },
+    random(a) {},
     /**
      * 
      * 
@@ -453,39 +442,20 @@ export default {
      * @param {any} valueField 
      * @param {any} weightField 
      */
-    randomWeighted(a, valueField, weightField) {
-    },
+    randomWeighted(a, valueField, weightField) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} fn 
      */
-    each(a, fn) {
-    },
+    each(a, fn) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    first(a) {
-    },
-    /**
-     * 
-     * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
-     */
-    firstBy(a, propName, propValue) {
-    },
-    /**
-     * 
-     * 
-     * @param {any} a 
-     */
-    last(a) {
-    },
+    first(a) {},
     /**
      * 
      * 
@@ -493,8 +463,21 @@ export default {
      * @param {any} propName 
      * @param {any} propValue 
      */
-    lastBy(a, propName, propValue) {
-    },
+    firstBy(a, propName, propValue) {},
+    /**
+     * 
+     * 
+     * @param {any} a 
+     */
+    last(a) {},
+    /**
+     * 
+     * 
+     * @param {any} a 
+     * @param {any} propName 
+     * @param {any} propValue 
+     */
+    lastBy(a, propName, propValue) {},
     /**
      * 
      * 
@@ -502,8 +485,7 @@ export default {
      * @param {any} propName 
      * @param {any} startValue 
      */
-    sum(a, propName, startValue) {
-    },
+    sum(a, propName, startValue) {},
     /**
      * 
      * 
@@ -511,8 +493,7 @@ export default {
      * @param {any} childrenPropName 
      * @param {any} mapCallback 
      */
-    deepMap(a, childrenPropName, mapCallback) {
-    },
+    deepMap(a, childrenPropName, mapCallback) {},
     /**
      * 
      * 
@@ -520,53 +501,46 @@ export default {
      * @param {any} items 
      * @param {any} itemModel 
      */
-    lorem(a, items, itemModel) {
-    },
+    lorem(a, items, itemModel) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} deep 
      */
-    flatten(a, deep) {
-    },
+    flatten(a, deep) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    shuffle(a) {
-    },
+    shuffle(a) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} n 
      */
-    split(a, n) {
-    },
+    split(a, n) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {boolean} [clone=false] 
      */
-    reverse(a, clone = false) {
-    },
+    reverse(a, clone = false) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    tail(a) {
-    },
+    tail(a) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    cut(a) {
-    },
+    cut(a) {},
     /**
      * 
      * 
@@ -574,23 +548,20 @@ export default {
      * @param {any} fn 
      * @param {any} reverse 
      */
-    times(a, fn, reverse) {
-    },
+    times(a, fn, reverse) {},
     /**
      * 
      * 
      * @param {any} a 
      */
-    clone(a) {
-    },
+    clone(a) {},
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} prop 
      */
-    maxBy(a, prop) {
-    },
+    maxBy(a, prop) {},
   },
   prototype: {
     /**
@@ -705,7 +676,7 @@ export default {
 
       return _.deepOrderBy(this, propNames, propDirections, childrenPropName);
     },
-    
+
     filterBy(propNames, propValues) {
       let predicate = null;
 
@@ -804,10 +775,18 @@ export default {
     lastBy(propName, propValue) {
       return _.last(this.filterBy(propName, propValue));
     },
-    sum(propName, startValue) {
-      return _.reduce(this, (acc, item) => {
-        return acc + item[propName];
-      }, startValue || 0);
+    sum(propName, startValue = 0) {
+      let predicate = null;
+
+      if (Function.isFunction(propName)) {
+        predicate = propName;
+      } else {
+        predicate = (acc, item) => {
+          return acc + item[propName];
+        };
+      }
+
+      return _.reduce(this, predicate, startValue);
     },
     deepMap(childrenPropName, mapCallback) {
       return _.deepMap(this, childrenPropName, mapCallback);
