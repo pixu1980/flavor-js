@@ -242,6 +242,51 @@ export default {
     },
 
     /**
+     * Keeps a value `v` between `min` and `max`.
+     * 
+     * @class clip
+     * @constructor
+     * @param {Number}  v The value to be bounded.
+     * @param {Number}  min The minimum bound for the value.
+     * @param {Number}  max The maximum bound for value.
+     * @returns {Number} The bounded value.
+     */
+    /**
+     * crops a value between specified bounds
+     * @example <caption>eg. usage</caption>
+     * console.log(Number.crop(5, 1, 10)); // 5
+     * 
+     * console.log(Number.crop(5, 2, 4)); // 4
+     *
+     * console.log(Number.crop(5, 2)); // 5
+     *
+     * console.log(Number.crop(5, 6)); // 6
+     *
+     * console.log(Number.crop('5')); // '5'
+     *
+     * console.log((5).crop(1, 10)); // 5
+     * 
+     * console.log((5).crop(2, 4)); // 4
+     *
+     * console.log((5).crop(2)); // 5
+     *
+     * console.log((5).crop(6)); // 6
+     * @memberOf number
+     * @method round
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [precision=0] - the precision number
+     * @return {number}
+     */
+    crop(n, min, max) {
+      if (Number.isNumber(n)) {
+        return Number.prototype.crop.call(n, min, max);
+      }
+
+      return n;
+    },
+
+    /**
      * Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end. A step of -1 is used if a negative start is specified without an end or step. If end is not specified, it's set to start with start then set to 0.
      * @example <caption>eg. usage</caption>
      * console.log(Array.range(4));
@@ -300,6 +345,58 @@ export default {
       }
 
       return start;
+    },
+
+    /**
+     * wraps an angle value (in degrees) between 0 and 359.
+     * 
+     * @class angleWrap
+     * @constructor
+     * @param {Number}  angle The angle in degrees.
+     * @returns {Number} The wrapped value.
+     */
+    degreeWrap(a) {
+      if (Number.isNumber(a)) {
+        return Number.prototype.degreeWrap.call(a);
+      }
+
+      return a;
+    },
+
+    /**
+     * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
+     * result is kept between 0 and 359.
+     * 
+     * @class degreeDiff
+     * @constructor
+     * @param {Number}  a1 The initial angle in degrees.
+     * @param {Number}  a2 The final angle in degrees.
+     * @returns {Number} The angle distance value.
+     */
+    degreeDiff(a1, a2) {
+      if (Number.isNumber(a1) && Number.isNumber(a2)) {
+        return Number.prototype.degreeDiff.call(a1, a2);
+      }
+
+      return 0;
+    },
+
+    /**
+     * Returns the direction that represents the minimum distance from angle `a1` 
+     * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
+     * 
+     * @class degreeDir
+     * @constructor
+     * @param {Number}   a1 The initial angle in degrees.
+     * @param {Number}   a2 The final angle in degrees.
+     * @returns {Integer} A direction -1, 1 or 0.
+     */
+    degreeDir(a1, a2) {
+      if (Number.isNumber(a1) && Number.isNumber(a2)) {
+        return Number.prototype.degreeDir.call(a1, a2);
+      }
+
+      return 0;
     },
   },
   prototype: {
@@ -380,6 +477,13 @@ export default {
     },
 
     /**
+     * @inheritDoc Number.crop
+     */
+    crop(min = Number.MIN_VALUE, max = Number.MAX_VALUE) {
+      return Math.max(Math.min(this, max), min);
+    },
+
+    /**
      * @inheritDoc Number.range
      */
     range(end = null, reverse = false, step = 1) {
@@ -388,6 +492,75 @@ export default {
       const method = reverse ? 'rangeRight' : 'range';
 
       return _[method](rangeStart, rangeEnd, step);
+    },
+
+
+    /**
+     * wraps an angle value (in degrees) between 0 and 359.
+     * 
+     * @class angleWrap
+     * @constructor
+     * @param {Number}  angle The angle in degrees.
+     * @returns {Number} The wrapped value.
+     */
+    degreeWrap(min = 0, max = 360) {
+      return ((this < min) ? max : 0) + this % max;
+    },
+
+
+    /**
+     * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
+     * result is kept between 0 and 359.
+     * 
+     * @class degreeDiff
+     * @constructor
+     * @param {Number}  a1 The initial angle in degrees.
+     * @param {Number}  a2 The final angle in degrees.
+     * @returns {Number} The angle distance value.
+     */
+    degreeDiff(a, min = 0, max = 360) {
+      const ang1 = Number.degreeWrap(this, min, max);
+      const ang2 = Number.degreeWrap(a, min, max);
+
+      let diff = ang2 - ang1;
+
+      if (diff < min) {
+        diff += max;
+      }
+      
+      if (diff > max / 2) {
+        diff = max - diff;
+      }
+
+      return diff;
+    },
+
+
+    /**
+     * Returns the direction that represents the minimum distance from angle `a1` 
+     * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
+     * 
+     * @class degreeDir
+     * @constructor
+     * @param {Number}   a1 The initial angle in degrees.
+     * @param {Number}   a2 The final angle in degrees.
+     * @returns {Integer} A direction -1, 1 or 0.
+     */
+    degreeDir(a, min = 0, max = 360) {
+      const ang1 = Number.degreeWrap(this, min, max);
+      const ang2 = Number.degreeWrap(a, min, max);
+
+      if (ang1 === ang2) {
+        return 0;
+      }
+
+      const diff = Number.degreeDiff(ang1, ang2, min, max);
+      
+      if (diff > max / 2) {
+        return -1;
+      }
+
+      return 1;
     },
   },
 };

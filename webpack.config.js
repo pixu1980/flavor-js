@@ -34,6 +34,16 @@ module.exports = {
       _: 'lodash',
     }),
     new webpack.optimize.OccurrenceOrderPlugin,
+    // // Uglify debug
+    // new webpack.optimize.UglifyJsPlugin({
+    //   mangle: false,
+    //   minimize: true,
+    //   sourceMap: true,
+    //   compress: true,
+    //   output: {
+    //     comments: false,
+    //   },
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
