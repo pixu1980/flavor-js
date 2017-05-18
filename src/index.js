@@ -1,24 +1,33 @@
 import FlavorJS from './flavor';
 
-class FlavorJSInitializer {
-  constructor() {
-    let flavorJS = null;
-
-    try {
-      if (!!window) {
-        if (!window.ƒ) {
-          flavorJS = new FlavorJS();
-          window.ƒ = window.FlavorJS = flavorJS;
-        } else {
-          flavorJS = window.ƒ;
+((global, factory) => {
+  if(typeof module === 'object' && typeof module.exports === 'object') {
+    // For CommonJS and CommonJS-like environments where a proper `window`
+    // is present, execute the factory and get FlavorJS.
+    // For environments that do not have a `window` with a `document`
+    // (such as Node.js), expose a factory as module.exports.
+    // This accentuates the need for the creation of a real `window`.
+    module.exports = global.document ?
+      factory(global, true) :
+      (w) => {
+        if(!w.document) {
+          throw new Error('FlavorJS requires a window with a document');
         }
-      }
-    } catch (e) {
-      flavorJS = new FlavorJS();
-    }
-
-    return flavorJS;
+        return factory(w);
+      };
+  } else {
+    factory(global);
   }
-}
+  // Pass this if window is not defined yet
+})(typeof window !== 'undefined' ? window : this, (window) => {
+  let flavorJS;
 
-export default new FlavorJSInitializer();
+  if(!window.ƒ) {
+    flavorJS = new FlavorJS();
+    window.ƒ = window.FlavorJS = flavorJS;
+  } else {
+    flavorJS = window.ƒ;
+  }
+
+  return flavorJS;
+});
