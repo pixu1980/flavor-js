@@ -34,34 +34,24 @@ module.exports = {
       _: 'lodash',
     }),
     new webpack.optimize.OccurrenceOrderPlugin,
-    // // Uglify debug
+    // Uglify debug
     // new webpack.optimize.UglifyJsPlugin({
     //   mangle: false,
-    //   minimize: true,
+    //   minimize: false,
     //   sourceMap: true,
-    //   compress: true,
+    //   compress: false,
     //   output: {
     //     comments: false,
     //   },
     // }),
     new webpack.optimize.UglifyJsPlugin({
+      mangle: false,
       minimize: true,
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true
-      },
+      compress: true,
+      sourceMap: true,
       output: {
         comments: false
       },
-      sourceMap: true
     }),
   ],
 

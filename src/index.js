@@ -1,16 +1,24 @@
 import FlavorJS from './flavor';
 
-let flavorJS;
+class FlavorJSInitializer {
+  constructor() {
+    let flavorJS = null;
 
-if (!!window) {
-  if (!window.ƒ) {
-    flavorJS = new FlavorJS();
-    window.ƒ = window.FlavorJS = flavorJS;
-  } else {
-    flavorJS = window.ƒ;
+    try {
+      if (!!window) {
+        if (!window.ƒ) {
+          flavorJS = new FlavorJS();
+          window.ƒ = window.FlavorJS = flavorJS;
+        } else {
+          flavorJS = window.ƒ;
+        }
+      }
+    } catch (e) {
+      flavorJS = new FlavorJS();
+    }
+
+    return flavorJS;
   }
 }
 
-const flavorJSinstance = flavorJS;
-
-export default flavorJSinstance;
+export default new FlavorJSInitializer();
