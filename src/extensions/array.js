@@ -31,19 +31,13 @@ export default {
      * var arr = ['a', 'e', 'i', 'o', 'u'];
      *
      * console.log(Array.contains(arr, 'b')); // false
-     *
      * console.log(Array.contains(arr, 'a')); // true
-     *
      * console.log(Array.contains(arr, ['a', 'b', 'e']); // true
-     *
      * console.log(Array.contains(arr, ['a', 'b', 'e'], true); // false
      *
      * console.log(arr.contains('b')); // false
-     *
      * console.log(arr.contains('a')); // true
-     *
      * console.log(arr.contains(['a', 'b', 'e']); // true
-     *
      * console.log(arr.contains(['a', 'b', 'e'], true); // false
      * @memberOf array
      * @method contains
@@ -67,7 +61,6 @@ export default {
      * var arr = ['a', 'e', 'i', 'o', 'u'];
      *
      * console.log(Array.concat(arr, ['b', 'c', 'd']); // ['a', 'e', 'i', 'o', 'u', 'b', 'c', 'd']
-     *
      * console.log(arr.concat(['b', 'c', 'd']); // ['a', 'e', 'i', 'o', 'u', 'b', 'c', 'd']
      * @memberOf array
      * @method concat
@@ -90,7 +83,6 @@ export default {
      * var arr = ['a', 'a', 'e', 'i', 'o', 'u'];
      *
      * console.log(Array.distinct(arr); // ['a', 'e', 'i', 'o', 'u']
-     *
      * console.log(arr.distinct(]); // ['a', 'e', 'i', 'o', 'u']
      * @memberOf array
      * @method distinct
@@ -105,6 +97,7 @@ export default {
 
       return a;
     },
+
     /**
      * Creates an array of unique array values not included in the other provided arrays
      * @example <caption>eg. usage</caption>
@@ -112,22 +105,18 @@ export default {
      * var arr2 = ['a', 'b', 'c', 'd', 'e'];
      *
      * console.log(Array.diff(arr, arr2)); // ['i', 'o', 'u']
-     *
-     * console.log(arr.diff(arr2)); // ['i', 'o', 'u']
+     * console.log(arr.diff(arr2)); // same as above
      *
      * console.log(Array.diff(arr2, arr)); // ['b', 'c', 'd']
-     *
-     * console.log(arr2.diff(arr)); // ['b', 'c', 'd']
+     * console.log(arr2.diff(arr)); // same as above
      * 
      * var collection = [{id: 1, type: 'a'}, {id: 2, type: 'e'}, {id: 3, type: 'i'}, {id: 4, type: 'o'}, {id: 5, type: 'u'}];
      * var collection2 = [{id: 1, type: 'a'}, {id: 2, type: 'b'}, {id: 3, type: 'c'}, {id: 4, type: 'd'}, {id: 5, type: 'e'}];
      * 
      * console.log(Array.diff(collection, collection2)); // [{id: 2, type: 'e'}, {id: 3, type: 'i'}, {id: 4, type: 'o'}, {id: 5, type: 'u'}]
-     * 
      * console.log(collection.diff(collection2)); // same as above
      * 
      * console.log(Array.diff(collection, collection2, 'type'); // [{id: 3, type: 'i'}, {id: 4, type: 'o'}, {id: 5, type: 'u'}]
-     * 
      * console.log(collection.diff(collection2, 'type'); // same as above
      * 
      * console.log(Array.diff(collection, collection2, function(aitem, bitem) {
@@ -169,10 +158,14 @@ export default {
      * @param {array} a - the first array to use for the diff
      * @param {array} b - the second array to use for the diff
      * @param {string} propName - the property name to be used in comparator for the diff
-     * @return {array} 
+     * @return {array|null} 
      */
     diffBy(a, b, propName) {
-      return Array.diff(a, b, propName);
+      if (Array.isArray(a) && Array.isArray(b)) {
+        return Array.diff(a, b, propName);
+      }
+
+      return null;
     },
 
     /**
@@ -187,11 +180,9 @@ export default {
      * ];
      * 
      * console.log(Array.sortBy(collection, 'type')); // [{id: 1, type: 'a'}, {id: 2, type: 'e'}, {id: 3, type: 'i'}, {id: 4, type: 'o'}, {id: 5, type: 'u'}] 
-     * 
      * console.log(collection.sortBy('type')); // same as above
      * 
      * console.log(Array.sortBy(collection, 'id', 'desc')); // [{id: 5, type: 'u'}, {id: 4, type: 'o'}, {id: 3, type: 'i'}, {id: 2, type: 'e'}, {id: 1, type: 'a'}] 
-     * 
      * console.log(collection.softBy('id', 'desc')); // same as above
      * 
      * var collection = [
@@ -335,13 +326,43 @@ export default {
     /**
      * filters an array by propName or predicate
      * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     * ];
      * 
+     * console.log(Array.filterBy(collection, type, 'a'));
+     * // [
+     * //   {type: 'a', value: 'a'}, 
+     * //   {type: 'a', value: 'a-2-1'}, 
+     * //   {type: 'a', value: 'a-1-3'}, 
+     * //   {type: 'a', value: 'a-1-1'}, 
+     * // ]
+     * 
+     * console.log(collection.filterBy('type', 'a')); // same as above
+     * 
+     * console.log(Array.filterBy(collection, function(item) {
+     *   return item.value.contains('1');
+     * }));
+     * // [
+     * //   {type: 'a', value: 'a-2-1'}, 
+     * //   {type: 'a', value: 'a-1-3'}, 
+     * //   {type: 'a', value: 'a-1-1'}, 
+     * // ]
+     * 
+     * console.log(collection.filterBy(function(item) {
+     *   return item.value.contains('1');
+     * })); // same as above
      * @memberOf array
      * @method filterBy
      * @instance
      * @param {array} a 
      * @param {string|function} propName 
-     * @param {array|any} propValue 
+     * @param {any} propValue 
      * @return {array}
      */
     filterBy(a, propName, propValue) {
@@ -351,133 +372,657 @@ export default {
 
       return a;
     },
+
     /**
+     * removes an item from an array 
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     * ];
      * 
+     * console.log(Array.pull(collection, {type: 'a', value: 'a'}));
+     * // [
+     * //   {type: 'a', value: 'a-2-1'}, 
+     * //   {type: 'a', value: 'a-1-3'}, 
+     * //   {type: 'c', value: 'c'}, 
+     * //   {type: 'a', value: 'a-1-1'}, 
+     * //   {type: 'b', value: 'b'},
+     * // ]
      * 
-     * @param {any} a 
-     * @param {any} item 
+     * console.log(collection.pull({type: 'a', value: 'a'})); // same as above
+     * @memberOf array
+     * @method pull
+     * @instance
+     * @param {array} a 
+     * @param {any} any
+     * @return {array}
      */
-    pull(a, item) {},
+    pull(a, item) {
+      if (Array.isArray(a)) {
+        return Array.prototype.pull.call(a, item);
+      }
+
+      return a;
+    },
+
     /**
+     * removes an item from an array by propName/propValue pair or predicate 
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     * ];
      * 
+     * console.log(Array.pullBy(collection, 'type', 'a'));
+     * // [
+     * //   {type: 'c', value: 'c'}, 
+     * //   {type: 'b', value: 'b'},
+     * // ]
      * 
-     * @param {any} a 
-     * @param {any} propName 
+     * console.log(collection.pullBy('type', 'a')); // same as above
+     * 
+     * console.log(Array.pullBy(collection, function(item) {
+     *   return item.value.contains('1');
+     * }));
+     * // [
+     * //   {type: 'a', value: 'a'}, 
+     * //   {type: 'c', value: 'c'}, 
+     * //   {type: 'b', value: 'b'},
+     * // ]
+     * 
+     * console.log(collection.pullBy(function(item) {
+     *   return item.value.contains('1');
+     * })); // same as above
+     * @memberOf array
+     * @method pullBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
      * @param {any} propValue 
+     * @return {array}
      */
-    pullBy(a, propName, propValue) {},
+    pullBy(a, propName, propValue) {
+      if (Array.isArray(a)) {
+        return Array.prototype.pullBy.call(a, propName, propValue);
+      }
+
+      return a;
+    },
+
     /**
+     * finds an item in an array by propName/propValue pair or predicate, 
+     * returns the first element found respecting the specified predicate
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     * ];
      * 
+     * console.log(Array.findBy(collection, 'type', 'a')); // {type: 'a', value: 'a'} 
+     * console.log(collection.findBy('type', 'a')); // same as above
      * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
+     * console.log(Array.findBy(collection, 'type', 'a', true)); // {type: 'a', value: 'a-1-1'} 
+     * console.log(collection.findBy('type', 'a', true)); // same as above
+     * 
+     * console.log(Array.findBy(collection, function(item, index, collection){
+     *   return item.value.contains('1');
+     * })); // {type: 'a', value: 'a-2-1'} 
+     * 
+     * console.log(collection.findBy(function(item, index, collection){
+     *   return item.value.contains('1');
+     * })); // same as above
+     * 
+     * console.log(Array.findBy(collection, function(item, index, collection){
+     *   return item.value.contains('1');
+     * }, true)); // {type: 'a', value: 'a-1-1'} 
+     * 
+     * console.log(collection.findBy(function(item, index, collection){
+     *   return item.value.contains('1');
+     * }, true)); // same as above
+     * 
+     * @memberOf array
+     * @method findBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
+     * @param {any} [propValue=null] 
+     * @param {boolean} [reverse=false] - is true specified to search from right to left
+     * @return {any|null}
      */
-    findBy(a, propName, propValue) {},
+    findBy(a, propName, propValue = null, reverse = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.findBy.call(a, propName, propValue);
+      }
+
+      return a;
+    },
+
     /**
+     * deeply sorts an array
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'b', value: 'b', items: [
+     *     {type: 'b', value: 'b-1'},
+     *     {type: 'b', value: 'b-5'},
+     *     {type: 'b', value: 'b-2'},
+     *     {type: 'b', value: 'b-4'},
+     *     {type: 'b', value: 'b-3'},
+     *   ]}, 
+     *   {type: 'd', value: 'd'}, 
+     *   {type: 'a', value: 'a', items: [
+     *     {type: 'a', value: 'a-1', items: [
+     *       {type: 'a', value: 'a-1-1'},
+     *       {type: 'a', value: 'a-1-3'},
+     *       {type: 'a', value: 'a-1-2'},
+     *     ]}},
+     *     {type: 'a', value: 'a-5', items: [
+     *       {type: 'a', value: 'a-5-1'},
+     *     ]}},
+     *     {type: 'a', value: 'a-2', items: [
+     *       {type: 'a', value: 'a-2-1'},
+     *       {type: 'a', value: 'a-2-3'},
+     *       {type: 'a', value: 'a-2-2'},
+     *       {type: 'a', value: 'a-2-4'},
+     *     ]}},
+     *     {type: 'a', value: 'a-4', items: [
+     *       {type: 'a', value: 'a-4-1'},
+     *     ]}},
+     *     {type: 'a', value: 'a-3', items: [
+     *       {type: 'a', value: 'a-3-2'},
+     *       {type: 'a', value: 'a-3-1'},
+     *     ]}},
+     *   ]}, 
+     *   {type: 'c', value: 'c', items: []}, 
+     * ];
      * 
+     * console.log(Array.deepFindBy(collection, 'value', 'a-2-1', 'items')); // {type: 'a', value: 'a-2-1'}
+     * console.log(collection.deepFindBy('value', 'a-2-1', 'items')); // same as above
      * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
-     * @param {any} childrenPropName 
+     * console.log(Array.deepFindBy(collection, function(item) {
+     *    return item.value.contains('a-2-1');
+     * }, null, 'items')); // {type: 'a', value: 'a-2-1'}
+     * 
+     * console.log(collection.deepFindBy(function(item) {
+     *    return item.value.contains('a-2-1');
+     * }, null, 'items')); // same as above
+     * 
+     * @memberOf array
+     * @method deepFindBy
+     * @instance
+     * @param {array} a - the array 
+     * @param {string|function} propName - the propName you want to use for the deep find
+     * @param {any} [propValue=null] - the propValue you want to use for the deep find
+     * @param {string} [childrenPropName='children'] - the childrenPropName to be used for the deep find recursion
+     * @return {array}
      */
-    deepFindBy(a, propName, propValue, childrenPropName) {},
+    deepFindBy(a, propName, propValue = null, childrenPropName = 'children') {
+      if (Array.isArray(a)) {
+        return Array.prototype.deepFindBy.call(a, propName, propValue, childrenPropName);
+      }
+
+      return a;
+    },
+
     /**
+     * finds the index of an item in an array by propName/propValue pair or predicate, 
+     * returns the first element found respecting the specified predicate
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     * ];
      * 
+     * console.log(Array.indexBy(collection, 'type', 'a')); // 0
+     * console.log(collection.indexBy('type', 'a')); // same as above
      * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
+     * console.log(Array.indexBy(collection, 'type', 'a', true)); // 4
+     * console.log(collection.indexBy('type', 'a', true)); // same as above
+     * 
+     * console.log(Array.indexBy(collection, function(item, index, collection){
+     *   return item.value.contains('1');
+     * })); // 1
+     * 
+     * console.log(collection.indexBy(function(item, index, collection){
+     *   return item.value.contains('1');
+     * })); // same as above
+     * 
+     * console.log(Array.indexBy(collection, function(item, index, collection){
+     *   return item.value.contains('1');
+     * }, true)); // 4
+     * 
+     * console.log(collection.indexBy(function(item, index, collection){
+     *   return item.value.contains('1');
+     * }, true)); // same as above
+     * 
+     * @memberOf array
+     * @method indexBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
+     * @param {any} [propValue=null] 
+     * @param {boolean} [reverse=false] - is true specified to search from right to left
+     * @return {any|null}
      */
-    indexBy(a, propName, propValue) {},
+    indexBy(a, propName, propValue, reverse = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.indexBy.call(a, propName, propValue, reverse);
+      }
+
+      return a;
+    },
+
     /**
+     * checks if an array contains an item by propName/propValue pair or predicate, 
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     *   {type: 'b', value: 'b-1-1'},
+     * ];
      * 
+     * console.log(Array.containsBy(collection, 'value', 'a-2-2')); // false
+     * console.log(collection.containsBy('value', 'a-2-2')); // same as above
      * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
+     * console.log(Array.containsBy(collection, 'value', 'a-2-1')); // true
+     * console.log(collection.containsBy('value', 'a-2-1')); // same as above
+     * 
+     * console.log(Array.containsBy(collection, function(item) {
+     *   return item.type === 'c';
+     * })); // true
+     * 
+     * console.log(collection.containsBy(function(item) {
+     *   return item.type === 'c';
+     * })); // same as above
+     * @memberOf array
+     * @method containsBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
+     * @param {any} [propValue=null] 
+     * @return {any|null}
      */
-    containsBy(a, propName, propValue) {},
+    containsBy(a, propName, propValue = null) {
+      if (Array.isArray(a)) {
+        return Array.prototype.containsBy.call(a, propName, propValue);
+      }
+
+      return false;
+    },
+
     /**
+     * counts items in array that respects propName/propValue pair or predicate, 
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 'a'}, 
+     *   {type: 'a', value: 'a-2-1'}, 
+     *   {type: 'a', value: 'a-1-3'}, 
+     *   {type: 'c', value: 'c'}, 
+     *   {type: 'a', value: 'a-1-1'}, 
+     *   {type: 'b', value: 'b'},
+     *   {type: 'b', value: 'b-1-1'},
+     * ];
      * 
+     * console.log(Array.countBy(collection, 'type', 'a')); // 4
+     * console.log(collection.countBy('type', 'a')); // same as above
      * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
-     * @param {any} falseValues 
+     * console.log(Array.countBy(collection, 'type', 'a', true)); // 3, it counts false values
+     * console.log(collection.countBy('type', 'a', true)); // same as above
+     * 
+     * console.log(Array.countBy(collection, function(item) {
+     *   return item.type === 'b';
+     * })); // 2
+     * 
+     * console.log(collection.countBy(function(item) {
+     *   return item.type === 'b';
+     * })); // same as above
+     * 
+     * console.log(Array.countBy(collection, function(item) {
+     *   return item.type === 'b';
+     * }, null, true)); // 5, it counts false values
+     * 
+     * console.log(collection.countBy(function(item) {
+     *   return item.type === 'b';
+     * }, null, true)); // same as above
+     * @memberOf array
+     * @method countBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
+     * @param {any|null} [propValue=null] 
+     * @param {boolean} [falseValues=false]
+     * @return {number}
      */
-    countBy(a, propName, propValue, falseValues) {},
+    countBy(a, propName, propValue = null, falseValues = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.countBy.call(a, propName, propValue, falseValues);
+      }
+
+      return 0;
+    },
+
     /**
+     * returns a new array with the intersection of passed arrays 
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     * var b = [1, 4, 5, 7, 8];
      * 
+     * console.log(Array.intersection(a, b)); // [1, 4, 5]
+     * console.log(a.intersection(b)); // same as above
      * 
-     * @param {any} a 
-     * @param {any} value 
+     * var a = [
+     *   {type: 1, value: 1},
+     *   {type: 1, value: 2},
+     *   {type: 2, value: 1},
+     *   {type: 2, value: 2},
+     *   {type: 3, value: 1},
+     * ];
+     * 
+     * var b = [
+     *   {type: 1, value: 1},
+     *   {type: 2, value: 1},
+     *   {type: 2, value: 3},
+     *   {type: 3, value: 2},
+     *   {type: 4, value: 1},
+     *   {type: 5, value: 1},
+     * ];
+     * 
+     * console.log(Array.intersection(a, b));
+     * // [
+     * //   {type: 1, value: 1},
+     * //   {type: 2, value: 1},
+     * // ]
+     * 
+     * console.log(a.intersection(b)); // same as above
+     * 
+     * var c = [
+     *   {type: 1, value: 1},
+     *   {type: 1, value: 2},
+     *   {type: 2, value: 4},
+     * ];
+     * 
+     * console.log(Array.intersection(a, b, c));
+     * // [
+     * //   {type: 1, value: 1},
+     * // ]
+     * 
+     * console.log(a.intersection(b, c)); // same as above
+     * 
+     * @memberOf array
+     * @method intersection
+     * @instance
+     * @param {array} a 
+     * @param {...array} arrays 
+     * @return {any|null}
      */
-    intersection(a, value) {},
+    intersection(a, ...arrays) {
+      if (Array.isArray(a)) {
+        return Array.prototype.intersection.call(a, ...arrays);
+      }
+
+      return [];
+    },
+
     /**
+     * returns a new array with the union of passed arrays 
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     * var b = [1, 4, 5, 7, 8];
      * 
+     * console.log(Array.union(a, b)); // [1, 2, 3, 4, 5, 7, 8]
+     * console.log(a.union(b)); // same as above
      * 
-     * @param {any} a 
-     * @param {any} value 
+     * var a = [
+     *   {type: 1, value: 1},
+     *   {type: 1, value: 2},
+     *   {type: 2, value: 1},
+     *   {type: 2, value: 2},
+     *   {type: 3, value: 1},
+     * ];
+     * 
+     * var b = [
+     *   {type: 1, value: 1},
+     *   {type: 2, value: 1},
+     *   {type: 2, value: 3},
+     *   {type: 3, value: 2},
+     *   {type: 4, value: 1},
+     *   {type: 5, value: 1},
+     * ];
+     * 
+     * console.log(Array.union(a, b));
+     * // [
+     * //   {type: 1, value: 1},
+     * //   {type: 1, value: 2},
+     * //   {type: 2, value: 1},
+     * //   {type: 2, value: 2},
+     * //   {type: 3, value: 1},
+     * //   {type: 2, value: 3},
+     * //   {type: 4, value: 1},
+     * //   {type: 5, value: 1},
+     * // ]
+     * 
+     * console.log(a.union(b)); // same as above
+     * 
+     * var c = [
+     *   {type: 1, value: 1},
+     *   {type: 1, value: 2},
+     *   {type: 2, value: 4},
+     * ];
+     * 
+     * console.log(Array.union(a, b, c));
+     * // [
+     * //   {type: 1, value: 1},
+     * //   {type: 1, value: 2},
+     * //   {type: 2, value: 1},
+     * //   {type: 2, value: 2},
+     * //   {type: 3, value: 1},
+     * //   {type: 2, value: 3},
+     * //   {type: 4, value: 1},
+     * //   {type: 5, value: 1},
+     * //   {type: 2, value: 4},
+     * // ]
+     * 
+     * console.log(a.union(b, c)); // same as above
+     * @memberOf array
+     * @method union
+     * @instance
+     * @param {array} a 
+     * @param {...array} arrays 
+     * @return {any|null}
      */
-    union(a, value) {},
+    union(a, ...arrays) {
+      if (Array.isArray(a)) {
+        return Array.prototype.union.call(a, ...arrays);
+      }
+
+      return [];
+    },
+
     /**
-     * 
-     * 
-     * @param {any} a 
-     * @param {any} callback 
+     * @alias array.pullBy
+     * @memberOf array
+     * @method removeBy
+     * @instance
+     * @param {array} a 
+     * @param {string|function} propName 
+     * @param {any} [propValue=null] 
+     * @return {array}
      */
-    removeBy(a, callback) {},
+    removeBy(a, propName, propValue = null) {
+      if (Array.isArray(a)) {
+        return Array.prototype.pullBy.call(a, propName, propValue);
+      }
+
+      return a;
+    },
+
     /**
+     * randomizes an item from an array, with optional weight parameters
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
      * 
+     * console.log(Array.random(a)); // eg. 3
+     * console.log(a.random()); // same as above
      * 
-     * @param {any} a 
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
+     * 
+     * console.log(Array.random(a)); // eg. {type: 'a', value: 1}
+     * console.log(a.random()); // same as above
+     * 
+     * var a = [
+     *   {type: 'a', value: 1, weight: 3},
+     *   {type: 'b', value: 2, weight: 5},
+     *   {type: 'c', value: 3, weight: 1},
+     *   {type: 'd', value: 4, weight: 1},
+     * ];
+     * 
+     * console.log(Array.random(a, 'weight')); // eg. {type: 'b', value: 2}
+     * console.log(a.random('weight')); // same as above
+     * 
+     * console.log(Array.random(a, 'weight', 'value')); // eg. 2
+     * console.log(a.random('weight', 'value')); // same as above
+     * @memberOf array
+     * @method random
+     * @instance
+     * @param {array} a 
+     * @param {string} [weightField=null]
+     * @param {string} [valueField=null] 
+     * @return {any|null}
      */
-    random(a) {},
+    random(a, weightField = null, valueField = null) {
+      if (Array.isArray(a)) {
+        return Array.prototype.random.call(a, weightField, valueField);
+      }
+
+      return null;
+    },
+
     /**
+     * executes an iteratee n times as the array length, the iteratee will be invoked with tree arguments item, index, array
+     * @example <caption>eg. usage</caption>
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
      * 
+     * Array.each(a, function(item, index) {
+     *   console.log(item.type);
+     * });
      * 
-     * @param {any} a 
-     * @param {any} valueField 
-     * @param {any} weightField 
+     * // it logs
+     * // 'a'
+     * // 'b'
+     * // 'c'
+     * // 'd'
+     * 
+     * Array.each(a, function(item, index) {
+     *   console.log(item.type);
+     * }, true);
+     * 
+     * // it logs
+     * // 'd'
+     * // 'c'
+     * // 'b'
+     * // 'a'
+     * @memberOf array
+     * @method each
+     * @instance
+     * @param {array} a 
+     * @param {function} iteratee
+     * @param {boolean} [reverse=false] - true if you want to do a reverse cycle
+     * @return {array}
      */
-    randomWeighted(a, valueField, weightField) {},
+    each(a, iteratee, reverse = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.each.call(a, iteratee, reverse);
+      }
+
+      return a;
+    },
+
     /**
+     * returns the first item in an array, with optional propName/propValue pair or predicate
+     * @example <caption>eg. usage</caption>
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
      * 
-     * 
-     * @param {any} a 
-     * @param {any} fn 
+     * console.log(Array.first(a)); // {type: 'a', value: 1}
+     * console.log(a.first())); // {type: 'a', value: 1}
+     * @memberOf array
+     * @method first
+     * @instance
+     * @param {array} a 
+     * @param {string} [propName=null]
+     * @param {string} [propValue=null] 
+     * @return {any}
      */
-    each(a, fn) {},
+    first(a, propName=null, propValue=null) { 
+      if(Array.isArray(a)) {
+        return Array.prototype.first.call(a, propName, propValue);
+      }
+
+      return a;
+    },
+
     /**
+     * returns the last item in an array, with optional propName/propValue pair or predicate
+     * @example <caption>eg. usage</caption>
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
      * 
-     * 
-     * @param {any} a 
+     * console.log(Array.last(a)); // {type: 'd', value: 4}
+     * console.log(a.last())); // {type: 'd', value: 4}
+     * @memberOf array
+     * @method last
+     * @instance
+     * @param {array} a 
+     * @param {string} [propName=null]
+     * @param {string} [propValue=null] 
+     * @return {any}
      */
-    first(a) {},
-    /**
-     * 
-     * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
-     */
-    firstBy(a, propName, propValue) {},
-    /**
-     * 
-     * 
-     * @param {any} a 
-     */
-    last(a) {},
-    /**
-     * 
-     * 
-     * @param {any} a 
-     * @param {any} propName 
-     * @param {any} propValue 
-     */
-    lastBy(a, propName, propValue) {},
+    last(a, propName=null, propValue=null) { 
+      if(Array.isArray(a)) {
+        return Array.prototype.last.call(a, propName, propValue);
+      }
+
+      return a;
+    },
+
     /**
      * 
      * 
@@ -485,7 +1030,7 @@ export default {
      * @param {any} propName 
      * @param {any} startValue 
      */
-    sum(a, propName, startValue) {},
+    sum(a, propName, startValue) { },
     /**
      * 
      * 
@@ -493,7 +1038,7 @@ export default {
      * @param {any} childrenPropName 
      * @param {any} mapCallback 
      */
-    deepMap(a, childrenPropName, mapCallback) {},
+    deepMap(a, childrenPropName, mapCallback) { },
     /**
      * 
      * 
@@ -501,79 +1046,110 @@ export default {
      * @param {any} items 
      * @param {any} itemModel 
      */
-    lorem(a, items, itemModel) {},
+    lorem(a, items, itemModel) { },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} deep 
      */
-    flatten(a, deep) {},
+    flatten(a, deep) { },
     /**
      * 
      * 
      * @param {any} a 
      */
-    shuffle(a) {},
+    shuffle(a) { },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} n 
      */
-    split(a, n) {},
+    split(a, n) { },
     /**
      * 
      * 
      * @param {any} a 
      * @param {boolean} [clone=false] 
      */
-    reverse(a, clone = false) {},
+    reverse(a, clone = false) { },
     /**
      * 
      * 
      * @param {any} a 
      */
-    tail(a) {},
+    tail(a) { },
     /**
      * 
      * 
      * @param {any} a 
      */
-    cut(a) {},
+    cut(a) { },
+
     /**
+     * clones an array
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 1}, 
+     *   {type: 'b', value: 8}, 
+     *   {type: 'c', value: 5}, 
+     *   {type: 'd', value: 7}, 
+     *   {type: 'e', value: 9}, 
+     *   {type: 'f', value: 3},
+     * ];
+     *
+     * var clone = Array.clone(collection); // or var clone = collection.clone();
      * 
-     * 
-     * @param {any} a 
-     * @param {any} fn 
-     * @param {any} reverse 
+     * console.log(collection === clone); // false;
+     * @memberOf array
+     * @method clone
+     * @return {array} 
      */
-    times(a, fn, reverse) {},
+    clone(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.clone.call(a);
+      }
+
+      return a;
+    },
+
     /**
+     * finds max value by property name in a collection array
+     * @example <caption>eg. usage</caption>
+     * var collection = [
+     *   {type: 'a', value: 1}, 
+     *   {type: 'b', value: 8}, 
+     *   {type: 'c', value: 5}, 
+     *   {type: 'd', value: 7}, 
+     *   {type: 'e', value: 9}, 
+     *   {type: 'f', value: 3},
+     * ];
+     *
+     * console.log(Array.maxBy(a, 'value')); // {type:'e', value: 9}
+     * console.log(Array.maxBy(a, 'type')); // {type:'f', value: 3}
      * 
-     * 
-     * @param {any} a 
+     * console.log(a.maxBy('value')); // {type:'e', value: 9}
+     * console.log(a.maxBy('type')); // {type:'f', value: 3}
+     * @memberOf array
+     * @method isArray
+     * @param {array} a - the array to check for max value 
+     * @param {string} [propName=null] - the property name to use for comparation
+     * @return {object}
      */
-    clone(a) {},
-    /**
-     * 
-     * 
-     * @param {any} a 
-     * @param {any} prop 
-     */
-    maxBy(a, prop) {},
+    maxBy(a, propName) {
+      if (Array.isArray(a)) {
+        return Array.prototype.maxBy.call(a, propName);
+      }
+
+      return a;
+    },
   },
   prototype: {
-    /**
-     * @inheritDoc array.isArray
-     */
     isArray() {
       return _.isArray(this);
     },
 
-    /**
-     * @inheritDoc array.contains
-     */
     contains(item, all = false) {
       if (_.isArray(item)) {
         if (!!all) {
@@ -586,9 +1162,6 @@ export default {
       return _.includes(this, item);
     },
 
-    /**
-     * @inheritDoc array.concat
-     */
     concat(arr) {
       if (!!arr) {
         return _.concat(this, arr);
@@ -597,16 +1170,10 @@ export default {
       return this;
     },
 
-    /**
-     * @inheritDoc array.distinct
-     */
     distinct() {
       return _.uniqWith(this, _.isEqual);
     },
 
-    /**
-     * @inheritDoc array.diff
-     */
     diff(arr, fn = null) {
       if (Array.isArray(arr)) {
         let predicate = _.isEqual;
@@ -628,16 +1195,10 @@ export default {
       return [];
     },
 
-    /**
-     * @inheritDoc array.diffBy
-     */
     diffBy(arr, propName) {
       return this.diff(arr, propName);
     },
 
-    /**
-     * @inheritDoc array.sortBy
-     */
     sortBy(propNames, propDirections) {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -656,9 +1217,6 @@ export default {
       return _.orderBy(this, propNames, propDirections);
     },
 
-    /**
-     * @inheritDoc array.deepSortBy
-     */
     deepSortBy(propNames, propDirections = null, childrenPropName = 'children') {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -695,6 +1253,7 @@ export default {
     pull(item) {
       return _.pull(this, item);
     },
+
     pullBy(propName, propValue) {
       if (_.isArray(propName) && _.isFunction(propValue)) {
         const values = propName;
@@ -706,75 +1265,133 @@ export default {
       predicate[propName] = propValue;
       return _.pullAllBy(this, [predicate]);
     },
-    findBy(propName, propValue) {
+
+    findBy(propName, propValue = null, reverse = false) {
       let predicate = null;
 
-      if (_.isFunction(propName)) {
+      if (Function.isFunction(propName) || Object.isObject(propName)) {
         predicate = propName;
+      } else if (String.isString(propName)) {
+        predicate = {};
+        predicate[propName] = propValue;
+      }
+
+      if (predicate) {
+        if (reverse) {
+          return _.findLast(this, predicate);
+        }
+
         return _.find(this, predicate);
       }
 
-      predicate = {};
-      predicate[propName] = propValue;
-      return _.find(this, predicate);
+      return null;
     },
-    deepFindBy(propName, propValue, childrenPropName) {
-      return _.deepFindBy(this, propName, propValue, childrenPropName || 'children');
+
+    deepFindBy(propName, propValue = null, childrenPropName = 'children') {
+      return _.deepFindBy(this, propName, propValue, childrenPropName);
     },
-    indexBy(propName, propValue) {
-      const predicate = {};
-      predicate[propName] = propValue;
-      return _.findIndex(this, predicate);
+
+    indexBy(propName, propValue, reverse = false) {
+      let predicate = null;
+
+      if (Function.isFunction(propName) || Object.isObject(propName)) {
+        predicate = propName;
+      } else if (String.isString(propName)) {
+        predicate = {};
+        predicate[propName] = propValue;
+      }
+
+      if (predicate) {
+        if (reverse) {
+          return _.findLastIndex(this, predicate);
+        }
+
+        return _.findIndex(this, predicate);
+      }
+
+      return null;
     },
+
     containsBy(propName, propValue) {
       return this.findBy(propName, propValue) !== undefined;
     },
+
     countBy(propName, propValue, falseValues) {
       let predicate = null;
 
-      if (_.isFunction(propName)) {
+      if (Function.isFunction(propName) || Object.isObject(propName)) {
         predicate = propName;
+      } else if (String.isString(propName)) {
+        predicate = {};
+        predicate[propName] = propValue;
+      }
+
+      if (!!predicate) {
         return _.countBy(this, predicate)[!!falseValues ? 'false' : 'true'];
       }
 
-      predicate = {};
-      predicate[propName] = propValue;
-      return _.countBy(this, predicate)[!!falseValues ? 'false' : 'true'];
+      return 0;
     },
-    intersection(value) {
-      return _.intersection(this, value);
+
+    intersection(...arrays) {
+      return _.intersection(this, ...arrays);
     },
-    union(value) {
-      return _.unionWith(this, _.isArray(value) ? value : [value], _.isEqual);
+
+    union(...arrays) {
+      return _.unionWith(this, ...arrays, _.isEqual);
     },
-    removeBy(callback) {
-      return _.remove(this, callback);
-    },
-    random() {
+
+    random(weightField = null, valueField = null) {
+      if (!!weightField) {
+        return this.map((item) => {
+          return _.times(item[weightField || 'weight'], () => {
+            if (!!valueField) {
+              return item[valueField || 'value'];
+            }
+
+            return _.omit(item, weightField);
+          });
+        }).flatten().shuffle().first();
+      }
+
       return _.sample(this);
     },
-    randomWeighted(valueField, weightField) {
-      return this.map((item) => {
-        return _.times(item[weightField || 'weight'], () => {
-          return item[valueField || 'value'];
-        });
-      }).flatten().shuffle().first();
+
+    each(iteratee, reverse = false) {
+      if (!!reverse) {
+        return _.eachRight(this, iteratee);
+      }
+
+      return _.each(this, iteratee);
     },
-    each(fn) {
-      return _.each(this, fn);
+
+    first(propName, propValue) {
+      var a = this;
+
+      if(!!propName) {
+        a = this.filterBy(propName, propValue);
+      }
+
+      return _.first(a);
     },
-    first() {
-      return _.first(this);
+
+    last(propName, propValue) {
+      var a = this;
+
+      if(!!propName) {
+        a = this.filterBy(propName, propValue);
+      }
+
+      return _.last(a);
     },
-    firstBy(propName, propValue) {
-      return _.first(this.filterBy(propName, propValue));
-    },
-    last() {
-      return _.last(this);
-    },
-    lastBy(propName, propValue) {
-      return _.last(this.filterBy(propName, propValue));
-    },
+
+    /**
+     * 
+     * 
+     * @param {any} propName 
+     * @param {number} [startValue=0] 
+     * @returns 
+     */
     sum(propName, startValue = 0) {
       let predicate = null;
 
@@ -788,14 +1405,37 @@ export default {
 
       return _.reduce(this, predicate, startValue);
     },
+
+    /**
+     * 
+     * 
+     * @param {any} childrenPropName 
+     * @param {any} mapCallback 
+     * @returns 
+     */
     deepMap(childrenPropName, mapCallback) {
       return _.deepMap(this, childrenPropName, mapCallback);
     },
+
+    /**
+     * 
+     * 
+     * @param {any} items 
+     * @param {any} itemModel 
+     * @returns 
+     */
     lorem(items, itemModel) {
       return _.times(items, () => {
         return _.isFunction(itemModel) ? itemModel() : itemModel;
       });
     },
+
+    /**
+     * 
+     * 
+     * @param {any} deep 
+     * @returns 
+     */
     flatten(deep) {
       if (!!deep) {
         return _.flattenDeep(this);
@@ -803,12 +1443,32 @@ export default {
 
       return _.flatten(this);
     },
+
+    /**
+     * 
+     * 
+     * @returns 
+     */
     shuffle() {
       return _.shuffle(this);
     },
+
+    /**
+     * 
+     * 
+     * @param {any} n 
+     * @returns 
+     */
     split(n) {
       return _.chunk(this, n);
     },
+
+    /**
+     * 
+     * 
+     * @param {boolean} [clone=false] 
+     * @returns 
+     */
     reverse(clone = false) {
       if (!!clone) {
         return _.reverse(_.clone(this));
@@ -816,20 +1476,35 @@ export default {
 
       return _.reverse(this);
     },
+
+    /**
+     * 
+     * 
+     * @returns 
+     */
     tail() {
       return _.tail(this);
     },
+
+    /**
+     * 
+     * 
+     * @returns 
+     */
     cut() {
       return _.initial(this);
     },
-    times(fn, reverse) {
-      return _.timesRange(this.first(), this.last(), fn, reverse);
-    },
+
     clone() {
       return [...this];
     },
-    maxBy(prop) {
-      return _.maxBy(this, prop);
+
+    maxBy(propName = null) {
+      if (propName) {
+        return _.maxBy(this, propName);
+      }
+
+      return null;
     },
   },
 };

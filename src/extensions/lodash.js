@@ -45,7 +45,7 @@ export default {
    * @return {null|number}
    */
   parsePercentage(s) {
-    if(String.isString(s) && String.isPercentage(s)) {
+    if (String.isString(s) && String.isPercentage(s)) {
       return String.parsePercentage(s);
     }
 
@@ -124,8 +124,8 @@ export default {
    */
   deepMap(collection, childrenPropName = 'children', mapCallback) {
     return _.map(collection, (item) => {
-      if(!!item[childrenPropName]) {
-        if(_.isArray(item[childrenPropName])) {
+      if (!!item[childrenPropName]) {
+        if (_.isArray(item[childrenPropName])) {
           item[childrenPropName] = _.deepMap(item[childrenPropName], childrenPropName, mapCallback);
         }
       }
@@ -188,16 +188,16 @@ export default {
     let found = null;
 
     collection.each((item) => {
-      if(!found) {
-        if(_.isFunction(propName)) {
+      if (!found) {
+        if (_.isFunction(propName)) {
           /**
-           * use propName ad predicate
+           * use propName as predicate
            */
           found = propName(item);
-        } else if(item[propName] === propValue) {
+        } else if (item[propName] === propValue) {
           found = item;
-        } else if(!!item[childrenPropName]) {
-          if(_.isArray(item[childrenPropName])) {
+        } else if (!!item[childrenPropName]) {
+          if (_.isArray(item[childrenPropName])) {
             found = _.deepFindBy(item[childrenPropName], propName, propValue, childrenPropName);
           }
         }
@@ -272,12 +272,12 @@ export default {
    * @return {Array|object}
    */
   deepOrderBy(collection, propNames, propDirections, childrenPropName = 'children') {
-    if(_.isString(propNames)) {
+    if (_.isString(propNames)) {
       propNames = [propNames];
     }
 
-    if(!!propDirections) {
-      if(_.isString(propDirections)) {
+    if (!!propDirections) {
+      if (_.isString(propDirections)) {
         propDirections = [propDirections];
       }
     } else {
@@ -289,8 +289,8 @@ export default {
     collection = _.orderBy(collection, propNames, propDirections);
 
     collection.each((item) => {
-      if(!!item[childrenPropName]) {
-        if(_.isArray(item[childrenPropName])) {
+      if (!!item[childrenPropName]) {
+        if (_.isArray(item[childrenPropName])) {
           item[childrenPropName] = _.deepOrderBy(item[childrenPropName], propNames, propDirections, childrenPropName);
         }
       }
@@ -343,7 +343,7 @@ export default {
   timesReverse(times, iteratee) {
     let index = times;
 
-    while(--index >= 0) {
+    while (--index >= 0) {
       _.isFunction(iteratee) && iteratee(index);
     }
   },
@@ -352,8 +352,8 @@ export default {
    * an implementation of _.times by lodash, where you can specify start & end numbers<br><br>
    * @example <caption>eg. usage</caption>
    * _.timesRange(5, 10, function(i) {
-       *   console.log(i);
-       * });
+   *   console.log(i);
+   * });
    *
    * // logs
    * 5
@@ -388,11 +388,11 @@ export default {
    * @param {boolean} reverse - specify if you want reverse cycle
    */
   timesRange(start, end, iteratee = null, reverse = false) {
-    if(_.isFunction(iteratee)) {
+    if (_.isFunction(iteratee)) {
       // Ensure the sign of `-0` is preserved.
       start = _toFinite(start);
 
-      if(!end) {
+      if (!end) {
         end = start;
         start = 0;
       } else {
@@ -401,7 +401,7 @@ export default {
 
       let index = (reverse ? end : start);
 
-      while((reverse ? index-- >= start : index++ <= end)) {
+      while ((reverse ? index-- >= start : index++ <= end)) {
         iteratee(index + (reverse ? 1 : -1));
       }
     }
