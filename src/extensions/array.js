@@ -987,8 +987,8 @@ export default {
      * @param {string} [propValue=null] 
      * @return {any}
      */
-    first(a, propName=null, propValue=null) { 
-      if(Array.isArray(a)) {
+    first(a, propName = null, propValue = null) {
+      if (Array.isArray(a)) {
         return Array.prototype.first.call(a, propName, propValue);
       }
 
@@ -1015,8 +1015,8 @@ export default {
      * @param {string} [propValue=null] 
      * @return {any}
      */
-    last(a, propName=null, propValue=null) { 
-      if(Array.isArray(a)) {
+    last(a, propName = null, propValue = null) {
+      if (Array.isArray(a)) {
         return Array.prototype.last.call(a, propName, propValue);
       }
 
@@ -1028,17 +1028,29 @@ export default {
      * 
      * @param {any} a 
      * @param {any} propName 
-     * @param {any} startValue 
+     * @param {any} [startValue=0]
      */
-    sum(a, propName, startValue) { },
+    sum(a, propName, startValue = 0) {
+      if (Array.isArray(a)) {
+        return Array.prototype.sum.call(a, propName, startValue);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} childrenPropName 
-     * @param {any} mapCallback 
+     * @param {any} iteratee 
      */
-    deepMap(a, childrenPropName, mapCallback) { },
+    deepMap(a, childrenPropName, iteratee) {
+      if (Array.isArray(a)) {
+        return Array.prototype.deepMap.call(a, childrenPropName, iteratee);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
@@ -1046,46 +1058,88 @@ export default {
      * @param {any} items 
      * @param {any} itemModel 
      */
-    lorem(a, items, itemModel) { },
+    lorem(a, items, itemModel) {
+      if (Array.isArray(a)) {
+        return Array.prototype.lorem.call(a, items, itemModel);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} deep 
      */
-    flatten(a, deep) { },
+    flatten(a, deep) {
+      if (Array.isArray(a)) {
+        return Array.prototype.flatten.call(a, deep);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    shuffle(a) { },
+    shuffle(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.shuffle.call(a);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} n 
      */
-    split(a, n) { },
+    split(a, n) {
+      if (Array.isArray(a)) {
+        return Array.prototype.split.call(a, n);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {boolean} [clone=false] 
      */
-    reverse(a, clone = false) { },
+    reverse(a, clone = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.reverse.call(a, clone);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    tail(a) { },
+    tail(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.tail.call(a);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    cut(a) { },
+    cut(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.cut.call(a);
+      }
+
+      return a;
+    },
 
     /**
      * clones an array
@@ -1366,9 +1420,9 @@ export default {
     },
 
     first(propName, propValue) {
-      var a = this;
+      let a = this;
 
-      if(!!propName) {
+      if (!!propName) {
         a = this.filterBy(propName, propValue);
       }
 
@@ -1376,9 +1430,9 @@ export default {
     },
 
     last(propName, propValue) {
-      var a = this;
+      let a = this;
 
-      if(!!propName) {
+      if (!!propName) {
         a = this.filterBy(propName, propValue);
       }
 
@@ -1410,11 +1464,11 @@ export default {
      * 
      * 
      * @param {any} childrenPropName 
-     * @param {any} mapCallback 
+     * @param {any} iteratee 
      * @returns 
      */
-    deepMap(childrenPropName, mapCallback) {
-      return _.deepMap(this, childrenPropName, mapCallback);
+    deepMap(childrenPropName, iteratee) {
+      return _.deepMap(this, childrenPropName, iteratee);
     },
 
     /**
