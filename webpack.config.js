@@ -29,7 +29,7 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist', 'build']),
-    //new webpack.IgnorePlugin(/lodash/),
+    // new webpack.IgnorePlugin(/lodash/),
     new webpack.ProvidePlugin({
       _: 'lodash',
     }),
@@ -41,7 +41,7 @@ module.exports = {
     //   sourceMap: true,
     //   compress: false,
     //   output: {
-    //     comments: false,
+    //     comments: true,
     //   },
     // }),
     new webpack.optimize.UglifyJsPlugin({
