@@ -46,11 +46,11 @@ module.exports = {
     // }),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
-        toplevel: true,
-        screw_ie8: true
+        toplevel: false,
+        screw_ie8: true,
       },
       minimize: true,
-      sourceMap: false,
+      sourceMap: true,
       compress: {
         negate_iife: true,
         sequences: true,  // join consecutive statemets with the “comma operator”
@@ -71,7 +71,7 @@ module.exports = {
         join_vars: true,  // join var declarations
         cascade: true,  // try to cascade `right` into `left` in sequences
         side_effects: true,  // drop side-effect-free statements
-        warnings: true,  // warn about potentially dangerous optimizations/code
+        warnings: false,  // warn about potentially dangerous optimizations/code
         global_defs: {}     // global definitions
       },
       output: {
