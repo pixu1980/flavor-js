@@ -987,8 +987,8 @@ export default {
      * @param {string} [propValue=null] 
      * @return {any}
      */
-    first(a, propName=null, propValue=null) { 
-      if(Array.isArray(a)) {
+    first(a, propName = null, propValue = null) {
+      if (Array.isArray(a)) {
         return Array.prototype.first.call(a, propName, propValue);
       }
 
@@ -1015,8 +1015,8 @@ export default {
      * @param {string} [propValue=null] 
      * @return {any}
      */
-    last(a, propName=null, propValue=null) { 
-      if(Array.isArray(a)) {
+    last(a, propName = null, propValue = null) {
+      if (Array.isArray(a)) {
         return Array.prototype.last.call(a, propName, propValue);
       }
 
@@ -1366,9 +1366,9 @@ export default {
     },
 
     first(propName, propValue) {
-      var a = this;
+      let a = this;
 
-      if(!!propName) {
+      if (!!propName) {
         a = this.filterBy(propName, propValue);
       }
 
@@ -1376,9 +1376,9 @@ export default {
     },
 
     last(propName, propValue) {
-      var a = this;
+      let a = this;
 
-      if(!!propName) {
+      if (!!propName) {
         a = this.filterBy(propName, propValue);
       }
 
