@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const packageJSON = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const PackerWebpackPlugin = require('packer-webpack-plugin');
 const config = require('./config.js');
 
 module.exports = {
@@ -33,7 +34,13 @@ module.exports = {
     new webpack.ProvidePlugin({
       _: 'lodash',
     }),
-    new webpack.optimize.OccurrenceOrderPlugin,
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({ //<--key to reduce React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
     // Uglify debug
     // new webpack.optimize.UglifyJsPlugin({
     //   mangle: false,
@@ -78,6 +85,12 @@ module.exports = {
         comments: false
       },
     }),
+    new webpack.optimize.AggressiveMergingPlugin({
+      minSizeReduce: 2,
+      moveToParents: true,
+      entryChunkMultiplicator: 20
+    }),
+    // new PackerWebpackPlugin(),
   ],
 
   module: {
@@ -103,7 +116,22 @@ module.exports = {
     ],
   },
 
-  externals: packageJSON.peerDependencies ? Object.keys(packageJSON.peerDependencies) : [],
+  // externals: packageJSON.peerDependencies ? Object.keys(packageJSON.peerDependencies) : [],
+
+  externals: [
+    {
+      // We're not only webpack that lodash should be an
+      // external dependency, but we're also specifying how
+      // lodash should be loaded in different scenarios
+      // (more on that below)
+      lodash: {
+        root: "_",
+        commonjs: "lodash",
+        commonjs2: "lodash",
+        amd: "lodash"
+      }
+    }
+  ],
 
   resolve: {
     root: path.resolve(__dirname),

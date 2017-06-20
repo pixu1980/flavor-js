@@ -1030,7 +1030,13 @@ export default {
      * @param {any} propName 
      * @param {any} startValue 
      */
-    sum(a, propName, startValue) { },
+    sum(a, propName, startValue) {
+      if (Array.isArray(a)) {
+        return Array.prototype.sum.call(a, propName, startValue);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
@@ -1038,7 +1044,13 @@ export default {
      * @param {any} childrenPropName 
      * @param {any} mapCallback 
      */
-    deepMap(a, childrenPropName, mapCallback) { },
+    deepMap(a, childrenPropName, mapCallback) {
+      if (Array.isArray(a)) {
+        return Array.prototype.deepMap.call(a, childrenPropName, mapCallback);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
@@ -1046,46 +1058,88 @@ export default {
      * @param {any} items 
      * @param {any} itemModel 
      */
-    lorem(a, items, itemModel) { },
+    lorem(a, items, itemModel) {
+      if (Array.isArray(a)) {
+        return Array.prototype.lorem.call(a, items, itemModel);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} deep 
      */
-    flatten(a, deep) { },
+    flatten(a, deep) {
+      if (Array.isArray(a)) {
+        return Array.prototype.flatten.call(a, deep);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    shuffle(a) { },
+    shuffle(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.shuffle.call(a);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {any} n 
      */
-    split(a, n) { },
+    split(a, n) {
+      if (Array.isArray(a)) {
+        return Array.prototype.split.call(a, n);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      * @param {boolean} [clone=false] 
      */
-    reverse(a, clone = false) { },
+    reverse(a, clone = false) {
+      if (Array.isArray(a)) {
+        return Array.prototype.reverse.call(a, clone);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    tail(a) { },
+    tail(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.tail.call(a);
+      }
+
+      return a;
+    },
     /**
      * 
      * 
      * @param {any} a 
      */
-    cut(a) { },
+    cut(a) {
+      if (Array.isArray(a)) {
+        return Array.prototype.cur.call(a);
+      }
+
+      return a;
+    },
 
     /**
      * clones an array
