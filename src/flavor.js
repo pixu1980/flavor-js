@@ -10,7 +10,7 @@ import DateExt from './extensions/date';
 import StringExt from './extensions/string';
 import ArrayExt from './extensions/array';
 
-import config from '../config';
+import release from '../release';
 
 /**
  * constructs FlavorJS class & extends the js natives
@@ -190,8 +190,8 @@ export default class FlavorJS {
 
     const flavorJSStatus = {
       initialized: true,
-      version: config.version,
-      build: config.build,
+      version: release.version,
+      build: release.build,
     };
 
     Object.inherit(this, CoreExt, flavorJSStatus);

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const packageJSON = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const PackerWebpackPlugin = require('packer-webpack-plugin');
-const config = require('./config.js');
+const release = require('./release.js');
 
 module.exports = {
   context: path.resolve('src'),
