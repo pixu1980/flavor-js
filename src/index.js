@@ -1,7 +1,7 @@
 import FlavorJS from './flavor';
 
 ((global, factory) => {
-  if(typeof module === 'object' && typeof module.exports === 'object') {
+  if (typeof module === 'object' && typeof module.exports === 'object') {
     // For CommonJS and CommonJS-like environments where a proper `window`
     // is present, execute the factory and get FlavorJS.
     // For environments that do not have a `window` with a `document`
@@ -10,9 +10,9 @@ import FlavorJS from './flavor';
     module.exports = global.document ?
       factory(global, true) :
       (w) => {
-        if(!w.document) {
-          throw new Error('FlavorJS requires a window with a document');
-        }
+        // if(!w.document) {
+        //   throw new Error('FlavorJS requires a window with a document');
+        // }
         return factory(w);
       };
   } else {
@@ -22,7 +22,7 @@ import FlavorJS from './flavor';
 })(typeof window !== 'undefined' ? window : this, (window) => {
   let flavorJS;
 
-  if(!window.ƒ) {
+  if (!window.ƒ) {
     flavorJS = new FlavorJS();
     window.ƒ = window.FlavorJS = flavorJS;
   } else {

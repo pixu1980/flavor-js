@@ -1,4 +1,4 @@
 module.exports = {
-  version: '0.3.8',
+  version: '0.3.9',
   build: new Date(),
 };
