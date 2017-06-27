@@ -1028,9 +1028,13 @@ export default {
      * 
      * @param {any} a 
      * @param {any} propName 
-     * @param {any} startValue 
+     * @param {any} [startValue=0]
      */
+<<<<<<< HEAD
     sum(a, propName, startValue) {
+=======
+    sum(a, propName, startValue = 0) {
+>>>>>>> 6fe82feeda770d67408dc8e63601359a6a7b9fa3
       if (Array.isArray(a)) {
         return Array.prototype.sum.call(a, propName, startValue);
       }
@@ -1042,11 +1046,17 @@ export default {
      * 
      * @param {any} a 
      * @param {any} childrenPropName 
-     * @param {any} mapCallback 
+     * @param {any} iteratee 
      */
+<<<<<<< HEAD
     deepMap(a, childrenPropName, mapCallback) {
       if (Array.isArray(a)) {
         return Array.prototype.deepMap.call(a, childrenPropName, mapCallback);
+=======
+    deepMap(a, childrenPropName, iteratee) {
+      if (Array.isArray(a)) {
+        return Array.prototype.deepMap.call(a, childrenPropName, iteratee);
+>>>>>>> 6fe82feeda770d67408dc8e63601359a6a7b9fa3
       }
 
       return a;
@@ -1135,7 +1145,11 @@ export default {
      */
     cut(a) {
       if (Array.isArray(a)) {
+<<<<<<< HEAD
         return Array.prototype.cur.call(a);
+=======
+        return Array.prototype.cut.call(a);
+>>>>>>> 6fe82feeda770d67408dc8e63601359a6a7b9fa3
       }
 
       return a;
@@ -1464,11 +1478,11 @@ export default {
      * 
      * 
      * @param {any} childrenPropName 
-     * @param {any} mapCallback 
+     * @param {any} iteratee 
      * @returns 
      */
-    deepMap(childrenPropName, mapCallback) {
-      return _.deepMap(this, childrenPropName, mapCallback);
+    deepMap(childrenPropName, iteratee) {
+      return _.deepMap(this, childrenPropName, iteratee);
     },
 
     /**
