@@ -71,14 +71,14 @@ export default {
   },
   prototype: {
     /**
-     * @inheritDoc Function.isFunction
+     * @inheritDoc function.isFunction
      */
     isFunction() {
       return _.isFunction(this);
     },
 
     /**
-     * @inheritDoc Function.proxy
+     * @inheritDoc function.proxy
      */
     proxy(scope, ...proxyArgs) {
       const func = this;

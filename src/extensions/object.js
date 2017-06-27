@@ -24,6 +24,7 @@ export default {
      * @memberOf object
      * @method isObject
      * @instance
+     * @param {object} o - the object
      * @return {boolean}
      */
     isObject(o) {
@@ -164,6 +165,7 @@ export default {
      * @memberOf object
      * @method clone
      * @instance
+     * @param {object} o - the object
      * @return {object}
      */
     clone(o) {
@@ -252,9 +254,9 @@ export default {
      * <pre>
      * function iteratee(value, key) {}
      * </pre>
-     * @param {*} iteratee.value - the property value of the object
+     * @param {any} iteratee.value - the property value of the object
      * @param {string} iteratee.key - the property key of the object
-     * @return {*} to make chainable the method
+     * @return {object} to make chainable the method
      */
     each(o, iteratee) {
       return Object.prototype.each.call(o, iteratee);
@@ -262,14 +264,14 @@ export default {
   },
   prototype: {
     /**
-     * @inheritDoc Object.isObject
+     * @inheritDoc object.isObject
      */
     isObject() {
       return _.isPlainObject(this);
     },
 
     /**
-     * @inheritDoc Object.inherit
+     * @inheritDoc object.inherit
      */
     inherit(...args) {
       const createNew = _.isBoolean(args[0]) ? args[0] : false;
@@ -293,28 +295,28 @@ export default {
     },
 
     /**
-     * @inheritDoc Object.omit
+     * @inheritDoc object.omit
      */
     omit(...args) {
       return _.omit(this, ...args);
     },
 
     /**
-     * @inheritDoc Object.pick
+     * @inheritDoc object.pick
      */
     pick(...args) {
       return _.pick(this, ...args);
     },
 
     /**
-     * @inheritDoc Object.clone
+     * @inheritDoc object.clone
      */
     clone() {
       return _.cloneDeep(this);
     },
 
     /**
-     * @inheritDoc Object.path
+     * @inheritDoc object.path
      */
     path(path, def = null) {
       if(typeof this === 'object' && this instanceof Object) {
@@ -325,7 +327,7 @@ export default {
     },
 
     /**
-     * @inheritDoc Object.each
+     * @inheritDoc object.each
      */
     each(iteratee) {
       return _.each(this, iteratee);

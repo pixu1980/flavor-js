@@ -1026,6 +1026,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method sum
+     * @instance
      * @param {any} a 
      * @param {any} propName 
      * @param {any} [startValue=0]
@@ -1040,6 +1043,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method deepMap
+     * @instance
      * @param {any} a 
      * @param {any} childrenPropName 
      * @param {any} iteratee 
@@ -1054,6 +1060,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method lorem
+     * @instance
      * @param {any} a 
      * @param {any} items 
      * @param {any} itemModel 
@@ -1068,6 +1077,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method flatten
+     * @instance
      * @param {any} a 
      * @param {any} deep 
      */
@@ -1081,6 +1093,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method shuffle
+     * @instance
      * @param {any} a 
      */
     shuffle(a) {
@@ -1093,6 +1108,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method split
+     * @instance
      * @param {any} a 
      * @param {any} n 
      */
@@ -1106,6 +1124,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method reverse
+     * @instance
      * @param {any} a 
      * @param {boolean} [clone=false] 
      */
@@ -1119,6 +1140,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method tail
+     * @instance
      * @param {any} a 
      */
     tail(a) {
@@ -1131,6 +1155,9 @@ export default {
     /**
      * 
      * 
+     * @memberOf array
+     * @method cut
+     * @instance
      * @param {any} a 
      */
     cut(a) {
@@ -1158,6 +1185,7 @@ export default {
      * console.log(collection === clone); // false;
      * @memberOf array
      * @method clone
+     * @instance
      * @return {array} 
      */
     clone(a) {
@@ -1186,7 +1214,8 @@ export default {
      * console.log(a.maxBy('value')); // {type:'e', value: 9}
      * console.log(a.maxBy('type')); // {type:'f', value: 3}
      * @memberOf array
-     * @method isArray
+     * @method maxBy
+     * @instance
      * @param {array} a - the array to check for max value 
      * @param {string} [propName=null] - the property name to use for comparation
      * @return {object}
@@ -1200,10 +1229,16 @@ export default {
     },
   },
   prototype: {
+    /**
+     * @inheritDoc array.isArray
+     */
     isArray() {
       return _.isArray(this);
     },
 
+    /**
+     * @inheritDoc array.contains
+     */
     contains(item, all = false) {
       if (_.isArray(item)) {
         if (!!all) {
@@ -1216,6 +1251,9 @@ export default {
       return _.includes(this, item);
     },
 
+    /**
+     * @inheritDoc array.concat
+     */
     concat(arr) {
       if (!!arr) {
         return _.concat(this, arr);
@@ -1224,10 +1262,16 @@ export default {
       return this;
     },
 
+    /**
+     * @inheritDoc array.distinct
+     */
     distinct() {
       return _.uniqWith(this, _.isEqual);
     },
 
+    /**
+     * @inheritDoc array.diff
+     */
     diff(arr, fn = null) {
       if (Array.isArray(arr)) {
         let predicate = _.isEqual;
@@ -1249,10 +1293,16 @@ export default {
       return [];
     },
 
+    /**
+     * @inheritDoc array.diffBy
+     */
     diffBy(arr, propName) {
       return this.diff(arr, propName);
     },
 
+    /**
+     * @inheritDoc array.sortBy
+     */
     sortBy(propNames, propDirections) {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -1271,6 +1321,9 @@ export default {
       return _.orderBy(this, propNames, propDirections);
     },
 
+    /**
+     * @inheritDoc array.deepSortBy
+     */
     deepSortBy(propNames, propDirections = null, childrenPropName = 'children') {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -1289,6 +1342,9 @@ export default {
       return _.deepOrderBy(this, propNames, propDirections, childrenPropName);
     },
 
+    /**
+     * @inheritDoc array.filterBy
+     */
     filterBy(propNames, propValues) {
       let predicate = null;
 
@@ -1304,10 +1360,16 @@ export default {
       return _.filter(this, predicate) || [];
     },
 
+    /**
+     * @inheritDoc array.pull
+     */
     pull(item) {
       return _.pull(this, item);
     },
 
+    /**
+     * @inheritDoc array.pullBy
+     */
     pullBy(propName, propValue) {
       if (_.isArray(propName) && _.isFunction(propValue)) {
         const values = propName;
@@ -1320,6 +1382,9 @@ export default {
       return _.pullAllBy(this, [predicate]);
     },
 
+    /**
+     * @inheritDoc array.findBy
+     */
     findBy(propName, propValue = null, reverse = false) {
       let predicate = null;
 
@@ -1341,10 +1406,16 @@ export default {
       return null;
     },
 
+    /**
+     * @inheritDoc array.deepFindBy
+     */
     deepFindBy(propName, propValue = null, childrenPropName = 'children') {
       return _.deepFindBy(this, propName, propValue, childrenPropName);
     },
 
+    /**
+     * @inheritDoc array.indexBy
+     */
     indexBy(propName, propValue, reverse = false) {
       let predicate = null;
 
@@ -1366,10 +1437,16 @@ export default {
       return null;
     },
 
+    /**
+     * @inheritDoc array.containsBy
+     */
     containsBy(propName, propValue) {
       return this.findBy(propName, propValue) !== undefined;
     },
 
+    /**
+     * @inheritDoc array.countBy
+     */
     countBy(propName, propValue, falseValues) {
       let predicate = null;
 
@@ -1387,14 +1464,23 @@ export default {
       return 0;
     },
 
+    /**
+     * @inheritDoc array.intersection
+     */
     intersection(...arrays) {
       return _.intersection(this, ...arrays);
     },
 
+    /**
+     * @inheritDoc array.union
+     */
     union(...arrays) {
       return _.unionWith(this, ...arrays, _.isEqual);
     },
 
+    /**
+     * @inheritDoc array.random
+     */
     random(weightField = null, valueField = null) {
       if (!!weightField) {
         return this.map((item) => {
@@ -1411,6 +1497,9 @@ export default {
       return _.sample(this);
     },
 
+    /**
+     * @inheritDoc array.each
+     */
     each(iteratee, reverse = false) {
       if (!!reverse) {
         return _.eachRight(this, iteratee);
@@ -1419,6 +1508,9 @@ export default {
       return _.each(this, iteratee);
     },
 
+    /**
+     * @inheritDoc array.first
+     */
     first(propName, propValue) {
       let a = this;
 
@@ -1429,6 +1521,9 @@ export default {
       return _.first(a);
     },
 
+    /**
+     * @inheritDoc array.last
+     */
     last(propName, propValue) {
       let a = this;
 
@@ -1440,11 +1535,7 @@ export default {
     },
 
     /**
-     * 
-     * 
-     * @param {any} propName 
-     * @param {number} [startValue=0] 
-     * @returns 
+     * @inheritDoc array.sum
      */
     sum(propName, startValue = 0) {
       let predicate = null;
@@ -1461,22 +1552,14 @@ export default {
     },
 
     /**
-     * 
-     * 
-     * @param {any} childrenPropName 
-     * @param {any} iteratee 
-     * @returns 
+     * @inheritDoc array.deepMap
      */
     deepMap(childrenPropName, iteratee) {
       return _.deepMap(this, childrenPropName, iteratee);
     },
 
     /**
-     * 
-     * 
-     * @param {any} items 
-     * @param {any} itemModel 
-     * @returns 
+     * @inheritDoc array.lorem
      */
     lorem(items, itemModel) {
       return _.times(items, () => {
@@ -1485,10 +1568,7 @@ export default {
     },
 
     /**
-     * 
-     * 
-     * @param {any} deep 
-     * @returns 
+     * @inheritDoc array.flatten
      */
     flatten(deep) {
       if (!!deep) {
@@ -1499,29 +1579,21 @@ export default {
     },
 
     /**
-     * 
-     * 
-     * @returns 
+     * @inheritDoc array.shuffle
      */
     shuffle() {
       return _.shuffle(this);
     },
 
     /**
-     * 
-     * 
-     * @param {any} n 
-     * @returns 
+     * @inheritDoc array.split
      */
     split(n) {
       return _.chunk(this, n);
     },
 
     /**
-     * 
-     * 
-     * @param {boolean} [clone=false] 
-     * @returns 
+     * @inheritDoc array.reverse
      */
     reverse(clone = false) {
       if (!!clone) {
@@ -1532,27 +1604,29 @@ export default {
     },
 
     /**
-     * 
-     * 
-     * @returns 
+     * @inheritDoc array.tail
      */
     tail() {
       return _.tail(this);
     },
 
     /**
-     * 
-     * 
-     * @returns 
+     * @inheritDoc array.cut
      */
     cut() {
       return _.initial(this);
     },
 
+    /**
+     * @inheritDoc array.clone
+     */
     clone() {
       return [...this];
     },
 
+    /**
+     * @inheritDoc array.maxBy
+     */
     maxBy(propName = null) {
       if (propName) {
         return _.maxBy(this, propName);

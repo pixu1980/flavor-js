@@ -42,14 +42,14 @@ export default {
   },
   prototype: {
     /**
-     * @inheritDoc Date.isDate
+     * @inheritDoc date.isDate
      */
     isDate() {
       return _.isDate(this);
     },
 
     /**
-     * @inheritDoc Date.toTimestamp
+     * @inheritDoc date.toTimestamp
      */
     toTimestamp() {
       return Math.round(this);

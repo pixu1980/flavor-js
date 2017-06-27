@@ -350,8 +350,9 @@ export default {
     /**
      * wraps an angle value (in degrees) between 0 and 359.
      * 
-     * @class angleWrap
-     * @constructor
+     * @memberOf number
+     * @method degreeWrap
+     * @instance
      * @param {Number}  angle The angle in degrees.
      * @returns {Number} The wrapped value.
      */
@@ -367,8 +368,9 @@ export default {
      * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
      * result is kept between 0 and 359.
      * 
-     * @class degreeDiff
-     * @constructor
+     * @memberOf number
+     * @method degreeDiff
+     * @instance
      * @param {Number}  a1 The initial angle in degrees.
      * @param {Number}  a2 The final angle in degrees.
      * @returns {Number} The angle distance value.
@@ -385,8 +387,9 @@ export default {
      * Returns the direction that represents the minimum distance from angle `a1` 
      * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
      * 
-     * @class degreeDir
-     * @constructor
+     * @memberOf number
+     * @method degreeDir
+     * @instance
      * @param {Number}   a1 The initial angle in degrees.
      * @param {Number}   a2 The final angle in degrees.
      * @returns {Integer} A direction -1, 1 or 0.
@@ -401,28 +404,28 @@ export default {
   },
   prototype: {
     /**
-     * @inheritDoc Number.isNumber
+     * @inheritDoc number.isNumber
      */
     isNumber() {
       return _.isNumber(this);
     },
 
     /**
-     * @inheritDoc Number.isBetween
+     * @inheritDoc number.isBetween
      */
     isBetween(from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
       return from <= this && this <= to;
     },
 
     /**
-     * @inheritDoc Number.times
+     * @inheritDoc number.times
      */
     times(iteratee, reverse = false) {
       return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
     },
 
     /**
-     * @inheritDoc Number.toRoman
+     * @inheritDoc number.toRoman
      */
     toRoman() {
       let num = this;
@@ -441,7 +444,7 @@ export default {
     },
 
     /**
-     * @inheritDoc Number.toFileSize
+     * @inheritDoc number.toFileSize
      */
     toFileSize(precision = 0) {
       let fileSizeString = '0 B';
@@ -456,35 +459,35 @@ export default {
     },
 
     /**
-     * @inheritDoc Number.toAbsolute
+     * @inheritDoc number.toAbsolute
      */
     toAbsolute() {
       return Math.abs(this);
     },
 
     /**
-     * @inheritDoc Number.floor
+     * @inheritDoc number.floor
      */
     floor(precision = 0) {
       return _.floor(this, precision);
     },
 
     /**
-     * @inheritDoc Number.round
+     * @inheritDoc number.round
      */
     round(precision = 0) {
       return _.round(this, precision);
     },
 
     /**
-     * @inheritDoc Number.crop
+     * @inheritDoc number.crop
      */
     crop(min = Number.MIN_VALUE, max = Number.MAX_VALUE) {
       return Math.max(Math.min(this, max), min);
     },
 
     /**
-     * @inheritDoc Number.range
+     * @inheritDoc number.range
      */
     range(end = null, reverse = false, step = 1) {
       const rangeStart = Number.isNumber(end) ? this : 0;
@@ -494,29 +497,15 @@ export default {
       return _[method](rangeStart, rangeEnd, step);
     },
 
-
     /**
-     * wraps an angle value (in degrees) between 0 and 359.
-     * 
-     * @class angleWrap
-     * @constructor
-     * @param {Number}  angle The angle in degrees.
-     * @returns {Number} The wrapped value.
+     * @inheritDoc number.degreeWrap
      */
     degreeWrap(min = 0, max = 360) {
       return ((this < min) ? max : 0) + this % max;
     },
 
-
     /**
-     * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
-     * result is kept between 0 and 359.
-     * 
-     * @class degreeDiff
-     * @constructor
-     * @param {Number}  a1 The initial angle in degrees.
-     * @param {Number}  a2 The final angle in degrees.
-     * @returns {Number} The angle distance value.
+     * @inheritDoc number.degreeDiff
      */
     degreeDiff(a, min = 0, max = 360) {
       const ang1 = Number.degreeWrap(this, min, max);
@@ -535,16 +524,8 @@ export default {
       return diff;
     },
 
-
     /**
-     * Returns the direction that represents the minimum distance from angle `a1` 
-     * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
-     * 
-     * @class degreeDir
-     * @constructor
-     * @param {Number}   a1 The initial angle in degrees.
-     * @param {Number}   a2 The final angle in degrees.
-     * @returns {Integer} A direction -1, 1 or 0.
+     * @inheritDoc number.degreeDir
      */
     degreeDir(a, min = 0, max = 360) {
       const ang1 = Number.degreeWrap(this, min, max);
