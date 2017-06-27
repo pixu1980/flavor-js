@@ -62,7 +62,7 @@ module.exports = {
         negate_iife: true,
         sequences: true,  // join consecutive statemets with the “comma operator”
         properties: true,  // optimize property access: a["foo"] → a.foo
-        drop_console: true,
+        drop_console: false,
         dead_code: true,  // discard unreachable code
         drop_debugger: true,  // discard “debugger” statements
         unsafe: true, // some unsafe optimizations (see below)
