@@ -940,7 +940,7 @@ console.log(arr.distinct(]); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#
 
     
     <div class="description">
-        Creates an array of unique array values not included in the other provided arrays
+        creates an array of unique array values not included in the other provided arrays
     </div>
     
 
@@ -1089,7 +1089,7 @@ console.log(arr.distinct(]); // [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#
 
             <td class="description last">function to use as comparator for the diff or the propname to check for the equality or nothing for standard equality<br>
 the function will be invoked with an item from the first array and an item from the second array,<br>
-so the funciton has to look like this<br>
+so the function has to look like this<br>
 <pre>
 function(aitem, bitem) {}
 </pre>
@@ -1300,7 +1300,7 @@ console.log(collection.diff(collection2, function(aitem, bitem) {
 
     
     <div class="description">
-        Creates an array of unique array values not included in the other provided arrays based on a field equality (aliases Array.diff)
+        creates an array of unique array values not included in the other provided arrays based on a field equality (aliases Array.diff)
     </div>
     
 
@@ -5791,7 +5791,7 @@ Array.each(a, function(item, index) {
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">the array</td>
         </tr>
 
     
@@ -5831,7 +5831,8 @@ Array.each(a, function(item, index) {
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">optional, combined with propValue filters the array before extracting the first item<br>
+or you can specify an optional function as predicate to customize the filter</td>
         </tr>
 
     
@@ -5871,7 +5872,7 @@ Array.each(a, function(item, index) {
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">optional, combined with propName filters the array before extracting the first item</td>
         </tr>
 
     
@@ -5965,7 +5966,18 @@ Array.each(a, function(item, index) {
 ];
 
 console.log(Array.first(a)); // {type: &#x27;a&#x27;, value: 1}
-console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}</pre>
+console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}
+
+var a = [
+  {type: &#x27;a&#x27;, value: 1},
+  {type: &#x27;b&#x27;, value: 1},
+  {type: &#x27;b&#x27;, value: 2},
+  {type: &#x27;c&#x27;, value: 3},
+  {type: &#x27;d&#x27;, value: 4},
+];
+
+console.log(Array.first(a, &#x27;type&#x27;, &#x27;b&#x27;)); // {type: &#x27;b&#x27;, value: 1}
+console.log(a.first(&#x27;type&#x27;, &#x27;b&#x27;))); // {type: &#x27;b&#x27;, value: 1}</pre>
 
 
     
@@ -6065,6 +6077,9 @@ console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}</pre>
             
                 
 <span class="param-type"><a href="string.html">string</a></span>
+|
+
+<span class="param-type"><a href="function.html">function</a></span>
 
 
 
@@ -6091,7 +6106,8 @@ console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}</pre>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">optional, combined with propValue filters the array before extracting the last item<br>
+or you can specify an optional function as predicate to customize the filter</td>
         </tr>
 
     
@@ -6131,7 +6147,7 @@ console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}</pre>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">optional, combined with propName filters the array before extracting the last item</td>
         </tr>
 
     
@@ -6225,7 +6241,18 @@ console.log(a.first())); // {type: &#x27;a&#x27;, value: 1}</pre>
 ];
 
 console.log(Array.last(a)); // {type: &#x27;d&#x27;, value: 4}
-console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
+console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}
+
+var a = [
+  {type: &#x27;a&#x27;, value: 1},
+  {type: &#x27;a&#x27;, value: 2},
+  {type: &#x27;b&#x27;, value: 2},
+  {type: &#x27;c&#x27;, value: 3},
+  {type: &#x27;d&#x27;, value: 4},
+];
+
+console.log(Array.last(a, &#x27;type&#x27;, &#x27;a&#x27;)); // {type: &#x27;a&#x27;, value: 2}
+console.log(a.last(&#x27;type&#x27;, &#x27;a&#x27;))); // {type: &#x27;a&#x27;, value: 2}</pre>
 
 
     
@@ -6235,12 +6262,16 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="sum"><span class="type-signature"></span>sum(a, propName [, startValue])</h4>
+    <h4 class="name" id="sum"><span class="type-signature"></span>sum(a, predicate [, startValue])</h4>
     
     
 </dt>
 <dd>
 
+    
+    <div class="description">
+        sums a collection by predicate or propName
+    </div>
     
 
     
@@ -6284,7 +6315,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type"><a href="array.html">array</a></span>
 
 
 
@@ -6314,13 +6345,16 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
 
         <tr>
             
-                <td class="name"><code>propName</code></td>
+                <td class="name"><code>predicate</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type"><a href="function.html">function</a></span>
+|
+
+<span class="param-type"><a href="string.html">string</a></span>
 
 
 
@@ -6343,7 +6377,99 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">the predicate should look like this in ES5<br>
+<pre>
+function(acc, item) {
+  return acc + item[propName];
+}
+</pre>
+or in ES6<br>
+<pre>
+(acc, item) => {
+  return acc + item[propName];
+}
+</pre><br>
+this kind of predicate will be implemented automatically if you specify a propName instead the predicate
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>acc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+|
+
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the accumulator variable used for the sum</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+|
+
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the iterating item</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -6443,178 +6569,53 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
     
 
     
-
+    <h5>Returns:</h5>
     
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="deepMap"><span class="type-signature"></span>deepMap(a, childrenPropName, iteratee)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
             
 
-            <td class="type">
-            
-                
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">any</span>
 
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>childrenPropName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>iteratee</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
+    </dd>
 </dl>
 
 
-    
+        
 
     
-
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
     
+    <pre class="sunlight-highlight-javascript">var a = [
+  {type: &#x27;a&#x27;, value: 1},
+  {type: &#x27;b&#x27;, value: 2},
+  {type: &#x27;c&#x27;, value: 3},
+  {type: &#x27;d&#x27;, value: 4},
+];
 
-    
+console.log(Array.sum(a, &#x27;value&#x27;, 0)); // 4 + 3 + 2 + 1 = 10
+console.log(a.sum(&#x27;value&#x27;, 0))); // same as above
 
-    
+console.log(Array.sum(a, &#x27;type&#x27;, &#x27;&#x27;)); // abcd
+console.log(a.sum(&#x27;type&#x27;, &#x27;&#x27;))); // same as above
 
-    
+console.log(Array.sum(a, function(acc, item) {
+  return acc + item.value;
+}, 0)); // 4 + 3 + 2 + 1 = 10
+
+console.log(a.sum(function(acc, item) {
+  return acc + item.value;
+}, 0)); // same as above</pre>
+
 
     
 </dd>
@@ -6623,604 +6624,17 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="lorem"><span class="type-signature"></span>lorem(a, items, itemModel)</h4>
+    <h4 class="name" id="deepMap"><span class="type-signature"></span>deepMap(a [, childrenPropName], iteratee)</h4>
     
     
 </dt>
 <dd>
 
     
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>items</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>itemModel</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="flatten"><span class="type-signature"></span>flatten(a, deep)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>deep</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="shuffle"><span class="type-signature"></span>shuffle(a)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="split"><span class="type-signature"></span>split(a, n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>n</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="reverse"><span class="type-signature"></span>reverse(a [, clone])</h4>
-    
-    
-</dt>
-<dd>
-
+    <div class="description">
+        deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+<a href="lodash.html#deepMap"><code>for examples see lodash.deepMap</code></a>
+    </div>
     
 
     
@@ -7264,7 +6678,230 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type"><a href="array.html">array</a></span>
+|
+
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array to use for the deep mapping</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenPropName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'children'
+                
+                </td>
+            
+
+            <td class="description last">the property name to use for children collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the item mapping iteratee</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="lorem"><span class="type-signature"></span>lorem(items [, model])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        loremizes an array
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>items</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
 
 
 
@@ -7288,6 +6925,864 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             
 
             <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>model</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+|
+
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
+
+console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
+
+console.log(Array.lorem(5, &#x27;1&#x27;)); // [&#x27;1&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;1&#x27;];
+
+console.log(Array.lorem(5, {type: &#x27;a&#x27;, value: 1})); 
+// it logs
+[
+  {type: &#x27;a&#x27;, value: 1}, 
+  {type: &#x27;a&#x27;, value: 1}, 
+  {type: &#x27;a&#x27;, value: 1}, 
+  {type: &#x27;a&#x27;, value: 1}, 
+  {type: &#x27;a&#x27;, value: 1} 
+];
+
+console.log(Array.lorem(5, function(index) {
+  return {
+    type: &#x27;a&#x27;,
+    value: index,
+  };
+});
+// it logs
+[
+  {type: &#x27;a&#x27;, value: 1}, 
+  {type: &#x27;a&#x27;, value: 2}, 
+  {type: &#x27;a&#x27;, value: 3}, 
+  {type: &#x27;a&#x27;, value: 4}, 
+  {type: &#x27;a&#x27;, value: 5} 
+];</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="flatten"><span class="type-signature"></span>flatten(a [, deep])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        flattens array a single level deep,<br>
+or with deep parameter (true boolean) recursively flattens array,<br>
+or with deep parameter (number) you specify the recursion depth
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deep</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+|
+
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, [2, [3, [4]], 5]];
+
+console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
+console.log(Array.flatten(a, 1)); // same as above
+console.log(a.flatten()); // same as above
+console.log(a.flatten(1)); // same as above
+
+console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
+console.log(a.flatten(true)); // same as above
+
+console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
+console.log(a.flatten(2)); // same as above
+
+console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
+console.log(a.flatten(3)); // same as above</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="shuffle"><span class="type-signature"></span>shuffle(a)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, 2, 3, 4, 5];
+
+console.log(Array.shuffle(a)); // [4, 3, 5, 1, 2]
+console.log(a.shuffle()); // same as above (or another randomization ;-) </pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="split"><span class="type-signature"></span>split(a [, n])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        splits an array in n-pieces chunks
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>n</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">the n pieces of chunks you want</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, 2, 3, 4, 5];
+
+console.log(Array.split(a)); // []
+console.log(a.split()); // same as above
+
+console.log(Array.split(a, 1)); // [[1], [2], [3], [4], [5]]
+console.log(a.split(1)); // same as above
+
+console.log(Array.split(a, 2)); // [[1, 2], [3, 4], [5]]
+console.log(a.split(2)); // same as above
+
+console.log(Array.split(a, 3)); // [[1, 2, 3], [4, 5]]
+console.log(a.split(3)); // same as above</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="tail"><span class="type-signature"></span>tail(a [, clone])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        reverses an array, with optional clone parameter to avoid original array mutation
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the array</td>
         </tr>
 
     
@@ -7387,6 +7882,44 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
     
 
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, 2, 3, 4, 5];
+
+console.log(Array.reverse(a)); // [5, 4, 3, 2, 1]
+console.log(a.reverse()); // same as above
+
+console.log(a === [5, 4, 3, 2, 1]); // true
+
+var b = Array.reverse(a, true); // or var b = a.reverse(true);
+
+console.log(a); // [1, 2, 3, 4, 5]
+console.log(b); // [5, 4, 3, 2, 1]</pre>
+
 
     
 </dd>
@@ -7402,6 +7935,10 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
 <dd>
 
     
+    <div class="description">
+        returns a sliced array with all elements but the first item
+    </div>
+    
 
     
 
@@ -7440,7 +7977,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type"><a href="array.html">array</a></span>
 
 
 
@@ -7451,7 +7988,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the array</td>
         </tr>
 
     
@@ -7511,6 +8048,37 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
     
 
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, 2, 3, 4, 5];
+
+console.log(Array.tail(a)); // [2, 3, 4, 5]
+console.log(a.tail()); // same as above</pre>
+
 
     
 </dd>
@@ -7526,6 +8094,10 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
 <dd>
 
     
+    <div class="description">
+        returns a sliced array with all elements but the last item
+    </div>
+    
 
     
 
@@ -7564,7 +8136,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type"><a href="array.html">array</a></span>
 
 
 
@@ -7575,7 +8147,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
 
             
 
-            <td class="description last"></td>
+            <td class="description last">the array</td>
         </tr>
 
     
@@ -7635,6 +8207,37 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
     
 
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="sunlight-highlight-javascript">var a = [1, 2, 3, 4, 5];
+
+console.log(Array.cut(a)); // [1, 2, 3, 4]
+console.log(a.cut()); // same as above</pre>
+
 
     
 </dd>
@@ -7643,7 +8246,7 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="clone"><span class="type-signature"></span>clone()</h4>
+    <h4 class="name" id="clone"><span class="type-signature"></span>clone(a)</h4>
     
     
 </dt>
@@ -7660,6 +8263,56 @@ console.log(a.last())); // {type: &#x27;d&#x27;, value: 4}</pre>
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="array.html">array</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the array</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -7768,7 +8421,7 @@ console.log(collection === clone); // false;</pre>
 
     
     <div class="description">
-        finds max value by property name in a collection array
+        finds max value by propName in a collection array
     </div>
     
 
@@ -8035,7 +8688,7 @@ console.log(a.maxBy(&#x27;type&#x27;)); // {type:&#x27;f&#x27;, value: 3}</pre>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-06-27T19:26:28+02:00
+		on 2017-06-28T19:09:57+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -99,7 +99,7 @@ export default {
     },
 
     /**
-     * Creates an array of unique array values not included in the other provided arrays
+     * creates an array of unique array values not included in the other provided arrays
      * @example <caption>eg. usage</caption>
      * var arr = ['a', 'e', 'i', 'o', 'u'];
      * var arr2 = ['a', 'b', 'c', 'd', 'e'];
@@ -133,7 +133,7 @@ export default {
      * @param {array} b - the second array to use for the diff
      * @param {function|string} [fn=null] - function to use as comparator for the diff or the propname to check for the equality or nothing for standard equality<br>
      * the function will be invoked with an item from the first array and an item from the second array,<br>
-     * so the funciton has to look like this<br>
+     * so the function has to look like this<br>
      * <pre>
      * function(aitem, bitem) {}
      * </pre>
@@ -150,7 +150,7 @@ export default {
     },
 
     /**
-     * Creates an array of unique array values not included in the other provided arrays based on a field equality (aliases Array.diff)
+     * creates an array of unique array values not included in the other provided arrays based on a field equality (aliases Array.diff)
      * @example <caption>eg. usage</caption>
      * @memberOf array
      * @method diffBy
@@ -979,12 +979,24 @@ export default {
      * 
      * console.log(Array.first(a)); // {type: 'a', value: 1}
      * console.log(a.first())); // {type: 'a', value: 1}
+     * 
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
+     * 
+     * console.log(Array.first(a, 'type', 'b')); // {type: 'b', value: 1}
+     * console.log(a.first('type', 'b'))); // {type: 'b', value: 1}
      * @memberOf array
      * @method first
      * @instance
-     * @param {array} a 
-     * @param {string} [propName=null]
-     * @param {string} [propValue=null] 
+     * @param {array} a - the array
+     * @param {string} [propName=null] - optional, combined with propValue filters the array before extracting the first item<br>
+     * or you can specify an optional function as predicate to customize the filter
+     * @param {string} [propValue=null] - optional, combined with propName filters the array before extracting the first item
      * @return {any}
      */
     first(a, propName = null, propValue = null) {
@@ -1007,12 +1019,24 @@ export default {
      * 
      * console.log(Array.last(a)); // {type: 'd', value: 4}
      * console.log(a.last())); // {type: 'd', value: 4}
+     * 
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 2},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
+     * 
+     * console.log(Array.last(a, 'type', 'a')); // {type: 'a', value: 2}
+     * console.log(a.last('type', 'a'))); // {type: 'a', value: 2}
      * @memberOf array
      * @method last
      * @instance
      * @param {array} a 
-     * @param {string} [propName=null]
-     * @param {string} [propValue=null] 
+     * @param {string|function} [propName=null] - optional, combined with propValue filters the array before extracting the last item<br>
+     * or you can specify an optional function as predicate to customize the filter
+     * @param {string} [propValue=null] - optional, combined with propName filters the array before extracting the last item
      * @return {any}
      */
     last(a, propName = null, propValue = null) {
@@ -1024,14 +1048,49 @@ export default {
     },
 
     /**
+     * sums a collection by predicate or propName
+     * @example <caption>eg. usage</caption>
+     * var a = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 2},
+     *   {type: 'c', value: 3},
+     *   {type: 'd', value: 4},
+     * ];
      * 
+     * console.log(Array.sum(a, 'value', 0)); // 4 + 3 + 2 + 1 = 10
+     * console.log(a.sum('value', 0))); // same as above
      * 
+     * console.log(Array.sum(a, 'type', '')); // abcd
+     * console.log(a.sum('type', ''))); // same as above
+     * 
+     * console.log(Array.sum(a, function(acc, item) {
+     *   return acc + item.value;
+     * }, 0)); // 4 + 3 + 2 + 1 = 10
+     * 
+     * console.log(a.sum(function(acc, item) {
+     *   return acc + item.value;
+     * }, 0)); // same as above
      * @memberOf array
      * @method sum
      * @instance
-     * @param {any} a 
-     * @param {any} propName 
+     * @param {array} a 
+     * @param {function|string} predicate - the predicate should look like this in ES5<br>
+     * <pre>
+     * function(acc, item) {
+     *   return acc + item[propName];
+     * }
+     * </pre>
+     * or in ES6<br>
+     * <pre>
+     * (acc, item) => {
+     *   return acc + item[propName];
+     * }
+     * </pre><br>
+     * this kind of predicate will be implemented automatically if you specify a propName instead the predicate
+     * @param {object|any} predicate.acc - the accumulator variable used for the sum
+     * @param {object|any} predicate.item - the iterating item
      * @param {any} [startValue=0]
+     * @return {any}
      */
     sum(a, propName, startValue = 0) {
       if (Array.isArray(a)) {
@@ -1041,16 +1100,16 @@ export default {
       return a;
     },
     /**
-     * 
-     * 
+     * deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
+     * {@link lodash#deepMap|for examples see lodash.deepMap}
      * @memberOf array
      * @method deepMap
      * @instance
-     * @param {any} a 
-     * @param {any} childrenPropName 
-     * @param {any} iteratee 
+     * @param {array|object} a - the array to use for the deep mapping
+     * @param {string} [childrenPropName='children'] - the property name to use for children collection
+     * @param {function} iteratee - the item mapping iteratee
      */
-    deepMap(a, childrenPropName, iteratee) {
+    deepMap(a, childrenPropName = 'children', iteratee) {
       if (Array.isArray(a)) {
         return Array.prototype.deepMap.call(a, childrenPropName, iteratee);
       }
@@ -1058,32 +1117,78 @@ export default {
       return a;
     },
     /**
+     * loremizes an array
+     * @example <caption>eg. usage</caption>
+     * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
      * 
+     * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
+     * 
+     * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
+     * 
+     * console.log(Array.lorem(5, {type: 'a', value: 1})); 
+     * // it logs
+     * [
+     *   {type: 'a', value: 1}, 
+     *   {type: 'a', value: 1}, 
+     *   {type: 'a', value: 1}, 
+     *   {type: 'a', value: 1}, 
+     *   {type: 'a', value: 1} 
+     * ];
+     * 
+     * console.log(Array.lorem(5, function(index) {
+     *   return {
+     *     type: 'a',
+     *     value: index,
+     *   };
+     * });
+     * // it logs
+     * [
+     *   {type: 'a', value: 1}, 
+     *   {type: 'a', value: 2}, 
+     *   {type: 'a', value: 3}, 
+     *   {type: 'a', value: 4}, 
+     *   {type: 'a', value: 5} 
+     * ];
      * 
      * @memberOf array
      * @method lorem
      * @instance
-     * @param {any} a 
-     * @param {any} items 
-     * @param {any} itemModel 
+     * @param {number} items 
+     * @param {function|object} [model=false] 
+     * @return {array} 
      */
-    lorem(a, items, itemModel) {
-      if (Array.isArray(a)) {
-        return Array.prototype.lorem.call(a, items, itemModel);
-      }
-
-      return a;
+    lorem(items, model = false) {
+      return Array.prototype.lorem.call(items, model);
     },
+
     /**
+     * flattens array a single level deep,<br>
+     * or with deep parameter (true boolean) recursively flattens array,<br>
+     * or with deep parameter (number) you specify the recursion depth
+     * @example <caption>eg. usage</caption>
+     * var a = [1, [2, [3, [4]], 5]];
      * 
+     * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
+     * console.log(Array.flatten(a, 1)); // same as above
+     * console.log(a.flatten()); // same as above
+     * console.log(a.flatten(1)); // same as above
      * 
+     * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
+     * console.log(a.flatten(true)); // same as above
+     * 
+     * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
+     * console.log(a.flatten(2)); // same as above
+     * 
+     * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
+     * console.log(a.flatten(3)); // same as above
      * @memberOf array
      * @method flatten
      * @instance
-     * @param {any} a 
-     * @param {any} deep 
+     * @param {array} a - the array 
+     * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
+     * @return {array} 
      */
-    flatten(a, deep) {
+    flatten(a, deep = false) {
       if (Array.isArray(a)) {
         return Array.prototype.flatten.call(a, deep);
       }
@@ -1091,12 +1196,17 @@ export default {
       return a;
     },
     /**
+     * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
      * 
-     * 
+     * console.log(Array.shuffle(a)); // [4, 3, 5, 1, 2]
+     * console.log(a.shuffle()); // same as above (or another randomization ;-) 
      * @memberOf array
      * @method shuffle
      * @instance
-     * @param {any} a 
+     * @param {array} a - the array 
+     * @return {array} 
      */
     shuffle(a) {
       if (Array.isArray(a)) {
@@ -1105,30 +1215,58 @@ export default {
 
       return a;
     },
+
     /**
+     * splits an array in n-pieces chunks
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.split(a)); // []
+     * console.log(a.split()); // same as above
      * 
+     * console.log(Array.split(a, 1)); // [[1], [2], [3], [4], [5]]
+     * console.log(a.split(1)); // same as above
      * 
+     * console.log(Array.split(a, 2)); // [[1, 2], [3, 4], [5]]
+     * console.log(a.split(2)); // same as above
+     * 
+     * console.log(Array.split(a, 3)); // [[1, 2, 3], [4, 5]]
+     * console.log(a.split(3)); // same as above
      * @memberOf array
      * @method split
      * @instance
-     * @param {any} a 
-     * @param {any} n 
+     * @param {array} a - the array 
+     * @param {number} [n=0] - the n pieces of chunks you want
+     * @return {array} 
      */
-    split(a, n) {
+    split(a, n = 0) {
       if (Array.isArray(a)) {
         return Array.prototype.split.call(a, n);
       }
 
       return a;
     },
+
     /**
+     * reverses an array, with optional clone parameter to avoid original array mutation
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.reverse(a)); // [5, 4, 3, 2, 1]
+     * console.log(a.reverse()); // same as above
      * 
+     * console.log(a === [5, 4, 3, 2, 1]); // true
      * 
+     * var b = Array.reverse(a, true); // or var b = a.reverse(true);
+     * 
+     * console.log(a); // [1, 2, 3, 4, 5]
+     * console.log(b); // [5, 4, 3, 2, 1]
      * @memberOf array
-     * @method reverse
+     * @method tail
      * @instance
-     * @param {any} a 
+     * @param {array} a - the array 
      * @param {boolean} [clone=false] 
+     * @return {array} 
      */
     reverse(a, clone = false) {
       if (Array.isArray(a)) {
@@ -1137,13 +1275,19 @@ export default {
 
       return a;
     },
+
     /**
-     * 
-     * 
+     * returns a sliced array with all elements but the first item
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.tail(a)); // [2, 3, 4, 5]
+     * console.log(a.tail()); // same as above
      * @memberOf array
      * @method tail
      * @instance
-     * @param {any} a 
+     * @param {array} a - the array 
+     * @return {array} 
      */
     tail(a) {
       if (Array.isArray(a)) {
@@ -1152,13 +1296,19 @@ export default {
 
       return a;
     },
+
     /**
-     * 
-     * 
+     * returns a sliced array with all elements but the last item
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.cut(a)); // [1, 2, 3, 4]
+     * console.log(a.cut()); // same as above
      * @memberOf array
      * @method cut
      * @instance
-     * @param {any} a 
+     * @param {array} a - the array 
+     * @return {array} 
      */
     cut(a) {
       if (Array.isArray(a)) {
@@ -1186,6 +1336,7 @@ export default {
      * @memberOf array
      * @method clone
      * @instance
+     * @param {array} a - the array 
      * @return {array} 
      */
     clone(a) {
@@ -1197,7 +1348,7 @@ export default {
     },
 
     /**
-     * finds max value by property name in a collection array
+     * finds max value by propName in a collection array
      * @example <caption>eg. usage</caption>
      * var collection = [
      *   {type: 'a', value: 1}, 
@@ -1554,16 +1705,20 @@ export default {
     /**
      * @inheritDoc array.deepMap
      */
-    deepMap(childrenPropName, iteratee) {
+    deepMap(childrenPropName = 'children', iteratee) {
       return _.deepMap(this, childrenPropName, iteratee);
     },
 
     /**
      * @inheritDoc array.lorem
      */
-    lorem(items, itemModel) {
-      return _.times(items, () => {
-        return _.isFunction(itemModel) ? itemModel() : itemModel;
+    lorem(items, model = false) {
+      return Number.times(items, (i) => {
+        if (!!model) {
+          return Function.isFunction(model) ? model(i) : model;
+        }
+
+        return i;
       });
     },
 
@@ -1572,7 +1727,11 @@ export default {
      */
     flatten(deep) {
       if (!!deep) {
-        return _.flattenDeep(this);
+        if (Number.isNumber(deep)) {
+          return _.flattenDepth(this, deep);
+        } else if (Boolean.isBoolean(deep)) {
+          return _.flattenDeep(this);
+        }
       }
 
       return _.flatten(this);
@@ -1588,7 +1747,7 @@ export default {
     /**
      * @inheritDoc array.split
      */
-    split(n) {
+    split(n = 0) {
       return _.chunk(this, n);
     },
 
