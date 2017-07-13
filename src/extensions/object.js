@@ -10,9 +10,9 @@ export default {
      * isObject<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * console.log(Object.isObject(o)); // true
      *
@@ -35,30 +35,30 @@ export default {
      * deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * o.inherit({
-       *   prop1: 2,
-       *   prop3: new Date(),
-       * }, {
-       *   prop4: 7.52,
-       * });
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
      *
      * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
      * @example <caption>or</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * var p = o.inherit(true, {
-       *   prop1: 2,
-       *   prop3: new Date(),
-       * }, {
-       *   prop4: 7.52,
-       * });
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
      *
      * console.log(o); // o = {prop1: 1, prop2: 'a'}
      *
@@ -79,16 +79,16 @@ export default {
      * returns a new object that omits the specified properties<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * o.inherit({
-       *   prop1: 2,
-       *   prop3: new Date(),
-       * }, {
-       *   prop4: 7.52,
-       * });
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
      *
      * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
      *
@@ -116,16 +116,16 @@ export default {
      * returns a new object that picks only the specified properties<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * o.inherit({
-       *   prop1: 2,
-       *   prop3: new Date(),
-       * }, {
-       *   prop4: 7.52,
-       * });
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
      *
      * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
      *
@@ -153,9 +153,9 @@ export default {
      * deeply clones an object in a new object<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
      *
      * var p = o.clone();
      *
@@ -176,14 +176,14 @@ export default {
      * returns the value at the specified path of the object, with a default value<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       *   prop3: {
-       *     prop31: 2.52,
-       *     prop32: 'b',
-       *   },
-       *   prop4: new Date(),
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: {
+     *     prop31: 2.52,
+     *     prop32: 'b',
+     *   },
+     *   prop4: new Date(),
+     * };
      *
      * console.log(o.path('prop1')); // 1
      *
@@ -194,18 +194,18 @@ export default {
      * console.log(o.path('prop3.prop34', 'c')); // c
      * @example <caption>you can also use array paths</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       *   prop3: {
-       *     prop31: 2.52,
-       *     prop32: [{
-       *       propO1: 'b',
-       *     }, {
-       *       propO1: 'c',
-       *     }],
-       *   },
-       *   prop4: new Date(),
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: {
+     *     prop31: 2.52,
+     *     prop32: [{
+     *       propO1: 'b',
+     *     }, {
+     *       propO1: 'c',
+     *     }],
+     *   },
+     *   prop4: new Date(),
+     * };
      *
      * console.log(o.path('prop3.prop32[0].propO1')); // 'b'
      *
@@ -230,15 +230,15 @@ export default {
      * executes function for every property in the object<br><br>
      * @example <caption>eg. usage</caption>
      * var o = {
-       *   prop1: 1,
-       *   prop2: 'a',
-       *   prop3: 'b',
-       *   prop4: new Date(),
-       * };
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: 'b',
+     *   prop4: new Date(),
+     * };
      *
      * o.each(function(value, key) {
-       *   console.log(key, value);
-       * });
+     *   console.log(key, value);
+     * });
      *
      * // it logs
      * 'prop1', 1
@@ -277,14 +277,14 @@ export default {
       const createNew = _.isBoolean(args[0]) ? args[0] : false;
       let newArgs = args;
 
-      if(!!createNew) {
+      if (!!createNew) {
         newArgs = Array.prototype.slice.call(newArgs, 1);
       }
 
       function safeInherit(scope) {
         Array.prototype.unshift.call(newArgs, scope);
 
-        if(!!createNew) {
+        if (!!createNew) {
           Array.prototype.unshift.call(newArgs, {});
         }
 
@@ -319,7 +319,7 @@ export default {
      * @inheritDoc object.path
      */
     path(path, def = null) {
-      if(typeof this === 'object' && this instanceof Object) {
+      if (typeof this === 'object' && this instanceof Object) {
         return _.get(this, path, def);
       }
 

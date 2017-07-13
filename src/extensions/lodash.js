@@ -56,12 +56,12 @@ export default {
    * filters a collection with a list of values specified for one property<br><br>
    * @example <caption>eg. usage</caption>
    * var collection = [{
-       *  id: 1, status: 'active'
-       * }, {
-       *  id: 2, status: 'disabled'
-       * }, {
-       *  id: 3, status: 'unactive'
-       * }];
+   *   id: 1, status: 'active'
+   * }, {
+   *   id: 2, status: 'disabled'
+   * }, {
+   *   id: 3, status: 'unactive'
+   * }];
    *
    * var allowedValues = ['active', 'unactive'];
    *
@@ -85,36 +85,36 @@ export default {
    * deeply maps a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
    * @example <caption>eg. usage</caption>
    * var tree = [{
-       *  id: '1', status: 'enabled', items: [{
-       *    id: '1.1', status: 'enabled', items: [{
-       *      id: '1.1.1', status: 'enabled'
-       *    }, {
-       *      id: '1.1.2', status: 'disabled'
-       *    }]
-       *  }, {
-       *    id: '1.2', status: 'disabled'
-       *  }]
-       * }];
+   *   id: '1', status: 'enabled', items: [{
+   *     id: '1.1', status: 'enabled', items: [{
+   *       id: '1.1.1', status: 'enabled'
+   *     }, {
+   *       id: '1.1.2', status: 'disabled'
+   *     }]
+   *   }, {
+   *     id: '1.2', status: 'disabled'
+   *   }]
+   * }];
    *
    * console.log(_.deepMap(tree, 'items', function(treeItem) {
-       *   return {
-       *     id: treeItem.id,
-       *     status: treeItem.status,
-       *     combo: treeItem.id + '-' + treeItem.status
-       *   };
-       * });
+   *   return {
+   *     id: treeItem.id,
+   *     status: treeItem.status,
+   *     combo: treeItem.id + '-' + treeItem.status
+   *   };
+   * });
    *
    * // logs [{
-       *  id: '1', status: 'enabled', combo: '1-enabled' items: [{
-       *    id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
-       *      id: '1.1.1', status: 'enabled', combo: '1.1.1-enabled'
-       *    }, {
-       *      id: '1.1.2', status: 'disabled', combo: '1.1.2-disabled'
-       *    }]
-       *  }, {
-       *    id: '1.2', status: 'disabled', combo: '1.2-disabled'
-       *  }]
-       * }]
+   *  id: '1', status: 'enabled', combo: '1-enabled' items: [{
+   *    id: '1.1', status: 'enabled', combo: '1.1-enabled', items: [{
+   *      id: '1.1.1', status: 'enabled', combo: '1.1.1-enabled'
+   *    }, {
+   *      id: '1.1.2', status: 'disabled', combo: '1.1.2-disabled'
+   *    }]
+   *  }, {
+   *    id: '1.2', status: 'disabled', combo: '1.2-disabled'
+   *  }]
+   * }]
    * @memberOf lodash
    * @method deepMap
    * @instance
@@ -139,42 +139,42 @@ export default {
    * looking for an item with the propName === propValue<br><br>
    * @example <caption>eg. usage</caption>
    * var tree = [{
-       *  id: '1', status: 'enabled', items: [{
-       *    id: '1.1', status: 'enabled', items: [{
-       *      id: '1.1.1', status: 'enabled'
-       *    }, {
-       *      id: '1.1.2', status: 'disabled'
-       *    }]
-       *  }, {
-       *    id: '1.2', status: 'disabled'
-       *  }]
-       * }, {
-       *  id: '2', status: 'disabled', items: [{
-       *    id: '2.1', status: 'enabled'
-       *  }, {
-       *    id: '2.2', status: 'enabled'
-       *  }]
-       * }, {
-       *  id: '3', status: 'enabled', items: [{
-       *    id: '3.1', status: 'disabled'
-       *  }, {
-       *    id: '3.2', status: 'enabled'
-       *  }, {
-       *    id: '3.3', status: 'enabled'
-       *  }]
-       * }];
+   *   id: '1', status: 'enabled', items: [{
+   *     id: '1.1', status: 'enabled', items: [{
+   *       id: '1.1.1', status: 'enabled'
+   *     }, {
+   *       id: '1.1.2', status: 'disabled'
+   *     }]
+   *   }, {
+   *     id: '1.2', status: 'disabled'
+   *   }]
+   *  }, {
+   *   id: '2', status: 'disabled', items: [{
+   *     id: '2.1', status: 'enabled'
+   *   }, {
+   *     id: '2.2', status: 'enabled'
+   *   }]
+   *  }, {
+   *   id: '3', status: 'enabled', items: [{
+   *     id: '3.1', status: 'disabled'
+   *   }, {
+   *     id: '3.2', status: 'enabled'
+   *   }, {
+   *     id: '3.3', status: 'enabled'
+   *   }]
+   * }];
    *
    * console.log(_.deepFindBy(tree, 'id', '1.1.1', 'items');
    * // logs {
-       *   id: '1.1.1', status: 'enabled'
-       * }
+   *   id: '1.1.1', status: 'enabled'
+   * }
    *
    * console.log(_.deepFindBy(tree, function(item) {
-       *   return item.id === '3.2'
-       * }, null, 'items');
+   *   return item.id === '3.2'
+   * }, null, 'items');
    * // logs {
-       *   id: '3.2', status: 'enabled'
-       * }
+   *   id: '3.2', status: 'enabled'
+   * }
    * @memberOf lodash
    * @method deepFindBy
    * @instance
@@ -211,57 +211,57 @@ export default {
    * deeply sorts a recursive tree structure with (same structure) childrenPropName or 'children' property<br><br>
    * @example <caption>eg. usage</caption>
    * var tree = [{
-       *  id: '1', status: 'enabled', items: [{
-       *    id: '1.1', status: 'enabled', items: [{
-       *      id: '1.1.1', status: 'enabled'
-       *    }, {
-       *      id: '1.1.2', status: 'disabled'
-       *    }]
-       *  }, {
-       *    id: '1.2', status: 'disabled'
-       *  }]
-       * }, {
-       *  id: '2', status: 'disabled', items: [{
-       *    id: '2.1', status: 'enabled'
-       *  }, {
-       *    id: '2.2', status: 'enabled'
-       *  }]
-       * }, {
-       *  id: '3', status: 'enabled', items: [{
-       *    id: '3.1', status: 'disabled'
-       *  }, {
-       *    id: '3.2', status: 'enabled'
-       *  }, {
-       *    id: '3.3', status: 'enabled'
-       *  }]
-       * }];
+   *   id: '1', status: 'enabled', items: [{
+   *     id: '1.1', status: 'enabled', items: [{
+   *       id: '1.1.1', status: 'enabled'
+   *     }, {
+   *       id: '1.1.2', status: 'disabled'
+   *     }]
+   *   }, {
+   *     id: '1.2', status: 'disabled'
+   *   }]
+   *  }, {
+   *   id: '2', status: 'disabled', items: [{
+   *     id: '2.1', status: 'enabled'
+   *   }, {
+   *     id: '2.2', status: 'enabled'
+   *   }]
+   *  }, {
+   *   id: '3', status: 'enabled', items: [{
+   *     id: '3.1', status: 'disabled'
+   *   }, {
+   *     id: '3.2', status: 'enabled'
+   *   }, {
+   *     id: '3.3', status: 'enabled'
+   *   }]
+   * }];
    *
    * console.log(_.deepOrderBy(tree, ['id'], ['desc'], 'items');
    * // logs [{
-       *  id: '3', status: 'enabled', items: [{
-       *    id: '3.3', status: 'enabled'
-       *  }, {
-       *    id: '3.2', status: 'disabled'
-       *  }, {
-       *    id: '3.1', status: 'enabled'
-       *  }]
-       * }, {
-       *  id: '2', status: 'disabled', items: [{
-       *    id: '2.2', status: 'enabled'
-       *  }, {
-       *    id: '2.1', status: 'enabled'
-       *  }]
-       * }, {
-       *  id: '1', status: 'enabled', items: [{
-       *    id: '1.2', status: 'disabled'
-       *  }, {
-       *    id: '1.1', status: 'enabled', items: [{
-       *      id: '1.1.2', status: 'enabled'
-       *    }, {
-       *      id: '1.1.1', status: 'disabled'
-       *    }]
-       *  }]
-       * }]
+   *   id: '3', status: 'enabled', items: [{
+   *     id: '3.3', status: 'enabled'
+   *   }, {
+   *     id: '3.2', status: 'disabled'
+   *   }, {
+   *     id: '3.1', status: 'enabled'
+   *   }]
+   *  }, {
+   *   id: '2', status: 'disabled', items: [{
+   *     id: '2.2', status: 'enabled'
+   *   }, {
+   *     id: '2.1', status: 'enabled'
+   *   }]
+   *  }, {
+   *   id: '1', status: 'enabled', items: [{
+   *     id: '1.2', status: 'disabled'
+   *   }, {
+   *     id: '1.1', status: 'enabled', items: [{
+   *       id: '1.1.2', status: 'enabled'
+   *     }, {
+   *       id: '1.1.1', status: 'disabled'
+   *     }]
+   *   }]
+   * }]
    * @memberOf lodash
    * @method deepOrderBy
    * @instance
@@ -320,8 +320,8 @@ export default {
    * a reverse implementation of _.times by lodash<br><br>
    * @example <caption>eg. usage</caption>
    * _.timesReverse(5, function(i) {
-       *   console.log(i);
-       * });
+   *   console.log(i);
+   * });
    *
    * // logs
    * 5
@@ -364,8 +364,8 @@ export default {
    * 10
    * @example <caption>or</caption>
    * _.timesRange(5, 10, function(i) {
-       *   console.log(i);
-       * }, true);
+   *   console.log(i);
+   * }, true);
    *
    * // logs
    * 10

@@ -320,7 +320,7 @@ export default {
      * @return {*}
      */
     extractFileExtension(s) {
-      if(String.isString(s)) {
+      if (String.isString(s)) {
         return String.prototype.extractFileExtension.call(s);
       }
 
@@ -682,7 +682,7 @@ export default {
       // find & remove port number
       domain = domain.split(':')[0];
 
-      if(!!excludeWww) {
+      if (!!excludeWww) {
         domain = domain.replaceAll('www.', '');
       }
 
@@ -696,7 +696,7 @@ export default {
     extractQueryString() {
       const queryStringObject = {};
 
-      if(this.contains('?')) {
+      if (this.contains('?')) {
         const queryString = this.split('?')[1];
         const queryStringParams = queryString.split('&');
         queryStringParams.each((param) => {
@@ -773,7 +773,7 @@ export default {
      * @inheritDoc string.parsePercentage
      */
     parsePercentage() {
-      if(this.isPercentage()) {
+      if (this.isPercentage()) {
         return parseFloat(this) / 100.00;
       }
 

@@ -33,7 +33,7 @@ export default {
      * @return {timestamp|0}
      */
     toTimestamp(d) {
-      if(!Date.isDate(d)) {
+      if (!Date.isDate(d)) {
         return 0;
       }
 

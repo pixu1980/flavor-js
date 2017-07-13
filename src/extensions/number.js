@@ -516,7 +516,7 @@ export default {
       if (diff < min) {
         diff += max;
       }
-      
+
       if (diff > max / 2) {
         diff = max - diff;
       }
@@ -536,7 +536,7 @@ export default {
       }
 
       const diff = Number.degreeDiff(ang1, ang2, min, max);
-      
+
       if (diff > max / 2) {
         return -1;
       }

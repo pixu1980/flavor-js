@@ -83,7 +83,7 @@ export default {
     proxy(scope, ...proxyArgs) {
       const func = this;
 
-      return function(...args) {
+      return function (...args) {
         return func.apply(scope, (proxyArgs.length >= 1 ? proxyArgs : args));
       };
     },
