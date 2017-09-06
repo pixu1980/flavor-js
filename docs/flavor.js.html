@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>date - Documentation</title>
+    <title>flavor.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,426 +27,220 @@
 
 <div id="main">
     
-    <h1 class="page-title">date</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-        date
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-        
-            <div class="description">the JS native Date class</div>
-        
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="isDate"><span class="type-signature"></span>isDate<span class="signature">(d)</span><span class="type-signature"> &rarr; {<a href="boolean.html">boolean</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    checks if something is a date
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">eg.usage</p>
-    
-    <pre class="prettyprint"><code>console.log(Date.isDate(new Date())); // true
-
-console.log(Date.isDate(0)); // false</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the value to check</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="toTimestamp"><span class="type-signature"></span>toTimestamp<span class="signature">(d)</span><span class="type-signature"> &rarr; {<a href="global.html#timestamp">timestamp</a>|0}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    transforms a date in a UTC timestamp integer
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="prettyprint"><code>console.log((new Date()).toTimestamp()); // 1491317811925 @ 2017-04-4-16:57</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="date.html">date</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the date to convert</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#timestamp">timestamp</a></span>
-|
-
-<span class="param-type">0</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">flavor.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import _ from 'lodash';
+
+import CoreExt from './extensions/core';
+import LodashExt from './extensions/lodash';
+import ObjectExt from './extensions/object';
+import FunctionExt from './extensions/function';
+import BooleanExt from './extensions/boolean';
+import NumberExt from './extensions/number';
+import DateExt from './extensions/date';
+import StringExt from './extensions/string';
+import ArrayExt from './extensions/array';
+
+import release from '../release';
+
+/**
+ * constructs FlavorJS class &amp; extends the js natives
+ * @class FlavorJS
+ * @classdesc FlavorJS the definitive JS natives chainable extensions methods
+ * @public
+ */
+export default class FlavorJS {
+  constructor() {
+    this.init();
+  }
+
+  /**
+   * safe js native prototype extension using Object.defineProperty
+   * @memberOf FlavorJS
+   * @method extendPrototypeProperty
+   * @instance
+   * @param {prototype|object} proto - the prototype/object to extend
+   * @param {string} prop - the name of the property to be defined or modified
+   * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (number, function, etc...) or what you want
+   * @param {object} [options={}] - options to be used as parameters in the descriptor for the property&lt;br>
+   * possible options are (source documentation from &lt;a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/object/defineProperty" target="_blank">Javascript|MDN docs&lt;/a>)&lt;br>
+   * @param {boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding Object.
+   * @param {boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding Object.
+   * @param {boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
+   * @param {function} [options.get=undefined] get - A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property.&lt;br>
+   * for example...&lt;br>
+   * &lt;pre>
+   * function ClassName() {
+   *   var privateProp = null;
+   *
+   *   Object.defineProperty(this, 'publicProp', {
+   *     get: function() {
+   *       return privateProp;
+   *     }
+   *   });
+   * }
+   * &lt;/pre>
+   * @param {function} [options.set=undefined] set - A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being assigned to the property.&lt;br>
+   * for example...&lt;br>
+   * &lt;pre>
+   * function ClassName() {
+   *   var privateProp = null;
+   *
+   *   Object.defineProperty(this, 'publicProp', {
+   *     set: function(value) {
+   *       privateProp = value;
+   *     }
+   *   });
+   * }
+   * &lt;/pre>
+   */
+  extendPrototypeProperty(proto, prop, val, options = {}) {
+    Object.defineProperty(proto, prop, {
+      value: val,
+      writable: true,
+      configurable: true,
+      enumerable: false,
+    });
+  }
+
+  /**
+   * merges all keys in extend plain object to the prototype (
+   * @memberOf FlavorJS
+   * @method extendPrototype
+   * @instance
+   * @param {prototype|object} proto - the prototype/object to extend
+   * @param {object} extend - the extend object to be merged in prototype
+   */
+  extendPrototype(proto, extend) {
+    _.forOwn(extend, (value, key) => {
+      this.extendPrototypeProperty(proto, key, value);
+    });
+  }
+
+  /**
+   * extendLodash
+   * @memberOf FlavorJS
+   * @method extendLodash
+   * @instance
+   */
+  extendLodash() {
+    _.mixin(LodashExt);
+  }
+
+  /**
+   * extendObject
+   * @memberOf FlavorJS
+   * @method extendObject
+   * @instance
+   */
+  extendObject() {
+    this.extendPrototype(Object.prototype, ObjectExt.prototype);
+    this.extendPrototype(Object, ObjectExt.native);
+  }
+
+  /**
+   * extendFunction
+   * @memberOf FlavorJS
+   * @method extendFunction
+   * @instance
+   */
+  extendFunction() {
+    this.extendPrototype(Function.prototype, FunctionExt.prototype);
+    this.extendPrototype(Function, FunctionExt.native);
+  }
+
+  /**
+   * extendBoolean
+   * @memberOf FlavorJS
+   * @method extendBoolean
+   * @instance
+   */
+  extendBoolean() {
+    this.extendPrototype(Boolean.prototype, BooleanExt.prototype);
+    this.extendPrototype(Boolean, BooleanExt.native);
+  }
+
+  /**
+   * extendNumber
+   * @memberOf FlavorJS
+   * @method extendNumber
+   * @instance
+   */
+  extendNumber() {
+    this.extendPrototype(Number.prototype, NumberExt.prototype);
+    this.extendPrototype(Number, NumberExt.native);
+  }
+  /**
+   * extendDate
+   * @memberOf FlavorJS
+   * @method extendDate
+   * @instance
+   */
+  extendDate() {
+    this.extendPrototype(Date.prototype, DateExt.prototype);
+    this.extendPrototype(Date, DateExt.native);
+  }
+
+  /**
+   * extendString
+   * @memberOf FlavorJS
+   * @method extendString
+   * @instance
+   */
+  extendString() {
+    this.extendPrototype(String.prototype, StringExt.prototype);
+    this.extendPrototype(String, StringExt.native);
+  }
+
+  /**
+   * extendArray
+   * @memberOf FlavorJS
+   * @method extendArray
+   * @instance
+   */
+  extendArray() {
+    this.extendPrototype(Array.prototype, ArrayExt.prototype);
+    this.extendPrototype(Array, ArrayExt.native);
+  }
+
+  /**
+   * initialize all
+   * @memberOf FlavorJS
+   * @method init
+   * @instance
+   */
+  init() {
+    this.extendLodash();
+    this.extendObject();
+    this.extendFunction();
+    this.extendBoolean();
+    this.extendNumber();
+    this.extendDate();
+    this.extendString();
+    this.extendArray();
+
+    const flavorJSStatus = {
+      initialized: true,
+      version: release.version,
+      build: release.build,
+    };
+
+    Object.inherit(this, CoreExt, flavorJSStatus);
+
+    console.log('FlavorJS initialized', flavorJSStatus);
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

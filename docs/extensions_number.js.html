@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>extensions/number.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FlavorJS.html">FlavorJS</a><ul class='methods'><li data-type='method'><a href="FlavorJS.html#delay">delay</a></li><li data-type='method'><a href="FlavorJS.html#extendArray">extendArray</a></li><li data-type='method'><a href="FlavorJS.html#extendBoolean">extendBoolean</a></li><li data-type='method'><a href="FlavorJS.html#extendDate">extendDate</a></li><li data-type='method'><a href="FlavorJS.html#extendFunction">extendFunction</a></li><li data-type='method'><a href="FlavorJS.html#extendLodash">extendLodash</a></li><li data-type='method'><a href="FlavorJS.html#extendNumber">extendNumber</a></li><li data-type='method'><a href="FlavorJS.html#extendObject">extendObject</a></li><li data-type='method'><a href="FlavorJS.html#extendPrototype">extendPrototype</a></li><li data-type='method'><a href="FlavorJS.html#extendPrototypeProperty">extendPrototypeProperty</a></li><li data-type='method'><a href="FlavorJS.html#extendString">extendString</a></li><li data-type='method'><a href="FlavorJS.html#init">init</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="array.html">array</a><ul class='methods'><li data-type='method'><a href="array.html#clone">clone</a></li><li data-type='method'><a href="array.html#concat">concat</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#containsBy">containsBy</a></li><li data-type='method'><a href="array.html#countBy">countBy</a></li><li data-type='method'><a href="array.html#cut">cut</a></li><li data-type='method'><a href="array.html#deepFindBy">deepFindBy</a></li><li data-type='method'><a href="array.html#deepMap">deepMap</a></li><li data-type='method'><a href="array.html#deepSortBy">deepSortBy</a></li><li data-type='method'><a href="array.html#diff">diff</a></li><li data-type='method'><a href="array.html#diffBy">diffBy</a></li><li data-type='method'><a href="array.html#distinct">distinct</a></li><li data-type='method'><a href="array.html#each">each</a></li><li data-type='method'><a href="array.html#filterBy">filterBy</a></li><li data-type='method'><a href="array.html#findBy">findBy</a></li><li data-type='method'><a href="array.html#first">first</a></li><li data-type='method'><a href="array.html#flatten">flatten</a></li><li data-type='method'><a href="array.html#indexBy">indexBy</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#isArray">isArray</a></li><li data-type='method'><a href="array.html#last">last</a></li><li data-type='method'><a href="array.html#lorem">lorem</a></li><li data-type='method'><a href="array.html#maxBy">maxBy</a></li><li data-type='method'><a href="array.html#pull">pull</a></li><li data-type='method'><a href="array.html#pullBy">pullBy</a></li><li data-type='method'><a href="array.html#random">random</a></li><li data-type='method'><a href="array.html#removeBy">removeBy</a></li><li data-type='method'><a href="array.html#shuffle">shuffle</a></li><li data-type='method'><a href="array.html#sortBy">sortBy</a></li><li data-type='method'><a href="array.html#split">split</a></li><li data-type='method'><a href="array.html#sum">sum</a></li><li data-type='method'><a href="array.html#tail">tail</a></li><li data-type='method'><a href="array.html#tail">tail</a></li><li data-type='method'><a href="array.html#union">union</a></li></ul></li><li><a href="boolean.html">boolean</a><ul class='methods'><li data-type='method'><a href="boolean.html#isBoolean">isBoolean</a></li><li data-type='method'><a href="boolean.html#random">random</a></li></ul></li><li><a href="date.html">date</a><ul class='methods'><li data-type='method'><a href="date.html#isDate">isDate</a></li><li data-type='method'><a href="date.html#toTimestamp">toTimestamp</a></li></ul></li><li><a href="function.html">function</a><ul class='methods'><li data-type='method'><a href="function.html#isFunction">isFunction</a></li><li data-type='method'><a href="function.html#proxy">proxy</a></li></ul></li><li><a href="lodash.html">lodash</a><ul class='methods'><li data-type='method'><a href="lodash.html#deepFindBy">deepFindBy</a></li><li data-type='method'><a href="lodash.html#deepMap">deepMap</a></li><li data-type='method'><a href="lodash.html#deepOrderBy">deepOrderBy</a></li><li data-type='method'><a href="lodash.html#filterByValues">filterByValues</a></li><li data-type='method'><a href="lodash.html#isPercentage">isPercentage</a></li><li data-type='method'><a href="lodash.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="lodash.html#pullAllByComparator">pullAllByComparator</a></li><li data-type='method'><a href="lodash.html#timesRange">timesRange</a></li><li data-type='method'><a href="lodash.html#timesReverse">timesReverse</a></li></ul></li><li><a href="number.html">number</a><ul class='methods'><li data-type='method'><a href="number.html#between">between</a></li><li data-type='method'><a href="number.html#degreeDiff">degreeDiff</a></li><li data-type='method'><a href="number.html#degreeDir">degreeDir</a></li><li data-type='method'><a href="number.html#degreeWrap">degreeWrap</a></li><li data-type='method'><a href="number.html#floor">floor</a></li><li data-type='method'><a href="number.html#fromRoman">fromRoman</a></li><li data-type='method'><a href="number.html#isNumber">isNumber</a></li><li data-type='method'><a href="number.html#parse">parse</a></li><li data-type='method'><a href="number.html#random">random</a></li><li data-type='method'><a href="number.html#range">range</a></li><li data-type='method'><a href="number.html#round">round</a></li><li data-type='method'><a href="number.html#round">round</a></li><li data-type='method'><a href="number.html#times">times</a></li><li data-type='method'><a href="number.html#toAbsolute">toAbsolute</a></li><li data-type='method'><a href="number.html#toFileSize">toFileSize</a></li><li data-type='method'><a href="number.html#toRoman">toRoman</a></li></ul></li><li><a href="object.html">object</a><ul class='methods'><li data-type='method'><a href="object.html#clone">clone</a></li><li data-type='method'><a href="object.html#each">each</a></li><li data-type='method'><a href="object.html#inherit">inherit</a></li><li data-type='method'><a href="object.html#isObject">isObject</a></li><li data-type='method'><a href="object.html#omit">omit</a></li><li data-type='method'><a href="object.html#path">path</a></li><li data-type='method'><a href="object.html#pick">pick</a></li></ul></li><li><a href="string.html">string</a><ul class='methods'><li data-type='method'><a href="string.html#camelCase">camelCase</a></li><li data-type='method'><a href="string.html#capitalize">capitalize</a></li><li data-type='method'><a href="string.html#contains">contains</a></li><li data-type='method'><a href="string.html#decodeURI">decodeURI</a></li><li data-type='method'><a href="string.html#encodeURI">encodeURI</a></li><li data-type='method'><a href="string.html#endsWith">endsWith</a></li><li data-type='method'><a href="string.html#escapeHTML">escapeHTML</a></li><li data-type='method'><a href="string.html#escapeHTML">escapeHTML</a></li><li data-type='method'><a href="string.html#extractDomain">extractDomain</a></li><li data-type='method'><a href="string.html#extractFileExtension">extractFileExtension</a></li><li data-type='method'><a href="string.html#extractQueryString">extractQueryString</a></li><li data-type='method'><a href="string.html#guid">guid</a></li><li data-type='method'><a href="string.html#isRoman">isRoman</a></li><li data-type='method'><a href="string.html#isString">isString</a></li><li data-type='method'><a href="string.html#isUrl">isUrl</a></li><li data-type='method'><a href="string.html#pad">pad</a></li><li data-type='method'><a href="string.html#padLeft">padLeft</a></li><li data-type='method'><a href="string.html#padRight">padRight</a></li><li data-type='method'><a href="string.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="string.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="string.html#replaceAll">replaceAll</a></li><li data-type='method'><a href="string.html#slugify">slugify</a></li><li data-type='method'><a href="string.html#startsWith">startsWith</a></li><li data-type='method'><a href="string.html#stripTags">stripTags</a></li><li data-type='method'><a href="string.html#toArray">toArray</a></li><li data-type='method'><a href="string.html#toInt">toInt</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">extensions/number.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import _ from 'lodash';
+
+/**
+ * @namespace number
+ * @description the JS native Number class
+ */
+export default {
+  native: {
+    /**
+     * check if something is a number
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var n = 1;
+     *
+     * console.log(Number.isNumber(n)); // true
+     *
+     * console.log(Number.isNumber(2)); // true
+     *
+     * console.log(Number.isNumber('')); // false
+     *
+     * console.log(Number.isNumber(null)); // false
+     * @memberOf number
+     * @method isNumber
+     * @instance
+     * @return {boolean}
+     */
+    isNumber(n) {
+      return Number.prototype.isNumber.call(n);
+    },
+
+    /**
+     * checks if a number is between a range
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((5).between(1, 10)); // true
+     *
+     * console.log((5).between(1, 4)); // false
+     * @memberOf number
+     * @method between
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [from=Number.MIN_VALUE] - the from number
+     * @param {number} [to=Number.MAX_VALUE] - the to number
+     * @return {*|boolean}
+     */
+    isBetween(n, from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
+      if (!Number.isNumber(n)) {
+        return false;
+      }
+
+      return Number.prototype.isBetween.call(n, from, to);
+    },
+
+    /**
+     * parse a number value, returns null if parsing failes
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log(Number.parse("1")); // 1
+     *
+     * console.log(Number.parse("1,25")); // 1.25
+     *
+     * console.log(Number.parse({})); // null
+     * @memberOf number
+     * @method parse
+     * @instance
+     * @param {*} n - the value to be parsed
+     * @return {number|null}
+     */
+    parse(n) {
+      return _.parseInt(n);
+    },
+
+    /**
+     * repeats a function n times
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * (5).times(function(i) {
+     *   console.log(i);
+     * });
+     *
+     * // logs 1, 2, 3, 4, 5
+     * @example &lt;caption>or&lt;/caption>
+     * (5).times(function(i) {
+     *   console.log(i);
+     * }, true);
+     *
+     * // logs 5, 4, 3, 2, 1
+     * @memberOf number
+     * @method times
+     * @instance
+     * @param {number} n - the number of times
+     * @param {function} iteratee - the iteratee function to invoke&lt;br>
+     * the iteratee will be invoked passing the index as i&lt;br>
+     * so the iteratee has to be something like this&lt;br>
+     * &lt;pre>
+     * function(i) {}
+     * &lt;/pre>
+     * @param {number} iteratee.i - the index
+     * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
+     */
+    times(n, iteratee, reverse = false) {
+      if (Number.isNumber(n) &amp;&amp; Number.isInteger(n)) {
+        return Number.prototype.times.call(n, iteratee, reverse);
+      }
+
+      return n;
+    },
+
+    /**
+     * randomizes a number
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log(Number.random(1, 5)); // a number between 1 and 5
+     *
+     * console.log(Number.random(1, 5, true)); // a number between 1.0 and 5.0
+     *
+     * console.log(Number.random()); // a number between Number.MIN_VALUE and Number.MAX_VALUE
+     * @memberOf number
+     * @method random
+     * @instance
+     * @param {number} [lower=Number.MIN_VALUE] - the lower number
+     * @param {number} [upper=Number.MAX_VALUE] - the upper number
+     * @param {boolean} [floating=false] - ask to return a floating number value
+     * @return {number}
+     */
+    random(lower = Number.MIN_VALUE, upper = Number.MAX_VALUE, floating = false) {
+      return _.random(lower, upper, floating);
+    },
+
+    /**
+     * converts a Romans Number String in a Decimal Number
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log(Number.fromRoman('MCMLXXX')); // 1980
+     * @memberOf number
+     * @method fromRoman
+     * @instance
+     * @param {string} s - the roman number string
+     * @return {number}
+     */
+    fromRoman(s) {
+      let str = s;
+      let result = null;
+      // the result is now a number, not a string
+      const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+      const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+      decimal.length.times((i) => {
+        while (str.indexOf(roman[i]) === 0) {
+          if (!result) {
+            result = 0;
+          }
+
+          result += decimal[i];
+          str = str.replace(roman[i], '');
+        }
+      });
+
+      return result;
+    },
+
+    /**
+     * converts a number in a Roman Number String
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((1980).toRoman()); // 'MCMLXXX'
+     * @memberOf number
+     * @method toRoman
+     * @instance
+     * @param {number} n - the number
+     * @return {string}
+     */
+    toRoman(n) {
+      return Number.prototype.toRoman.call(n);
+    },
+
+    /**
+     * converts a number of bytes in a human readable file size string
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((1024).toFileSize()); // 1kb
+     * @memberOf number
+     * @method toFileSize
+     * @instance
+     * @param {number} n - the number
+     * @param {number} precision - the precision number
+     * @return {*}
+     */
+    toFileSize(n, precision = 0) {
+      return Number.prototype.toFileSize.call(n, precision);
+    },
+
+    /**
+     * absolutes a number
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((1).toAbsolute()); // 1
+     *
+     * console.log((1.56).toAbsolute()); // 1.56
+     *
+     * console.log((-1.56).toAbsolute()); // 1.56
+     * @memberOf number
+     * @method toAbsolute
+     * @instance
+     * @param {number} n - the number
+     * @return {number}
+     */
+    toAbsolute(n) {
+      return Number.prototype.toAbsolute.call(n);
+    },
+
+    /**
+     * floors a value
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((5.076).floor()); // 4
+     *
+     * console.log((5.076).floor(2)); // 5.07
+     *
+     * console.log((5070).floor(-2)); // 5000
+     * @memberOf number
+     * @method floor
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [precision=0] - the precision number
+     * @return {number}
+     */
+    floor(n, precision = 0) {
+      return Number.prototype.floor.call(n, precision);
+    },
+
+    /**
+     * rounds a value
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log((5.007).round()); // 5
+     *
+     * console.log((5.007).round(2)); // 5.01
+     *
+     * console.log((5070).round(-2)); // 5100
+     * @memberOf number
+     * @method round
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [precision=0] - the precision number
+     * @return {number}
+     */
+    round(n, precision = 0) {
+      if (Number.isNumber(n)) {
+        return Number.prototype.round.call(n, precision);
+      }
+      return n;
+    },
+
+    /**
+     * Keeps a value `v` between `min` and `max`.
+     * 
+     * @class clip
+     * @constructor
+     * @param {Number}  v The value to be bounded.
+     * @param {Number}  min The minimum bound for the value.
+     * @param {Number}  max The maximum bound for value.
+     * @returns {Number} The bounded value.
+     */
+    /**
+     * crops a value between specified bounds
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log(Number.crop(5, 1, 10)); // 5
+     * 
+     * console.log(Number.crop(5, 2, 4)); // 4
+     *
+     * console.log(Number.crop(5, 2)); // 5
+     *
+     * console.log(Number.crop(5, 6)); // 6
+     *
+     * console.log(Number.crop('5')); // '5'
+     *
+     * console.log((5).crop(1, 10)); // 5
+     * 
+     * console.log((5).crop(2, 4)); // 4
+     *
+     * console.log((5).crop(2)); // 5
+     *
+     * console.log((5).crop(6)); // 6
+     * @memberOf number
+     * @method round
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [precision=0] - the precision number
+     * @return {number}
+     */
+    crop(n, min, max) {
+      if (Number.isNumber(n)) {
+        return Number.prototype.crop.call(n, min, max);
+      }
+
+      return n;
+    },
+
+    /**
+     * Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end. A step of -1 is used if a negative start is specified without an end or step. If end is not specified, it's set to start with start then set to 0.
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * console.log(Array.range(4));
+     * // [0, 1, 2, 3]
+     *       
+     * console.log(Array.range(-4));
+     * // [0, -1, -2, -3]
+     *  
+     * console.log(Array.range(1, 5));
+     * // [1, 2, 3, 4]
+     *  
+     * console.log(Array.range(0, 20, 5));
+     * // [0, 5, 10, 15]
+     *  
+     * console.log(Array.range(0, -4, -1));
+     * // [0, -1, -2, -3]
+     *  
+     * console.log(Array.range(1, 4, 0));
+     * // [1, 1, 1]
+     *  
+     * console.log(Array.range(0);
+     * // []
+     * @example &lt;caption>eg. usage (reverse)&lt;/caption>
+     * console.log(Array.rangeRight(4));
+     * // [3, 2, 1, 0]
+     *  
+     * console.log(Array.rangeRight(-4));
+     * // [-3, -2, -1, 0]
+     *  
+     * console.log(Array.rangeRight(1, 5));
+     * // [4, 3, 2, 1]
+     *  
+     * console.log(Array.rangeRight(0, 20, 5));
+     * // [15, 10, 5, 0]
+     *  
+     * console.log(Array.rangeRight(0, -4, -1));
+     * // [-3, -2, -1, 0]
+     *  
+     * console.log(Array.rangeRight(1, 4, 0));
+     * // [1, 1, 1]
+     *  
+     * console.log(Array.rangeRight(0));
+     * // []
+     * @memberOf number
+     * @method range
+     * @instance
+     * @param {number} [start=0] - the start of the range
+     * @param {number} end - the end of the range
+     * @param {boolean} reverse - true, if ou want a reverse range
+     * @param {number} [step=1] - the value to increment or decrement by
+     * @return {array}
+     */
+    range(start, end = null, reverse = false, step = 1) {
+      if (Number.isNumber(start)) {
+        return Number.prototype.range.call(start, end, reverse, step);
+      }
+
+      return start;
+    },
+
+    /**
+     * wraps an angle value (in degrees) between 0 and 359.
+     * 
+     * @memberOf number
+     * @method degreeWrap
+     * @instance
+     * @param {Number}  angle The angle in degrees.
+     * @returns {Number} The wrapped value.
+     */
+    degreeWrap(a) {
+      if (Number.isNumber(a)) {
+        return Number.prototype.degreeWrap.call(a);
+      }
+
+      return a;
+    },
+
+    /**
+     * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
+     * result is kept between 0 and 359.
+     * 
+     * @memberOf number
+     * @method degreeDiff
+     * @instance
+     * @param {Number}  a1 The initial angle in degrees.
+     * @param {Number}  a2 The final angle in degrees.
+     * @returns {Number} The angle distance value.
+     */
+    degreeDiff(a1, a2) {
+      if (Number.isNumber(a1) &amp;&amp; Number.isNumber(a2)) {
+        return Number.prototype.degreeDiff.call(a1, a2);
+      }
+
+      return 0;
+    },
+
+    /**
+     * Returns the direction that represents the minimum distance from angle `a1` 
+     * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
+     * 
+     * @memberOf number
+     * @method degreeDir
+     * @instance
+     * @param {Number}   a1 The initial angle in degrees.
+     * @param {Number}   a2 The final angle in degrees.
+     * @returns {Integer} A direction -1, 1 or 0.
+     */
+    degreeDir(a1, a2) {
+      if (Number.isNumber(a1) &amp;&amp; Number.isNumber(a2)) {
+        return Number.prototype.degreeDir.call(a1, a2);
+      }
+
+      return 0;
+    },
+  },
+  prototype: {
+    /**
+     * @inheritDoc number.isNumber
+     */
+    isNumber() {
+      return _.isNumber(this);
+    },
+
+    /**
+     * @inheritDoc number.isBetween
+     */
+    isBetween(from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
+      return from &lt;= this &amp;&amp; this &lt;= to;
+    },
+
+    /**
+     * @inheritDoc number.times
+     */
+    times(iteratee, reverse = false) {
+      return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
+    },
+
+    /**
+     * @inheritDoc number.toRoman
+     */
+    toRoman() {
+      let num = this;
+      let result = '';
+      const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+      const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+      _.times(decimal.length, (i) => {
+        while (num % decimal[i] &lt; num) {
+          result += roman[i];
+          num -= decimal[i];
+        }
+      });
+
+      return result;
+    },
+
+    /**
+     * @inheritDoc number.toFileSize
+     */
+    toFileSize(precision = 0) {
+      let fileSizeString = '0 B';
+
+      if (!!this) {
+        const sizes = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
+        const i = Math.floor(Math.log(this) / Math.log(1024));
+        fileSizeString = parseFloat((this / Math.pow(1024, i)).toFixed(precision)) + sizes[i];
+      }
+
+      return fileSizeString;
+    },
+
+    /**
+     * @inheritDoc number.toAbsolute
+     */
+    toAbsolute() {
+      return Math.abs(this);
+    },
+
+    /**
+     * @inheritDoc number.floor
+     */
+    floor(precision = 0) {
+      return _.floor(this, precision);
+    },
+
+    /**
+     * @inheritDoc number.round
+     */
+    round(precision = 0) {
+      return _.round(this, precision);
+    },
+
+    /**
+     * @inheritDoc number.crop
+     */
+    crop(min = Number.MIN_VALUE, max = Number.MAX_VALUE) {
+      return Math.max(Math.min(this, max), min);
+    },
+
+    /**
+     * @inheritDoc number.range
+     */
+    range(end = null, reverse = false, step = 1) {
+      const rangeStart = Number.isNumber(end) ? this : 0;
+      const rangeEnd = Number.isNumber(end) ? end : this;
+      const method = reverse ? 'rangeRight' : 'range';
+
+      return _[method](rangeStart, rangeEnd, step);
+    },
+
+    /**
+     * @inheritDoc number.degreeWrap
+     */
+    degreeWrap(min = 0, max = 360) {
+      return ((this &lt; min) ? max : 0) + this % max;
+    },
+
+    /**
+     * @inheritDoc number.degreeDiff
+     */
+    degreeDiff(a, min = 0, max = 360) {
+      const ang1 = Number.degreeWrap(this, min, max);
+      const ang2 = Number.degreeWrap(a, min, max);
+
+      let diff = ang2 - ang1;
+
+      if (diff &lt; min) {
+        diff += max;
+      }
+
+      if (diff > max / 2) {
+        diff = max - diff;
+      }
+
+      return diff;
+    },
+
+    /**
+     * @inheritDoc number.degreeDir
+     */
+    degreeDir(a, min = 0, max = 360) {
+      const ang1 = Number.degreeWrap(this, min, max);
+      const ang2 = Number.degreeWrap(a, min, max);
+
+      if (ang1 === ang2) {
+        return 0;
+      }
+
+      const diff = Number.degreeDiff(ang1, ang2, min, max);
+
+      if (diff > max / 2) {
+        return -1;
+      }
+
+      return 1;
+    },
+  },
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Aug 02 2017 17:44:18 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

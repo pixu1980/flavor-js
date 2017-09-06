@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>date - Documentation</title>
+    <title>extensions/object.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,426 +27,355 @@
 
 <div id="main">
     
-    <h1 class="page-title">date</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-        date
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-        
-            <div class="description">the JS native Date class</div>
-        
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="isDate"><span class="type-signature"></span>isDate<span class="signature">(d)</span><span class="type-signature"> &rarr; {<a href="boolean.html">boolean</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    checks if something is a date
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">eg.usage</p>
-    
-    <pre class="prettyprint"><code>console.log(Date.isDate(new Date())); // true
-
-console.log(Date.isDate(0)); // false</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the value to check</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="boolean.html">boolean</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="toTimestamp"><span class="type-signature"></span>toTimestamp<span class="signature">(d)</span><span class="type-signature"> &rarr; {<a href="global.html#timestamp">timestamp</a>|0}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_date.js.html">extensions/date.js</a>, <a href="extensions_date.js.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    transforms a date in a UTC timestamp integer
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">eg. usage</p>
-    
-    <pre class="prettyprint"><code>console.log((new Date()).toTimestamp()); // 1491317811925 @ 2017-04-4-16:57</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="date.html">date</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the date to convert</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#timestamp">timestamp</a></span>
-|
-
-<span class="param-type">0</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">extensions/object.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import _ from 'lodash';
+
+/**
+ * @namespace object
+ * @description the JS native Object class
+ */
+export default {
+  native: {
+    /**
+     * isObject&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * console.log(Object.isObject(o)); // true
+     *
+     * console.log(Object.isObject(2)); // true
+     *
+     * console.log(Object.isObject('2')); // true
+     *
+     * console.log(Object.isObject(null)); // false
+     * @memberOf object
+     * @method isObject
+     * @instance
+     * @param {object} o - the object
+     * @return {boolean}
+     */
+    isObject(o) {
+      return Object.prototype.isObject.call(o);
+    },
+
+    /**
+     * deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * o.inherit({
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
+     *
+     * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     * @example &lt;caption>or&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * var p = o.inherit(true, {
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
+     *
+     * console.log(o); // o = {prop1: 1, prop2: 'a'}
+     *
+     * console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     * @memberOf object
+     * @method inherit
+     * @instance
+     * @param {object} o - the object to extend
+     * @param {boolean} [createNew] - specifies to create a new object to merge
+     * @param {...object} args - the list of objects to merge
+     * @return {object}
+     */
+    inherit(o, ...args) {
+      return Object.prototype.inherit.call(o, ...args);
+    },
+
+    /**
+     * returns a new object that omits the specified properties&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * o.inherit({
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
+     *
+     * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     *
+     * console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}
+     *
+     * console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}
+     *
+     * console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}
+     *
+     * console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
+     *
+     * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     * @memberOf object
+     * @method omit
+     * @instance
+     * @param {object} o - the object
+     * @param {...object} args - the list of properties to omit
+     * @return {object}
+     */
+    omit(o, ...args) {
+      return Object.prototype.omit.call(o, ...args);
+    },
+
+    /**
+     * returns a new object that picks only the specified properties&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * o.inherit({
+     *   prop1: 2,
+     *   prop3: new Date(),
+     * }, {
+     *   prop4: 7.52,
+     * });
+     *
+     * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     *
+     * console.log(o.pick('prop1')); // {prop1: 2}
+     *
+     * console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+     *
+     * console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+     *
+     * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+     *
+     * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+     * @memberOf object
+     * @method pick
+     * @instance
+     * @param {object} o - the object
+     * @param {...object} args - the list of properties to omit
+     * @return {*}
+     */
+    pick(o, ...args) {
+      return Object.prototype.pick.call(o, ...args);
+    },
+
+    /**
+     * deeply clones an object in a new object&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * var p = o.clone();
+     *
+     * console.log(o == p); // true
+     *
+     * console.log(o === p); // false
+     * @memberOf object
+     * @method clone
+     * @instance
+     * @param {object} o - the object
+     * @return {object}
+     */
+    clone(o) {
+      return Object.prototype.clone.call(o);
+    },
+
+    /**
+     * returns the value at the specified path of the object, with a default value&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: {
+     *     prop31: 2.52,
+     *     prop32: 'b',
+     *   },
+     *   prop4: new Date(),
+     * };
+     *
+     * console.log(o.path('prop1')); // 1
+     *
+     * console.log(o.path('prop3.prop31')); // 2.52
+     *
+     * console.log(o.path('prop3.prop34')); // null
+     *
+     * console.log(o.path('prop3.prop34', 'c')); // c
+     * @example &lt;caption>you can also use array paths&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: {
+     *     prop31: 2.52,
+     *     prop32: [{
+     *       propO1: 'b',
+     *     }, {
+     *       propO1: 'c',
+     *     }],
+     *   },
+     *   prop4: new Date(),
+     * };
+     *
+     * console.log(o.path('prop3.prop32[0].propO1')); // 'b'
+     *
+     * console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
+     *
+     * console.log(o.path('prop3.prop31[2]')); // null
+     *
+     * console.log(o.path('prop3.prop31[2]', {})); // {}
+     * @memberOf object
+     * @method path
+     * @instance
+     * @param {object} o - the object
+     * @param {string} path - the path to search inside the object
+     * @param {object} [def=null] - the default value to return if path is not found
+     * @return {*}
+     */
+    path(o, path, def = null) {
+      return Object.prototype.path.call(o, path, def);
+    },
+
+    /**
+     * executes function for every property in the object&lt;br>&lt;br>
+     * @example &lt;caption>eg. usage&lt;/caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: 'b',
+     *   prop4: new Date(),
+     * };
+     *
+     * o.each(function(value, key) {
+     *   console.log(key, value);
+     * });
+     *
+     * // it logs
+     * 'prop1', 1
+     * 'prop2', 'a'
+     * 'prop3', 'b'
+     * 'prop4', Date
+     * @memberOf object
+     * @method each
+     * @instance
+     * @param {object} o - the object
+     * @param {function} iteratee - the iteratee callback will be invoked with the following parameters&lt;br>
+     * so your callback has to be something like this&lt;br>&lt;br>
+     * &lt;pre>
+     * function iteratee(value, key) {}
+     * &lt;/pre>
+     * @param {any} iteratee.value - the property value of the object
+     * @param {string} iteratee.key - the property key of the object
+     * @return {object} to make chainable the method
+     */
+    each(o, iteratee) {
+      return Object.prototype.each.call(o, iteratee);
+    },
+  },
+  prototype: {
+    /**
+     * @inheritDoc object.isObject
+     */
+    isObject() {
+      return _.isPlainObject(this);
+    },
+
+    /**
+     * @inheritDoc object.inherit
+     */
+    inherit(...args) {
+      const createNew = _.isBoolean(args[0]) ? args[0] : false;
+      let newArgs = args;
+
+      if (!!createNew) {
+        newArgs = Array.prototype.slice.call(newArgs, 1);
+      }
+
+      function safeInherit(scope) {
+        Array.prototype.unshift.call(newArgs, scope);
+
+        if (!!createNew) {
+          Array.prototype.unshift.call(newArgs, {});
+        }
+
+        return _.merge.apply(scope, newArgs);
+      }
+
+      return safeInherit(this);
+    },
+
+    /**
+     * @inheritDoc object.omit
+     */
+    omit(...args) {
+      return _.omit(this, ...args);
+    },
+
+    /**
+     * @inheritDoc object.pick
+     */
+    pick(...args) {
+      return _.pick(this, ...args);
+    },
+
+    /**
+     * @inheritDoc object.clone
+     */
+    clone() {
+      return _.cloneDeep(this);
+    },
+
+    /**
+     * @inheritDoc object.path
+     */
+    path(path, def = null) {
+      if (typeof this === 'object' &amp;&amp; this instanceof Object) {
+        return _.get(this, path, def);
+      }
+
+      return def;
+    },
+
+    /**
+     * @inheritDoc object.each
+     */
+    each(iteratee) {
+      return _.each(this, iteratee);
+    },
+  },
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

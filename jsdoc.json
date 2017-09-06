@@ -23,7 +23,7 @@
     "sort": false
   },
   "opts": {
-    "template": "../ink-docstrap/template",
+    "template": "../docdash",
     "encoding": "utf8",
     "destination": "docs",
     "sort": false,

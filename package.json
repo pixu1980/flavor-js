@@ -4,7 +4,8 @@
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "doc": "jsdoc -R ./README.md -r -c ./jsdoc.json"
   },
   "repository": {
     "type": "git",
