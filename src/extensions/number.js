@@ -201,6 +201,36 @@ export default {
     },
 
     /**
+     * formats a number to a currency string
+     * @example <caption>eg. usage</caption>
+     * console.log((1).toCurrency()); // 1,00
+     *
+     * console.log((1).toCurrency(3); // 1,000
+     *
+     * console.log((123456,789).toCurrency(2); // 123.456,79
+     *
+     * console.log((123456,789).toCurrency(3, 4); // 12.3456,789
+     *
+     * console.log((123456,789).toCurrency(3, 4, ',', '.'); // 12,3456.789
+     * @memberOf number
+     * @method toCurrency
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [dec=2] - desired decimals
+     * @param {number} [sec=3] - desired number sections
+     * @param {string} [decSymbol=','] - decimals separator char
+     * @param {string} [secSymbol='.'] - sections separator char
+     * @return {string}
+     */
+    toCurrency(n, dec = 2, sec = 3, decSymbol = ',', secSymbol = '.') {
+      if (Number.isNumber(n)) {
+        return Number.prototype.toCurrency.call(n, dec, sec, decSymbol, secSymbol);
+      }
+
+      return n;
+    },
+
+    /**
      * floors a value
      * @example <caption>eg. usage</caption>
      * console.log((5.076).floor()); // 4
@@ -463,6 +493,16 @@ export default {
      */
     toAbsolute() {
       return Math.abs(this);
+    },
+
+    /**
+     * @inheritDoc number.toCurrency
+     */
+    toCurrency(dec = 2, sec = 3, decSymbol = ',', secSymbol = '.') {
+      const regEx = '\\d(?=(\\d{' + sec + '})+' + (dec > 0 ? '\\D' : '$') + ')';
+      const val = this.toFixed(dec);
+
+      return (decSymbol ? val.replace('.', decSymbol) : val).replace(new RegExp(regEx, 'g'), '$&' + secSymbol);
     },
 
     /**

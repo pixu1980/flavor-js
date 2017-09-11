@@ -1,11 +1,11 @@
 {
   "name": "flavor-js",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.js",
   "scripts": {
     "build": "webpack",
-    "doc": "jsdoc -R ./README.md -r -c ./jsdoc.json"
+    "docs": "jsdoc -R ./README.md -r -c ./jsdoc.json"
   },
   "repository": {
     "type": "git",
