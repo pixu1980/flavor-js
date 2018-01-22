@@ -2872,17 +2872,9 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc object.isObject
-     */
     isObject: function isObject() {
       return _lodash2.default.isPlainObject(this);
     },
-
-
-    /**
-     * @inheritDoc object.inherit
-     */
     inherit: function inherit() {
       for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
         args[_key4] = arguments[_key4];
@@ -2907,11 +2899,6 @@ exports.default = {
 
       return safeInherit(this);
     },
-
-
-    /**
-     * @inheritDoc object.omit
-     */
     omit: function omit() {
       for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
         args[_key5] = arguments[_key5];
@@ -2919,11 +2906,6 @@ exports.default = {
 
       return _lodash2.default.omit.apply(_lodash2.default, [this].concat(_toConsumableArray(args)));
     },
-
-
-    /**
-     * @inheritDoc object.pick
-     */
     pick: function pick() {
       for (var _len6 = arguments.length, args = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
         args[_key6] = arguments[_key6];
@@ -2931,19 +2913,9 @@ exports.default = {
 
       return _lodash2.default.pick.apply(_lodash2.default, [this].concat(_toConsumableArray(args)));
     },
-
-
-    /**
-     * @inheritDoc object.clone
-     */
     clone: function clone() {
       return _lodash2.default.cloneDeep(this);
     },
-
-
-    /**
-     * @inheritDoc object.path
-     */
     path: function path(_path2) {
       var def = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -2953,11 +2925,6 @@ exports.default = {
 
       return def;
     },
-
-
-    /**
-     * @inheritDoc object.each
-     */
     each: function each(iteratee) {
       return _lodash2.default.each(this, iteratee);
     }
@@ -3060,17 +3027,9 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc function.isFunction
-     */
     isFunction: function isFunction() {
       return _lodash2.default.isFunction(this);
     },
-
-
-    /**
-     * @inheritDoc function.proxy
-     */
     proxy: function proxy(scope) {
       for (var _len2 = arguments.length, proxyArgs = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
         proxyArgs[_key2 - 1] = arguments[_key2];
@@ -3147,9 +3106,6 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc boolean.isBoolean
-     */
     isBoolean: function isBoolean() {
       return _lodash2.default.isBoolean(this);
     }
@@ -3646,28 +3602,15 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc number.isNumber
-     */
     isNumber: function isNumber() {
       return _lodash2.default.isNumber(this);
     },
-
-
-    /**
-     * @inheritDoc number.isBetween
-     */
     isBetween: function isBetween() {
       var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Number.MIN_VALUE;
       var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Number.MAX_VALUE;
 
       return from <= this && this <= to;
     },
-
-
-    /**
-     * @inheritDoc number.times
-     */
     times: function times(iteratee) {
       var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
@@ -3694,11 +3637,6 @@ exports.default = {
 
       return symbolPrepend + num + symbolAppend;
     },
-
-
-    /**
-     * @inheritDoc number.toRoman
-     */
     toRoman: function toRoman() {
       var num = this;
       var result = '';
@@ -3714,11 +3652,6 @@ exports.default = {
 
       return result;
     },
-
-
-    /**
-     * @inheritDoc number.toFileSize
-     */
     toFileSize: function toFileSize() {
       var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
@@ -3732,19 +3665,9 @@ exports.default = {
 
       return fileSizeString;
     },
-
-
-    /**
-     * @inheritDoc number.toAbsolute
-     */
     toAbsolute: function toAbsolute() {
       return Math.abs(this);
     },
-
-
-    /**
-     * @inheritDoc number.toCurrency
-     */
     toCurrency: function toCurrency() {
       var dec = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
       var sec = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
@@ -3756,42 +3679,22 @@ exports.default = {
 
       return (decSymbol ? val.replace('.', decSymbol) : val).replace(new RegExp(regEx, 'g'), '$&' + secSymbol);
     },
-
-
-    /**
-     * @inheritDoc number.floor
-     */
     floor: function floor() {
       var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
       return _lodash2.default.floor(this, precision);
     },
-
-
-    /**
-     * @inheritDoc number.round
-     */
     round: function round() {
       var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
       return _lodash2.default.round(this, precision);
     },
-
-
-    /**
-     * @inheritDoc number.crop
-     */
     crop: function crop() {
       var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Number.MIN_VALUE;
       var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Number.MAX_VALUE;
 
       return Math.max(Math.min(this, max), min);
     },
-
-
-    /**
-     * @inheritDoc number.range
-     */
     range: function range() {
       var end = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -3803,22 +3706,12 @@ exports.default = {
 
       return _lodash2.default[method](rangeStart, rangeEnd, step);
     },
-
-
-    /**
-     * @inheritDoc number.degreeWrap
-     */
     degreeWrap: function degreeWrap() {
       var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 360;
 
       return (this < min ? max : 0) + this % max;
     },
-
-
-    /**
-     * @inheritDoc number.degreeDiff
-     */
     degreeDiff: function degreeDiff(a) {
       var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
       var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 360;
@@ -3838,11 +3731,6 @@ exports.default = {
 
       return diff;
     },
-
-
-    /**
-     * @inheritDoc number.degreeDir
-     */
     degreeDir: function degreeDir(a) {
       var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
       var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 360;
@@ -3945,17 +3833,9 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc date.isDate
-     */
     isDate: function isDate() {
       return _lodash2.default.isDate(this);
     },
-
-
-    /**
-     * @inheritDoc date.toTimestamp
-     */
     toTimestamp: function toTimestamp() {
       return Math.round(this);
     }
@@ -4578,116 +4458,53 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc string.isString
-     */
     isString: function isString() {
       return _lodash2.default.isString(this);
     },
-
-
-    /**
-     * @inheritDoc string.isPercentage
-     */
     isPercentage: function isPercentage() {
       return (/^\d+(\.\d+)?%$/.test(this)
       );
     },
-
-
-    /**
-     * @inheritDoc string.isRoman
-     */
     isRoman: function isRoman() {
       return !!Number.fromRoman(this);
     },
-
-
-    /**
-     * @inheritDoc string.isUrl
-     */
     isUrl: function isUrl() {
       return (/^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i.test(this)
       );
     },
-
-
-    /**
-     * @inheritDoc string.contains
-     */
     contains: function contains(value) {
       var insensitive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       return new RegExp(_lodash2.default.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
-
-
-    /**
-     * @inheritDoc string.startsWith
-     */
     startsWith: function startsWith(value) {
       var insensitive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       return new RegExp('^' + _lodash2.default.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
-
-
-    /**
-     * @inheritDoc string.endsWith
-     */
     endsWith: function endsWith(value) {
       var insensitive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       return new RegExp(_lodash2.default.escapeRegExp(value) + '$', 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
-
-
-    /**
-     * @inheritDoc string.camelCase()
-     */
     camelCase: function camelCase() {
       return _lodash2.default.camelCase(this);
     },
-
-
-    /**
-     * @inheritDoc string.capitalize
-     */
     capitalize: function capitalize() {
       return _lodash2.default.capitalize(this);
     },
-
-
-    /**
-     * @inheritDoc string.replaceAll
-     */
     replaceAll: function replaceAll(needle) {
       var replacement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
       var insensitive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
       return this.replace(new RegExp(_lodash2.default.escapeRegExp(needle), 'mg' + (!!insensitive ? 'i' : '')), replacement);
     },
-
-
-    /**
-     * @inheritDoc string.encodeURI
-     */
     encodeURI: function encodeURI() {
       return encodeURIComponent(this);
     },
-
-
-    /**
-     * @inheritDoc string.decodeURI
-     */
     decodeURI: function decodeURI() {
       return decodeURIComponent(this);
     },
-
-
-    /**
-     * @inheritDoc string.escapeHTML
-     */
     escapeHTML: function escapeHTML() {
       return _lodash2.default.escape(this);
     },
@@ -4701,9 +4518,6 @@ exports.default = {
     //},
      */
 
-    /**
-     * @inheritDoc string.escapeHTML
-     */
     unescapeHTML: function unescapeHTML() {
       return _lodash2.default.unescape(this);
     },
@@ -4718,9 +4532,6 @@ exports.default = {
     //},
     */
 
-    /**
-     * @inheritDoc string.extractDomain
-     */
     extractDomain: function extractDomain() {
       var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
       var excludeWww = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -4746,11 +4557,6 @@ exports.default = {
       var domainArr = domain.split('.');
       return domainArr.slice(domainArr.length - level).join('.');
     },
-
-
-    /**
-     * @inheritDoc string.extractQueryString
-     */
     extractQueryString: function extractQueryString() {
       var queryStringObject = {};
 
@@ -4769,11 +4575,6 @@ exports.default = {
 
       return queryStringObject;
     },
-
-
-    /**
-     * @inheritDoc string.slugify
-     */
     slugify: function slugify() {
       var dashed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
@@ -4790,19 +4591,9 @@ exports.default = {
       var slug = _lodash2.default.kebabCase(this);
       return !!dashed ? slug : slug.replaceAll('-', '');
     },
-
-
-    /**
-     * @inheritDoc string.extractFileExtension
-     */
     extractFileExtension: function extractFileExtension() {
       return this.substring(this.lastIndexOf('.') + 1).toLowerCase();
     },
-
-
-    /**
-     * @inheritDoc string.stripTags
-     */
     stripTags: function stripTags() {
       var div = document.createElement('div');
       div.innerHTML = this;
@@ -4816,33 +4607,15 @@ exports.default = {
     // },
     */
 
-    /**
-     * @inheritDoc string.pad
-     */
     pad: function pad(length, chars) {
       return _lodash2.default.pad(this, length, chars);
     },
-
-
-    /**
-     * @inheritDoc string.padLeft
-     */
     padLeft: function padLeft(length, chars) {
       return _lodash2.default.padStart(this, length, chars);
     },
-
-
-    /**
-     * @inheritDoc string.padRight
-     */
     padRight: function padRight(length, chars) {
       return _lodash2.default.padEnd(this, length, chars);
     },
-
-
-    /**
-     * @inheritDoc string.parsePercentage
-     */
     parsePercentage: function parsePercentage() {
       if (this.isPercentage()) {
         return parseFloat(this) / 100.00;
@@ -4850,19 +4623,9 @@ exports.default = {
 
       return this;
     },
-
-
-    /**
-     * @inheritDoc string.toInt
-     */
     toInt: function toInt() {
       return Number.parse(this);
     },
-
-
-    /**
-     * @inheritDoc string.toArray
-     */
     toArray: function toArray() {
       var separator = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -6364,17 +6127,9 @@ exports.default = {
     }
   },
   prototype: {
-    /**
-     * @inheritDoc array.isArray
-     */
     isArray: function isArray() {
       return _lodash2.default.isArray(this);
     },
-
-
-    /**
-     * @inheritDoc array.contains
-     */
     contains: function contains(item) {
       var all = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
@@ -6388,11 +6143,6 @@ exports.default = {
 
       return _lodash2.default.includes(this, item);
     },
-
-
-    /**
-     * @inheritDoc array.concat
-     */
     concat: function concat(arr) {
       if (!!arr) {
         return _lodash2.default.concat(this, arr);
@@ -6400,19 +6150,9 @@ exports.default = {
 
       return this;
     },
-
-
-    /**
-     * @inheritDoc array.distinct
-     */
     distinct: function distinct() {
       return _lodash2.default.uniqWith(this, _lodash2.default.isEqual);
     },
-
-
-    /**
-     * @inheritDoc array.diff
-     */
     diff: function diff(arr) {
       var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -6435,19 +6175,9 @@ exports.default = {
 
       return [];
     },
-
-
-    /**
-     * @inheritDoc array.diffBy
-     */
     diffBy: function diffBy(arr, propName) {
       return this.diff(arr, propName);
     },
-
-
-    /**
-     * @inheritDoc array.sortBy
-     */
     sortBy: function sortBy(propNames, propDirections) {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -6465,11 +6195,6 @@ exports.default = {
 
       return _lodash2.default.orderBy(this, propNames, propDirections);
     },
-
-
-    /**
-     * @inheritDoc array.deepSortBy
-     */
     deepSortBy: function deepSortBy(propNames) {
       var propDirections = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       var childrenPropName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'children';
@@ -6490,11 +6215,6 @@ exports.default = {
 
       return _lodash2.default.deepOrderBy(this, propNames, propDirections, childrenPropName);
     },
-
-
-    /**
-     * @inheritDoc array.filterBy
-     */
     filterBy: function filterBy(propNames, propValues) {
       var predicate = null;
 
@@ -6509,19 +6229,9 @@ exports.default = {
       predicate[propNames] = propValues;
       return _lodash2.default.filter(this, predicate) || [];
     },
-
-
-    /**
-     * @inheritDoc array.pull
-     */
     pull: function pull(item) {
       return _lodash2.default.pull(this, item);
     },
-
-
-    /**
-     * @inheritDoc array.pullBy
-     */
     pullBy: function pullBy(propName, propValue) {
       if (_lodash2.default.isArray(propName) && _lodash2.default.isFunction(propValue)) {
         var values = propName;
@@ -6533,11 +6243,6 @@ exports.default = {
       predicate[propName] = propValue;
       return _lodash2.default.pullAllBy(this, [predicate]);
     },
-
-
-    /**
-     * @inheritDoc array.findBy
-     */
     findBy: function findBy(propName) {
       var propValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       var reverse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -6561,22 +6266,12 @@ exports.default = {
 
       return null;
     },
-
-
-    /**
-     * @inheritDoc array.deepFindBy
-     */
     deepFindBy: function deepFindBy(propName) {
       var propValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       var childrenPropName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'children';
 
       return _lodash2.default.deepFindBy(this, propName, propValue, childrenPropName);
     },
-
-
-    /**
-     * @inheritDoc array.indexBy
-     */
     indexBy: function indexBy(propName, propValue) {
       var reverse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -6599,19 +6294,9 @@ exports.default = {
 
       return null;
     },
-
-
-    /**
-     * @inheritDoc array.containsBy
-     */
     containsBy: function containsBy(propName, propValue) {
       return this.findBy(propName, propValue) !== undefined;
     },
-
-
-    /**
-     * @inheritDoc array.countBy
-     */
     countBy: function countBy(propName, propValue, falseValues) {
       var predicate = null;
 
@@ -6628,11 +6313,6 @@ exports.default = {
 
       return 0;
     },
-
-
-    /**
-     * @inheritDoc array.intersection
-     */
     intersection: function intersection() {
       for (var _len3 = arguments.length, arrays = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
         arrays[_key3] = arguments[_key3];
@@ -6640,11 +6320,6 @@ exports.default = {
 
       return _lodash2.default.intersection.apply(_lodash2.default, [this].concat(_toConsumableArray(arrays)));
     },
-
-
-    /**
-     * @inheritDoc array.union
-     */
     union: function union() {
       for (var _len4 = arguments.length, arrays = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
         arrays[_key4] = arguments[_key4];
@@ -6652,11 +6327,6 @@ exports.default = {
 
       return _lodash2.default.unionWith.apply(_lodash2.default, [this].concat(_toConsumableArray(arrays), [_lodash2.default.isEqual]));
     },
-
-
-    /**
-     * @inheritDoc array.random
-     */
     random: function random() {
       var weightField = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       var valueField = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -6675,11 +6345,6 @@ exports.default = {
 
       return _lodash2.default.sample(this);
     },
-
-
-    /**
-     * @inheritDoc array.each
-     */
     each: function each(iteratee) {
       var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
@@ -6689,11 +6354,6 @@ exports.default = {
 
       return _lodash2.default.each(this, iteratee);
     },
-
-
-    /**
-     * @inheritDoc array.first
-     */
     first: function first(propName, propValue) {
       var a = this;
 
@@ -6703,11 +6363,6 @@ exports.default = {
 
       return _lodash2.default.first(a);
     },
-
-
-    /**
-     * @inheritDoc array.last
-     */
     last: function last(propName, propValue) {
       var a = this;
 
@@ -6717,11 +6372,6 @@ exports.default = {
 
       return _lodash2.default.last(a);
     },
-
-
-    /**
-     * @inheritDoc array.sum
-     */
     sum: function sum(propName) {
       var startValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
@@ -6737,22 +6387,12 @@ exports.default = {
 
       return _lodash2.default.reduce(this, predicate, startValue);
     },
-
-
-    /**
-     * @inheritDoc array.deepMap
-     */
     deepMap: function deepMap() {
       var childrenPropName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'children';
       var iteratee = arguments[1];
 
       return _lodash2.default.deepMap(this, childrenPropName, iteratee);
     },
-
-
-    /**
-     * @inheritDoc array.lorem
-     */
     lorem: function lorem(items) {
       var model = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
@@ -6764,11 +6404,6 @@ exports.default = {
         return i;
       });
     },
-
-
-    /**
-     * @inheritDoc array.flatten
-     */
     flatten: function flatten(deep) {
       if (!!deep) {
         if (Number.isNumber(deep)) {
@@ -6780,29 +6415,14 @@ exports.default = {
 
       return _lodash2.default.flatten(this);
     },
-
-
-    /**
-     * @inheritDoc array.shuffle
-     */
     shuffle: function shuffle() {
       return _lodash2.default.shuffle(this);
     },
-
-
-    /**
-     * @inheritDoc array.split
-     */
     split: function split() {
       var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
       return _lodash2.default.chunk(this, n);
     },
-
-
-    /**
-     * @inheritDoc array.reverse
-     */
     reverse: function reverse() {
       var clone = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
@@ -6812,35 +6432,15 @@ exports.default = {
 
       return _lodash2.default.reverse(this);
     },
-
-
-    /**
-     * @inheritDoc array.tail
-     */
     tail: function tail() {
       return _lodash2.default.tail(this);
     },
-
-
-    /**
-     * @inheritDoc array.cut
-     */
     cut: function cut() {
       return _lodash2.default.initial(this);
     },
-
-
-    /**
-     * @inheritDoc array.clone
-     */
     clone: function clone() {
       return [].concat(_toConsumableArray(this));
     },
-
-
-    /**
-     * @inheritDoc array.maxBy
-     */
     maxBy: function maxBy() {
       var propName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 

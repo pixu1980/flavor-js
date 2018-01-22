@@ -10,7 +10,7 @@ import DateExt from './extensions/date';
 import StringExt from './extensions/string';
 import ArrayExt from './extensions/array';
 
-import release from '../release';
+import release from './release';
 
 /**
  * constructs FlavorJS class & extends the js natives
