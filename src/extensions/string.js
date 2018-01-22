@@ -555,93 +555,54 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc string.isString
-     */
     isString() {
       return _.isString(this);
     },
 
-    /**
-     * @inheritDoc string.isPercentage
-     */
     isPercentage() {
       return /^\d+(\.\d+)?%$/.test(this);
     },
 
-    /**
-     * @inheritDoc string.isRoman
-     */
     isRoman() {
       return !!Number.fromRoman(this);
     },
 
-    /**
-     * @inheritDoc string.isUrl
-     */
     isUrl() {
       return /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i.test(this);
     },
 
-    /**
-     * @inheritDoc string.contains
-     */
     contains(value, insensitive = false) {
       return (new RegExp(_.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : ''))).test(this);
     },
 
-    /**
-     * @inheritDoc string.startsWith
-     */
     startsWith(value, insensitive = false) {
       return new RegExp('^' + _.escapeRegExp(value), 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
 
-    /**
-     * @inheritDoc string.endsWith
-     */
     endsWith(value, insensitive = false) {
       return new RegExp(_.escapeRegExp(value) + '$', 'm' + (!!insensitive ? 'i' : '')).test(this);
     },
 
-    /**
-     * @inheritDoc string.camelCase()
-     */
     camelCase() {
       return _.camelCase(this);
     },
 
-    /**
-     * @inheritDoc string.capitalize
-     */
     capitalize() {
       return _.capitalize(this);
     },
 
-    /**
-     * @inheritDoc string.replaceAll
-     */
     replaceAll(needle, replacement = '', insensitive = false) {
       return this.replace(new RegExp(_.escapeRegExp(needle), 'mg' + (!!insensitive ? 'i' : '')), replacement);
     },
 
-    /**
-     * @inheritDoc string.encodeURI
-     */
     encodeURI() {
       return encodeURIComponent(this);
     },
 
-    /**
-     * @inheritDoc string.decodeURI
-     */
     decodeURI() {
       return decodeURIComponent(this);
     },
 
-    /**
-     * @inheritDoc string.escapeHTML
-     */
     escapeHTML() {
       return _.escape(this);
     },
@@ -654,9 +615,6 @@ export default {
     //},
      */
 
-    /**
-     * @inheritDoc string.escapeHTML
-     */
     unescapeHTML() {
       return _.unescape(this);
     },
@@ -670,9 +628,6 @@ export default {
     //},
     */
 
-    /**
-     * @inheritDoc string.extractDomain
-     */
     extractDomain(level = 3, excludeWww = false) {
       let domain = this;
 
@@ -680,7 +635,7 @@ export default {
       domain = domain.split('/')[(domain.indexOf('://') > -1 ? 2 : 0)];
 
       // find & remove port number
-      domain = domain.split(':')[0];
+      [domain] = domain.split(':');
 
       if (!!excludeWww) {
         domain = domain.replaceAll('www.', '');
@@ -690,27 +645,21 @@ export default {
       return domainArr.slice(domainArr.length - level).join('.');
     },
 
-    /**
-     * @inheritDoc string.extractQueryString
-     */
     extractQueryString() {
       const queryStringObject = {};
 
       if (this.contains('?')) {
-        const queryString = this.split('?')[1];
+        const queryString = this.split('?').pop();
         const queryStringParams = queryString.split('&');
         queryStringParams.each((param) => {
-          param = param.split('=');
-          queryStringObject[param[0]] = param[1];
+          const [key, value] = param.split('=');
+          queryStringObject[key] = value;
         });
       }
 
       return queryStringObject;
     },
 
-    /**
-     * @inheritDoc string.slugify
-     */
     slugify(dashed = true) {
       // TODO: non lodash dependent code
       //const slug = this.toString().toLowerCase()
@@ -726,16 +675,10 @@ export default {
       return !!dashed ? slug : slug.replaceAll('-', '');
     },
 
-    /**
-     * @inheritDoc string.extractFileExtension
-     */
     extractFileExtension() {
       return this.substring(this.lastIndexOf('.') + 1).toLowerCase();
     },
 
-    /**
-     * @inheritDoc string.stripTags
-     */
     stripTags() {
       const div = document.createElement('div');
       div.innerHTML = this;
@@ -748,30 +691,18 @@ export default {
     // },
     */
 
-    /**
-     * @inheritDoc string.pad
-     */
     pad(length, chars) {
       return _.pad(this, length, chars);
     },
 
-    /**
-     * @inheritDoc string.padLeft
-     */
     padLeft(length, chars) {
       return _.padStart(this, length, chars);
     },
 
-    /**
-     * @inheritDoc string.padRight
-     */
     padRight(length, chars) {
       return _.padEnd(this, length, chars);
     },
 
-    /**
-     * @inheritDoc string.parsePercentage
-     */
     parsePercentage() {
       if (this.isPercentage()) {
         return parseFloat(this) / 100.00;
@@ -780,16 +711,10 @@ export default {
       return this;
     },
 
-    /**
-     * @inheritDoc string.toInt
-     */
     toInt() {
       return Number.parse(this);
     },
 
-    /**
-     * @inheritDoc string.toArray
-     */
     toArray(separator = '', limit = null) {
       return _.split(this, separator, limit || undefined);
     },

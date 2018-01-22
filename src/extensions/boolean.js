@@ -40,9 +40,6 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc boolean.isBoolean
-     */
     isBoolean() {
       return _.isBoolean(this);
     },

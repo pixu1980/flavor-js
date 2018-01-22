@@ -406,4 +406,56 @@ export default {
       }
     }
   },
+
+  objectToPaths(obj, leavesOnly = false, parentKey = null) {
+    let result;
+
+    if (_.isArray(obj)) {
+      let idx = 0;
+      result = _.flatMap(obj, (item) => {
+        return _.objectToPaths(item, leavesOnly, (parentKey || '') + '[' + (idx++) + ']');
+      });
+    } else if (_.isPlainObject(obj)) {
+      result = _.flatMap(_.keys(obj), (key) => {
+        return _.map(_.objectToPaths(obj[key], leavesOnly, key), (subkey) => {
+          return (parentKey ? parentKey + '.' : '') + subkey;
+        });
+      });
+    } else {
+      result = [];
+    }
+
+    return _.filter(_.sortBy(_.concat(result, parentKey || [])), (path) => {
+      const value = _.get(obj, path);
+      return !!leavesOnly ? !_.isArray(value) && !_.isPlainObject(value) && !_.isFunction(value) : true;
+    });
+  },
+  keyValueToHash(keyValueCollection, keyField = 'key', valueField = 'value') {
+    return _.transform(keyValueCollection, (result, keyValueItem) => {
+      result[keyValueItem[keyField]] = keyValueItem[valueField];
+    }, {});
+  },
+  objectToHash(obj) {
+    return _.transform(_.objectToPaths(obj, true), (result, path) => {
+      result[path] = _.get(obj, path);
+    }, {});
+  },
+  hashToObject(hash) {
+    return _.transform(hash, (result, value, key) => {
+      _.set(result, key, value);
+    }, {});
+  },
+  cleanObject(o) {
+    return _.omitBy(o, _.isFunction);
+  },
+  mergeInc(...args) {
+    return _.mergeWith.apply(this, args, (accValue, newValue) => {
+      return accValue + newValue;
+    });
+  },
+  sum(a, sumProp, startValue) {
+    return _.reduce(a, (acc, item) => {
+      return acc + item[sumProp];
+    }, startValue || 0);
+  },
 };

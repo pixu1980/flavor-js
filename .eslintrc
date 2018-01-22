@@ -1,5 +1,7 @@
 {
-    "extends": ["eslint-config-airbnb"],
+    "extends": [
+        "eslint-config-airbnb"
+    ],
     "rules": {
         "object-curly-spacing": "off",
         "max-len": "off",
@@ -18,13 +20,19 @@
         "class-methods-use-this": "off",
         "one-var": "off",
         "prefer-template": "off",
-        "func-names": ["error", "never"],
+        "func-names": [
+            "error",
+            "never"
+        ],
         "no-console": "off",
         "spaced-comment": "off",
         "newline-per-chained-call": "off",
         "no-trailing-spaces": "off",
         "no-mixed-operators": "off",
-        "indent": ["error", 2]
+        "indent": [
+            "error",
+            2
+        ]
     },
     "globals": {
         "window": true,

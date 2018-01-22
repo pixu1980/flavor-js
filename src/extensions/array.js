@@ -1380,16 +1380,10 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc array.isArray
-     */
     isArray() {
       return _.isArray(this);
     },
 
-    /**
-     * @inheritDoc array.contains
-     */
     contains(item, all = false) {
       if (_.isArray(item)) {
         if (!!all) {
@@ -1402,9 +1396,6 @@ export default {
       return _.includes(this, item);
     },
 
-    /**
-     * @inheritDoc array.concat
-     */
     concat(arr) {
       if (!!arr) {
         return _.concat(this, arr);
@@ -1413,16 +1404,10 @@ export default {
       return this;
     },
 
-    /**
-     * @inheritDoc array.distinct
-     */
     distinct() {
       return _.uniqWith(this, _.isEqual);
     },
 
-    /**
-     * @inheritDoc array.diff
-     */
     diff(arr, fn = null) {
       if (Array.isArray(arr)) {
         let predicate = _.isEqual;
@@ -1444,16 +1429,10 @@ export default {
       return [];
     },
 
-    /**
-     * @inheritDoc array.diffBy
-     */
     diffBy(arr, propName) {
       return this.diff(arr, propName);
     },
 
-    /**
-     * @inheritDoc array.sortBy
-     */
     sortBy(propNames, propDirections) {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -1472,9 +1451,6 @@ export default {
       return _.orderBy(this, propNames, propDirections);
     },
 
-    /**
-     * @inheritDoc array.deepSortBy
-     */
     deepSortBy(propNames, propDirections = null, childrenPropName = 'children') {
       if (String.isString(propNames)) {
         propNames = [propNames];
@@ -1493,9 +1469,6 @@ export default {
       return _.deepOrderBy(this, propNames, propDirections, childrenPropName);
     },
 
-    /**
-     * @inheritDoc array.filterBy
-     */
     filterBy(propNames, propValues) {
       let predicate = null;
 
@@ -1511,16 +1484,10 @@ export default {
       return _.filter(this, predicate) || [];
     },
 
-    /**
-     * @inheritDoc array.pull
-     */
     pull(item) {
       return _.pull(this, item);
     },
 
-    /**
-     * @inheritDoc array.pullBy
-     */
     pullBy(propName, propValue) {
       if (_.isArray(propName) && _.isFunction(propValue)) {
         const values = propName;
@@ -1533,9 +1500,6 @@ export default {
       return _.pullAllBy(this, [predicate]);
     },
 
-    /**
-     * @inheritDoc array.findBy
-     */
     findBy(propName, propValue = null, reverse = false) {
       let predicate = null;
 
@@ -1557,16 +1521,10 @@ export default {
       return null;
     },
 
-    /**
-     * @inheritDoc array.deepFindBy
-     */
     deepFindBy(propName, propValue = null, childrenPropName = 'children') {
       return _.deepFindBy(this, propName, propValue, childrenPropName);
     },
 
-    /**
-     * @inheritDoc array.indexBy
-     */
     indexBy(propName, propValue, reverse = false) {
       let predicate = null;
 
@@ -1588,16 +1546,10 @@ export default {
       return null;
     },
 
-    /**
-     * @inheritDoc array.containsBy
-     */
     containsBy(propName, propValue) {
       return this.findBy(propName, propValue) !== undefined;
     },
 
-    /**
-     * @inheritDoc array.countBy
-     */
     countBy(propName, propValue, falseValues) {
       let predicate = null;
 
@@ -1615,23 +1567,14 @@ export default {
       return 0;
     },
 
-    /**
-     * @inheritDoc array.intersection
-     */
     intersection(...arrays) {
       return _.intersection(this, ...arrays);
     },
 
-    /**
-     * @inheritDoc array.union
-     */
     union(...arrays) {
       return _.unionWith(this, ...arrays, _.isEqual);
     },
 
-    /**
-     * @inheritDoc array.random
-     */
     random(weightField = null, valueField = null) {
       if (!!weightField) {
         return this.map((item) => {
@@ -1648,9 +1591,6 @@ export default {
       return _.sample(this);
     },
 
-    /**
-     * @inheritDoc array.each
-     */
     each(iteratee, reverse = false) {
       if (!!reverse) {
         return _.eachRight(this, iteratee);
@@ -1659,9 +1599,6 @@ export default {
       return _.each(this, iteratee);
     },
 
-    /**
-     * @inheritDoc array.first
-     */
     first(propName, propValue) {
       let a = this;
 
@@ -1672,9 +1609,6 @@ export default {
       return _.first(a);
     },
 
-    /**
-     * @inheritDoc array.last
-     */
     last(propName, propValue) {
       let a = this;
 
@@ -1685,9 +1619,6 @@ export default {
       return _.last(a);
     },
 
-    /**
-     * @inheritDoc array.sum
-     */
     sum(propName, startValue = 0) {
       let predicate = null;
 
@@ -1702,16 +1633,10 @@ export default {
       return _.reduce(this, predicate, startValue);
     },
 
-    /**
-     * @inheritDoc array.deepMap
-     */
     deepMap(childrenPropName = 'children', iteratee) {
       return _.deepMap(this, childrenPropName, iteratee);
     },
 
-    /**
-     * @inheritDoc array.lorem
-     */
     lorem(items, model = false) {
       return Number.times(items, (i) => {
         if (!!model) {
@@ -1722,9 +1647,6 @@ export default {
       });
     },
 
-    /**
-     * @inheritDoc array.flatten
-     */
     flatten(deep) {
       if (!!deep) {
         if (Number.isNumber(deep)) {
@@ -1737,23 +1659,14 @@ export default {
       return _.flatten(this);
     },
 
-    /**
-     * @inheritDoc array.shuffle
-     */
     shuffle() {
       return _.shuffle(this);
     },
 
-    /**
-     * @inheritDoc array.split
-     */
     split(n = 0) {
       return _.chunk(this, n);
     },
 
-    /**
-     * @inheritDoc array.reverse
-     */
     reverse(clone = false) {
       if (!!clone) {
         return _.reverse(_.clone(this));
@@ -1762,30 +1675,18 @@ export default {
       return _.reverse(this);
     },
 
-    /**
-     * @inheritDoc array.tail
-     */
     tail() {
       return _.tail(this);
     },
 
-    /**
-     * @inheritDoc array.cut
-     */
     cut() {
       return _.initial(this);
     },
 
-    /**
-     * @inheritDoc array.clone
-     */
     clone() {
       return [...this];
     },
 
-    /**
-     * @inheritDoc array.maxBy
-     */
     maxBy(propName = null) {
       if (propName) {
         return _.maxBy(this, propName);

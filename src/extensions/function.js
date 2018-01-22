@@ -70,16 +70,10 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc function.isFunction
-     */
     isFunction() {
       return _.isFunction(this);
     },
 
-    /**
-     * @inheritDoc function.proxy
-     */
     proxy(scope, ...proxyArgs) {
       const func = this;
 

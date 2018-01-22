@@ -14,7 +14,7 @@
     "monospaceLinks": true,
     "systemName": "FlavorJS",
     "footer": "",
-    "copyright": "2017 &copy; Created by blackmirror1980",
+    "copyright": "2017-2018 &copy; Created by blackmirror1980",
     "navType": "vertical",
     "theme": "spacelab",
     "linenums": true,
@@ -23,7 +23,7 @@
     "sort": false
   },
   "opts": {
-    "template": "../docdash",
+    "template": "node_modules/docdash",
     "encoding": "utf8",
     "destination": "docs",
     "sort": false,

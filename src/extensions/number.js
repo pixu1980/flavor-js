@@ -433,30 +433,40 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc number.isNumber
-     */
     isNumber() {
       return _.isNumber(this);
     },
 
-    /**
-     * @inheritDoc number.isBetween
-     */
     isBetween(from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
       return from <= this && this <= to;
     },
 
-    /**
-     * @inheritDoc number.times
-     */
     times(iteratee, reverse = false) {
       return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
     },
 
-    /**
-     * @inheritDoc number.toRoman
-     */
+    toFloatSymbol(options) {
+      const defaults = {
+        decimals: 2,
+        decimalDelimiter: ',',
+        sections: 3,
+        sectionsDelimiter: '.',
+        symbol: '&euro;',
+        symbolAppend: false,
+      };
+
+      const settings = _.merge({}, defaults, options);
+      const symbolPrepend = (!settings.symbolAppend && !!settings.symbol ? settings.symbol + ' ' : '');
+      const symbolAppend = (!!settings.symbolAppend && !!settings.symbol ? ' ' + settings.symbol : '');
+
+      const re = '\\d(?=(\\d{' + (settings.sections || 3) + '})+' + (settings.decimals > 0 ? '\\D' : '$') + ')';
+      let num = this.toFixed(settings.decimals);
+      num = num.replace('.', settings.decimalDelimiter);
+      num = num.replace(new RegExp(re, 'g'), '$&' + settings.sectionsDelimiter);
+
+      return symbolPrepend + num + symbolAppend;
+    },
+
     toRoman() {
       let num = this;
       let result = '';
@@ -473,9 +483,6 @@ export default {
       return result;
     },
 
-    /**
-     * @inheritDoc number.toFileSize
-     */
     toFileSize(precision = 0) {
       let fileSizeString = '0 B';
 
@@ -488,16 +495,10 @@ export default {
       return fileSizeString;
     },
 
-    /**
-     * @inheritDoc number.toAbsolute
-     */
     toAbsolute() {
       return Math.abs(this);
     },
 
-    /**
-     * @inheritDoc number.toCurrency
-     */
     toCurrency(dec = 2, sec = 3, decSymbol = ',', secSymbol = '.') {
       const regEx = '\\d(?=(\\d{' + sec + '})+' + (dec > 0 ? '\\D' : '$') + ')';
       const val = this.toFixed(dec);
@@ -505,30 +506,18 @@ export default {
       return (decSymbol ? val.replace('.', decSymbol) : val).replace(new RegExp(regEx, 'g'), '$&' + secSymbol);
     },
 
-    /**
-     * @inheritDoc number.floor
-     */
     floor(precision = 0) {
       return _.floor(this, precision);
     },
 
-    /**
-     * @inheritDoc number.round
-     */
     round(precision = 0) {
       return _.round(this, precision);
     },
 
-    /**
-     * @inheritDoc number.crop
-     */
     crop(min = Number.MIN_VALUE, max = Number.MAX_VALUE) {
       return Math.max(Math.min(this, max), min);
     },
 
-    /**
-     * @inheritDoc number.range
-     */
     range(end = null, reverse = false, step = 1) {
       const rangeStart = Number.isNumber(end) ? this : 0;
       const rangeEnd = Number.isNumber(end) ? end : this;
@@ -537,16 +526,10 @@ export default {
       return _[method](rangeStart, rangeEnd, step);
     },
 
-    /**
-     * @inheritDoc number.degreeWrap
-     */
     degreeWrap(min = 0, max = 360) {
       return ((this < min) ? max : 0) + this % max;
     },
 
-    /**
-     * @inheritDoc number.degreeDiff
-     */
     degreeDiff(a, min = 0, max = 360) {
       const ang1 = Number.degreeWrap(this, min, max);
       const ang2 = Number.degreeWrap(a, min, max);
@@ -564,9 +547,6 @@ export default {
       return diff;
     },
 
-    /**
-     * @inheritDoc number.degreeDir
-     */
     degreeDir(a, min = 0, max = 360) {
       const ang1 = Number.degreeWrap(this, min, max);
       const ang2 = Number.degreeWrap(a, min, max);

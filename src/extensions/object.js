@@ -263,16 +263,10 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc object.isObject
-     */
     isObject() {
       return _.isPlainObject(this);
     },
 
-    /**
-     * @inheritDoc object.inherit
-     */
     inherit(...args) {
       const createNew = _.isBoolean(args[0]) ? args[0] : false;
       let newArgs = args;
@@ -294,30 +288,18 @@ export default {
       return safeInherit(this);
     },
 
-    /**
-     * @inheritDoc object.omit
-     */
     omit(...args) {
       return _.omit(this, ...args);
     },
 
-    /**
-     * @inheritDoc object.pick
-     */
     pick(...args) {
       return _.pick(this, ...args);
     },
 
-    /**
-     * @inheritDoc object.clone
-     */
     clone() {
       return _.cloneDeep(this);
     },
 
-    /**
-     * @inheritDoc object.path
-     */
     path(path, def = null) {
       if (typeof this === 'object' && this instanceof Object) {
         return _.get(this, path, def);
@@ -326,9 +308,6 @@ export default {
       return def;
     },
 
-    /**
-     * @inheritDoc object.each
-     */
     each(iteratee) {
       return _.each(this, iteratee);
     },

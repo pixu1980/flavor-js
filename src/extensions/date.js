@@ -23,6 +23,23 @@ export default {
     },
 
     /**
+     * returns a random date between specified range (default now <-> now)
+     * @example <caption>eg. usage</caption>
+     * console.log(Date.random()); // Mon Jan 22 2018 14:07:09 GMT+0100 (CET)
+     * 
+     * console.log(Date.random(new Date(1970, 0, 1), new Date())); // Sun Apr 05 1987 00:00:00 GMT+0200 (CEST)
+     * @memberOf date
+     * @method random
+     * @instance
+     * @param {date} startDate - the range start date
+     * @param {date} endDate - the range end date
+     * @return {date}
+     */
+    random(startDate = new Date(), endDate = new Date()) {
+      return new Date(Math.random() * (endDate.getTime() - startDate.getTime()) + startDate.getTime());
+    },
+
+    /**
      * transforms a date in a UTC timestamp integer
      * @example <caption>eg. usage</caption>
      * console.log((new Date()).toTimestamp()); // 1491317811925 @ 2017-04-4-16:57
@@ -41,16 +58,10 @@ export default {
     },
   },
   prototype: {
-    /**
-     * @inheritDoc date.isDate
-     */
     isDate() {
       return _.isDate(this);
     },
 
-    /**
-     * @inheritDoc date.toTimestamp
-     */
     toTimestamp() {
       return Math.round(this);
     },
