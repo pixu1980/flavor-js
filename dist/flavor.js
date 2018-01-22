@@ -613,7 +613,7 @@ var FlavorJS = function () {
       var flavorJSStatus = {
         initialized: true,
         version: _release2.default.version,
-        build: _release2.default.build
+        build: _release2.default.buildDate
       };
 
       Object.inherit(this, _core2.default, flavorJSStatus);
@@ -6455,15 +6455,9 @@ exports.default = {
 
 /***/ }),
 /* 59 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-module.exports = {
-  version: '0.3.12',
-  build: new Date()
-};
+module.exports = {"version":{"name":"flavor-js","buildDate":"Mon Jan 22 2018 18:57:24 GMT+0100 (CET)","version":"0.4.0"}}
 
 /***/ })
 /******/ ]);

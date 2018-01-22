@@ -1,12 +1,13 @@
+const path = require('path');
+const _ = require('lodash');
+
 const webpack = require('webpack'); //to access built-in plugins
 const CleanPlugin = require('clean-webpack-plugin');
 const LodashPlugin = require('lodash-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VerPlugin = require('webpack-ver-plugin');
+
 // const CompressionPlugin = require('compression-webpack-plugin');
-
-const path = require('path');
-const _ = require('lodash');
-
 const filename = 'flavor';
 
 const config = {
@@ -40,6 +41,10 @@ const config = {
     },
   },
   plugins: [
+    new VerPlugin({
+      packageFile: path.join(__dirname, 'package.json'),
+      outputFile: path.join('./src/', 'release.json')
+    }),
     new CleanPlugin(['dist']),
     new LodashPlugin()
   ]

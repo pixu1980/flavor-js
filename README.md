@@ -4,7 +4,7 @@
 [![NPM](https://nodei.co/npm/flavor-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/flavor-js/)
 
 ## Version
-v0.3.13
+v0.4.0
 
 ## Description
 FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
@@ -46,6 +46,7 @@ npm install flavor-js --save
 - [lodash-webpack-plugin](https://ghub.io/lodash-webpack-plugin): Smaller modular Lodash builds.
 - [uglifyjs-webpack-plugin](https://ghub.io/uglifyjs-webpack-plugin): UglifyJS plugin for webpack
 - [webpack](https://ghub.io/webpack): Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand. Support loaders to preprocess files, i.e. json, jsx, es7, css, less, ... and your custom stuff.
+- [webpack-ver-plugin](https://ghub.io/webpack-ver-plugin): Generates a file with your app&#39;s package.json information and build date
 
 ## License
 

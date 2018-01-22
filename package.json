@@ -4,7 +4,7 @@
   "description": "FlavorJS the definitive JS natives chainable extensions methods (based on lodash & ES6)",
   "main": "dist/flavor.min.js",
   "scripts": {
-    "docs": "clear && rm -rf docs && jsdoc -R ./README.md -r -c ./jsdoc.json && echo 'Documentation built in ./docs folder'",
+    "docs": "rm -rf docs && jsdoc -R ./README.md -r -c ./jsdoc.json && echo 'Documentation built in ./docs folder'",
     "build": "clear && webpack --progress",
     "build:docs": "npm run build && npm run docs",
     "build:readme": "pkg-2-readme -b -t \"./pkg-2-readme.template.md\" package.json > README.md",
@@ -49,6 +49,7 @@
     "jsdoc": "^3.5.5",
     "lodash-webpack-plugin": "^0.11.4",
     "uglifyjs-webpack-plugin": "^1.1.6",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-ver-plugin": "0.0.2"
   }
 }
