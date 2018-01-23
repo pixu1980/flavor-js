@@ -30,7 +30,7 @@
     "url": "https://github.com/blackmirror1980/flavor-js/issues"
   },
   "homepage": "https://blackmirror1980.github.io/flavor-js",
-  "documentation": "https://https://blackmirror1980.github.io/flavor-js/docs/index.html",
+  "documentation": "https://blackmirror1980.github.io/flavor-js/docs/index.html",
   "dependencies": {
     "lodash": "^4.17.4"
   },
