@@ -8,8 +8,7 @@
     "build": "clear && webpack --progress",
     "build:docs": "npm run build && npm run docs",
     "build:readme": "pkg-2-readme -b -t \"./pkg-2-readme.template.md\" package.json > README.md",
-    "build:release": "npm version patch && npm run build:readme && npm run build:docs",
-    "postinstall": "clear && cd node_modules/ink-docstrap && npm i && cd ../docdash && npm i && cd ../.. && clear"
+    "build:release": "npm version patch && npm run build:readme && npm run build:docs"
   },
   "repository": {
     "type": "git",
