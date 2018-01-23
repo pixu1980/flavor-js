@@ -11,7 +11,7 @@
     "build:release:patch": "npm version patch && npm run build:release",
     "build:release:minor": "npm version minor && npm run build:release",
     "build:release:major": "npm version major && npm run build:release",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
