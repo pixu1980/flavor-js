@@ -5,6 +5,9 @@
 ## Version
 v{{version}}
 
+## Documentation
+Check out the [Latest Documentation](https://blackmirror1980.github.io/flavor-js/docs/index.html) here
+
 ## Description
 {{description}}
 

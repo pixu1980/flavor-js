@@ -5,6 +5,9 @@
 ## Version
 v0.4.0
 
+## Documentation
+Check out the [Latest Documentation](https://blackmirror1980.github.io/flavor-js/docs/index.html) here
+
 ## Description
 FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
 
