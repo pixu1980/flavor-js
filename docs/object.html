@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>object - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FlavorJS.html">FlavorJS</a><ul class='methods'><li data-type='method'><a href="FlavorJS.html#delay">delay</a></li><li data-type='method'><a href="FlavorJS.html#extendArray">extendArray</a></li><li data-type='method'><a href="FlavorJS.html#extendBoolean">extendBoolean</a></li><li data-type='method'><a href="FlavorJS.html#extendDate">extendDate</a></li><li data-type='method'><a href="FlavorJS.html#extendFunction">extendFunction</a></li><li data-type='method'><a href="FlavorJS.html#extendLodash">extendLodash</a></li><li data-type='method'><a href="FlavorJS.html#extendNumber">extendNumber</a></li><li data-type='method'><a href="FlavorJS.html#extendObject">extendObject</a></li><li data-type='method'><a href="FlavorJS.html#extendPrototype">extendPrototype</a></li><li data-type='method'><a href="FlavorJS.html#extendPrototypeProperty">extendPrototypeProperty</a></li><li data-type='method'><a href="FlavorJS.html#extendString">extendString</a></li><li data-type='method'><a href="FlavorJS.html#init">init</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="array.html">array</a><ul class='methods'><li data-type='method'><a href="array.html#clone">clone</a></li><li data-type='method'><a href="array.html#concat">concat</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#containsBy">containsBy</a></li><li data-type='method'><a href="array.html#countBy">countBy</a></li><li data-type='method'><a href="array.html#cut">cut</a></li><li data-type='method'><a href="array.html#deepFindBy">deepFindBy</a></li><li data-type='method'><a href="array.html#deepMap">deepMap</a></li><li data-type='method'><a href="array.html#deepSortBy">deepSortBy</a></li><li data-type='method'><a href="array.html#diff">diff</a></li><li data-type='method'><a href="array.html#diffBy">diffBy</a></li><li data-type='method'><a href="array.html#distinct">distinct</a></li><li data-type='method'><a href="array.html#each">each</a></li><li data-type='method'><a href="array.html#filterBy">filterBy</a></li><li data-type='method'><a href="array.html#findBy">findBy</a></li><li data-type='method'><a href="array.html#first">first</a></li><li data-type='method'><a href="array.html#flatten">flatten</a></li><li data-type='method'><a href="array.html#indexBy">indexBy</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#isArray">isArray</a></li><li data-type='method'><a href="array.html#last">last</a></li><li data-type='method'><a href="array.html#lorem">lorem</a></li><li data-type='method'><a href="array.html#maxBy">maxBy</a></li><li data-type='method'><a href="array.html#pull">pull</a></li><li data-type='method'><a href="array.html#pullBy">pullBy</a></li><li data-type='method'><a href="array.html#random">random</a></li><li data-type='method'><a href="array.html#removeBy">removeBy</a></li><li data-type='method'><a href="array.html#shuffle">shuffle</a></li><li data-type='method'><a href="array.html#sortBy">sortBy</a></li><li data-type='method'><a href="array.html#split">split</a></li><li data-type='method'><a href="array.html#sum">sum</a></li><li data-type='method'><a href="array.html#tail">tail</a></li><li data-type='method'><a href="array.html#tail">tail</a></li><li data-type='method'><a href="array.html#union">union</a></li></ul></li><li><a href="boolean.html">boolean</a><ul class='methods'><li data-type='method'><a href="boolean.html#isBoolean">isBoolean</a></li><li data-type='method'><a href="boolean.html#random">random</a></li></ul></li><li><a href="date.html">date</a><ul class='methods'><li data-type='method'><a href="date.html#isDate">isDate</a></li><li data-type='method'><a href="date.html#random">random</a></li><li data-type='method'><a href="date.html#toTimestamp">toTimestamp</a></li></ul></li><li><a href="function.html">function</a><ul class='methods'><li data-type='method'><a href="function.html#isFunction">isFunction</a></li><li data-type='method'><a href="function.html#proxy">proxy</a></li></ul></li><li><a href="lodash.html">lodash</a><ul class='methods'><li data-type='method'><a href="lodash.html#deepFindBy">deepFindBy</a></li><li data-type='method'><a href="lodash.html#deepMap">deepMap</a></li><li data-type='method'><a href="lodash.html#deepOrderBy">deepOrderBy</a></li><li data-type='method'><a href="lodash.html#filterByValues">filterByValues</a></li><li data-type='method'><a href="lodash.html#isPercentage">isPercentage</a></li><li data-type='method'><a href="lodash.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="lodash.html#pullAllByComparator">pullAllByComparator</a></li><li data-type='method'><a href="lodash.html#timesRange">timesRange</a></li><li data-type='method'><a href="lodash.html#timesReverse">timesReverse</a></li></ul></li><li><a href="number.html">number</a><ul class='methods'><li data-type='method'><a href="number.html#between">between</a></li><li data-type='method'><a href="number.html#degreeDiff">degreeDiff</a></li><li data-type='method'><a href="number.html#degreeDir">degreeDir</a></li><li data-type='method'><a href="number.html#degreeWrap">degreeWrap</a></li><li data-type='method'><a href="number.html#floor">floor</a></li><li data-type='method'><a href="number.html#fromRoman">fromRoman</a></li><li data-type='method'><a href="number.html#isNumber">isNumber</a></li><li data-type='method'><a href="number.html#parse">parse</a></li><li data-type='method'><a href="number.html#random">random</a></li><li data-type='method'><a href="number.html#range">range</a></li><li data-type='method'><a href="number.html#round">round</a></li><li data-type='method'><a href="number.html#round">round</a></li><li data-type='method'><a href="number.html#times">times</a></li><li data-type='method'><a href="number.html#toAbsolute">toAbsolute</a></li><li data-type='method'><a href="number.html#toCurrency">toCurrency</a></li><li data-type='method'><a href="number.html#toFileSize">toFileSize</a></li><li data-type='method'><a href="number.html#toRoman">toRoman</a></li></ul></li><li><a href="object.html">object</a><ul class='methods'><li data-type='method'><a href="object.html#clone">clone</a></li><li data-type='method'><a href="object.html#each">each</a></li><li data-type='method'><a href="object.html#inherit">inherit</a></li><li data-type='method'><a href="object.html#isObject">isObject</a></li><li data-type='method'><a href="object.html#omit">omit</a></li><li data-type='method'><a href="object.html#path">path</a></li><li data-type='method'><a href="object.html#pick">pick</a></li></ul></li><li><a href="string.html">string</a><ul class='methods'><li data-type='method'><a href="string.html#camelCase">camelCase</a></li><li data-type='method'><a href="string.html#capitalize">capitalize</a></li><li data-type='method'><a href="string.html#contains">contains</a></li><li data-type='method'><a href="string.html#decodeURI">decodeURI</a></li><li data-type='method'><a href="string.html#encodeURI">encodeURI</a></li><li data-type='method'><a href="string.html#endsWith">endsWith</a></li><li data-type='method'><a href="string.html#escapeHTML">escapeHTML</a></li><li data-type='method'><a href="string.html#escapeHTML">escapeHTML</a></li><li data-type='method'><a href="string.html#extractDomain">extractDomain</a></li><li data-type='method'><a href="string.html#extractFileExtension">extractFileExtension</a></li><li data-type='method'><a href="string.html#extractQueryString">extractQueryString</a></li><li data-type='method'><a href="string.html#guid">guid</a></li><li data-type='method'><a href="string.html#isRoman">isRoman</a></li><li data-type='method'><a href="string.html#isString">isString</a></li><li data-type='method'><a href="string.html#isUrl">isUrl</a></li><li data-type='method'><a href="string.html#pad">pad</a></li><li data-type='method'><a href="string.html#padLeft">padLeft</a></li><li data-type='method'><a href="string.html#padRight">padRight</a></li><li data-type='method'><a href="string.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="string.html#parsePercentage">parsePercentage</a></li><li data-type='method'><a href="string.html#replaceAll">replaceAll</a></li><li data-type='method'><a href="string.html#slugify">slugify</a></li><li data-type='method'><a href="string.html#startsWith">startsWith</a></li><li data-type='method'><a href="string.html#stripTags">stripTags</a></li><li data-type='method'><a href="string.html#toArray">toArray</a></li><li data-type='method'><a href="string.html#toInt">toInt</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">object</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        object
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description">the JS native Object class</div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="clone"><span class="type-signature"></span>clone<span class="signature">(o)</span><span class="type-signature"> &rarr; {<a href="object.html">object</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    deeply clones an object in a new object<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+var p = o.clone();
+
+console.log(o == p); // true
+
+console.log(o === p); // false</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="each"><span class="type-signature"></span>each<span class="signature">(o, iteratee)</span><span class="type-signature"> &rarr; {<a href="object.html">object</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line229">line 229</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    executes function for every property in the object<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: 'b',
+  prop4: new Date(),
+};
+
+o.each(function(value, key) {
+  console.log(key, value);
+});
+
+// it logs
+'prop1', 1
+'prop2', 'a'
+'prop3', 'b'
+'prop4', Date</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iteratee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="function.html">function</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the iteratee callback will be invoked with the following parameters<br>
+so your callback has to be something like this<br><br>
+<pre>
+function iteratee(value, key) {}
+</pre>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the property value of the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the property key of the object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    to make chainable the method
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="inherit"><span class="type-signature"></span>inherit<span class="signature">(o, createNew<span class="signature-attributes">opt</span>, &hellip;args)</span><span class="type-signature"> &rarr; {<a href="object.html">object</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want)<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}</code></pre>
+
+        <p class="code-caption">or</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+var p = o.inherit(true, {
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 1, prop2: 'a'}
+
+console.log(p); // p = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object to extend</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createNew</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">specifies to create a new object to merge</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the list of objects to merge</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isObject"><span class="type-signature"></span>isObject<span class="signature">(o)</span><span class="type-signature"> &rarr; {<a href="boolean.html">boolean</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    isObject<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+console.log(Object.isObject(o)); // true
+
+console.log(Object.isObject(2)); // true
+
+console.log(Object.isObject('2')); // true
+
+console.log(Object.isObject(null)); // false</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="omit"><span class="type-signature"></span>omit<span class="signature">(o, &hellip;args)</span><span class="type-signature"> &rarr; {<a href="object.html">object</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    returns a new object that omits the specified properties<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.omit('prop1')); // {prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.omit('prop1', 'prop2')); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit(['prop1', 'prop2'])); // {prop3: Date, prop4: 7.52}
+
+console.log(o.omit(['prop1'], ['prop2'])); // {prop3: Date, prop4: 7.52}
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the list of properties to omit</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="path"><span class="type-signature"></span>path<span class="signature">(o, path, def<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    returns the value at the specified path of the object, with a default value<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: {
+    prop31: 2.52,
+    prop32: 'b',
+  },
+  prop4: new Date(),
+};
+
+console.log(o.path('prop1')); // 1
+
+console.log(o.path('prop3.prop31')); // 2.52
+
+console.log(o.path('prop3.prop34')); // null
+
+console.log(o.path('prop3.prop34', 'c')); // c</code></pre>
+
+        <p class="code-caption">you can also use array paths</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+  prop3: {
+    prop31: 2.52,
+    prop32: [{
+      propO1: 'b',
+    }, {
+      propO1: 'c',
+    }],
+  },
+  prop4: new Date(),
+};
+
+console.log(o.path('prop3.prop32[0].propO1')); // 'b'
+
+console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
+
+console.log(o.path('prop3.prop31[2]')); // null
+
+console.log(o.path('prop3.prop31[2]', {})); // {}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the path to search inside the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>def</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last">the default value to return if path is not found</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="pick"><span class="type-signature"></span>pick<span class="signature">(o, &hellip;args)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extensions_object.js.html">extensions/object.js</a>, <a href="extensions_object.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    returns a new object that picks only the specified properties<br><br>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">eg. usage</p>
+    
+    <pre class="prettyprint"><code>var o = {
+  prop1: 1,
+  prop2: 'a',
+};
+
+o.inherit({
+  prop1: 2,
+  prop3: new Date(),
+}, {
+  prop4: 7.52,
+});
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+
+console.log(o.pick('prop1')); // {prop1: 2}
+
+console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+
+console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+
+console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+
+console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="object.html">object</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the list of properties to omit</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 23 2018 14:59:36 GMT+0100 (CET) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
