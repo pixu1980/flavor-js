@@ -2,9 +2,9 @@
 
 {{#nodeico_badge}}[![NPM](https://nodei.co/npm/{{name}}.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/{{name}}/){{/nodeico_badge}}
 
-[![Build Status](https://travis-ci.org/blackmirror1980/es6-module-seed.svg?branch=master)](https://travis-ci.org/blackmirror1980/es6-module-seed)
+[![Build Status](https://travis-ci.org/blackmirror1980/flavor-js.svg?branch=master)](https://travis-ci.org/blackmirror1980/flavor-js)
 
-[![Coverage Status](https://coveralls.io/repos/github/blackmirror1980/es6-module-seed/badge.svg?branch=master)](https://coveralls.io/github/blackmirror1980/es6-module-seed?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/blackmirror1980/flavor-js/badge.svg?branch=master)](https://coveralls.io/github/blackmirror1980/flavor-js?branch=master)
 
 [![GitHub issues](https://img.shields.io/github/issues/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/issues)
 
