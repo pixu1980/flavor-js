@@ -6457,7 +6457,7 @@ exports.default = {
 /* 59 */
 /***/ (function(module, exports) {
 
-module.exports = {"version":{"name":"flavor-js","buildDate":"Mon Jan 22 2018 19:24:09 GMT+0100 (CET)","version":"0.4.0"}}
+module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Jan 23 2018 14:37:39 GMT+0100 (CET)","version":"0.4.0"}}
 
 /***/ })
 /******/ ]);

@@ -21,6 +21,13 @@ command line tools.
 npm install flavor-js --save
 ```
 
+## Tests
+
+```sh
+npm install
+npm test
+```
+
 ## Dependencies
 
 - [lodash](https://ghub.io/lodash): Lodash modular utilities.
@@ -32,7 +39,6 @@ npm install flavor-js --save
 - [babel-loader](https://ghub.io/babel-loader): babel module loader for webpack
 - [babel-preset-env](https://ghub.io/babel-preset-env): A Babel preset for each environment.
 - [clean-webpack-plugin](https://ghub.io/clean-webpack-plugin): A webpack plugin to remove your build folder(s) before building
-- [compression-webpack-plugin](https://ghub.io/compression-webpack-plugin): Prepare compressed versions of assets to serve them with Content-Encoding
 - [docdash](https://ghub.io/docdash): A clean, responsive documentation template theme for JSDoc 3 inspired by lodash and minami
 - [eslint](https://ghub.io/eslint): An AST-based pattern checker for JavaScript.
 - [eslint-config-airbnb](https://ghub.io/eslint-config-airbnb): Airbnb&#39;s ESLint config, following our styleguide

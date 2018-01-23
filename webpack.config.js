@@ -45,7 +45,6 @@ const config = {
       packageFile: path.join(__dirname, 'package.json'),
       outputFile: path.join('./src/', 'release.json')
     }),
-    new CleanPlugin(['dist']),
     new LodashPlugin()
   ]
 };
@@ -59,6 +58,9 @@ let configTargets = ['umd'].map((target) => {
       filename: filename + '.js',
       libraryTarget: target,
     },
+    plugins: [
+      new CleanPlugin(['dist']),
+    ]
   });
 });
 

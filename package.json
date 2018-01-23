@@ -5,10 +5,13 @@
   "main": "dist/flavor.min.js",
   "scripts": {
     "docs": "rm -rf docs && jsdoc -R ./README.md -r -c ./jsdoc.json && echo 'Documentation built in ./docs folder'",
-    "build": "clear && webpack --progress",
-    "build:docs": "npm run build && npm run docs",
-    "build:readme": "pkg-2-readme -b -t \"./pkg-2-readme.template.md\" package.json > README.md",
-    "build:release": "npm version patch && npm run build:readme && npm run build:docs"
+    "readme": "pkg-2-readme -b -t \"./pkg-2-readme.template.md\" package.json > README.md && echo 'README.md file built'",
+    "build": "webpack --progress",
+    "build:release": "npm run readme && npm run build && npm run docs",
+    "build:release:patch": "npm version patch && npm run build:release",
+    "build:release:minor": "npm version minor && npm run build:release",
+    "build:release:major": "npm version major && npm run build:release",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,6 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.17",
-    "compression-webpack-plugin": "^1.1.3",
     "docdash": "^0.4.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
