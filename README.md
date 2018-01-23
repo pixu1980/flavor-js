@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/flavor-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/flavor-js/)
 
 ## Version
-v0.4.1
+v0.4.2
 
 ## Documentation
 Check out the [Latest Documentation](https://blackmirror1980.github.io/flavor-js/docs/index.html) here

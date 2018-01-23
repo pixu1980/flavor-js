@@ -41,10 +41,6 @@ const config = {
     },
   },
   plugins: [
-    new VerPlugin({
-      packageFile: path.join(__dirname, 'package.json'),
-      outputFile: path.join('./src/', 'release.json')
-    }),
     new LodashPlugin()
   ]
 };
@@ -58,9 +54,13 @@ let configTargets = ['umd'].map((target) => {
       filename: filename + '.js',
       libraryTarget: target,
     },
-    plugins: [
+    plugins: _.concat(config.plugins, [
+      new VerPlugin({
+        packageFile: path.join(__dirname, 'package.json'),
+        outputFile: path.join('./src/', 'release.json')
+      }),
       new CleanPlugin(['dist']),
-    ]
+    ])
   });
 });
 
@@ -71,9 +71,9 @@ let configTargetsProd = ['umd'].map((target) => {
       filename: filename + '.min.js',
       libraryTarget: target,
     },
-    plugins: [
+    plugins: _.concat(config.plugins, [
       new UglifyJsPlugin(),
-    ],
+    ])
   });
 });
 
