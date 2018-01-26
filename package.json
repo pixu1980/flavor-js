@@ -5,7 +5,7 @@
   "main": "dist/flavor.min.js",
   "scripts": {
     "docs": "rm -rf docs && jsdoc -R ./README.md -r -c ./jsdoc.json && echo 'Documentation built in ./docs folder'",
-    "readme": "pkg-2-readme -b -t \"./pkg-2-readme.template.md\" package.json > README.md && echo 'README.md file built'",
+    "readme": "pkg-2-readme package.json > README.md -t \"./pkg-2-readme.template.md\" && echo 'README.md file built'",
     "build": "webpack --progress",
     "build:release": "npm run readme && npm run build && npm run docs",
     "build:release:patch": "npm version patch && npm run build:release",
