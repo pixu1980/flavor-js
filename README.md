@@ -1,11 +1,16 @@
 # flavor-js
 
 ## Author
-
+Black Mirror
 
 ## Version
-v0.4.3
+v0.4.4
 
+## Badges
+
+[![NPM](https://nodei.co/npm/flavor-js.png)](https://nodei.co/npm/flavor-js/)
+
+[![GitHub stars](https://img.shields.io/github/stars/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/stargazers) [![GitHub forks](https://img.shields.io/github/forks/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/network) [![GitHub issues](https://img.shields.io/github/issues/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/issues) [![GitHub license](https://img.shields.io/github/license/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/blob/master/LICENSE) [![Build Status](https://travis-ci.org/blackmirror1980/flavor-js.svg?branch=master)](https://travis-ci.org/blackmirror1980/flavor-js) [![Coverage Status](https://coveralls.io/repos/github/blackmirror1980/flavor-js/badge.svg?branch=master)](https://coveralls.io/github/blackmirror1980/flavor-js?branch=master)
 
 ## Documentation
 Check out the [Latest Documentation](https://blackmirror1980.github.io/flavor-js/docs/index.html) here
