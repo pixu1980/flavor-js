@@ -1,27 +1,20 @@
 # flavor-js
 
-[![NPM](https://nodei.co/npm/flavor-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/flavor-js/)
+## Author
 
-[![Build Status](https://travis-ci.org/blackmirror1980/flavor-js.svg?branch=master)](https://travis-ci.org/blackmirror1980/flavor-js)
-
-[![Coverage Status](https://coveralls.io/repos/github/blackmirror1980/flavor-js/badge.svg?branch=master)](https://coveralls.io/github/blackmirror1980/flavor-js?branch=master)
-
-[![GitHub issues](https://img.shields.io/github/issues/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/issues)
-
-[![GitHub forks](https://img.shields.io/github/forks/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/network)
-
-[![GitHub stars](https://img.shields.io/github/stars/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/stargazers)
-
-[![GitHub license](https://img.shields.io/github/license/blackmirror1980/flavor-js.svg?style=plastic)](https://github.com/blackmirror1980/flavor-js/blob/master/LICENSE)
 
 ## Version
-v0.4.2
+v0.4.3
+
 
 ## Documentation
 Check out the [Latest Documentation](https://blackmirror1980.github.io/flavor-js/docs/index.html) here
 
 ## Description
 FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
+
+## Example
+Check out this [Codepen]() example
 
 ## Installation
 
@@ -34,13 +27,6 @@ command line tools.
 
 ```sh
 npm install flavor-js --save
-```
-
-## Tests
-
-```sh
-npm install
-npm test
 ```
 
 ## Dependencies
@@ -64,11 +50,23 @@ npm test
 - [ink-docstrap](https://ghub.io/ink-docstrap): [![NPM](https://nodei.co/npm/ink-docstrap.png?downloads=true)](https://nodei.co/npm/ink-docstrap/)
 - [jsdoc](https://ghub.io/jsdoc): An API documentation generator for JavaScript.
 - [lodash-webpack-plugin](https://ghub.io/lodash-webpack-plugin): Smaller modular Lodash builds.
-- [pkg-2-readme](https://ghub.io/pkg-2-readme): Generate a README.md from package.json contents
 - [uglifyjs-webpack-plugin](https://ghub.io/uglifyjs-webpack-plugin): UglifyJS plugin for webpack
 - [webpack](https://ghub.io/webpack): Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand. Support loaders to preprocess files, i.e. json, jsx, es7, css, less, ... and your custom stuff.
 - [webpack-ver-plugin](https://ghub.io/webpack-ver-plugin): Generates a file with your app&#39;s package.json information and build date
 
+## Tests
+
+```sh
+npm install
+npm test
+```
+
+
 ## License
 
 MIT
+
+## Powered By
+<a href="http://js.org" target="_blank" title="JS.ORG | JavaScript Community">
+<img src="http://logo.js.org/dark_horz.png" width="102" alt="JS.ORG Logo"/></a>
+<!-- alternatives [bright|dark]_[horz|vert|tiny].png (width[horz:102,vert:50,tiny:77]) -->
