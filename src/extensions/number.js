@@ -201,17 +201,91 @@ export default {
     },
 
     /**
+     * converts a number to a integer/float string with symbol (currency, measure unit) support
+     * @example <caption>eg. usage</caption>
+     * console.log((1).toSymbolString()); // 1,00
+     *
+     * console.log((1).toSymbolString({decimals: 3}); // 1,000
+     *
+     * console.log((123456.789).toSymbolString({decimals: 2}); // 123.456,79
+     * console.log((123456.789).toSymbolString({sections: 4, decimals: 2}); // 12.3456,79
+     *
+     * console.log((123456.789).toSymbolString({symbol: 'kWh'}); // 12.3456,79 kWh
+     * console.log((123456.789).toSymbolString({symbol: '&euro;', symbolNumberSeparator: ''}); // 123.456,79&euro;
+     *
+     * console.log((123456.789).toSymbolString({sectionsDelimiter: ',', decimalsDelimiter: '.'}); // 123,456.789
+     * @memberOf number
+     * @instance
+     * @param {number} n - the number
+     * @param {object} [options=false] - options to be used as parameters for conversion<br>
+     * @param {number} [options.sections=3] sections - section to divide the integer part of number in
+     * @param {string} [options.sectionsDelimiter=','] sectionsDelimiter - delimiter used to separe integer sections
+     * @param {number} [options.decimals=2] decimals - desired number of decimals
+     * @param {string} [options.decimalsDelimiter=','] decimalsDelimiter - delimiter used to separe decimals from integer part of number
+     * @param {string} [options.symbol=''] symbol - currency symbol or measure unit to use (eg. '&euro;')
+     * @param {boolean} [options.symbolAppend=true] symbolAppend - if true the symbol will be appended to the number
+     * @param {string} [options.symbolNumberSeparator='&nbsp;'] symbolNumberSeparator - the separator that will be used to divide symbol from the number
+     */
+    toSymbolString({
+      sections = 3,
+      sectionsDelimiter = ',',
+      decimals = 2,
+      decimalsDelimiter = ',',
+      symbol = '',
+      symbolAppend = true,
+      symbolNumberSeparator = '&nbsp;'
+    } = false) {
+      if (Number.isNumber(n)) {
+        return Number.prototype.toSymbolString.call(n, {
+          sections,
+          sectionsDelimiter,
+          decimals,
+          decimalsDelimiter,
+          symbol,
+          symbolAppend,
+          symbolNumberSeparator
+        });
+      }
+
+      return n;
+    },
+
+    toCurrency(n, {
+      sections = 3,
+      sectionsDelimiter = ',',
+      decimals = 2,
+      decimalsDelimiter = ',',
+      symbol = '&euro;',
+      symbolAppend = true,
+      symbolNumberSeparator = ''
+    } = false) {
+      if (Number.isNumber(n)) {
+        return Number.prototype.toCurrency.call(n, {
+          sections,
+          sectionsDelimiter,
+          decimals,
+          decimalsDelimiter,
+          symbol,
+          symbolAppend,
+          symbolNumberSeparator
+        });
+      }
+
+      return n;
+    },
+
+    /**
      * formats a number to a currency string
      * @example <caption>eg. usage</caption>
-     * console.log((1).toCurrency()); // 1,00
+     * console.log((1).toCurrency()); // 1,00 €
      *
-     * console.log((1).toCurrency(3); // 1,000
+     * console.log((1).toCurrency(3); // 1,000 €
      *
-     * console.log((123456,789).toCurrency(2); // 123.456,79
+     * console.log((123456.789).toCurrency(2); // 123.456,79 €
      *
-     * console.log((123456,789).toCurrency(3, 4); // 12.3456,789
+     * console.log((123456.789).toCurrency(3, 4); // 12.3456,789 €
      *
-     * console.log((123456,789).toCurrency(3, 4, ',', '.'); // 12,3456.789
+     * console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €
      * @memberOf number
      * @method toCurrency
      * @instance
@@ -273,7 +347,7 @@ export default {
 
     /**
      * Keeps a value `v` between `min` and `max`.
-     * 
+     *
      * @class clip
      * @constructor
      * @param {Number}  v The value to be bounded.
@@ -285,7 +359,7 @@ export default {
      * crops a value between specified bounds
      * @example <caption>eg. usage</caption>
      * console.log(Number.crop(5, 1, 10)); // 5
-     * 
+     *
      * console.log(Number.crop(5, 2, 4)); // 4
      *
      * console.log(Number.crop(5, 2)); // 5
@@ -295,7 +369,7 @@ export default {
      * console.log(Number.crop('5')); // '5'
      *
      * console.log((5).crop(1, 10)); // 5
-     * 
+     *
      * console.log((5).crop(2, 4)); // 4
      *
      * console.log((5).crop(2)); // 5
@@ -321,43 +395,43 @@ export default {
      * @example <caption>eg. usage</caption>
      * console.log(Array.range(4));
      * // [0, 1, 2, 3]
-     *       
+     *
      * console.log(Array.range(-4));
      * // [0, -1, -2, -3]
-     *  
+     *
      * console.log(Array.range(1, 5));
      * // [1, 2, 3, 4]
-     *  
+     *
      * console.log(Array.range(0, 20, 5));
      * // [0, 5, 10, 15]
-     *  
+     *
      * console.log(Array.range(0, -4, -1));
      * // [0, -1, -2, -3]
-     *  
+     *
      * console.log(Array.range(1, 4, 0));
      * // [1, 1, 1]
-     *  
+     *
      * console.log(Array.range(0);
      * // []
      * @example <caption>eg. usage (reverse)</caption>
      * console.log(Array.rangeRight(4));
      * // [3, 2, 1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(-4));
      * // [-3, -2, -1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(1, 5));
      * // [4, 3, 2, 1]
-     *  
+     *
      * console.log(Array.rangeRight(0, 20, 5));
      * // [15, 10, 5, 0]
-     *  
+     *
      * console.log(Array.rangeRight(0, -4, -1));
      * // [-3, -2, -1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(1, 4, 0));
      * // [1, 1, 1]
-     *  
+     *
      * console.log(Array.rangeRight(0));
      * // []
      * @memberOf number
@@ -379,7 +453,7 @@ export default {
 
     /**
      * wraps an angle value (in degrees) between 0 and 359.
-     * 
+     *
      * @memberOf number
      * @method degreeWrap
      * @instance
@@ -397,7 +471,7 @@ export default {
     /**
      * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
      * result is kept between 0 and 359.
-     * 
+     *
      * @memberOf number
      * @method degreeDiff
      * @instance
@@ -414,9 +488,9 @@ export default {
     },
 
     /**
-     * Returns the direction that represents the minimum distance from angle `a1` 
+     * Returns the direction that represents the minimum distance from angle `a1`
      * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
-     * 
+     *
      * @memberOf number
      * @method degreeDir
      * @instance
@@ -443,28 +517,6 @@ export default {
 
     times(iteratee, reverse = false) {
       return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
-    },
-
-    toFloatSymbol(options) {
-      const defaults = {
-        decimals: 2,
-        decimalDelimiter: ',',
-        sections: 3,
-        sectionsDelimiter: '.',
-        symbol: '&euro;',
-        symbolAppend: false,
-      };
-
-      const settings = _.merge({}, defaults, options);
-      const symbolPrepend = (!settings.symbolAppend && !!settings.symbol ? settings.symbol + ' ' : '');
-      const symbolAppend = (!!settings.symbolAppend && !!settings.symbol ? ' ' + settings.symbol : '');
-
-      const re = '\\d(?=(\\d{' + (settings.sections || 3) + '})+' + (settings.decimals > 0 ? '\\D' : '$') + ')';
-      let num = this.toFixed(settings.decimals);
-      num = num.replace('.', settings.decimalDelimiter);
-      num = num.replace(new RegExp(re, 'g'), '$&' + settings.sectionsDelimiter);
-
-      return symbolPrepend + num + symbolAppend;
     },
 
     toRoman() {
@@ -499,11 +551,40 @@ export default {
       return Math.abs(this);
     },
 
-    toCurrency(dec = 2, sec = 3, decSymbol = ',', secSymbol = '.') {
-      const regEx = '\\d(?=(\\d{' + sec + '})+' + (dec > 0 ? '\\D' : '$') + ')';
-      const val = this.toFixed(dec);
+    toSymbolString({
+      sections = 3,
+      sectionsDelimiter = ',',
+      decimals = 2,
+      decimalsDelimiter = ',',
+      symbol = '',
+      symbolAppend = true,
+      symbolNumberSeparator = '&nbsp;'
+    } = false) {
+      const prepend = (!symbolAppend && !!symbol ? symbol + symbolNumberSeparator : '');
+      const append = (!!symbolAppend && !!symbol ? symbolNumberSeparator + symbol : '');
+      const re = '\\d(?=(\\d{' + (sections || 3) + '})+' + (decimals > 0 ? '\\D' : '$') + ')';
 
-      return (decSymbol ? val.replace('.', decSymbol) : val).replace(new RegExp(regEx, 'g'), '$&' + secSymbol);
+      return prepend + this.toFixed(decimals).replace('.', decimalsDelimiter).replace(new RegExp(re, 'g'), '$&' + sectionsDelimiter) + append;
+    },
+
+    toCurrency({
+      sections = 3,
+      sectionsDelimiter = ',',
+      decimals = 2,
+      decimalsDelimiter = ',',
+      symbol = '&euro;',
+      symbolAppend = true,
+      symbolNumberSeparator = ''
+    } = false) {
+      return this.toSymbolString({
+        sections,
+        sectionsDelimiter,
+        decimals,
+        decimalsDelimiter,
+        symbol,
+        symbolAppend,
+        symbolNumberSeparator
+      });
     },
 
     floor(precision = 0) {
