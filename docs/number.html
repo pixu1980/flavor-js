@@ -391,7 +391,7 @@ console.log((5).between(1, 4)); // false</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line471">line 471</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line469">line 469</a>
     </li></ul></dd>
     
 
@@ -570,7 +570,7 @@ result is kept between 0 and 359.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line490">line 490</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line488">line 488</a>
     </li></ul></dd>
     
 
@@ -749,7 +749,7 @@ to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line454">line 454</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line452">line 452</a>
     </li></ul></dd>
     
 
@@ -904,7 +904,7 @@ to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line307">line 307</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line305">line 305</a>
     </li></ul></dd>
     
 
@@ -1821,7 +1821,7 @@ console.log(Number.random()); // a number between Number.MIN_VALUE and Number.MA
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line393">line 393</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -2150,7 +2150,7 @@ console.log(Array.rangeRight(0));
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line326">line 326</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -2367,7 +2367,7 @@ console.log((5070).round(-2)); // 5100</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line358">line 358</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line356">line 356</a>
     </li></ul></dd>
     
 
@@ -3042,7 +3042,7 @@ console.log((-1.56).toAbsolute()); // 1.56</code></pre>
 
     
 
-    <h4 class="name" id="toCurrency"><span class="type-signature"></span>toCurrency<span class="signature">(n, dec<span class="signature-attributes">opt</span>, sec<span class="signature-attributes">opt</span>, decSymbol<span class="signature-attributes">opt</span>, secSymbol<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="string.html">string</a>}</span></h4>
+    <h4 class="name" id="toCurrency"><span class="type-signature"></span>toCurrency<span class="signature">(n, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="string.html">string</a>}</span></h4>
 
     
 
@@ -3054,7 +3054,7 @@ console.log((-1.56).toAbsolute()); // 1.56</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line277">line 277</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line255">line 255</a>
     </li></ul></dd>
     
 
@@ -3111,13 +3111,13 @@ console.log((-1.56).toAbsolute()); // 1.56</code></pre>
     
     <pre class="prettyprint"><code>console.log((1).toCurrency()); // 1,00 €
 
-console.log((1).toCurrency(3); // 1,000 €
+console.log((1).toCurrency({decimals: 3}); // 1,000 €
 
-console.log((123456.789).toCurrency(2); // 123.456,79 €
+console.log((123456.789).toCurrency({decimals: 2}); // 123.456,79 €
 
-console.log((123456.789).toCurrency(3, 4); // 12.3456,789 €
+console.log((123456.789).toCurrency({sections: 4, decimals: 3}); // 12.3456,789 €
 
-console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></pre>
+console.log((123456.789).toCurrency({sections: 4, sectionsDelimiter: ',', decimals: 3, decimalsDelimiter: '.'}); // 12,3456.789 €</code></pre>
 
 
 
@@ -3186,13 +3186,13 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
 
         <tr>
             
-                <td class="name"><code>dec</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="number.html">number</a></span>
+<span class="param-type"><a href="object.html">object</a></span>
 
 
             
@@ -3213,19 +3213,42 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
             
                 <td class="default">
                 
-                    <code>2</code>
+                    <code>false</code>
                 
                 </td>
             
 
-            <td class="description last">desired decimals</td>
-        </tr>
+            <td class="description last">options to be used as parameters for conversion<br>
+                <h6>Properties</h6>
+                
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>sec</code></td>
+                <td class="name"><code>sections</code></td>
             
 
             <td class="type">
@@ -3257,53 +3280,14 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
                 </td>
             
 
-            <td class="description last">desired number sections</td>
+            <td class="description last">sections - section to divide the integer part of number in</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>decSymbol</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="string.html">string</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>','</code>
-                
-                </td>
-            
-
-            <td class="description last">decimals separator char</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>secSymbol</code></td>
+                <td class="name"><code>sectionsDelimiter</code></td>
             
 
             <td class="type">
@@ -3335,7 +3319,209 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
                 </td>
             
 
-            <td class="description last">sections separator char</td>
+            <td class="description last">sectionsDelimiter - delimiter used to separe integer sections</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decimals</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="number.html">number</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>2</code>
+                
+                </td>
+            
+
+            <td class="description last">decimals - desired number of decimals</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decimalsDelimiter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>','</code>
+                
+                </td>
+            
+
+            <td class="description last">decimalsDelimiter - delimiter used to separe decimals from integer part of number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>symbol</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>''</code>
+                
+                </td>
+            
+
+            <td class="description last">symbol - currency symbol or measure unit to use (eg. '&euro;')</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>symbolAppend</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="boolean.html">boolean</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>true</code>
+                
+                </td>
+            
+
+            <td class="description last">symbolAppend - if true the symbol will be appended to the number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>symbolNumberSeparator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'&amp;nbsp;'</code>
+                
+                </td>
+            
+
+            <td class="description last">symbolNumberSeparator - the separator that will be used to divide symbol from the number</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3719,7 +3905,7 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
 
     
 
-    <h4 class="name" id="toSymbolString"><span class="type-signature"></span>toSymbolString<span class="signature">(n, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toSymbolString"><span class="type-signature"></span>toSymbolString<span class="signature">(n, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="string.html">string</a>}</span></h4>
 
     
 
@@ -3731,7 +3917,7 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line229">line 229</a>
+        <a href="extensions_number.js.html">extensions/number.js</a>, <a href="extensions_number.js.html#line203">line 203</a>
     </li></ul></dd>
     
 
@@ -3790,13 +3976,13 @@ console.log((123456.789).toCurrency(3, 4, ',', '.'); // 12,3456.789 €</code></
 
 console.log((1).toSymbolString({decimals: 3}); // 1,000
 
-console.log((123456.789).toSymbolString({decimals: 2}); // 123.456,79
-console.log((123456.789).toSymbolString({sections: 4, decimals: 2}); // 12.3456,79
+console.log((123456.789).toSymbolString({decimals: 2}); // 123,456.79
+console.log((123456.789).toSymbolString({sections: 4, decimals: 2}); // 12,3456.79
 
 console.log((123456.789).toSymbolString({symbol: 'kWh'}); // 12.3456,79 kWh
 console.log((123456.789).toSymbolString({symbol: '&amp;euro;', symbolNumberSeparator: ''}); // 123.456,79&amp;euro;
 
-console.log((123456.789).toSymbolString({sectionsDelimiter: ',', decimalsDelimiter: '.'}); // 123,456.789</code></pre>
+console.log((123456.789).toSymbolString({sectionsDelimiter: '.', decimalsDelimiter: ','}); // 123.456,789</code></pre>
 
 
 
@@ -4071,7 +4257,7 @@ console.log((123456.789).toSymbolString({sectionsDelimiter: ',', decimalsDelimit
             
                 <td class="default">
                 
-                    <code>','</code>
+                    <code>'.'</code>
                 
                 </td>
             
@@ -4220,6 +4406,24 @@ console.log((123456.789).toSymbolString({sectionsDelimiter: ',', decimalsDelimit
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
         
@@ -4240,7 +4444,7 @@ console.log((123456.789).toSymbolString({sectionsDelimiter: ',', decimalsDelimit
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 08 2018 09:29:34 GMT+0100 (CET) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 08 2018 10:22:11 GMT+0100 (CET) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
