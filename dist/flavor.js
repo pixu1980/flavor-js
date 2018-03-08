@@ -3350,35 +3350,119 @@ exports.default = {
 
 
     /**
+     * converts a number to a integer/float string with symbol (currency, measure unit) support
+     * @example <caption>eg. usage</caption>
+     * console.log((1).toSymbolString()); // 1,00
+     *
+     * console.log((1).toSymbolString({decimals: 3}); // 1,000
+     *
+     * console.log((123456.789).toSymbolString({decimals: 2}); // 123,456.79
+     * console.log((123456.789).toSymbolString({sections: 4, decimals: 2}); // 12,3456.79
+     *
+     * console.log((123456.789).toSymbolString({symbol: 'kWh'}); // 12.3456,79 kWh
+     * console.log((123456.789).toSymbolString({symbol: '&euro;', symbolNumberSeparator: ''}); // 123.456,79&euro;
+     *
+     * console.log((123456.789).toSymbolString({sectionsDelimiter: '.', decimalsDelimiter: ','}); // 123.456,789
+     * @memberOf number
+     * @method toSymbolString
+     * @instance
+     * @param {number} n - the number
+     * @param {object} [options=false] - options to be used as parameters for conversion<br>
+     * @param {number} [options.sections=3] sections - section to divide the integer part of number in
+     * @param {string} [options.sectionsDelimiter=','] sectionsDelimiter - delimiter used to separe integer sections
+     * @param {number} [options.decimals=2] decimals - desired number of decimals
+     * @param {string} [options.decimalsDelimiter='.'] decimalsDelimiter - delimiter used to separe decimals from integer part of number
+     * @param {string} [options.symbol=''] symbol - currency symbol or measure unit to use (eg. '&euro;')
+     * @param {boolean} [options.symbolAppend=true] symbolAppend - if true the symbol will be appended to the number
+     * @param {string} [options.symbolNumberSeparator='&nbsp;'] symbolNumberSeparator - the separator that will be used to divide symbol from the number
+     * @return {string}
+     */
+    toSymbolString: function toSymbolString(n) {
+      var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false,
+          _ref$sections = _ref.sections,
+          sections = _ref$sections === undefined ? 3 : _ref$sections,
+          _ref$sectionsDelimite = _ref.sectionsDelimiter,
+          sectionsDelimiter = _ref$sectionsDelimite === undefined ? ',' : _ref$sectionsDelimite,
+          _ref$decimals = _ref.decimals,
+          decimals = _ref$decimals === undefined ? 2 : _ref$decimals,
+          _ref$decimalsDelimite = _ref.decimalsDelimiter,
+          decimalsDelimiter = _ref$decimalsDelimite === undefined ? '.' : _ref$decimalsDelimite,
+          _ref$symbol = _ref.symbol,
+          symbol = _ref$symbol === undefined ? '' : _ref$symbol,
+          _ref$symbolAppend = _ref.symbolAppend,
+          symbolAppend = _ref$symbolAppend === undefined ? true : _ref$symbolAppend,
+          _ref$symbolNumberSepa = _ref.symbolNumberSeparator,
+          symbolNumberSeparator = _ref$symbolNumberSepa === undefined ? '&nbsp;' : _ref$symbolNumberSepa;
+
+      if (Number.isNumber(n)) {
+        return Number.prototype.toSymbolString.call(n, {
+          sections: sections,
+          sectionsDelimiter: sectionsDelimiter,
+          decimals: decimals,
+          decimalsDelimiter: decimalsDelimiter,
+          symbol: symbol,
+          symbolAppend: symbolAppend,
+          symbolNumberSeparator: symbolNumberSeparator
+        });
+      }
+
+      return n;
+    },
+
+
+    /**
      * formats a number to a currency string
      * @example <caption>eg. usage</caption>
-     * console.log((1).toCurrency()); // 1,00
+     * console.log((1).toCurrency()); // 1,00 €
      *
-     * console.log((1).toCurrency(3); // 1,000
+     * console.log((1).toCurrency({decimals: 3}); // 1,000 €
      *
-     * console.log((123456,789).toCurrency(2); // 123.456,79
+     * console.log((123456.789).toCurrency({decimals: 2}); // 123.456,79 €
      *
-     * console.log((123456,789).toCurrency(3, 4); // 12.3456,789
+     * console.log((123456.789).toCurrency({sections: 4, decimals: 3}); // 12.3456,789 €
      *
-     * console.log((123456,789).toCurrency(3, 4, ',', '.'); // 12,3456.789
+     * console.log((123456.789).toCurrency({sections: 4, sectionsDelimiter: ',', decimals: 3, decimalsDelimiter: '.'}); // 12,3456.789 €
      * @memberOf number
      * @method toCurrency
      * @instance
      * @param {number} n - the number
-     * @param {number} [dec=2] - desired decimals
-     * @param {number} [sec=3] - desired number sections
-     * @param {string} [decSymbol=','] - decimals separator char
-     * @param {string} [secSymbol='.'] - sections separator char
+     * @param {object} [options=false] - options to be used as parameters for conversion<br>
+     * @param {number} [options.sections=3] sections - section to divide the integer part of number in
+     * @param {string} [options.sectionsDelimiter='.'] sectionsDelimiter - delimiter used to separe integer sections
+     * @param {number} [options.decimals=2] decimals - desired number of decimals
+     * @param {string} [options.decimalsDelimiter=','] decimalsDelimiter - delimiter used to separe decimals from integer part of number
+     * @param {string} [options.symbol=''] symbol - currency symbol or measure unit to use (eg. '&euro;')
+     * @param {boolean} [options.symbolAppend=true] symbolAppend - if true the symbol will be appended to the number
+     * @param {string} [options.symbolNumberSeparator='&nbsp;'] symbolNumberSeparator - the separator that will be used to divide symbol from the number
      * @return {string}
      */
     toCurrency: function toCurrency(n) {
-      var dec = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-      var sec = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
-      var decSymbol = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ',';
-      var secSymbol = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '.';
+      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false,
+          _ref2$sections = _ref2.sections,
+          sections = _ref2$sections === undefined ? 3 : _ref2$sections,
+          _ref2$sectionsDelimit = _ref2.sectionsDelimiter,
+          sectionsDelimiter = _ref2$sectionsDelimit === undefined ? '.' : _ref2$sectionsDelimit,
+          _ref2$decimals = _ref2.decimals,
+          decimals = _ref2$decimals === undefined ? 2 : _ref2$decimals,
+          _ref2$decimalsDelimit = _ref2.decimalsDelimiter,
+          decimalsDelimiter = _ref2$decimalsDelimit === undefined ? ',' : _ref2$decimalsDelimit,
+          _ref2$symbol = _ref2.symbol,
+          symbol = _ref2$symbol === undefined ? '&euro;' : _ref2$symbol,
+          _ref2$symbolAppend = _ref2.symbolAppend,
+          symbolAppend = _ref2$symbolAppend === undefined ? true : _ref2$symbolAppend,
+          _ref2$symbolNumberSep = _ref2.symbolNumberSeparator,
+          symbolNumberSeparator = _ref2$symbolNumberSep === undefined ? '' : _ref2$symbolNumberSep;
 
       if (Number.isNumber(n)) {
-        return Number.prototype.toCurrency.call(n, dec, sec, decSymbol, secSymbol);
+        return Number.prototype.toCurrency.call(n, {
+          sections: sections,
+          sectionsDelimiter: sectionsDelimiter,
+          decimals: decimals,
+          decimalsDelimiter: decimalsDelimiter,
+          symbol: symbol,
+          symbolAppend: symbolAppend,
+          symbolNumberSeparator: symbolNumberSeparator
+        });
       }
 
       return n;
@@ -3434,7 +3518,7 @@ exports.default = {
 
     /**
      * Keeps a value `v` between `min` and `max`.
-     * 
+     *
      * @class clip
      * @constructor
      * @param {Number}  v The value to be bounded.
@@ -3446,7 +3530,7 @@ exports.default = {
      * crops a value between specified bounds
      * @example <caption>eg. usage</caption>
      * console.log(Number.crop(5, 1, 10)); // 5
-     * 
+     *
      * console.log(Number.crop(5, 2, 4)); // 4
      *
      * console.log(Number.crop(5, 2)); // 5
@@ -3456,7 +3540,7 @@ exports.default = {
      * console.log(Number.crop('5')); // '5'
      *
      * console.log((5).crop(1, 10)); // 5
-     * 
+     *
      * console.log((5).crop(2, 4)); // 4
      *
      * console.log((5).crop(2)); // 5
@@ -3483,43 +3567,43 @@ exports.default = {
      * @example <caption>eg. usage</caption>
      * console.log(Array.range(4));
      * // [0, 1, 2, 3]
-     *       
+     *
      * console.log(Array.range(-4));
      * // [0, -1, -2, -3]
-     *  
+     *
      * console.log(Array.range(1, 5));
      * // [1, 2, 3, 4]
-     *  
+     *
      * console.log(Array.range(0, 20, 5));
      * // [0, 5, 10, 15]
-     *  
+     *
      * console.log(Array.range(0, -4, -1));
      * // [0, -1, -2, -3]
-     *  
+     *
      * console.log(Array.range(1, 4, 0));
      * // [1, 1, 1]
-     *  
+     *
      * console.log(Array.range(0);
      * // []
      * @example <caption>eg. usage (reverse)</caption>
      * console.log(Array.rangeRight(4));
      * // [3, 2, 1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(-4));
      * // [-3, -2, -1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(1, 5));
      * // [4, 3, 2, 1]
-     *  
+     *
      * console.log(Array.rangeRight(0, 20, 5));
      * // [15, 10, 5, 0]
-     *  
+     *
      * console.log(Array.rangeRight(0, -4, -1));
      * // [-3, -2, -1, 0]
-     *  
+     *
      * console.log(Array.rangeRight(1, 4, 0));
      * // [1, 1, 1]
-     *  
+     *
      * console.log(Array.rangeRight(0));
      * // []
      * @memberOf number
@@ -3546,7 +3630,7 @@ exports.default = {
 
     /**
      * wraps an angle value (in degrees) between 0 and 359.
-     * 
+     *
      * @memberOf number
      * @method degreeWrap
      * @instance
@@ -3565,7 +3649,7 @@ exports.default = {
     /**
      * Returns the minimum distance from angle `a1` to `a2` (both in degrees). The
      * result is kept between 0 and 359.
-     * 
+     *
      * @memberOf number
      * @method degreeDiff
      * @instance
@@ -3583,9 +3667,9 @@ exports.default = {
 
 
     /**
-     * Returns the direction that represents the minimum distance from angle `a1` 
+     * Returns the direction that represents the minimum distance from angle `a1`
      * to `a2` (in degrees). The result is `-1`, `1`, or `0` if equal.
-     * 
+     *
      * @memberOf number
      * @method degreeDir
      * @instance
@@ -3615,27 +3699,6 @@ exports.default = {
       var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       return !!reverse ? _lodash2.default.timesReverse(this, iteratee) : _lodash2.default.times(this, iteratee);
-    },
-    toFloatSymbol: function toFloatSymbol(options) {
-      var defaults = {
-        decimals: 2,
-        decimalDelimiter: ',',
-        sections: 3,
-        sectionsDelimiter: '.',
-        symbol: '&euro;',
-        symbolAppend: false
-      };
-
-      var settings = _lodash2.default.merge({}, defaults, options);
-      var symbolPrepend = !settings.symbolAppend && !!settings.symbol ? settings.symbol + ' ' : '';
-      var symbolAppend = !!settings.symbolAppend && !!settings.symbol ? ' ' + settings.symbol : '';
-
-      var re = '\\d(?=(\\d{' + (settings.sections || 3) + '})+' + (settings.decimals > 0 ? '\\D' : '$') + ')';
-      var num = this.toFixed(settings.decimals);
-      num = num.replace('.', settings.decimalDelimiter);
-      num = num.replace(new RegExp(re, 'g'), '$&' + settings.sectionsDelimiter);
-
-      return symbolPrepend + num + symbolAppend;
     },
     toRoman: function toRoman() {
       var num = this;
@@ -3668,16 +3731,55 @@ exports.default = {
     toAbsolute: function toAbsolute() {
       return Math.abs(this);
     },
+    toSymbolString: function toSymbolString() {
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false,
+          _ref3$sections = _ref3.sections,
+          sections = _ref3$sections === undefined ? 3 : _ref3$sections,
+          _ref3$sectionsDelimit = _ref3.sectionsDelimiter,
+          sectionsDelimiter = _ref3$sectionsDelimit === undefined ? ',' : _ref3$sectionsDelimit,
+          _ref3$decimals = _ref3.decimals,
+          decimals = _ref3$decimals === undefined ? 2 : _ref3$decimals,
+          _ref3$decimalsDelimit = _ref3.decimalsDelimiter,
+          decimalsDelimiter = _ref3$decimalsDelimit === undefined ? '.' : _ref3$decimalsDelimit,
+          _ref3$symbol = _ref3.symbol,
+          symbol = _ref3$symbol === undefined ? '' : _ref3$symbol,
+          _ref3$symbolAppend = _ref3.symbolAppend,
+          symbolAppend = _ref3$symbolAppend === undefined ? true : _ref3$symbolAppend,
+          _ref3$symbolNumberSep = _ref3.symbolNumberSeparator,
+          symbolNumberSeparator = _ref3$symbolNumberSep === undefined ? '&nbsp;' : _ref3$symbolNumberSep;
+
+      var prepend = !symbolAppend && !!symbol ? symbol + symbolNumberSeparator : '';
+      var append = !!symbolAppend && !!symbol ? symbolNumberSeparator + symbol : '';
+      var re = '\\d(?=(\\d{' + (sections || 3) + '})+' + (decimals > 0 ? '\\D' : '$') + ')';
+
+      return prepend + this.toFixed(decimals).replace('.', decimalsDelimiter).replace(new RegExp(re, 'g'), '$&' + sectionsDelimiter) + append;
+    },
     toCurrency: function toCurrency() {
-      var dec = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
-      var sec = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
-      var decSymbol = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ',';
-      var secSymbol = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '.';
+      var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false,
+          _ref4$sections = _ref4.sections,
+          sections = _ref4$sections === undefined ? 3 : _ref4$sections,
+          _ref4$sectionsDelimit = _ref4.sectionsDelimiter,
+          sectionsDelimiter = _ref4$sectionsDelimit === undefined ? '.' : _ref4$sectionsDelimit,
+          _ref4$decimals = _ref4.decimals,
+          decimals = _ref4$decimals === undefined ? 2 : _ref4$decimals,
+          _ref4$decimalsDelimit = _ref4.decimalsDelimiter,
+          decimalsDelimiter = _ref4$decimalsDelimit === undefined ? ',' : _ref4$decimalsDelimit,
+          _ref4$symbol = _ref4.symbol,
+          symbol = _ref4$symbol === undefined ? '&euro;' : _ref4$symbol,
+          _ref4$symbolAppend = _ref4.symbolAppend,
+          symbolAppend = _ref4$symbolAppend === undefined ? true : _ref4$symbolAppend,
+          _ref4$symbolNumberSep = _ref4.symbolNumberSeparator,
+          symbolNumberSeparator = _ref4$symbolNumberSep === undefined ? '' : _ref4$symbolNumberSep;
 
-      var regEx = '\\d(?=(\\d{' + sec + '})+' + (dec > 0 ? '\\D' : '$') + ')';
-      var val = this.toFixed(dec);
-
-      return (decSymbol ? val.replace('.', decSymbol) : val).replace(new RegExp(regEx, 'g'), '$&' + secSymbol);
+      return this.toSymbolString({
+        sections: sections,
+        sectionsDelimiter: sectionsDelimiter,
+        decimals: decimals,
+        decimalsDelimiter: decimalsDelimiter,
+        symbol: symbol,
+        symbolAppend: symbolAppend,
+        symbolNumberSeparator: symbolNumberSeparator
+      });
     },
     floor: function floor() {
       var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -6457,7 +6559,7 @@ exports.default = {
 /* 59 */
 /***/ (function(module, exports) {
 
-module.exports = {"version":{"name":"flavor-js","buildDate":"Fri Jan 26 2018 16:19:42 GMT+0100 (CET)","version":"0.4.4"}}
+module.exports = {"version":{"name":"flavor-js","buildDate":"Thu Mar 08 2018 10:10:53 GMT+0100 (CET)","version":"0.4.5"}}
 
 /***/ })
 /******/ ]);

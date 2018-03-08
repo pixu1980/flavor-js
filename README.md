@@ -4,7 +4,7 @@
 Black Mirror
 
 ## Version
-v0.4.4
+v0.4.5
 
 ## Badges
 
@@ -55,6 +55,7 @@ npm install flavor-js --save
 - [ink-docstrap](https://ghub.io/ink-docstrap): [![NPM](https://nodei.co/npm/ink-docstrap.png?downloads=true)](https://nodei.co/npm/ink-docstrap/)
 - [jsdoc](https://ghub.io/jsdoc): An API documentation generator for JavaScript.
 - [lodash-webpack-plugin](https://ghub.io/lodash-webpack-plugin): Smaller modular Lodash builds.
+- [ssri](https://ghub.io/ssri): Standard Subresource Integrity library --  parses, serializes, generates, and verifies integrity metadata according to the SRI spec.
 - [uglifyjs-webpack-plugin](https://ghub.io/uglifyjs-webpack-plugin): UglifyJS plugin for webpack
 - [webpack](https://ghub.io/webpack): Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand. Support loaders to preprocess files, i.e. json, jsx, es7, css, less, ... and your custom stuff.
 - [webpack-ver-plugin](https://ghub.io/webpack-ver-plugin): Generates a file with your app&#39;s package.json information and build date
