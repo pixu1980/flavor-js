@@ -49,6 +49,7 @@ const config = {
 let configTargets = ['umd'].map((target) => {
   return _.merge({}, config, {
     devtool: 'sourcemap',
+    mode: 'development',
     output: {
       // filename: filename + '.' + target + '.js',
       filename: filename + '.js',
@@ -66,6 +67,7 @@ let configTargets = ['umd'].map((target) => {
 
 let configTargetsProd = ['umd'].map((target) => {
   return _.merge({}, config, {
+    mode: 'production',
     output: {
       // filename: filename + '.' + target + '.min.js',
       filename: filename + '.min.js',
