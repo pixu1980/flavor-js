@@ -5889,7 +5889,7 @@ exports.default = {
     startsWith: function startsWith(s, value) {
       var insensitive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-      return String.prototype.contains.call(s, value, insensitive);
+      return String.prototype.startsWith.call(s, value, insensitive);
     },
 
 
@@ -5922,7 +5922,7 @@ exports.default = {
     endsWith: function endsWith(s, value) {
       var insensitive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-      return String.prototype.contains.call(s, value, insensitive);
+      return String.prototype.endsWith.call(s, value, insensitive);
     },
 
 
@@ -6852,7 +6852,7 @@ exports.default = flavorJS;
 /*! exports provided: version, default */
 /***/ (function(module) {
 
-module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Mar 20 2018 14:56:52 GMT+0100 (CET)","version":"0.4.8"}};
+module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Mar 20 2018 15:35:39 GMT+0100 (CET)","version":"0.4.9"}};
 
 /***/ }),
 
