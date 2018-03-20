@@ -1,3 +1,11 @@
+## [Version 0.4.8](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.8) (2018-3-20)
+
+### Bug fixes
+
+- fixed version status added build:release command: [`82e0f04`](https://github.com/blackmirror1980/flavor-js/commit/82e0f04)
+
+[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.7...v0.4.8)
+
 ## [Version 0.4.7](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.7) (2018-3-8)
 
 ### Bug fixes
