@@ -1,3 +1,11 @@
+## [Version 0.4.9](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.9) (2018-3-20)
+
+### Bug fixes
+
+- fixed string issues startsWith endsWith: [`e9c1a42`](https://github.com/blackmirror1980/flavor-js/commit/e9c1a42)
+
+[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.8...v0.4.9)
+
 ## [Version 0.4.8](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.8) (2018-3-20)
 
 ### Bug fixes
