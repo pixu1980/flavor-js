@@ -6852,7 +6852,7 @@ exports.default = flavorJS;
 /*! exports provided: version, default */
 /***/ (function(module) {
 
-module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Mar 20 2018 14:54:42 GMT+0100 (CET)","version":"0.4.8"}};
+module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Mar 20 2018 14:56:52 GMT+0100 (CET)","version":"0.4.8"}};
 
 /***/ }),
 
