@@ -139,7 +139,7 @@ export default {
      * @return {boolean}
      */
     startsWith(s, value, insensitive = false) {
-      return String.prototype.contains.call(s, value, insensitive);
+      return String.prototype.startsWith.call(s, value, insensitive);
     },
 
     /**
@@ -169,7 +169,7 @@ export default {
      * @return {boolean}
      */
     endsWith(s, value, insensitive = false) {
-      return String.prototype.contains.call(s, value, insensitive);
+      return String.prototype.endsWith.call(s, value, insensitive);
     },
 
     /**
