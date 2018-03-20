@@ -6797,11 +6797,9 @@ var FlavorJS = function () {
       this.extendString();
       this.extendArray();
 
-      var flavorJSStatus = {
-        initialized: true,
-        version: _release2.default.version,
-        build: _release2.default.buildDate
-      };
+      var flavorJSStatus = _release2.default.version.inherit({
+        initialized: true
+      });
 
       Object.inherit(this, _core2.default, flavorJSStatus);
 
@@ -6854,7 +6852,7 @@ exports.default = flavorJS;
 /*! exports provided: version, default */
 /***/ (function(module) {
 
-module.exports = {"version":{"name":"flavor-js","buildDate":"Thu Mar 08 2018 10:22:41 GMT+0100 (CET)","version":"0.4.6"}};
+module.exports = {"version":{"name":"flavor-js","buildDate":"Tue Mar 20 2018 14:54:42 GMT+0100 (CET)","version":"0.4.8"}};
 
 /***/ }),
 
