@@ -188,11 +188,9 @@ export default class FlavorJS {
     this.extendString();
     this.extendArray();
 
-    const flavorJSStatus = {
-      initialized: true,
-      version: release.version,
-      build: release.buildDate,
-    };
+    const flavorJSStatus = release.version.inherit({
+      initialized: true
+    });
 
     Object.inherit(this, CoreExt, flavorJSStatus);
 
