@@ -1,3 +1,11 @@
+## [Version 0.4.10](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.10) (2018-4-27)
+
+### Bug fixes
+
+- - added hoek last version as dependency in order to fix security issues - dumped other dependencies: [`ec932ec`](https://github.com/blackmirror1980/flavor-js/commit/ec932ec)
+
+[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.9...v0.4.10)
+
 ## [Version 0.4.9](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.9) (2018-3-20)
 
 ### Bug fixes
