@@ -4,7 +4,7 @@
 Black Mirror
 
 ## Version
-v0.4.9
+v0.4.10
 
 ## Badges
 
@@ -52,6 +52,7 @@ npm install flavor-js --save
 - [eslint-plugin-import](https://ghub.io/eslint-plugin-import): Import with sanity.
 - [eslint-plugin-jsx-a11y](https://ghub.io/eslint-plugin-jsx-a11y): Static AST checker for accessibility rules on JSX elements.
 - [eslint-plugin-react](https://ghub.io/eslint-plugin-react): React specific linting rules for ESLint
+- [hoek](https://ghub.io/hoek): General purpose node utilities
 - [ink-docstrap](https://ghub.io/ink-docstrap): [![NPM](https://nodei.co/npm/ink-docstrap.png?downloads=true)](https://nodei.co/npm/ink-docstrap/)
 - [jsdoc](https://ghub.io/jsdoc): An API documentation generator for JavaScript.
 - [lodash-webpack-plugin](https://ghub.io/lodash-webpack-plugin): Smaller modular Lodash builds.
