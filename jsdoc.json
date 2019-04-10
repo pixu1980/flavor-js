@@ -1,10 +1,14 @@
 {
   "tags": {
     "allowUnknownTags": true,
-    "dictionaries": ["jsdoc"]
+    "dictionaries": [
+      "jsdoc"
+    ]
   },
   "source": {
-    "include": ["./src"],
+    "include": [
+      "./src"
+    ],
     "includePattern": ".+\\.js$",
     "excludePattern": "(docs)"
   },
@@ -14,7 +18,7 @@
     "monospaceLinks": true,
     "systemName": "FlavorJS",
     "footer": "",
-    "copyright": "2017-2018 &copy; Created by blackmirror1980",
+    "copyright": "2017-2019 &copy; Created by blackmirror1980",
     "navType": "vertical",
     "theme": "spacelab",
     "linenums": true,

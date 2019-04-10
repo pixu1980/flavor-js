@@ -8,6 +8,4 @@
 // window.ƒ = Flavor;
 import Flavor from './Flavor';
 
-if(typeof module !== 'undefined') {
-  module.exports = Flavor;
-}
+export default Flavor;

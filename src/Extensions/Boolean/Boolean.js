@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * @namespace boolean
  * @description the JS native Boolean class
@@ -41,7 +39,7 @@ export default {
   },
   prototype: {
     isBoolean() {
-      return _.isBoolean(this);
+      return typeof this === 'boolean';
     },
   },
 };

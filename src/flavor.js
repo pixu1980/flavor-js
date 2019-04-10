@@ -1,7 +1,6 @@
-import _ from 'lodash';
+import './Core/JSDoc';
+import './Core/Polyfills';
 
-import CoreExt from './extensions/core';
-import LodashExt from './extensions/lodash';
 import ObjectExt from './extensions/object';
 import FunctionExt from './extensions/function';
 import BooleanExt from './extensions/boolean';
@@ -10,22 +9,20 @@ import DateExt from './extensions/date';
 import StringExt from './extensions/string';
 import ArrayExt from './extensions/array';
 
-import release from './release.json';
-
 /**
- * constructs FlavorJS class & extends the js natives
- * @class FlavorJS
- * @classdesc FlavorJS the definitive JS natives chainable extensions methods
+ * constructs Flavor class & extends the js natives
+ * @class Flavor
+ * @classdesc Flavor the definitive JS natives chainable extensions methods
  * @public
  */
-export default class FlavorJS {
+export default class Flavor {
   constructor() {
     this.init();
   }
 
   /**
    * safe js native prototype extension using Object.defineProperty
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendPrototypeProperty
    * @instance
    * @param {prototype|object} proto - the prototype/object to extend
@@ -74,7 +71,7 @@ export default class FlavorJS {
 
   /**
    * merges all keys in extend plain object to the prototype (
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendPrototype
    * @instance
    * @param {prototype|object} proto - the prototype/object to extend
@@ -88,7 +85,7 @@ export default class FlavorJS {
 
   /**
    * extendLodash
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendLodash
    * @instance
    */
@@ -98,7 +95,7 @@ export default class FlavorJS {
 
   /**
    * extendObject
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendObject
    * @instance
    */
@@ -109,7 +106,7 @@ export default class FlavorJS {
 
   /**
    * extendFunction
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendFunction
    * @instance
    */
@@ -120,7 +117,7 @@ export default class FlavorJS {
 
   /**
    * extendBoolean
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendBoolean
    * @instance
    */
@@ -131,7 +128,7 @@ export default class FlavorJS {
 
   /**
    * extendNumber
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendNumber
    * @instance
    */
@@ -139,9 +136,10 @@ export default class FlavorJS {
     this.extendPrototype(Number.prototype, NumberExt.prototype);
     this.extendPrototype(Number, NumberExt.native);
   }
+
   /**
    * extendDate
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendDate
    * @instance
    */
@@ -152,7 +150,7 @@ export default class FlavorJS {
 
   /**
    * extendString
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendString
    * @instance
    */
@@ -163,7 +161,7 @@ export default class FlavorJS {
 
   /**
    * extendArray
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method extendArray
    * @instance
    */
@@ -174,7 +172,7 @@ export default class FlavorJS {
 
   /**
    * initialize all
-   * @memberOf FlavorJS
+   * @memberOf Flavor
    * @method init
    * @instance
    */
@@ -188,12 +186,12 @@ export default class FlavorJS {
     this.extendString();
     this.extendArray();
 
-    const flavorJSStatus = release.version.inherit({
+    const FlavorStatus = release.version.inherit({
       initialized: true,
     });
 
-    Object.inherit(this, CoreExt, flavorJSStatus);
+    Object.inherit(this, CoreExt, FlavorStatus);
 
-    console.log('FlavorJS initialized', flavorJSStatus);
+    console.log('Flavor initialized', FlavorStatus);
   }
 }

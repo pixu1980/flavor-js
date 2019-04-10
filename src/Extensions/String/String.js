@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * @namespace string
  * @description the JS native String class

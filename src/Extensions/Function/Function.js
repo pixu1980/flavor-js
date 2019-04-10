@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * @namespace function
  * @description the JS native Function class

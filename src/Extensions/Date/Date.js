@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * @namespace date
  * @description the JS native Date class
@@ -26,7 +24,7 @@ export default {
      * returns a random date between specified range (default now <-> now)
      * @example <caption>eg. usage</caption>
      * console.log(Date.random()); // Mon Jan 22 2018 14:07:09 GMT+0100 (CET)
-     * 
+     *
      * console.log(Date.random(new Date(1970, 0, 1), new Date())); // Sun Apr 05 1987 00:00:00 GMT+0200 (CEST)
      * @memberOf date
      * @method random

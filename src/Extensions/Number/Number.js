@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * @namespace number
  * @description the JS native Number class
