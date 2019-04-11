@@ -1,3 +1,5 @@
+import { trueTypeOf } from '../../Helpers/index';
+
 /* eslint-disable prefer-destructuring */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-restricted-globals */
@@ -11,8 +13,8 @@ if (!Array.isArray) {
     enumerable: false,
     configurable: true,
     writable: true,
-    value(a) {
-      return Object.prototype.toString.call(a) === '[object Array]';
+    value(arr) {
+      return trueTypeOf(arr) === 'array';
     },
   });
 }

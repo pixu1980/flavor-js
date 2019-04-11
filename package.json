@@ -33,8 +33,7 @@
   },
   "homepage": "https://blackmirror1980.github.io/flavor-js",
   "documentation": "https://blackmirror1980.github.io/flavor-js/docs/index.html",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",

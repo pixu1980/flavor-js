@@ -1,8 +1,7 @@
 /**
  * @namespace array
- * @description the JS native Array class
+ * @description extensions for the JS primitive Array
  */
-
 import prototype from './prototype';
 import native from './native';
 

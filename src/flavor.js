@@ -1,13 +1,5 @@
-import './Core/JSDoc';
-import './Core/Polyfills';
-
-import ObjectExt from './extensions/object';
-import FunctionExt from './extensions/function';
-import BooleanExt from './extensions/boolean';
-import NumberExt from './extensions/number';
-import DateExt from './extensions/date';
-import StringExt from './extensions/string';
-import ArrayExt from './extensions/array';
+import './Core/index';
+import Extensions from './Extensions/index';
 
 /**
  * constructs Flavor class & extends the js natives
@@ -23,9 +15,9 @@ export default class Flavor {
   /**
    * safe js native prototype extension using Object.defineProperty
    * @memberOf Flavor
-   * @method extendPrototypeProperty
+   * @method extendProp
    * @instance
-   * @param {prototype|object} proto - the prototype/object to extend
+   * @param {prototype|object} target - the prototype/object to extend
    * @param {string} prop - the name of the property to be defined or modified
    * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (number, function, etc...) or what you want
    * @param {object} [options={}] - options to be used as parameters in the descriptor for the property<br>
@@ -60,37 +52,25 @@ export default class Flavor {
    * }
    * </pre>
    */
-  extendPrototypeProperty(proto, prop, val, options = {}) {
-    Object.defineProperty(proto, prop, {
+  extendProp(target, prop, val, options = {}) {
+    Object.defineProperty(target, prop, {
       value: val,
-      writable: true,
-      configurable: true,
-      enumerable: false,
+      writable: options.writable || true,
+      configurable: options.configurable || true,
+      enumerable: options.enumerable || false,
     });
   }
 
   /**
    * merges all keys in extend plain object to the prototype (
    * @memberOf Flavor
-   * @method extendPrototype
+   * @method extendProps
    * @instance
-   * @param {prototype|object} proto - the prototype/object to extend
-   * @param {object} extend - the extend object to be merged in prototype
+   * @param {prototype|object} target - the prototype/object to extend
+   * @param {object} extensions - the extend object to be merged in prototype
    */
-  extendPrototype(proto, extend) {
-    _.forOwn(extend, (value, key) => {
-      this.extendPrototypeProperty(proto, key, value);
-    });
-  }
-
-  /**
-   * extendLodash
-   * @memberOf Flavor
-   * @method extendLodash
-   * @instance
-   */
-  extendLodash() {
-    _.mixin(LodashExt);
+  extendProps(target, extensions) {
+    Object.defineProperties(target, extensions);
   }
 
   /**
@@ -100,8 +80,8 @@ export default class Flavor {
    * @instance
    */
   extendObject() {
-    this.extendPrototype(Object.prototype, ObjectExt.prototype);
-    this.extendPrototype(Object, ObjectExt.native);
+    this.extendProps(Object.prototype, Extensions.Object.prototype);
+    this.extendProps(Object, Extensions.Object.native);
   }
 
   /**
@@ -111,8 +91,8 @@ export default class Flavor {
    * @instance
    */
   extendFunction() {
-    this.extendPrototype(Function.prototype, FunctionExt.prototype);
-    this.extendPrototype(Function, FunctionExt.native);
+    this.extendProps(Function.prototype, Extensions.Function.prototype);
+    this.extendProps(Function, Extensions.Function.native);
   }
 
   /**
@@ -122,8 +102,8 @@ export default class Flavor {
    * @instance
    */
   extendBoolean() {
-    this.extendPrototype(Boolean.prototype, BooleanExt.prototype);
-    this.extendPrototype(Boolean, BooleanExt.native);
+    this.extendProps(Boolean.prototype, Extensions.Boolean.prototype);
+    this.extendProps(Boolean, Extensions.Boolean.native);
   }
 
   /**
@@ -133,8 +113,8 @@ export default class Flavor {
    * @instance
    */
   extendNumber() {
-    this.extendPrototype(Number.prototype, NumberExt.prototype);
-    this.extendPrototype(Number, NumberExt.native);
+    this.extendProps(Number.prototype, Extensions.Number.prototype);
+    this.extendProps(Number, Extensions.Number.native);
   }
 
   /**
@@ -144,8 +124,8 @@ export default class Flavor {
    * @instance
    */
   extendDate() {
-    this.extendPrototype(Date.prototype, DateExt.prototype);
-    this.extendPrototype(Date, DateExt.native);
+    this.extendProps(Date.prototype, Extensions.Date.prototype);
+    this.extendProps(Date, Extensions.Date.native);
   }
 
   /**
@@ -155,8 +135,8 @@ export default class Flavor {
    * @instance
    */
   extendString() {
-    this.extendPrototype(String.prototype, StringExt.prototype);
-    this.extendPrototype(String, StringExt.native);
+    this.extendProps(String.prototype, Extensions.String.prototype);
+    this.extendProps(String, Extensions.String.native);
   }
 
   /**
@@ -166,8 +146,8 @@ export default class Flavor {
    * @instance
    */
   extendArray() {
-    this.extendPrototype(Array.prototype, ArrayExt.prototype);
-    this.extendPrototype(Array, ArrayExt.native);
+    this.extendProps(Array.prototype, Extensions.Array.prototype);
+    this.extendProps(Array, Extensions.Array.native);
   }
 
   /**
@@ -177,7 +157,6 @@ export default class Flavor {
    * @instance
    */
   init() {
-    this.extendLodash();
     this.extendObject();
     this.extendFunction();
     this.extendBoolean();
@@ -186,12 +165,6 @@ export default class Flavor {
     this.extendString();
     this.extendArray();
 
-    const FlavorStatus = release.version.inherit({
-      initialized: true,
-    });
-
-    Object.inherit(this, CoreExt, FlavorStatus);
-
-    console.log('Flavor initialized', FlavorStatus);
+    console.warn('FlavorJS initialized');
   }
 }
