@@ -5,28 +5,6 @@
 // export default {
 //   native: {
 //     /**
-//      * checks if something is a string
-//      * @example <caption>eg. usage</caption>
-//      * var s = 'foo';
-//      *
-//      * console.log(String.isString(s)); // true
-//      *
-//      * console.log(String.isString(2)); // false
-//      *
-//      * console.log(String.isString('')); // true
-//      *
-//      * console.log(String.isString(null)); // false
-//      * @memberOf string
-//      * @method isString
-//      * @instance
-//      * @param {string} s - the string to be checked
-//      * @return {boolean}
-//      */
-//     isString(s) {
-//       return String.prototype.isString.call(s);
-//     },
-
-//     /**
 //      * checks if a string is a percentage string
 //      * @example <caption>eg. usage</caption>
 //      * console.log(String.isPercentage('50,25%')); // true
@@ -553,10 +531,6 @@
 //     },
 //   },
 //   prototype: {
-//     isString() {
-//       return _.isString(this);
-//     },
-
 //     isPercentage() {
 //       return /^\d+(\.\d+)?%$/.test(this);
 //     },

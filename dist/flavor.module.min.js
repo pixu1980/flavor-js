@@ -486,13 +486,113 @@ var ObjectExt = {
  * @namespace function
  * @description extensions for the JS primitive Function
  */
-var prototype$1 = {};
+var prototype$1 = {
+  proxy: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(scope) {
+      for (var _len = arguments.length, proxyArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        proxyArgs[_key - 1] = arguments[_key];
+      }
+
+      var func = this;
+      return function () {
+        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
+
+        return func.apply(scope, proxyArgs.length >= 1 ? proxyArgs : args);
+      };
+    }
+  }
+};
 
 /**
  * @namespace function
  * @description extensions for the JS primitive Function
  */
-var _native$1 = {};
+
+var _native$1 = {
+  /**
+   * checked if something is a function
+   * @example <caption>eg. usage</caption>
+   * var f = function(){};
+   *
+   * console.log(Function.isFunction(f)); // true
+   *
+   * console.log(Function.isFunction(2)); // false
+   *
+   * console.log(Function.isFunction(function(){})); // true
+   *
+   * console.log(Function.isFunction(null)); // false
+   * @memberOf function
+   * @method isFunction
+   * @instance
+   * @param {function} f - the function to be checked
+   * @return {boolean}
+   */
+  isFunction: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(f) {
+      return trueTypeOf(f) === 'function';
+    }
+  },
+
+  /**
+   * proxies a function with scope and optional arguments<br><br>
+   * @example <caption>eg. usage</caption>
+   * var a = 1;
+   * var b = new Date();
+   * var c = function() {};
+   *
+   * var scope = {
+     *   prop1: 2.53,
+     *   prop2: 'foo';
+     * };
+   *
+   * var f = function(a, b, c) {
+     *   console.log(this.prop1, a, b, c);
+     * }
+   *
+   * f(a, b, c);
+   * // it logs
+   * undefined, 1, Date, function()
+   *
+   * var pf = f.proxy(scope);
+   * pf(a, b, c);
+   * // it logs
+   * 2.53, 1, Date, function()
+   *
+   * pf = f.proxy(scope, 2, null);
+   * pf(a, b, c);
+   * // it logs
+   * 2.53, 2, null, function()
+   * @memberOf function
+   * @method proxy
+   * @instance
+   * @param {function} f - the function to be proxed
+   * @param {object} scope - the scope object (will be `this` inside the function)
+   * @param {...object} args - pass one or more arguments to override the original handled arguments
+   * @return {function}
+   */
+  proxy: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(f, scope) {
+      var _Function$prototype$p;
+
+      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+      }
+
+      return (_Function$prototype$p = Function.prototype.proxy).call.apply(_Function$prototype$p, [f, scope].concat(args));
+    }
+  }
+};
 
 /**
  * @namespace function
@@ -594,13 +694,96 @@ var NumberExt = {
  * @namespace date
  * @description extensions for the JS primitive Date
  */
-var prototype$4 = {};
+var prototype$4 = {
+  toTimestamp: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      return Math.round(this);
+    }
+  }
+};
 
 /**
  * @namespace date
  * @description extensions for the JS primitive Date
  */
-var _native$4 = {};
+
+var _native$4 = {
+  /**
+   * checks if something is a date
+   * @example <caption>eg.usage</caption>
+   * console.log(Date.isDate(new Date())); // true
+   *
+   * console.log(Date.isDate(0)); // false
+   * @memberOf date
+   * @method isDate
+   * @instance
+   * @param {*} d - the value to check
+   * @return {boolean}
+   */
+  isDate: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(d) {
+      return trueTypeOf(d) === 'date';
+    }
+  },
+
+  /**
+   * returns a random date between specified range (default now <-> now)
+   * @example <caption>eg. usage</caption>
+   * console.log(Date.random()); // Mon Jan 22 2018 14:07:09 GMT+0100 (CET)
+   *
+   * console.log(Date.random(new Date(1970, 0, 1), new Date())); // Sun Apr 05 1987 00:00:00 GMT+0200 (CEST)
+   * @memberOf date
+   * @method random
+   * @instance
+   * @param {date} startDate [null] - the range start date
+   * @param {date} endDate [null] - the range end date
+   * @return {date}
+   */
+  random: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      var startDate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var endDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (!startDate && !endDate) {
+        return new Date(new Date().getTime() * Math.random());
+      }
+
+      return new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+    }
+  },
+
+  /**
+   * transforms a date in a UTC timestamp integer
+   * @example <caption>eg. usage</caption>
+   * console.log((new Date()).toTimestamp()); // 1491317811925 @ 2017-04-4-16:57
+   * @memberOf date
+   * @method toTimestamp
+   * @instance
+   * @param {date} d - the date to convert
+   * @return {timestamp|0}
+   */
+  toTimestamp: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(d) {
+      if (!Date.isDate(d)) {
+        return 0;
+      }
+
+      return Date.prototype.toTimestamp.call(d);
+    }
+  }
+};
 
 /**
  * @namespace date
@@ -621,7 +804,30 @@ var prototype$5 = {};
  * @namespace string
  * @description extensions for the JS primitive String
  */
-var _native$5 = {};
+
+var _native$5 = {
+  /**
+   * checks if something is a string
+   * @example <caption>eg. usage</caption>
+   * var s = 'foo';
+   *
+   * console.log(String.isString(s)); // true
+   *
+   * console.log(String.isString(2)); // false
+   *
+   * console.log(String.isString('')); // true
+   *
+   * console.log(String.isString(null)); // false
+   * @memberOf string
+   * @method isString
+   * @instance
+   * @param {string} s - the string to be checked
+   * @return {boolean}
+   */
+  isString: function isString(s) {
+    return trueTypeOf(s) === 'string';
+  }
+};
 
 /**
  * @namespace string
