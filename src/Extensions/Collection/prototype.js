@@ -1,6 +1,6 @@
 /**
- * @namespace array
- * @description extensions for the JS primitive Array
+ * @namespace collection
+ * @description extensions for the JS Collection
  */
 export default {
   //TODO: implement rest arrays difference

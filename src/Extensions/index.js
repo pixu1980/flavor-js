@@ -5,6 +5,7 @@ import NumberExt from './Number/index';
 import DateExt from './Date/index';
 import StringExt from './String/index';
 import ArrayExt from './Array/index';
+import Collection from './Collection/index';
 
 export default {
   Object: ObjectExt,
