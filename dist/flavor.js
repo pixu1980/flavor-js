@@ -155,6 +155,10 @@
     return _assertThisInitialized(self);
   }
 
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  }
+
   function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
   }
@@ -167,12 +171,46 @@
     }
   }
 
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
   function _iterableToArray(iter) {
     if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
   }
 
+  function _iterableToArrayLimit(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
   function _nonIterableSpread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
+
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
   /**
@@ -329,6 +367,43 @@
         return obj;
       }
     });
+  } // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+
+
+  if (!Object.keys) {
+    Object.keys = function () {
+      var hasOwnProperty = Object.prototype.hasOwnProperty;
+      var hasDontEnumBug = !{
+        toString: null
+      }.propertyIsEnumerable('toString');
+      var dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
+      var dontEnumsLength = dontEnums.length;
+      return function (obj) {
+        if (typeof obj !== 'function' && (_typeof(obj) !== 'object' || obj === null)) {
+          throw new TypeError('Object.keys called on non-object');
+        }
+
+        var result = [];
+        var prop;
+        var i; // eslint-disable-next-line no-restricted-syntax
+
+        for (prop in obj) {
+          if (hasOwnProperty.call(obj, prop)) {
+            result.push(prop);
+          }
+        }
+
+        if (hasDontEnumBug) {
+          for (i = 0; i < dontEnumsLength; i++) {
+            if (hasOwnProperty.call(obj, dontEnums[i])) {
+              result.push(dontEnums[i]);
+            }
+          }
+        }
+
+        return result;
+      };
+    }();
   }
 
   // THANKS TO https://gomakethings.com/true-type-checking-with-vanilla-js/
@@ -344,6 +419,22 @@
   // Object.prototype.toString.call(true); // [object Boolean]
   // Object.prototype.toString.call(null); // [object Null]
   // Object.prototype.toString.call(); // [object Undefined]
+
+  function isUndefined(any) {
+    return trueTypeOf(any) === 'undefined';
+  }
+
+  function isObject(any) {
+    return trueTypeOf(any) === 'object';
+  }
+
+  function isString(any) {
+    return trueTypeOf(any) === 'string';
+  }
+
+  function isArray(any) {
+    return trueTypeOf(any) === 'array';
+  }
 
   /* eslint-disable prefer-destructuring */
 
@@ -540,6 +631,64 @@
     });
   }
 
+  if (!Array.prototype.every) {
+    Array.prototype.every = function (callbackfn, thisArg) {
+      var T;
+      var k;
+
+      if (this == null) {
+        throw new TypeError('this is null or not defined');
+      } // 1. Let O be the result of calling ToObject passing the this
+      //    value as the argument.
+
+
+      var O = Object(this); // 2. Let lenValue be the result of calling the Get internal method
+      //    of O with the argument "length".
+      // 3. Let len be ToUint32(lenValue).
+
+      var len = O.length >>> 0; // 4. If IsCallable(callbackfn) is false, throw a TypeError exception.
+
+      if (typeof callbackfn !== 'function') {
+        throw new TypeError();
+      } // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
+
+
+      if (arguments.length > 1) {
+        T = thisArg;
+      } // 6. Let k be 0.
+
+
+      k = 0; // 7. Repeat, while k < len
+
+      while (k < len) {
+        var kValue = void 0; // a. Let Pk be ToString(k).
+        //   This is implicit for LHS operands of the in operator
+        // b. Let kPresent be the result of calling the HasProperty internal
+        //    method of O with argument Pk.
+        //   This step can be combined with c
+        // c. If kPresent is true, then
+
+        if (k in O) {
+          // i. Let kValue be the result of calling the Get internal method
+          //    of O with argument Pk.
+          kValue = O[k]; // ii. Let testResult be the result of calling the Call internal method
+          //     of callbackfn with T as the this value and argument list
+          //     containing kValue, k, and O.
+
+          var testResult = callbackfn.call(T, kValue, k, O); // iii. If ToBoolean(testResult) is false, return false.
+
+          if (!testResult) {
+            return false;
+          }
+        }
+
+        k++;
+      }
+
+      return true;
+    };
+  }
+
   /* eslint-disable prefer-destructuring */
 
   /* eslint-disable prefer-rest-params */
@@ -584,13 +733,380 @@
    * @namespace object
    * @description extensions for the JS primitive Object
    */
-  var prototype = {};
+
+  var prototype = {
+    clone: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value() {
+        var _this = this;
+
+        var clone = {};
+        Object.keys(this).forEach(function (key) {
+          if (isObject(_this[key])) {
+            clone[key] = _this[key].clone();
+          } else {
+            clone[key] = _this[key];
+          }
+        });
+        return clone;
+      }
+    },
+    merge: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value() {
+        for (var _len = arguments.length, objs = new Array(_len), _key = 0; _key < _len; _key++) {
+          objs[_key] = arguments[_key];
+        }
+
+        var mergeObj = [this].concat(objs).reduce(function (acc, obj) {
+          return Object.keys(obj).reduce(function (a, k) {
+            if (acc.hasOwnProperty(k)) {
+              if (isArray(acc[k])) {
+                acc[k] = [].concat(acc[k], obj[k]);
+              } else if (isObject(acc[k]) && Object.keys(acc[k]).length > 0 && isObject(obj[k]) && Object.keys(obj[k]).length > 0) {
+                acc[k].merge(obj[k]);
+              } else {
+                acc[k] = obj[k];
+              }
+            } else {
+              acc[k] = obj[k];
+            }
+
+            return acc;
+          }, {});
+        }, {});
+        return Object.assign(this, mergeObj);
+      }
+    },
+    hasOwnPropertyDeep: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value(path) {
+        /**
+         * Checks if the element exists in an array
+         * @param   {Object}  obj The object to check
+         * @param   {String}  prop   The property that should be an array
+         * @param   {Number}  index  The array index to check on object.prop
+         * @returns {Boolean} Returns true if element in array on object.prop is defined
+         */
+        function hasArray(obj, prop, index) {
+          return obj.hasOwnProperty(prop) && (isArray(obj[prop]) || isObject(obj[prop])) && !isUndefined(obj[prop][index]);
+        }
+
+        function hasOwnPropertyRecursiveTest(obj, props) {
+          if (props.length === 0) {
+            return obj;
+          }
+
+          var prop = props.shift();
+          var arrIndex = null;
+          var propHasArrayIndex = prop.match(/(.+?)\[(\d+?|[\\?'"].+?[\\?'"])\]$/);
+
+          if (propHasArrayIndex !== null) {
+            var _propHasArrayIndex = _slicedToArray(propHasArrayIndex, 2);
+
+            prop = _propHasArrayIndex[0];
+            arrIndex = _propHasArrayIndex[1];
+            arrIndex = arrIndex.replace(/[\\"']/g, '');
+
+            if (hasArray(obj, prop, arrIndex)) {
+              return hasOwnPropertyRecursiveTest(obj[prop][arrIndex], props);
+            }
+          } else if (obj.hasOwnProperty(prop)) {
+            return hasOwnPropertyRecursiveTest(obj[prop], props);
+          }
+
+          return undefined;
+        }
+
+        if (!isObject(this)) {
+          throw new Error('Invalid object: ', this);
+        }
+
+        if (!isString(path)) {
+          throw new Error('Invalid path: ', path);
+        }
+
+        var brackets = ('root.' + path).match(/\.[^\.]+?\[(\d+?|[\\?'"].+?[\\?'"])\]/g);
+
+        if (!brackets) {
+          return hasOwnPropertyRecursiveTest(this, path.split('.'));
+        }
+
+        var sanitized = brackets.map(function (part) {
+          return part.replace(/^\./, '');
+        }).reduce(function (obj, part) {
+          // no symbols yet
+          var key = Math.floor(Math.random() * 1E10);
+          obj.parts[key] = part;
+          obj.path = obj.path.replace(part, key);
+          return obj;
+        }, {
+          path: path,
+          parts: {}
+        });
+        var parts = sanitized.path.split('.').map(function (part) {
+          if (sanitized.parts[part]) {
+            return sanitized.parts[part];
+          }
+
+          return part;
+        });
+        return hasOwnPropertyRecursiveTest(this, parts);
+      }
+    },
+    omit: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value() {
+        for (var _len2 = arguments.length, paths = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          paths[_key2] = arguments[_key2];
+        }
+
+        var clone = this.clone();
+
+        function unsetPath(obj, path) {
+          if (!isObject(obj)) {
+            throw new TypeError('expected an object.');
+          }
+
+          if (obj.hasOwnProperty(path)) {
+            delete obj[path];
+            return true;
+          }
+
+          if (obj.hasOwnPropertyDeep(path)) {
+            var segs = path.split('.');
+            var last = segs.pop();
+
+            while (segs.length && segs[segs.length - 1].slice(-1) === '\\') {
+              last = segs.pop().slice(0, -1) + '.' + last;
+            }
+
+            while (segs.length) {
+              obj = obj[path = segs.shift()];
+            }
+
+            return delete obj[last];
+          }
+
+          return true;
+        }
+
+        function omitDeep(obj, q) {
+          if (isUndefined(obj)) {
+            return {};
+          }
+
+          if (isArray(obj)) {
+            for (var i = 0; i < obj.length; i++) {
+              obj[i] = omitDeep(obj[i], paths);
+            }
+
+            return obj;
+          }
+
+          if (!isObject(obj)) {
+            return obj;
+          }
+
+          if (isString(paths)) {
+            paths = [paths];
+          }
+
+          if (!isArray(paths)) {
+            return obj;
+          }
+
+          paths.forEach(function (path) {
+            unsetPath(obj, path);
+          });
+          Object.keys(obj).forEach(function (key) {
+            if (obj.hasOwnProperty(key)) {
+              obj[key] = omitDeep(obj[key], paths);
+            }
+          });
+          return obj;
+        }
+
+        _toConsumableArray(paths).forEach(omitDeep);
+
+        return clone;
+      }
+    }
+  };
 
   /**
    * @namespace object
    * @description extensions for the JS primitive Object
    */
-  var _native = {};
+
+  var _native = {
+    /**
+     * checks if something is an object
+     * @example <caption>eg. usage</caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * console.log(Object.isObject(o)); // true
+     *
+     * console.log(Object.isObject(2)); // false
+     *
+     * console.log(Object.isObject('2')); // false
+     *
+     * console.log(Object.isObject(null)); // false
+     * @memberOf object
+     * @method isObject
+     * @instance
+     * @param {object} o - the object
+     * @return {boolean}
+     */
+    isObject: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(o) {
+        return trueTypeOf(o) === 'object';
+      }
+    },
+
+    /**
+     * deep clones and object
+     * @example <caption>eg. usage</caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * var oClone = o.clone();
+     *
+     * console.log(o === oClone); // false
+     * @memberOf object
+     * @method clone
+     * @instance
+     * @return {clone}
+     */
+    clone: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(o) {
+        return Object.prototype.clone.call(o);
+      }
+    },
+
+    /**
+     * deep merges a variable list of objects inside this object instance or a new object (useful to implements defaults/options/settings pattern or set multiple properties at the same time or what you want ;-)<br><br>
+     * @example <caption>eg. usage</caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * o.merge({
+     *   prop1: 2,
+     *   prop3: new Date(),
+     *   prop5: {
+     *     prop1: new Date(),
+     *   }
+     * }, {
+     *   prop4: 7.52,
+     *   prop5: {
+     *     prop2: 'merged',
+     *   }
+     * });
+     *
+     * console.log(o); // { prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52, prop5: { prop1: Date, prop2: 'merged' } }
+     * @memberOf object
+     * @method inherit
+     * @instance
+     * @param {object} o - the object to extend
+     * @param {...object} args - the list of objects to merge
+     * @return {object}
+     */
+    merge: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value(obj) {
+        if (Object.isObject(obj)) {
+          var _Object$prototype$mer;
+
+          for (var _len = arguments.length, objs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            objs[_key - 1] = arguments[_key];
+          }
+
+          return (_Object$prototype$mer = Object.prototype.merge).call.apply(_Object$prototype$mer, [obj].concat(objs));
+        }
+
+        return obj;
+      }
+    },
+
+    /**
+     * returns a new object that omits the specified properties<br><br>
+     * @example <caption>eg. usage</caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     * };
+     *
+     * o.merge({
+     *   prop1: 2,
+     *   prop3: new Date(),
+     *   prop5: {
+     *     prop1: new Date(),
+     *   }
+     * }, {
+     *   prop4: 7.52,
+     *   prop5: {
+     *     prop2: 'merged',
+     *   }
+     * });
+     *
+     * console.log(o); // { prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52, prop5: { prop1: Date, prop2: 'merged' } }
+     *
+     * console.log(o.omit('prop1')); // { prop2: 'a', prop3: Date, prop4: 7.52, prop5: { prop1: Date, prop2: 'merged' } }
+     *
+     * console.log(o.omit('prop1', 'prop2')); // { prop3: Date, prop4: 7.52, prop5: { prop1: Date, prop2: 'merged' } }
+     *
+     * console.log(o.omit(['prop1', 'prop2'])); // { prop3: Date, prop4: 7.52, prop5: { prop1: Date, prop2: 'merged' } }
+     *
+     * console.log(o.omit('prop1', 'prop5.prop1'])); // { prop2: 'a', prop3: Date, prop4: 7.52, prop5: { prop2: 'merged' } }
+     * @memberOf object
+     * @method omit
+     * @instance
+     * @param {object} o - the object
+     * @param {...object} props - the list of properties to omit
+     * @return {object}
+     */
+    omit: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value(obj) {
+        if (Object.isObject(obj)) {
+          var _Object$prototype$omi;
+
+          for (var _len2 = arguments.length, props = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+            props[_key2 - 1] = arguments[_key2];
+          }
+
+          return (_Object$prototype$omi = Object.prototype.omit).call.apply(_Object$prototype$omi, [obj].concat(props));
+        }
+
+        return obj;
+      }
+    }
+  };
 
   /**
    * @namespace object
