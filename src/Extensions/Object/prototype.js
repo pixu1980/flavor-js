@@ -68,7 +68,7 @@ export default {
         return obj.hasOwnProperty(prop) && (isArray(obj[prop]) || isObject(obj[prop])) && !isUndefined(obj[prop][index]);
       }
 
-      function hasOwnPropertyRecursiveTest(obj, props) {
+      function hasOwnPropertyDeepTest(obj, props) {
         if (props.length === 0) {
           return obj;
         }
@@ -83,10 +83,10 @@ export default {
           arrIndex = arrIndex.replace(/[\\"']/g, '');
 
           if (hasArray(obj, prop, arrIndex)) {
-            return hasOwnPropertyRecursiveTest(obj[prop][arrIndex], props);
+            return hasOwnPropertyDeepTest(obj[prop][arrIndex], props);
           }
         } else if (obj.hasOwnProperty(prop)) {
-          return hasOwnPropertyRecursiveTest(obj[prop], props);
+          return hasOwnPropertyDeepTest(obj[prop], props);
         }
 
         return undefined;
@@ -103,7 +103,7 @@ export default {
       const brackets = ('root.' + path).match(/\.[^\.]+?\[(\d+?|[\\?'"].+?[\\?'"])\]/g);
 
       if (!brackets) {
-        return hasOwnPropertyRecursiveTest(this, path.split('.'));
+        return hasOwnPropertyDeepTest(this, path.split('.'));
       }
 
       const sanitized = brackets.map((part) => {
@@ -122,12 +122,14 @@ export default {
       });
 
       const parts = sanitized.path.split('.').map((part) => {
-        if (sanitized.parts[part]) { return sanitized.parts[part]; }
+        if (sanitized.parts[part]) {
+          return sanitized.parts[part];
+        }
 
         return part;
       });
 
-      return hasOwnPropertyRecursiveTest(this, parts);
+      return hasOwnPropertyDeepTest(this, parts);
     },
   },
   omit: {
@@ -135,12 +137,13 @@ export default {
     configurable: true,
     writable: true,
     value(...paths) {
-      const clone = this.clone();
+      let clone = this.clone();
 
       function unsetPath(obj, path) {
         if (!isObject(obj)) {
           throw new TypeError('expected an object.');
         }
+
         if (obj.hasOwnProperty(path)) {
           delete obj[path];
           return true;
@@ -149,23 +152,29 @@ export default {
         if (obj.hasOwnPropertyDeep(path)) {
           const segs = path.split('.');
           let last = segs.pop();
+
           while (segs.length && segs[segs.length - 1].slice(-1) === '\\') {
             last = segs.pop().slice(0, -1) + '.' + last;
           }
-          while (segs.length) obj = obj[path = segs.shift()];
+
+          while (segs.length) {
+            obj = obj[path = segs.shift()];
+          }
+
           return (delete obj[last]);
         }
+
         return true;
       }
 
-      function omitDeep(obj, q) {
+      function omitDeep(obj, path) {
         if (isUndefined(obj)) {
           return {};
         }
 
         if (isArray(obj)) {
           for (let i = 0; i < obj.length; i++) {
-            obj[i] = omitDeep(obj[i], paths);
+            obj[i] = omitDeep(obj[i], path);
           }
           return obj;
         }
@@ -174,30 +183,34 @@ export default {
           return obj;
         }
 
-        if (isString(paths)) {
-          paths = [paths];
-        }
-
-        if (!isArray(paths)) {
+        if(!isString(path)) {
           return obj;
         }
 
-        paths.forEach((path) => {
-          unsetPath(obj, path);
-        });
-
-        Object.keys(obj).forEach((key) => {
-          if (obj.hasOwnProperty(key)) {
-            obj[key] = omitDeep(obj[key], paths);
-          }
-        });
+        unsetPath(obj, path);
 
         return obj;
       }
 
-      [...paths].forEach(omitDeep);
+      [...paths].forEach((path) => {
+        clone = omitDeep(clone, path);
+      });
 
       return clone;
+    },
+  },
+  pick: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value(obj, ...props) {
+      return [...props].reduce((acc, prop) => {
+        if(Object.hasOwnProperty(obj)) {
+          acc[prop] = obj[prop];
+        }
+
+        return acc;
+      }, {});
     },
   },
 };

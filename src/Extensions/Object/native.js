@@ -35,20 +35,23 @@ export default {
     },
   },
   /**
-   * deep clones and object
+   * deeply clones an object in a new object<br><br>
    * @example <caption>eg. usage</caption>
    * var o = {
    *   prop1: 1,
    *   prop2: 'a',
    * };
    *
-   * var oClone = o.clone();
+   * var p = o.clone();
    *
-   * console.log(o === oClone); // false
+   * console.log(o == p); // true
+   *
+   * console.log(o === p); // false
    * @memberOf object
    * @method clone
    * @instance
-   * @return {clone}
+   * @param {object} o - the object
+   * @return {object}
    */
   clone: {
     configurable: true,
@@ -133,7 +136,7 @@ export default {
    * @method omit
    * @instance
    * @param {object} o - the object
-   * @param {...object} props - the list of properties to omit
+   * @param {...string} props - the list of properties to omit
    * @return {object}
    */
   omit: {
@@ -143,6 +146,51 @@ export default {
     value(obj, ...props) {
       if (Object.isObject(obj)) {
         return Object.prototype.omit.call(obj, ...props);
+      }
+
+      return obj;
+    },
+  },
+  /**
+   * returns a new object that picks only the specified properties<br><br>
+   * @example <caption>eg. usage</caption>
+   * var o = {
+   *   prop1: 1,
+   *   prop2: 'a',
+   * };
+   *
+   * o.inherit({
+   *   prop1: 2,
+   *   prop3: new Date(),
+   * }, {
+   *   prop4: 7.52,
+   * });
+   *
+   * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+   *
+   * console.log(o.pick('prop1')); // {prop1: 2}
+   *
+   * console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+   * @memberOf object
+   * @method pick
+   * @instance
+   * @param {object} obj - the object
+   * @param {...string} props - the list of properties to omit
+   * @return {*}
+   */
+  pick: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value(obj, ...props) {
+      if (Object.isObject(obj)) {
+        return Object.prototype.pick.call(obj, ...props);
       }
 
       return obj;

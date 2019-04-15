@@ -794,7 +794,7 @@ var prototype = {
         return obj.hasOwnProperty(prop) && (isArray(obj[prop]) || isObject(obj[prop])) && !isUndefined(obj[prop][index]);
       }
 
-      function hasOwnPropertyRecursiveTest(obj, props) {
+      function hasOwnPropertyDeepTest(obj, props) {
         if (props.length === 0) {
           return obj;
         }
@@ -811,10 +811,10 @@ var prototype = {
           arrIndex = arrIndex.replace(/[\\"']/g, '');
 
           if (hasArray(obj, prop, arrIndex)) {
-            return hasOwnPropertyRecursiveTest(obj[prop][arrIndex], props);
+            return hasOwnPropertyDeepTest(obj[prop][arrIndex], props);
           }
         } else if (obj.hasOwnProperty(prop)) {
-          return hasOwnPropertyRecursiveTest(obj[prop], props);
+          return hasOwnPropertyDeepTest(obj[prop], props);
         }
 
         return undefined;
@@ -831,7 +831,7 @@ var prototype = {
       var brackets = ('root.' + path).match(/\.[^\.]+?\[(\d+?|[\\?'"].+?[\\?'"])\]/g);
 
       if (!brackets) {
-        return hasOwnPropertyRecursiveTest(this, path.split('.'));
+        return hasOwnPropertyDeepTest(this, path.split('.'));
       }
 
       var sanitized = brackets.map(function (part) {
@@ -853,7 +853,7 @@ var prototype = {
 
         return part;
       });
-      return hasOwnPropertyRecursiveTest(this, parts);
+      return hasOwnPropertyDeepTest(this, parts);
     }
   },
   omit: {
@@ -861,10 +861,6 @@ var prototype = {
     configurable: true,
     writable: true,
     value: function value() {
-      for (var _len2 = arguments.length, paths = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        paths[_key2] = arguments[_key2];
-      }
-
       var clone = this.clone();
 
       function unsetPath(obj, path) {
@@ -895,14 +891,14 @@ var prototype = {
         return true;
       }
 
-      function omitDeep(obj, q) {
+      function omitDeep(obj, path) {
         if (isUndefined(obj)) {
           return {};
         }
 
         if (isArray(obj)) {
           for (var i = 0; i < obj.length; i++) {
-            obj[i] = omitDeep(obj[i], paths);
+            obj[i] = omitDeep(obj[i], path);
           }
 
           return obj;
@@ -912,28 +908,40 @@ var prototype = {
           return obj;
         }
 
-        if (isString(paths)) {
-          paths = [paths];
-        }
-
-        if (!isArray(paths)) {
+        if (!isString(path)) {
           return obj;
         }
 
-        paths.forEach(function (path) {
-          unsetPath(obj, path);
-        });
-        Object.keys(obj).forEach(function (key) {
-          if (obj.hasOwnProperty(key)) {
-            obj[key] = omitDeep(obj[key], paths);
-          }
-        });
+        unsetPath(obj, path);
         return obj;
       }
 
-      _toConsumableArray(paths).forEach(omitDeep);
+      for (var _len2 = arguments.length, paths = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        paths[_key2] = arguments[_key2];
+      }
 
+      [].concat(paths).forEach(function (path) {
+        clone = omitDeep(clone, path);
+      });
       return clone;
+    }
+  },
+  pick: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(obj) {
+      for (var _len3 = arguments.length, props = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        props[_key3 - 1] = arguments[_key3];
+      }
+
+      return [].concat(props).reduce(function (acc, prop) {
+        if (Object.hasOwnProperty(obj)) {
+          acc[prop] = obj[prop];
+        }
+
+        return acc;
+      }, {});
     }
   }
 };
@@ -975,20 +983,23 @@ var _native = {
   },
 
   /**
-   * deep clones and object
+   * deeply clones an object in a new object<br><br>
    * @example <caption>eg. usage</caption>
    * var o = {
    *   prop1: 1,
    *   prop2: 'a',
    * };
    *
-   * var oClone = o.clone();
+   * var p = o.clone();
    *
-   * console.log(o === oClone); // false
+   * console.log(o == p); // true
+   *
+   * console.log(o === p); // false
    * @memberOf object
    * @method clone
    * @instance
-   * @return {clone}
+   * @param {object} o - the object
+   * @return {object}
    */
   clone: {
     configurable: true,
@@ -1081,7 +1092,7 @@ var _native = {
    * @method omit
    * @instance
    * @param {object} o - the object
-   * @param {...object} props - the list of properties to omit
+   * @param {...string} props - the list of properties to omit
    * @return {object}
    */
   omit: {
@@ -1097,6 +1108,58 @@ var _native = {
         }
 
         return (_Object$prototype$omi = Object.prototype.omit).call.apply(_Object$prototype$omi, [obj].concat(props));
+      }
+
+      return obj;
+    }
+  },
+
+  /**
+   * returns a new object that picks only the specified properties<br><br>
+   * @example <caption>eg. usage</caption>
+   * var o = {
+   *   prop1: 1,
+   *   prop2: 'a',
+   * };
+   *
+   * o.inherit({
+   *   prop1: 2,
+   *   prop3: new Date(),
+   * }, {
+   *   prop4: 7.52,
+   * });
+   *
+   * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+   *
+   * console.log(o.pick('prop1')); // {prop1: 2}
+   *
+   * console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
+   *
+   * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
+   * @memberOf object
+   * @method pick
+   * @instance
+   * @param {object} obj - the object
+   * @param {...string} props - the list of properties to omit
+   * @return {*}
+   */
+  pick: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(obj) {
+      if (Object.isObject(obj)) {
+        var _Object$prototype$pic;
+
+        for (var _len3 = arguments.length, props = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+          props[_key3 - 1] = arguments[_key3];
+        }
+
+        return (_Object$prototype$pic = Object.prototype.pick).call.apply(_Object$prototype$pic, [obj].concat(props));
       }
 
       return obj;

@@ -8,67 +8,6 @@
 //  */
 // export default {
 //   native: {
-
-//     /**
-//      * returns a new object that picks only the specified properties<br><br>
-//      * @example <caption>eg. usage</caption>
-//      * var o = {
-//      *   prop1: 1,
-//      *   prop2: 'a',
-//      * };
-//      *
-//      * o.inherit({
-//      *   prop1: 2,
-//      *   prop3: new Date(),
-//      * }, {
-//      *   prop4: 7.52,
-//      * });
-//      *
-//      * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-//      *
-//      * console.log(o.pick('prop1')); // {prop1: 2}
-//      *
-//      * console.log(o.pick('prop1', 'prop2')); // {prop1: 2, prop2: 'a'}
-//      *
-//      * console.log(o.pick(['prop1', 'prop2'])); // {prop1: 2, prop2: 'a'}
-//      *
-//      * console.log(o.pick(['prop1'], ['prop2'])); // {prop1: 2, prop2: 'a'}
-//      *
-//      * console.log(o); // o = {prop1: 2, prop2: 'a', prop3: Date, prop4: 7.52}
-//      * @memberOf object
-//      * @method pick
-//      * @instance
-//      * @param {object} o - the object
-//      * @param {...object} args - the list of properties to omit
-//      * @return {*}
-//      */
-//     pick(o, ...args) {
-//       return Object.prototype.pick.call(o, ...args);
-//     },
-
-//     /**
-//      * deeply clones an object in a new object<br><br>
-//      * @example <caption>eg. usage</caption>
-//      * var o = {
-//      *   prop1: 1,
-//      *   prop2: 'a',
-//      * };
-//      *
-//      * var p = o.clone();
-//      *
-//      * console.log(o == p); // true
-//      *
-//      * console.log(o === p); // false
-//      * @memberOf object
-//      * @method clone
-//      * @instance
-//      * @param {object} o - the object
-//      * @return {object}
-//      */
-//     clone(o) {
-//       return Object.prototype.clone.call(o);
-//     },
-
 //     /**
 //      * returns the value at the specified path of the object, with a default value<br><br>
 //      * @example <caption>eg. usage</caption>
@@ -160,42 +99,12 @@
 //     },
 //   },
 //   prototype: {
-//     isObject() {
-//       return _.isPlainObject(this);
-//     },
 
-//     inherit(...args) {
-//       const createNew = _.isBoolean(args[0]) ? args[0] : false;
-//       let newArgs = args;
-
-//       if (!!createNew) {
-//         newArgs = Array.prototype.slice.call(newArgs, 1);
-//       }
-
-//       function safeInherit(scope) {
-//         Array.prototype.unshift.call(newArgs, scope);
-
-//         if (!!createNew) {
-//           Array.prototype.unshift.call(newArgs, {});
-//         }
-
-//         return _.merge.apply(scope, newArgs);
-//       }
-
-//       return safeInherit(this);
-//     },
-
-//     omit(...args) {
-//       return _.omit(this, ...args);
-//     },
 
 //     pick(...args) {
 //       return _.pick(this, ...args);
 //     },
 
-//     clone() {
-//       return _.cloneDeep(this);
-//     },
 
 //     path(path, def = null) {
 //       if (typeof this === 'object' && this instanceof Object) {
