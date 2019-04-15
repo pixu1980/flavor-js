@@ -10,6 +10,24 @@ import {
  * @description extensions for the JS primitive Object
  */
 export default {
+  forEach: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value(iteratee, scope) {
+      if (!isObject(this)) {
+        throw new TypeError('Not an object');
+      }
+
+      scope = scope || window;
+
+      Object.keys(this).forEach((key) => {
+        iteratee.call(scope, this[key], key, this);
+      });
+
+      return this;
+    },
+  },
   clone: {
     enumerable: false,
     configurable: true,

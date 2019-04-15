@@ -684,6 +684,65 @@
 
       return true;
     };
+  } // Production steps of ECMA-262, Edition 5, 15.4.4.18
+  // Reference: http://es5.github.io/#x15.4.4.18
+
+
+  if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function (callback
+    /*, thisArg*/
+    ) {
+      var T;
+      var k;
+
+      if (this == null) {
+        throw new TypeError('this is null or not defined');
+      } // 1. Let O be the result of calling toObject() passing the
+      // |this| value as the argument.
+
+
+      var O = Object(this); // 2. Let lenValue be the result of calling the Get() internal
+      // method of O with the argument "length".
+      // 3. Let len be toUint32(lenValue).
+
+      var len = O.length >>> 0; // 4. If isCallable(callback) is false, throw a TypeError exception.
+      // See: http://es5.github.com/#x9.11
+
+      if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+      } // 5. If thisArg was supplied, let T be thisArg; else let
+      // T be undefined.
+
+
+      if (arguments.length > 1) {
+        T = arguments[1];
+      } // 6. Let k be 0.
+
+
+      k = 0; // 7. Repeat while k < len.
+
+      while (k < len) {
+        var kValue = void 0; // a. Let Pk be ToString(k).
+        //    This is implicit for LHS operands of the in operator.
+        // b. Let kPresent be the result of calling the HasProperty
+        //    internal method of O with argument Pk.
+        //    This step can be combined with c.
+        // c. If kPresent is true, then
+
+        if (k in O) {
+          // i. Let kValue be the result of calling the Get internal
+          // method of O with argument Pk.
+          kValue = O[k]; // ii. Call the Call internal method of callback with T as
+          // the this value and argument list containing kValue, k, and O.
+
+          callback.call(T, kValue, k, O);
+        } // d. Increase k by 1.
+
+
+        k++;
+      } // 8. return undefined.
+
+    };
   }
 
   /* eslint-disable prefer-destructuring */
@@ -732,19 +791,37 @@
    */
 
   var prototype = {
+    forEach: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value(iteratee, scope) {
+        var _this = this;
+
+        if (!isObject(this)) {
+          throw new TypeError('Not an object');
+        }
+
+        scope = scope || window;
+        Object.keys(this).forEach(function (key) {
+          iteratee.call(scope, _this[key], key, _this);
+        });
+        return this;
+      }
+    },
     clone: {
       enumerable: false,
       configurable: true,
       writable: true,
       value: function value() {
-        var _this = this;
+        var _this2 = this;
 
         var clone = {};
         Object.keys(this).forEach(function (key) {
-          if (isObject(_this[key])) {
-            clone[key] = _this[key].clone();
+          if (isObject(_this2[key])) {
+            clone[key] = _this2[key].clone();
           } else {
-            clone[key] = _this[key];
+            clone[key] = _this2[key];
           }
         });
         return clone;
@@ -932,15 +1009,15 @@
       configurable: true,
       writable: true,
       value: function value() {
-        var _this2 = this;
+        var _this3 = this;
 
         for (var _len3 = arguments.length, props = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
           props[_key3] = arguments[_key3];
         }
 
         return props.reduce(function (acc, prop) {
-          if (_this2.hasOwnProperty(prop)) {
-            acc[prop] = _this2[prop];
+          if (_this3.hasOwnProperty(prop)) {
+            acc[prop] = _this3[prop];
           }
 
           return acc;
@@ -952,7 +1029,7 @@
       configurable: true,
       writable: true,
       value: function value() {
-        var _this3 = this;
+        var _this4 = this;
 
         for (var _len4 = arguments.length, selectors = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
           selectors[_key4] = arguments[_key4];
@@ -963,7 +1040,7 @@
             return t !== '';
           }).reduce(function (prev, cur) {
             return prev && prev[cur];
-          }, _this3);
+          }, _this4);
         });
       }
     }
@@ -993,15 +1070,61 @@
      * @memberOf object
      * @method isObject
      * @instance
-     * @param {object} o - the object
+     * @param {object} obj - the object
      * @return {boolean}
      */
     isObject: {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: function value(o) {
-        return trueTypeOf(o) === 'object';
+      value: function value(obj) {
+        return isObject(obj);
+      }
+    },
+
+    /**
+     * executes function for every property in the object<br><br>
+     * @example <caption>eg. usage</caption>
+     * var o = {
+     *   prop1: 1,
+     *   prop2: 'a',
+     *   prop3: 'b',
+     *   prop4: new Date(),
+     * };
+     *
+     * o.forEach(function(value, key) {
+     *   console.log(key, value);
+     * });
+     *
+     * // it logs
+     * 'prop1', 1
+     * 'prop2', 'a'
+     * 'prop3', 'b'
+     * 'prop4', Date
+     * @memberOf object
+     * @method forEach
+     * @instance
+     * @param {object} obj - the object
+     * @param {function} iteratee - the iteratee callback will be invoked with the following parameters<br>
+     * so your callback has to be something like this<br><br>
+     * <pre>
+     * function iteratee(value, key) {}
+     * </pre>
+     * @param {any} iteratee.value - the property value of the object
+     * @param {string} iteratee.key - the property key of the object
+     * @param {object} scope [window] - the scope to use for calling the iteratee, defaulted to window object
+     * @return {object} to make chainable the method
+     */
+    forEach: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(obj, iteratee, scope) {
+        if (isObject(obj)) {
+          return Object.prototype.forEach.call(obj, iteratee, scope);
+        }
+
+        return obj;
       }
     },
 
@@ -1021,15 +1144,15 @@
      * @memberOf object
      * @method clone
      * @instance
-     * @param {object} o - the object
+     * @param {object} obj - the object
      * @return {object}
      */
     clone: {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: function value(o) {
-        return Object.prototype.clone.call(o);
+      value: function value(obj) {
+        return Object.prototype.clone.call(obj);
       }
     },
 
@@ -1058,8 +1181,8 @@
      * @memberOf object
      * @method inherit
      * @instance
-     * @param {object} o - the object to extend
-     * @param {...object} args - the list of objects to merge
+     * @param {object} obj - the object to extend
+     * @param {...object} objs - the list of objects to merge
      * @return {object}
      */
     merge: {
@@ -1114,7 +1237,7 @@
      * @memberOf object
      * @method omit
      * @instance
-     * @param {object} o - the object
+     * @param {object} obj - the object
      * @param {...string} props - the list of properties to omit
      * @return {object}
      */
@@ -1234,8 +1357,8 @@
       * @memberOf object
       * @method path
       * @instance
-      * @param {object} o - the object
-      * @param {string} selector - the path to search inside the object
+      * @param {object} obj - the object
+      * @param {...string} selectors - the path to search inside the object
       * @param {object} [def=null] - the default value to return if path is not found
       * @return {*}
       */

@@ -1,4 +1,4 @@
-import { trueTypeOf } from '../../Helpers/index';
+import { isObject } from '../../Helpers/index';
 
 /**
  * @namespace object
@@ -23,15 +23,60 @@ export default {
    * @memberOf object
    * @method isObject
    * @instance
-   * @param {object} o - the object
+   * @param {object} obj - the object
    * @return {boolean}
    */
   isObject: {
     configurable: true,
     enumerable: false,
     writable: true,
-    value(o) {
-      return trueTypeOf(o) === 'object';
+    value(obj) {
+      return isObject(obj);
+    },
+  },
+  /**
+   * executes function for every property in the object<br><br>
+   * @example <caption>eg. usage</caption>
+   * var o = {
+   *   prop1: 1,
+   *   prop2: 'a',
+   *   prop3: 'b',
+   *   prop4: new Date(),
+   * };
+   *
+   * o.forEach(function(value, key) {
+   *   console.log(key, value);
+   * });
+   *
+   * // it logs
+   * 'prop1', 1
+   * 'prop2', 'a'
+   * 'prop3', 'b'
+   * 'prop4', Date
+   * @memberOf object
+   * @method forEach
+   * @instance
+   * @param {object} obj - the object
+   * @param {function} iteratee - the iteratee callback will be invoked with the following parameters<br>
+   * so your callback has to be something like this<br><br>
+   * <pre>
+   * function iteratee(value, key) {}
+   * </pre>
+   * @param {any} iteratee.value - the property value of the object
+   * @param {string} iteratee.key - the property key of the object
+   * @param {object} scope [window] - the scope to use for calling the iteratee, defaulted to window object
+   * @return {object} to make chainable the method
+   */
+  forEach: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(obj, iteratee, scope) {
+      if (isObject(obj)) {
+        return Object.prototype.forEach.call(obj, iteratee, scope);
+      }
+
+      return obj;
     },
   },
   /**
@@ -50,15 +95,15 @@ export default {
    * @memberOf object
    * @method clone
    * @instance
-   * @param {object} o - the object
+   * @param {object} obj - the object
    * @return {object}
    */
   clone: {
     configurable: true,
     enumerable: false,
     writable: true,
-    value(o) {
-      return Object.prototype.clone.call(o);
+    value(obj) {
+      return Object.prototype.clone.call(obj);
     },
   },
   /**
@@ -86,8 +131,8 @@ export default {
    * @memberOf object
    * @method inherit
    * @instance
-   * @param {object} o - the object to extend
-   * @param {...object} args - the list of objects to merge
+   * @param {object} obj - the object to extend
+   * @param {...object} objs - the list of objects to merge
    * @return {object}
    */
   merge: {
@@ -135,7 +180,7 @@ export default {
    * @memberOf object
    * @method omit
    * @instance
-   * @param {object} o - the object
+   * @param {object} obj - the object
    * @param {...string} props - the list of properties to omit
    * @return {object}
    */
@@ -241,8 +286,8 @@ export default {
     * @memberOf object
     * @method path
     * @instance
-    * @param {object} o - the object
-    * @param {string} selector - the path to search inside the object
+    * @param {object} obj - the object
+    * @param {...string} selectors - the path to search inside the object
     * @param {object} [def=null] - the default value to return if path is not found
     * @return {*}
     */
