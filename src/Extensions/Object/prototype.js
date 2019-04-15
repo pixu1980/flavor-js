@@ -183,7 +183,7 @@ export default {
           return obj;
         }
 
-        if(!isString(path)) {
+        if (!isString(path)) {
           return obj;
         }
 
@@ -203,14 +203,24 @@ export default {
     enumerable: false,
     configurable: true,
     writable: true,
-    value(obj, ...props) {
-      return [...props].reduce((acc, prop) => {
-        if(Object.hasOwnProperty(obj)) {
-          acc[prop] = obj[prop];
+    value(...props) {
+      return props.reduce((acc, prop) => {
+        if (this.hasOwnProperty(prop)) {
+          acc[prop] = this[prop];
         }
 
         return acc;
       }, {});
+    },
+  },
+  path: {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value(...selectors) {
+      return [...selectors].map((s) => {
+        return s.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(t => t !== '').reduce((prev, cur) => prev && prev[cur], this);
+      });
     },
   },
 };

@@ -934,18 +934,40 @@
       enumerable: false,
       configurable: true,
       writable: true,
-      value: function value(obj) {
-        for (var _len3 = arguments.length, props = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-          props[_key3 - 1] = arguments[_key3];
+      value: function value() {
+        var _this2 = this;
+
+        for (var _len3 = arguments.length, props = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+          props[_key3] = arguments[_key3];
         }
 
-        return [].concat(props).reduce(function (acc, prop) {
-          if (Object.hasOwnProperty(obj)) {
-            acc[prop] = obj[prop];
+        return props.reduce(function (acc, prop) {
+          if (_this2.hasOwnProperty(prop)) {
+            acc[prop] = _this2[prop];
           }
 
           return acc;
         }, {});
+      }
+    },
+    path: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value() {
+        var _this3 = this;
+
+        for (var _len4 = arguments.length, selectors = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+          selectors[_key4] = arguments[_key4];
+        }
+
+        return [].concat(selectors).map(function (s) {
+          return s.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(function (t) {
+            return t !== '';
+          }).reduce(function (prev, cur) {
+            return prev && prev[cur];
+          }, _this3);
+        });
       }
     }
   };
@@ -1167,6 +1189,71 @@
         }
 
         return obj;
+      }
+    },
+
+    /**
+     * returns the value at the specified path of the object, with a default value<br><br>
+     * @example <caption>eg. usage</caption>
+     * var o = {
+      *   prop1: 1,
+      *   prop2: 'a',
+      *   prop3: {
+      *     prop31: 2.52,
+      *     prop32: 'b',
+      *   },
+      *   prop4: new Date(),
+      * };
+      *
+      * console.log(o.path('prop1')); // 1
+      *
+      * console.log(o.path('prop3.prop31')); // 2.52
+      *
+      * console.log(o.path('prop3.prop34')); // null
+      *
+      * console.log(o.path('prop3.prop34', 'c')); // c
+      * @example <caption>you can also use array paths</caption>
+      * var o = {
+      *   prop1: 1,
+      *   prop2: 'a',
+      *   prop3: {
+      *     prop31: 2.52,
+      *     prop32: [{
+      *       propO1: 'b',
+      *     }, {
+      *       propO1: 'c',
+      *     }],
+      *   },
+      *   prop4: new Date(),
+      * };
+      *
+      * console.log(o.path('prop3.prop32[0].propO1')); // 'b'
+      *
+      * console.log(o.path('prop3.prop32[1]')); // {propO1: 'c'}
+      *
+      * console.log(o.path('prop3.prop31[2]')); // null
+      *
+      * console.log(o.path('prop3.prop31[2]', {})); // {}
+      * @memberOf object
+      * @method path
+      * @instance
+      * @param {object} o - the object
+      * @param {string} selector - the path to search inside the object
+      * @param {object} [def=null] - the default value to return if path is not found
+      * @return {*}
+      */
+    path: {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: function value(obj) {
+        var _Object$prototype$pat;
+
+        for (var _len4 = arguments.length, selectors = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+          selectors[_key4 - 1] = arguments[_key4];
+        }
+
+        return (_Object$prototype$pat = Object.prototype.path).call.apply(_Object$prototype$pat, [obj].concat(selectors));
       }
     }
   };
