@@ -321,84 +321,6 @@
 //     },
 
 //     /**
-//      * pads string on the left and right sides if it's shorter than length. Padding characters are truncated if they can't be evenly divided by length.
-//      * @example <caption>eg. usage</caption>
-//      * console.log(String.pad('5', 5)); // '  5  '
-//      *
-//      * console.log(String.pad('5', 5, '0')); // '00500'
-//      *
-//      * console.log(String.pad(4, 5, '01')); // '01401'
-//      *
-//      * console.log(String.pad(true, 5, '01')); // '1true'
-//      *
-//      * console.log(String.pad(4, 5, '01')); // '01401'
-//      *
-//      * console.log(String.pad(new Date(), 50, '--') // '-----Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)-----'
-//      * @memberOf string
-//      * @method pad
-//      * @instance
-//      * @param {string} s - the string to be padded
-//      * @param {number} length - the string length you need
-//      * @param {string} chars - the char/chars to be used to pad the string
-//      * @return {string}
-//      */
-//     pad(s, length, chars) {
-//       return String.prototype.pad(s, length, chars);
-//     },
-
-//     /**
-//      * pads left a string
-//      * @example <caption>eg. usage</caption>
-//      * console.log(String.padLeft('5', 4)); // '   5'
-//      *
-//      * console.log(String.padLeft('5', 4, '0')); // '0005'
-//      *
-//      * console.log(String.padLeft('5', 5, '01')); // '01015'
-//      *
-//      * console.log(String.padLeft(5, 4, '0')); // '0005'
-//      *
-//      * console.log(String.padLeft(true, 5, '0')); // '0true'
-//      *
-//      * console.log(String.padLeft(new Date(), 50, '--') // '----------Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)'
-//      * @memberOf string
-//      * @method padLeft
-//      * @instance
-//      * @param {string} s - the string to be padded
-//      * @param {number} length - the string length you need
-//      * @param {string} chars - the char/chars to be used to pad the string
-//      * @return {string}
-//      */
-//     padLeft(s, length, chars) {
-//       return String.prototype.padLeft.call(s, length, chars);
-//     },
-
-//     /**
-//      * pads right a string
-//      * @example <caption>eg. usage</caption>
-//      * console.log(String.padRight('5', 4)); // '5   '
-//      *
-//      * console.log(String.padRight('5', 4, '0')); // '5000'
-//      *
-//      * console.log(String.padRight('5', 5, '01')); // '50101'
-//      *
-//      * console.log(String.padRight(5, 4, '0')); // '5000'
-//      *
-//      * console.log(String.padRight(true, 5, '0')); // 'true0'
-//      *
-//      * console.log(String.padRight(new Date(), 50, '--') // 'Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)----------'
-//      * @memberOf string
-//      * @method padRight
-//      * @instance
-//      * @param {string} s - the string to be padded
-//      * @param {number} length - the string length you need
-//      * @param {string} chars - the char/chars to be used to pad the string
-//      * @return {string}
-//      */
-//     padRight(s, length, chars) {
-//       return String.prototype.padRight.call(s, length, chars);
-//     },
-
-//     /**
 //      * parses a percentage string to a number
 //      * @example <caption>eg. usage</caption>
 //      * console.log(String.parsePercentage('50,25%')); // 50.25
@@ -490,45 +412,6 @@
 //       return String.prototype.unescapeHTML.call(s);
 //     },
 
-//     /**
-//      * converts a string to a number
-//      * @example <caption>eg. usage</caption>
-//      * console.log(String.toInt('550')); // 550
-//      * @memberOf string
-//      * @method toInt
-//      * @instance
-//      * @param {string} s - the string
-//      * @return {number}
-//      */
-//     toInt(s) {
-//       return String.prototype.toInt.call(s);
-//     },
-
-//     /**
-//      * transforms a string in an array of chars/words
-//      * @example <caption>eg. usage</caption>
-//      * console.log(String.toArray('FlavorJS')); // ['F','l','a','v','o','r','J','S']
-//      *
-//      * console.log(String.toArray('FlavorJS, is really, really tasty', ',')); // ['FlavorJS',' is really',' really tasty']
-//      *
-//      * console.log(String.toArray('FlavorJS, is really, really tasty', ',', 2)); // ['FlavorJS',' is really']
-//      *
-//      * console.log('FlavorJS'.toArray()); // ['F','l','a','v','o','r','J','S']
-//      *
-//      * console.log('FlavorJS, is really, really tasty'.toArray(',')); // ['FlavorJS',' is really',' really tasty']
-//      *
-//      * console.log('FlavorJS, is really, really tasty'.toArray(',', 2)); // ['FlavorJS',' is really']
-//      * @memberOf string
-//      * @method toArray
-//      * @instance
-//      * @param {string} s - the string
-//      * @param {string} [separator=''] - the separator to use for the splitting
-//      * @param {number} [limit=null] - the limit of items to extract starting from left
-//      * @return {array}
-//      */
-//     toArray(s, separator = '', limit = null) {
-//       return String.prototype.toArray.call(s, separator, limit || undefined);
-//     },
 //   },
 //   prototype: {
 //     isPercentage() {
@@ -663,32 +546,12 @@
 //     // },
 //     */
 
-//     pad(length, chars) {
-//       return _.pad(this, length, chars);
-//     },
-
-//     padLeft(length, chars) {
-//       return _.padStart(this, length, chars);
-//     },
-
-//     padRight(length, chars) {
-//       return _.padEnd(this, length, chars);
-//     },
-
 //     parsePercentage() {
 //       if (this.isPercentage()) {
 //         return parseFloat(this) / 100.00;
 //       }
 
 //       return this;
-//     },
-
-//     toInt() {
-//       return Number.parse(this);
-//     },
-
-//     toArray(separator = '', limit = null) {
-//       return _.split(this, separator, limit || undefined);
 //     },
 //   },
 // };

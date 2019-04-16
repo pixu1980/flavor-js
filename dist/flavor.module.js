@@ -644,120 +644,130 @@ if (!Array.prototype.reduce) {
 }
 
 if (!Array.prototype.every) {
-  Array.prototype.every = function (callbackfn, thisArg) {
-    var T;
-    var k;
+  Object.defineProperty(Array.prototype, 'every', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(callbackfn, thisArg) {
+      var T;
+      var k;
 
-    if (this == null) {
-      throw new TypeError('this is null or not defined');
-    } // 1. Let O be the result of calling ToObject passing the this
-    //    value as the argument.
-
-
-    var O = Object(this); // 2. Let lenValue be the result of calling the Get internal method
-    //    of O with the argument "length".
-    // 3. Let len be ToUint32(lenValue).
-
-    var len = O.length >>> 0; // 4. If IsCallable(callbackfn) is false, throw a TypeError exception.
-
-    if (typeof callbackfn !== 'function') {
-      throw new TypeError();
-    } // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
+      if (this == null) {
+        throw new TypeError('this is null or not defined');
+      } // 1. Let O be the result of calling ToObject passing the this
+      //    value as the argument.
 
 
-    if (arguments.length > 1) {
-      T = thisArg;
-    } // 6. Let k be 0.
+      var O = Object(this); // 2. Let lenValue be the result of calling the Get internal method
+      //    of O with the argument "length".
+      // 3. Let len be ToUint32(lenValue).
+
+      var len = O.length >>> 0; // 4. If IsCallable(callbackfn) is false, throw a TypeError exception.
+
+      if (typeof callbackfn !== 'function') {
+        throw new TypeError();
+      } // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
 
 
-    k = 0; // 7. Repeat, while k < len
+      if (arguments.length > 1) {
+        T = thisArg;
+      } // 6. Let k be 0.
 
-    while (k < len) {
-      var kValue = void 0; // a. Let Pk be ToString(k).
-      //   This is implicit for LHS operands of the in operator
-      // b. Let kPresent be the result of calling the HasProperty internal
-      //    method of O with argument Pk.
-      //   This step can be combined with c
-      // c. If kPresent is true, then
 
-      if (k in O) {
-        // i. Let kValue be the result of calling the Get internal method
-        //    of O with argument Pk.
-        kValue = O[k]; // ii. Let testResult be the result of calling the Call internal method
-        //     of callbackfn with T as the this value and argument list
-        //     containing kValue, k, and O.
+      k = 0; // 7. Repeat, while k < len
 
-        var testResult = callbackfn.call(T, kValue, k, O); // iii. If ToBoolean(testResult) is false, return false.
+      while (k < len) {
+        var kValue = void 0; // a. Let Pk be ToString(k).
+        //   This is implicit for LHS operands of the in operator
+        // b. Let kPresent be the result of calling the HasProperty internal
+        //    method of O with argument Pk.
+        //   This step can be combined with c
+        // c. If kPresent is true, then
 
-        if (!testResult) {
-          return false;
+        if (k in O) {
+          // i. Let kValue be the result of calling the Get internal method
+          //    of O with argument Pk.
+          kValue = O[k]; // ii. Let testResult be the result of calling the Call internal method
+          //     of callbackfn with T as the this value and argument list
+          //     containing kValue, k, and O.
+
+          var testResult = callbackfn.call(T, kValue, k, O); // iii. If ToBoolean(testResult) is false, return false.
+
+          if (!testResult) {
+            return false;
+          }
         }
+
+        k++;
       }
 
-      k++;
+      return true;
     }
-
-    return true;
-  };
+  });
 } // Production steps of ECMA-262, Edition 5, 15.4.4.18
 // Reference: http://es5.github.io/#x15.4.4.18
 
 
 if (!Array.prototype.forEach) {
-  Array.prototype.forEach = function (callback
-  /*, thisArg*/
-  ) {
-    var T;
-    var k;
+  Object.defineProperty(Array.prototype, 'forEach', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(callback
+    /*, thisArg*/
+    ) {
+      var T;
+      var k;
 
-    if (this == null) {
-      throw new TypeError('this is null or not defined');
-    } // 1. Let O be the result of calling toObject() passing the
-    // |this| value as the argument.
-
-
-    var O = Object(this); // 2. Let lenValue be the result of calling the Get() internal
-    // method of O with the argument "length".
-    // 3. Let len be toUint32(lenValue).
-
-    var len = O.length >>> 0; // 4. If isCallable(callback) is false, throw a TypeError exception.
-    // See: http://es5.github.com/#x9.11
-
-    if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
-    } // 5. If thisArg was supplied, let T be thisArg; else let
-    // T be undefined.
+      if (this == null) {
+        throw new TypeError('this is null or not defined');
+      } // 1. Let O be the result of calling toObject() passing the
+      // |this| value as the argument.
 
 
-    if (arguments.length > 1) {
-      T = arguments[1];
-    } // 6. Let k be 0.
+      var O = Object(this); // 2. Let lenValue be the result of calling the Get() internal
+      // method of O with the argument "length".
+      // 3. Let len be toUint32(lenValue).
+
+      var len = O.length >>> 0; // 4. If isCallable(callback) is false, throw a TypeError exception.
+      // See: http://es5.github.com/#x9.11
+
+      if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+      } // 5. If thisArg was supplied, let T be thisArg; else let
+      // T be undefined.
 
 
-    k = 0; // 7. Repeat while k < len.
-
-    while (k < len) {
-      var kValue = void 0; // a. Let Pk be ToString(k).
-      //    This is implicit for LHS operands of the in operator.
-      // b. Let kPresent be the result of calling the HasProperty
-      //    internal method of O with argument Pk.
-      //    This step can be combined with c.
-      // c. If kPresent is true, then
-
-      if (k in O) {
-        // i. Let kValue be the result of calling the Get internal
-        // method of O with argument Pk.
-        kValue = O[k]; // ii. Call the Call internal method of callback with T as
-        // the this value and argument list containing kValue, k, and O.
-
-        callback.call(T, kValue, k, O);
-      } // d. Increase k by 1.
+      if (arguments.length > 1) {
+        T = arguments[1];
+      } // 6. Let k be 0.
 
 
-      k++;
-    } // 8. return undefined.
+      k = 0; // 7. Repeat while k < len.
 
-  };
+      while (k < len) {
+        var kValue = void 0; // a. Let Pk be ToString(k).
+        //    This is implicit for LHS operands of the in operator.
+        // b. Let kPresent be the result of calling the HasProperty
+        //    internal method of O with argument Pk.
+        //    This step can be combined with c.
+        // c. If kPresent is true, then
+
+        if (k in O) {
+          // i. Let kValue be the result of calling the Get internal
+          // method of O with argument Pk.
+          kValue = O[k]; // ii. Call the Call internal method of callback with T as
+          // the this value and argument list containing kValue, k, and O.
+
+          callback.call(T, kValue, k, O);
+        } // d. Increase k by 1.
+
+
+        k++;
+      } // 8. return undefined.
+
+    }
+  });
 }
 
 /* eslint-disable prefer-destructuring */
@@ -794,6 +804,60 @@ if (!String.prototype.toCamelCase) {
         return x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase();
       }).join('');
       return s.slice(0, 1).toLowerCase() + s.slice(1);
+    }
+  });
+} // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+
+
+if (!String.prototype.padStart) {
+  Object.defineProperty(String.prototype, 'padStart', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(targetLength, padString) {
+      targetLength >>= 0; //truncate if number, or convert non-number to 0;
+
+      padString = String(typeof padString !== 'undefined' ? padString : ' ');
+
+      if (this.length >= targetLength) {
+        return String(this);
+      }
+
+      targetLength -= this.length;
+
+      if (targetLength > padString.length) {
+        padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
+      }
+
+      return padString.slice(0, targetLength) + String(this);
+    }
+  });
+} // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
+
+
+if (!String.prototype.padEnd) {
+  Object.defineProperty(String.prototype, 'padEnd', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function value(targetLength, padString) {
+      targetLength >>= 0; //floor if number or convert non-number to 0;
+
+      padString = String(typeof padString !== 'undefined' ? padString : ' ');
+
+      if (this.length > targetLength) {
+        return String(this);
+      }
+
+      targetLength -= this.length;
+
+      if (targetLength > padString.length) {
+        padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
+      }
+
+      return String(this) + padString.slice(0, targetLength);
     }
   });
 }
@@ -1752,7 +1816,49 @@ var DateExt = {
  * @namespace string
  * @description extensions for the JS primitive String
  */
-var prototype$5 = {};
+var prototype$5 = {
+  toInt: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      var radix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+
+      if (String.isString(this)) {
+        return Number.parseInt(this, radix);
+      }
+
+      return this;
+    }
+  },
+  toFloat: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      if (String.isString(this)) {
+        return Number.parseFloat(this);
+      }
+
+      return this;
+    }
+  },
+  pad: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var chars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
+
+      if (String.isString(this)) {
+        return this.padStart((this.length + length) / 2, chars).padEnd(length, chars);
+      }
+
+      return this;
+    }
+  }
+};
 
 /**
  * @namespace string
@@ -1775,11 +1881,111 @@ var _native$5 = {
    * @memberOf string
    * @method isString
    * @instance
-   * @param {string} s - the string to be checked
+   * @param {string} str - the string to be checked
    * @return {boolean}
    */
-  isString: function isString$1(s) {
-    return isString(s);
+  isString: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(str) {
+      return isString(str);
+    }
+  },
+
+  /**
+   * converts a string to an integer number
+   * @example <caption>eg. usage</caption>
+   * console.log(String.toInt('550')); // 550
+   *
+   * console.log('550'.toInt()); // 550
+   *
+   * console.log(String.toInt('550', 6)); // 210
+   *
+   * console.log('550'.toInt(6)); // 210
+   * @memberOf string
+   * @method toInt
+   * @instance
+   * @param {string} str - the string
+   * @param {number} radix [10] - the radix to use for the conversion
+   * @return {number}
+   */
+  toInt: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(str) {
+      var radix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+
+      if (String.isString(str)) {
+        return String.prototype.toInt.call(str, radix);
+      }
+
+      return str;
+    }
+  },
+
+  /**
+   * converts a string to an floating number
+   * @example <caption>eg. usage</caption>
+   * console.log(String.toFloat('55.05')); // 55.05
+   *
+   * console.log('55.05'.toFloat()); // 55.05
+   * @memberOf string
+   * @method toFloat
+   * @instance
+   * @param {string} str - the string
+   * @return {number}
+   */
+  toFloat: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(str) {
+      if (String.isString(str)) {
+        return String.prototype.toFloat.call(str);
+      }
+
+      return str;
+    }
+  },
+
+  /**
+   * pads string on the left and right sides if it's shorter than length. Padding characters are truncated if they can't be evenly divided by length.
+   * @example <caption>eg. usage</caption>
+   * console.log(String.pad('5', 5)); // '  5  '
+   *
+   * console.log(String.pad('5', 5, '0')); // '00500'
+   *
+   * console.log(String.pad(4, 5, '01')); // '01401'
+   *
+   * console.log(String.pad(true, 5, '01')); // '1true'
+   *
+   * console.log(String.pad(4, 5, '01')); // '01401'
+   *
+   * console.log(String.pad(new Date(), 50, '--') // '-----Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)-----'
+   * @memberOf string
+   * @method pad
+   * @instance
+   * @param {string} str - the string to be padded
+   * @param {number} length [0] - the string length you need
+   * @param {string} chars [' '] - the char/chars to be used to pad the string
+   * @return {string}
+   */
+  pad: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(str) {
+      var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var chars = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
+
+      if (String.isString(str)) {
+        return String.prototype.pad.call(str, length, chars);
+      }
+
+      return str;
+    }
   }
 };
 
