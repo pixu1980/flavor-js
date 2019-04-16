@@ -1,4 +1,4 @@
-import { trueTypeOf } from '../../Helpers/index';
+import { isString } from '../../Helpers/index';
 
 /**
  * @namespace string
@@ -24,6 +24,6 @@ export default {
    * @return {boolean}
    */
   isString(s) {
-    return trueTypeOf(s) === 'string';
+    return isString(s);
   },
 };

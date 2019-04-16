@@ -236,9 +236,19 @@ export default {
     configurable: true,
     writable: true,
     value(...selectors) {
-      return [...selectors].map((s) => {
-        return s.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(t => t !== '').reduce((prev, cur) => prev && prev[cur], this);
+      const values = [...selectors].map((selector) => {
+        return selector.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter((t) => {
+          return t !== '';
+        }).reduce((prev, cur) => {
+          return prev && prev[cur];
+        }, this);
       });
+
+      if(values.length === 1) {
+        return values[0];
+      }
+
+      return values;
     },
   },
 };

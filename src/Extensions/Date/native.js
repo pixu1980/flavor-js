@@ -1,4 +1,4 @@
-import { trueTypeOf } from '../../Helpers/index';
+import { isDate } from '../../Helpers/index';
 
 /**
  * @namespace date
@@ -22,7 +22,7 @@ export default {
     enumerable: false,
     writable: true,
     value(d) {
-      return trueTypeOf(d) === 'date';
+      return isDate(d);
     },
   },
   /**

@@ -1,4 +1,4 @@
-import { trueTypeOf } from '../../Helpers/index';
+import { isBoolean } from '../../Helpers/index';
 /**
  * @namespace boolean
  * @description extensions for the JS primitive Boolean
@@ -26,7 +26,7 @@ export default {
     enumerable: false,
     writable: true,
     value(b) {
-      return trueTypeOf(b) === 'boolean';
+      return isBoolean(b);
     },
   },
   /**

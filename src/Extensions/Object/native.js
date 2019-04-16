@@ -289,7 +289,7 @@ export default {
     * @param {object} obj - the object
     * @param {...string} selectors - the path to search inside the object
     * @param {object} [def=null] - the default value to return if path is not found
-    * @return {*}
+    * @return {array|any}
     */
   path: {
     enumerable: false,

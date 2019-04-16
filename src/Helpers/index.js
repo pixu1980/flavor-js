@@ -10,7 +10,8 @@ import {
   isDate,
   isString,
   isArray,
-} from './typeChecks';
+  isRegExp,
+} from './primitivesTypeChecks';
 
 export {
   trueTypeOf,
@@ -24,6 +25,7 @@ export {
   isDate,
   isString,
   isArray,
+  isRegExp,
 };
 
 export default {
@@ -38,4 +40,5 @@ export default {
   isDate,
   isString,
   isArray,
+  isRegExp,
 };

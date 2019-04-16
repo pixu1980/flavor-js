@@ -1,4 +1,4 @@
-import { trueTypeOf } from '../../Helpers/index';
+import { isFunction } from '../../Helpers/index';
 
 /**
  * @namespace function
@@ -28,7 +28,7 @@ export default {
     enumerable: false,
     writable: true,
     value(f) {
-      return trueTypeOf(f) === 'function';
+      return isFunction(f);
     },
   },
   /**

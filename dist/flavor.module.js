@@ -424,6 +424,22 @@ function isObject(any) {
   return trueTypeOf(any) === 'object';
 }
 
+function isFunction(any) {
+  return trueTypeOf(any) === 'function';
+}
+
+function isBoolean(any) {
+  return trueTypeOf(any) === 'boolean';
+}
+
+function isNumber(any) {
+  return trueTypeOf(any) === 'number';
+}
+
+function isDate(any) {
+  return trueTypeOf(any) === 'date';
+}
+
 function isString(any) {
   return trueTypeOf(any) === 'string';
 }
@@ -1034,13 +1050,19 @@ var prototype = {
         selectors[_key4] = arguments[_key4];
       }
 
-      return [].concat(selectors).map(function (s) {
-        return s.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(function (t) {
+      var values = [].concat(selectors).map(function (selector) {
+        return selector.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(function (t) {
           return t !== '';
         }).reduce(function (prev, cur) {
           return prev && prev[cur];
         }, _this4);
       });
+
+      if (values.length === 1) {
+        return values[0];
+      }
+
+      return values;
     }
   }
 };
@@ -1359,7 +1381,7 @@ var _native = {
     * @param {object} obj - the object
     * @param {...string} selectors - the path to search inside the object
     * @param {object} [def=null] - the default value to return if path is not found
-    * @return {*}
+    * @return {array|any}
     */
   path: {
     enumerable: false,
@@ -1406,7 +1428,7 @@ var prototype$1 = {
           args[_key2] = arguments[_key2];
         }
 
-        return func.apply(scope, proxyArgs.length >= 1 ? proxyArgs : args);
+        return func.apply(scope, proxyArgs.length > 0 ? proxyArgs : args);
       };
     }
   }
@@ -1441,7 +1463,7 @@ var _native$1 = {
     enumerable: false,
     writable: true,
     value: function value(f) {
-      return trueTypeOf(f) === 'function';
+      return isFunction(f);
     }
   },
 
@@ -1541,7 +1563,7 @@ var _native$2 = {
     enumerable: false,
     writable: true,
     value: function value(b) {
-      return trueTypeOf(b) === 'boolean';
+      return isBoolean(b);
     }
   },
 
@@ -1583,7 +1605,35 @@ var prototype$3 = {};
  * @namespace number
  * @description extensions for the JS primitive Number
  */
-var _native$3 = {};
+
+var _native$3 = {
+  /**
+   * checked if something is a function
+   * @example <caption>eg. usage</caption>
+   * var f = function(){};
+   *
+   * console.log(Number.isNumber(f)); // false
+   *
+   * console.log(Number.isNumber(2)); // true
+   *
+   * console.log(Number.isNumber(function(){})); // false
+   *
+   * console.log(Number.isNumber(null)); // false
+   * @memberOf function
+   * @method isNumber
+   * @instance
+   * @param {number} n - the number to be checked
+   * @return {boolean}
+   */
+  isNumber: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value(n) {
+      return isNumber(n);
+    }
+  }
+};
 
 /**
  * @namespace number
@@ -1632,7 +1682,7 @@ var _native$4 = {
     enumerable: false,
     writable: true,
     value: function value(d) {
-      return trueTypeOf(d) === 'date';
+      return isDate(d);
     }
   },
 
@@ -1728,8 +1778,8 @@ var _native$5 = {
    * @param {string} s - the string to be checked
    * @return {boolean}
    */
-  isString: function isString(s) {
-    return trueTypeOf(s) === 'string';
+  isString: function isString$1(s) {
+    return isString(s);
   }
 };
 

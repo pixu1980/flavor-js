@@ -11,7 +11,7 @@ export default {
       const func = this;
 
       return function (...args) {
-        return func.apply(scope, (proxyArgs.length >= 1 ? proxyArgs : args));
+        return func.apply(scope, (proxyArgs.length > 0 ? proxyArgs : args));
       };
     },
   },

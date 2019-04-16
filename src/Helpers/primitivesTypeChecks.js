@@ -36,6 +36,10 @@ function isString(any) {
   return trueTypeOf(any) === 'string';
 }
 
+function isRegExp(any) {
+  return trueTypeOf(any) === 'regexp';
+}
+
 function isArray(any) {
   return trueTypeOf(any) === 'array';
 }
@@ -51,6 +55,7 @@ export {
   isDate,
   isString,
   isArray,
+  isRegExp,
 };
 
 export default {
@@ -64,4 +69,5 @@ export default {
   isDate,
   isString,
   isArray,
+  isRegExp,
 };
