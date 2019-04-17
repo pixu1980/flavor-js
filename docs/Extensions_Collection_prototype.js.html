@@ -1,17 +1,57 @@
-import { isRequired, isArray, arrayErrorHandler } from '../../Helpers/index';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Extensions/Collection/prototype.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-/**
- * @namespace array
- * @description extensions for the JS primitive Array
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Flavor.html">Flavor</a><ul class='methods'><li data-type='method'><a href="Flavor.html#extendArray">extendArray</a></li><li data-type='method'><a href="Flavor.html#extendBoolean">extendBoolean</a></li><li data-type='method'><a href="Flavor.html#extendDate">extendDate</a></li><li data-type='method'><a href="Flavor.html#extendFunction">extendFunction</a></li><li data-type='method'><a href="Flavor.html#extendNumber">extendNumber</a></li><li data-type='method'><a href="Flavor.html#extendObject">extendObject</a></li><li data-type='method'><a href="Flavor.html#extendProp">extendProp</a></li><li data-type='method'><a href="Flavor.html#extendProps">extendProps</a></li><li data-type='method'><a href="Flavor.html#extendString">extendString</a></li><li data-type='method'><a href="Flavor.html#init">init</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="array.html">array</a><ul class='methods'><li data-type='method'><a href="array.html#clean">clean</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#difference">difference</a></li><li data-type='method'><a href="array.html#difference">difference</a></li><li data-type='method'><a href="array.html#flatten">flatten</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#lorem">lorem</a></li><li data-type='method'><a href="array.html#numbers">numbers</a></li><li data-type='method'><a href="array.html#unique">unique</a></li><li data-type='method'><a href="array.html#unique">unique</a></li></ul></li><li></li><li></li><li></li><li><a href="boolean.html">boolean</a><ul class='methods'><li data-type='method'><a href="boolean.html#isBoolean">isBoolean</a></li><li data-type='method'><a href="boolean.html#random">random</a></li></ul></li><li></li><li></li><li><a href="global.html#collection">collection</a></li><li></li><li><a href="date.html">date</a><ul class='methods'><li data-type='method'><a href="date.html#isDate">isDate</a></li><li data-type='method'><a href="date.html#random">random</a></li><li data-type='method'><a href="date.html#toTimestamp">toTimestamp</a></li></ul></li><li></li><li></li><li><a href="function.html">function</a><ul class='methods'><li data-type='method'><a href="function.html#isFunction">isFunction</a></li><li data-type='method'><a href="function.html#isNumber">isNumber</a></li><li data-type='method'><a href="function.html#proxy">proxy</a></li></ul></li><li></li><li></li><li><a href="number.html">number</a><ul class='methods'><li data-type='method'><a href="number.html#times">times</a></li></ul></li><li></li><li></li><li><a href="object.html">object</a><ul class='methods'><li data-type='method'><a href="object.html#clone">clone</a></li><li data-type='method'><a href="object.html#forEach">forEach</a></li><li data-type='method'><a href="object.html#inherit">inherit</a></li><li data-type='method'><a href="object.html#isObject">isObject</a></li><li data-type='method'><a href="object.html#omit">omit</a></li><li data-type='method'><a href="object.html#path">path</a></li><li data-type='method'><a href="object.html#pick">pick</a></li></ul></li><li></li><li></li><li><a href="string.html">string</a><ul class='methods'><li data-type='method'><a href="string.html#isString">isString</a></li><li data-type='method'><a href="string.html#pad">pad</a></li><li data-type='method'><a href="string.html#toFloat">toFloat</a></li><li data-type='method'><a href="string.html#toInt">toInt</a></li></ul></li><li></li><li></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Extensions/Collection/prototype.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace collection
+ * @description extensions for the JS Collection
  */
 export default {
+  //TODO: implement rest arrays difference
   difference: {
     configurable: true,
     enumerable: false,
     writable: true,
     value(arr, symmetric = true) {
-      arrayErrorHandler(this, arr);
-
       if (!!symmetric) {
         return Array.prototype.unique.call([
           ...this.filter(item => !arr.includes(item)),
@@ -22,13 +62,12 @@ export default {
       return this.filter(item => !arr.includes(item));
     },
   },
+  // //TODO: implement rest arrays intersection
   intersection: {
     configurable: true,
     enumerable: false,
     writable: true,
     value(arr) {
-      arrayErrorHandler(this, arr);
-
       return this.filter(item => arr.includes(item));
     },
   },
@@ -37,8 +76,6 @@ export default {
     enumerable: false,
     writable: true,
     value(any, all = false) {
-      arrayErrorHandler(this);
-
       if (Array.isArray(any)) {
         if (!all) {
           return Array.prototype.intersection.call(this, any).length > 0;
@@ -55,59 +92,7 @@ export default {
     enumerable: false,
     writable: true,
     value() {
-      arrayErrorHandler(this);
-
       return [...new Set(this)];
-    },
-  },
-  clean: {
-    configurable: true,
-    enumerable: false,
-    writable: true,
-    value() {
-      arrayErrorHandler(this);
-
-      return this.filter(Boolean);
-    },
-  },
-  numbers: {
-    configurable: true,
-    enumerable: false,
-    writable: true,
-    value() {
-      arrayErrorHandler(this);
-
-      return this.filter((item) => {
-        return item === 0 ? true : Number(item);
-      });
-    },
-  },
-  flatten: {
-    configurable: true,
-    enumerable: false,
-    writable: true,
-    value(deep = false) {
-      arrayErrorHandler(this);
-
-      if (Boolean.isBoolean(deep) && !!deep) {
-        return [].concat(...this.map((item) => {
-          if(Array.isArray(item)) {
-            return item.flatten(true);
-          }
-
-          return item;
-        }));
-      }
-
-      const depth = deep || 1;
-
-      return this.reduce((acc, item) => {
-        if (depth > 1 && Array.isArray(item)) {
-          return acc.concat(item.flatten(depth - 1));
-        }
-
-        return acc.concat(item);
-      }, []);
     },
   },
   // sortBy(propNames, propDirections) {
@@ -166,7 +151,7 @@ export default {
   // },
 
   // pullBy(propName, propValue) {
-  //   if (Array.isArray(propName) && _.isFunction(propValue)) {
+  //   if (Array.isArray(propName) &amp;&amp; _.isFunction(propValue)) {
   //     const values = propName;
   //     const comparator = propValue;
   //     return _.pullAllByComparator(this, values, comparator);
@@ -310,6 +295,27 @@ export default {
   //   return _.deepMap(this, childrenPropName, iteratee);
   // },
 
+  // lorem(items, model = false) {
+  //   return Number.times(items, (i) => {
+  //     if (!!model) {
+  //       return Function.isFunction(model) ? model(i) : model;
+  //     }
+
+  //     return i;
+  //   });
+  // },
+
+  // flatten(deep) {
+  //   if (!!deep) {
+  //     if (Number.isNumber(deep)) {
+  //       return _.flattenDepth(this, deep);
+  //     } else if (Boolean.isBoolean(deep)) {
+  //       return _.flattenDeep(this);
+  //     }
+  //   }
+
+  //   return _.flatten(this);
+  // },
 
   // shuffle() {
   //   return _.shuffle(this);
@@ -347,3 +353,28 @@ export default {
   //   return null;
   // },
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 17 2019 12:57:04 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

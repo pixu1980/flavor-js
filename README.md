@@ -36,31 +36,28 @@ npm install flavor-js --save
 
 ## Dependencies
 
-- [lodash](https://ghub.io/lodash): Lodash modular utilities.
+None
 
 ## Dev Dependencies
 
-- [babel-core](https://ghub.io/babel-core): Babel compiler core.
-- [babel-eslint](https://ghub.io/babel-eslint): Custom parser for ESLint
-- [babel-loader](https://ghub.io/babel-loader): babel module loader for webpack
-- [babel-preset-env](https://ghub.io/babel-preset-env): A Babel preset for each environment.
-- [clean-webpack-plugin](https://ghub.io/clean-webpack-plugin): A webpack plugin to remove your build folder(s) before building
+- [@babel/core](https://ghub.io/@babel/core): Babel compiler core.
+- [@babel/preset-env](https://ghub.io/@babel/preset-env): A Babel preset for each environment.
 - [docdash](https://ghub.io/docdash): A clean, responsive documentation template theme for JSDoc 3 inspired by lodash and minami
 - [eslint](https://ghub.io/eslint): An AST-based pattern checker for JavaScript.
 - [eslint-config-airbnb](https://ghub.io/eslint-config-airbnb): Airbnb&#39;s ESLint config, following our styleguide
-- [eslint-loader](https://ghub.io/eslint-loader): eslint loader (for webpack)
 - [eslint-plugin-import](https://ghub.io/eslint-plugin-import): Import with sanity.
 - [eslint-plugin-jsx-a11y](https://ghub.io/eslint-plugin-jsx-a11y): Static AST checker for accessibility rules on JSX elements.
 - [eslint-plugin-react](https://ghub.io/eslint-plugin-react): React specific linting rules for ESLint
-- [hoek](https://ghub.io/hoek): General purpose node utilities
-- [ink-docstrap](https://ghub.io/ink-docstrap): [![NPM](https://nodei.co/npm/ink-docstrap.png?downloads=true)](https://nodei.co/npm/ink-docstrap/)
+- [ink-docstrap](https://ghub.io/ink-docstrap): FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
 - [jsdoc](https://ghub.io/jsdoc): An API documentation generator for JavaScript.
-- [lodash-webpack-plugin](https://ghub.io/lodash-webpack-plugin): Smaller modular Lodash builds.
-- [ssri](https://ghub.io/ssri): Standard Subresource Integrity library --  parses, serializes, generates, and verifies integrity metadata according to the SRI spec.
-- [uglifyjs-webpack-plugin](https://ghub.io/uglifyjs-webpack-plugin): UglifyJS plugin for webpack
-- [webpack](https://ghub.io/webpack): Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand. Support loaders to preprocess files, i.e. json, jsx, es7, css, less, ... and your custom stuff.
-- [webpack-cli](https://ghub.io/webpack-cli): CLI for webpack &amp; friends
-- [webpack-ver-plugin](https://ghub.io/webpack-ver-plugin): Generates a file with your app&#39;s package.json information and build date
+- [jshint](https://ghub.io/jshint): Static analysis tool for JavaScript
+- [rollup](https://ghub.io/rollup): Next-generation ES module bundler
+- [rollup-plugin-babel](https://ghub.io/rollup-plugin-babel): Seamless integration between Rollup and Babel.
+- [rollup-plugin-eslint](https://ghub.io/rollup-plugin-eslint): Verify entry point and all imported files with ESLint
+- [rollup-plugin-filesize](https://ghub.io/rollup-plugin-filesize): A rollup plugin to show filesize in the cli
+- [rollup-plugin-json](https://ghub.io/rollup-plugin-json): FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
+- [rollup-plugin-replace](https://ghub.io/rollup-plugin-replace): FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)
+- [rollup-plugin-uglify](https://ghub.io/rollup-plugin-uglify): Rollup plugin to minify generated bundle
 
 ## Tests
 

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Flavor.js - Documentation</title>
+    <title>Extensions/String/native.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Flavor.js</h1>
+    <h1 class="page-title">Extensions/String/native.js</h1>
     
 
     
@@ -41,176 +41,127 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import './Core/index';
-import Extensions from './Extensions/index';
+            <pre class="prettyprint source linenums"><code>import { isString } from '../../Helpers/index';
 
 /**
- * constructs Flavor class &amp; extends the js natives
- * @class Flavor
- * @classdesc Flavor the definitive JS natives chainable extensions methods
- * @public
+ * @namespace string
+ * @description extensions for the JS primitive String
  */
-export default class Flavor {
-  constructor() {
-    this.init();
-  }
-
+export default {
   /**
-   * safe js native prototype extension using Object.defineProperty
-   * @memberOf Flavor
-   * @method extendProp
-   * @instance
-   * @param {prototype|object} target - the prototype/object to extend
-   * @param {string} prop - the name of the property to be defined or modified
-   * @param {*} val - val to be used as value in the descriptor for the property, can be any kind of native (number, function, etc...) or what you want
-   * @param {object} [options={}] - options to be used as parameters in the descriptor for the property&lt;br>
-   * possible options are (source documentation from &lt;a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/object/defineProperty" target="_blank">Javascript|MDN docs&lt;/a>)&lt;br>
-   * @param {boolean} [options.configurable=true] configurable - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding Object.
-   * @param {boolean} [options.enumerable=false] enumerable - true if and only if this property shows up during enumeration of the properties on the corresponding Object.
-   * @param {boolean} [options.writable=true] writable - true if and only if the value associated with the property may be changed with an assignment operator.
-   * @param {function} [options.get=undefined] get - A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property.&lt;br>
-   * for example...&lt;br>
-   * &lt;pre>
-   * function ClassName() {
-   *   var privateProp = null;
+   * checks if something is a string
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var s = 'foo';
    *
-   *   Object.defineProperty(this, 'publicProp', {
-   *     get: function() {
-   *       return privateProp;
-   *     }
-   *   });
-   * }
-   * &lt;/pre>
-   * @param {function} [options.set=undefined] set - A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being assigned to the property.&lt;br>
-   * for example...&lt;br>
-   * &lt;pre>
-   * function ClassName() {
-   *   var privateProp = null;
+   * console.log(String.isString(s)); // true
    *
-   *   Object.defineProperty(this, 'publicProp', {
-   *     set: function(value) {
-   *       privateProp = value;
-   *     }
-   *   });
-   * }
-   * &lt;/pre>
-   */
-  extendProp(target, prop, val, options = {}) {
-    Object.defineProperty(target, prop, {
-      value: val,
-      writable: options.writable || true,
-      configurable: options.configurable || true,
-      enumerable: options.enumerable || false,
-    });
-  }
-
-  /**
-   * merges all keys in extend plain object to the prototype (
-   * @memberOf Flavor
-   * @method extendProps
+   * console.log(String.isString(2)); // false
+   *
+   * console.log(String.isString('')); // true
+   *
+   * console.log(String.isString(null)); // false
+   * @memberOf string
+   * @method isString
    * @instance
-   * @param {prototype|object} target - the prototype/object to extend
-   * @param {object} extensions - the extend object to be merged in prototype
+   * @param {string} str - the string to be checked
+   * @return {boolean}
    */
-  extendProps(target, extensions) {
-    Object.defineProperties(target, extensions);
-  }
-
+  isString: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(str) {
+      return isString(str);
+    },
+  },
   /**
-   * extendObject
-   * @memberOf Flavor
-   * @method extendObject
+   * converts a string to an integer number
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * console.log(String.toInt('550')); // 550
+   *
+   * console.log('550'.toInt()); // 550
+   *
+   * console.log(String.toInt('550', 6)); // 210
+   *
+   * console.log('550'.toInt(6)); // 210
+   * @memberOf string
+   * @method toInt
    * @instance
+   * @param {string} str - the string
+   * @param {number} radix [10] - the radix to use for the conversion
+   * @return {number}
    */
-  extendObject() {
-    this.extendProps(Object.prototype, Extensions.Object.prototype);
-    this.extendProps(Object, Extensions.Object.native);
-  }
+  toInt: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(str, radix = 10) {
+      if (String.isString(str)) {
+        return String.prototype.toInt.call(str, radix);
+      }
 
+      return str;
+    },
+  },
   /**
-   * extendFunction
-   * @memberOf Flavor
-   * @method extendFunction
+   * converts a string to an floating number
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * console.log(String.toFloat('55.05')); // 55.05
+   *
+   * console.log('55.05'.toFloat()); // 55.05
+   * @memberOf string
+   * @method toFloat
    * @instance
+   * @param {string} str - the string
+   * @return {number}
    */
-  extendFunction() {
-    this.extendProps(Function.prototype, Extensions.Function.prototype);
-    this.extendProps(Function, Extensions.Function.native);
-  }
+  toFloat: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(str) {
+      if (String.isString(str)) {
+        return String.prototype.toFloat.call(str);
+      }
 
+      return str;
+    },
+  },
   /**
-   * extendBoolean
-   * @memberOf Flavor
-   * @method extendBoolean
+   * pads string on the left and right sides if it's shorter than length. Padding characters are truncated if they can't be evenly divided by length.
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * console.log(String.pad('5', 5)); // '  5  '
+   *
+   * console.log(String.pad('5', 5, '0')); // '00500'
+   *
+   * console.log(String.pad(4, 5, '01')); // '01401'
+   *
+   * console.log(String.pad(true, 5, '01')); // '1true'
+   *
+   * console.log(String.pad(4, 5, '01')); // '01401'
+   *
+   * console.log(String.pad(new Date(), 50, '--') // '-----Tue Apr 04 2017 17:54:40 GMT+0000 (CEST)-----'
+   * @memberOf string
+   * @method pad
    * @instance
+   * @param {string} str - the string to be padded
+   * @param {number} length [0] - the string length you need
+   * @param {string} chars [' '] - the char/chars to be used to pad the string
+   * @return {string}
    */
-  extendBoolean() {
-    this.extendProps(Boolean.prototype, Extensions.Boolean.prototype);
-    this.extendProps(Boolean, Extensions.Boolean.native);
-  }
+  pad: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(str, length = 0, chars = ' ') {
+      if (String.isString(str)) {
+        return String.prototype.pad.call(str, length, chars);
+      }
 
-  /**
-   * extendNumber
-   * @memberOf Flavor
-   * @method extendNumber
-   * @instance
-   */
-  extendNumber() {
-    this.extendProps(Number.prototype, Extensions.Number.prototype);
-    this.extendProps(Number, Extensions.Number.native);
-  }
-
-  /**
-   * extendDate
-   * @memberOf Flavor
-   * @method extendDate
-   * @instance
-   */
-  extendDate() {
-    this.extendProps(Date.prototype, Extensions.Date.prototype);
-    this.extendProps(Date, Extensions.Date.native);
-  }
-
-  /**
-   * extendString
-   * @memberOf Flavor
-   * @method extendString
-   * @instance
-   */
-  extendString() {
-    this.extendProps(String.prototype, Extensions.String.prototype);
-    this.extendProps(String, Extensions.String.native);
-  }
-
-  /**
-   * extendArray
-   * @memberOf Flavor
-   * @method extendArray
-   * @instance
-   */
-  extendArray() {
-    this.extendProps(Array.prototype, Extensions.Array.prototype);
-    this.extendProps(Array, Extensions.Array.native);
-  }
-
-  /**
-   * initialize all
-   * @memberOf Flavor
-   * @method init
-   * @instance
-   */
-  init() {
-    this.extendObject();
-    this.extendFunction();
-    this.extendBoolean();
-    this.extendNumber();
-    this.extendDate();
-    this.extendString();
-    this.extendArray();
-
-    console.warn('FlavorJS initialized');
-  }
-}
+      return str;
+    },
+  },
+};
 </code></pre>
         </article>
     </section>

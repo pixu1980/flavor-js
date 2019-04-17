@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Extensions/Date/prototype.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,73 +31,33 @@
 
 <div id="main">
     
+    <h1 class="page-title">Extensions/Date/prototype.js</h1>
+    
 
     
 
 
 
     
-
-
-    <section class="package">
-        <h3> </h3>		
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace date
+ * @description extensions for the JS primitive Date
+ */
+export default {
+  toTimestamp: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      return Math.round(this);
+    },
+  },
+};
+</code></pre>
+        </article>
     </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme">
-        <article><h1>flavor-js</h1><h2>Author</h2><p>Black Mirror</p>
-<h2>Version</h2><p>v0.4.10</p>
-<h2>Badges</h2><p><a href="https://nodei.co/npm/flavor-js/"><img src="https://nodei.co/npm/flavor-js.png" alt="NPM"></a></p>
-<p><a href="https://github.com/blackmirror1980/flavor-js/stargazers"><img src="https://img.shields.io/github/stars/blackmirror1980/flavor-js.svg?style=plastic" alt="GitHub stars"></a> <a href="https://github.com/blackmirror1980/flavor-js/network"><img src="https://img.shields.io/github/forks/blackmirror1980/flavor-js.svg?style=plastic" alt="GitHub forks"></a> <a href="https://github.com/blackmirror1980/flavor-js/issues"><img src="https://img.shields.io/github/issues/blackmirror1980/flavor-js.svg?style=plastic" alt="GitHub issues"></a> <a href="https://github.com/blackmirror1980/flavor-js/blob/master/LICENSE"><img src="https://img.shields.io/github/license/blackmirror1980/flavor-js.svg?style=plastic" alt="GitHub license"></a> <a href="https://travis-ci.org/blackmirror1980/flavor-js"><img src="https://travis-ci.org/blackmirror1980/flavor-js.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/blackmirror1980/flavor-js?branch=master"><img src="https://coveralls.io/repos/github/blackmirror1980/flavor-js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<h2>Documentation</h2><p>Check out the <a href="https://blackmirror1980.github.io/flavor-js/docs/index.html">Latest Documentation</a> here</p>
-<h2>Description</h2><p>FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)</p>
-<h2>Example</h2><p>Check out this <a href="">Codepen</a> example</p>
-<h2>Installation</h2><p>This is a <a href="https://nodejs.org/">Node.js</a> module available through the 
-<a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the 
-<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a>
-or 
-<a href="https://yarnpkg.com/en/"><code>yarn</code></a>
-command line tools.</p>
-<pre class="prettyprint source lang-sh"><code>npm install flavor-js --save</code></pre><h2>Dependencies</h2><p>None</p>
-<h2>Dev Dependencies</h2><ul>
-<li><a href="https://ghub.io/@babel/core">@babel/core</a>: Babel compiler core.</li>
-<li><a href="https://ghub.io/@babel/preset-env">@babel/preset-env</a>: A Babel preset for each environment.</li>
-<li><a href="https://ghub.io/docdash">docdash</a>: A clean, responsive documentation template theme for JSDoc 3 inspired by lodash and minami</li>
-<li><a href="https://ghub.io/eslint">eslint</a>: An AST-based pattern checker for JavaScript.</li>
-<li><a href="https://ghub.io/eslint-config-airbnb">eslint-config-airbnb</a>: Airbnb's ESLint config, following our styleguide</li>
-<li><a href="https://ghub.io/eslint-plugin-import">eslint-plugin-import</a>: Import with sanity.</li>
-<li><a href="https://ghub.io/eslint-plugin-jsx-a11y">eslint-plugin-jsx-a11y</a>: Static AST checker for accessibility rules on JSX elements.</li>
-<li><a href="https://ghub.io/eslint-plugin-react">eslint-plugin-react</a>: React specific linting rules for ESLint</li>
-<li><a href="https://ghub.io/ink-docstrap">ink-docstrap</a>: FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)</li>
-<li><a href="https://ghub.io/jsdoc">jsdoc</a>: An API documentation generator for JavaScript.</li>
-<li><a href="https://ghub.io/jshint">jshint</a>: Static analysis tool for JavaScript</li>
-<li><a href="https://ghub.io/rollup">rollup</a>: Next-generation ES module bundler</li>
-<li><a href="https://ghub.io/rollup-plugin-babel">rollup-plugin-babel</a>: Seamless integration between Rollup and Babel.</li>
-<li><a href="https://ghub.io/rollup-plugin-eslint">rollup-plugin-eslint</a>: Verify entry point and all imported files with ESLint</li>
-<li><a href="https://ghub.io/rollup-plugin-filesize">rollup-plugin-filesize</a>: A rollup plugin to show filesize in the cli</li>
-<li><a href="https://ghub.io/rollup-plugin-json">rollup-plugin-json</a>: FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)</li>
-<li><a href="https://ghub.io/rollup-plugin-replace">rollup-plugin-replace</a>: FlavorJS the definitive JS natives chainable extensions methods (based on lodash &amp; ES6)</li>
-<li><a href="https://ghub.io/rollup-plugin-uglify">rollup-plugin-uglify</a>: Rollup plugin to minify generated bundle</li>
-</ul>
-<h2>Tests</h2><pre class="prettyprint source lang-sh"><code>npm install
-npm test</code></pre><h2>License</h2><p>MIT</p>
-<h2>Powered By</h2><p><a href="http://js.org" target="_blank" title="JS.ORG | JavaScript Community">
-<img src="http://logo.js.org/dark_horz.png" width="102" alt="JS.ORG Logo"/></a>
-<!-- alternatives [bright|dark]_[horz|vert|tiny].png (width[horz:102,vert:50,tiny:77]) --></p></article>
-    </section>
-
-
 
 
 

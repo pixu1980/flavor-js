@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Extensions/Array/native.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Flavor.html">Flavor</a><ul class='methods'><li data-type='method'><a href="Flavor.html#extendArray">extendArray</a></li><li data-type='method'><a href="Flavor.html#extendBoolean">extendBoolean</a></li><li data-type='method'><a href="Flavor.html#extendDate">extendDate</a></li><li data-type='method'><a href="Flavor.html#extendFunction">extendFunction</a></li><li data-type='method'><a href="Flavor.html#extendNumber">extendNumber</a></li><li data-type='method'><a href="Flavor.html#extendObject">extendObject</a></li><li data-type='method'><a href="Flavor.html#extendProp">extendProp</a></li><li data-type='method'><a href="Flavor.html#extendProps">extendProps</a></li><li data-type='method'><a href="Flavor.html#extendString">extendString</a></li><li data-type='method'><a href="Flavor.html#init">init</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="array.html">array</a><ul class='methods'><li data-type='method'><a href="array.html#clean">clean</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#contains">contains</a></li><li data-type='method'><a href="array.html#difference">difference</a></li><li data-type='method'><a href="array.html#difference">difference</a></li><li data-type='method'><a href="array.html#flatten">flatten</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#intersection">intersection</a></li><li data-type='method'><a href="array.html#lorem">lorem</a></li><li data-type='method'><a href="array.html#numbers">numbers</a></li><li data-type='method'><a href="array.html#unique">unique</a></li><li data-type='method'><a href="array.html#unique">unique</a></li></ul></li><li></li><li></li><li></li><li><a href="boolean.html">boolean</a><ul class='methods'><li data-type='method'><a href="boolean.html#isBoolean">isBoolean</a></li><li data-type='method'><a href="boolean.html#random">random</a></li></ul></li><li></li><li></li><li><a href="global.html#collection">collection</a></li><li></li><li><a href="date.html">date</a><ul class='methods'><li data-type='method'><a href="date.html#isDate">isDate</a></li><li data-type='method'><a href="date.html#random">random</a></li><li data-type='method'><a href="date.html#toTimestamp">toTimestamp</a></li></ul></li><li></li><li></li><li><a href="function.html">function</a><ul class='methods'><li data-type='method'><a href="function.html#isFunction">isFunction</a></li><li data-type='method'><a href="function.html#isNumber">isNumber</a></li><li data-type='method'><a href="function.html#proxy">proxy</a></li></ul></li><li></li><li></li><li><a href="number.html">number</a><ul class='methods'><li data-type='method'><a href="number.html#times">times</a></li></ul></li><li></li><li></li><li><a href="object.html">object</a><ul class='methods'><li data-type='method'><a href="object.html#clone">clone</a></li><li data-type='method'><a href="object.html#forEach">forEach</a></li><li data-type='method'><a href="object.html#inherit">inherit</a></li><li data-type='method'><a href="object.html#isObject">isObject</a></li><li data-type='method'><a href="object.html#omit">omit</a></li><li data-type='method'><a href="object.html#path">path</a></li><li data-type='method'><a href="object.html#pick">pick</a></li></ul></li><li></li><li></li><li><a href="string.html">string</a><ul class='methods'><li data-type='method'><a href="string.html#isString">isString</a></li><li data-type='method'><a href="string.html#pad">pad</a></li><li data-type='method'><a href="string.html#toFloat">toFloat</a></li><li data-type='method'><a href="string.html#toInt">toInt</a></li></ul></li><li></li><li></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Extensions/Array/native.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace array
+ * @description extensions for the JS primitive Array
+ */
+export default {
+  /**
+   * loremizes an array
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
+   *
+   * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
+   *
+   * console.log(Array.lorem(5, {type: 'a', value: 1}));
+   * // it logs
+   * [
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1}
+   * ];
+   *
+   * console.log(Array.lorem(5, function(index) {
+   *   return {
+   *     type: 'a',
+   *     value: index,
+   *   };
+   * });
+   * // it logs
+   * [
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 2},
+   *   {type: 'a', value: 3},
+   *   {type: 'a', value: 4},
+   *   {type: 'a', value: 5}
+   * ];
+   *
+   * @memberOf array
+   * @method lorem
+   * @instance
+   * @param {number} items
+   * @param {function|object} [model=false]
+   * @return {array}
+   */
+  lorem: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(items = 0, model = false) {
+      const arr = [];
+
+      Function.times((i) => {
+        if (!!model) {
+          if (Function.isFunction(model)) {
+            arr.push(model(i));
+          } else {
+            arr.push(model);
+          }
+        } else {
+          arr.push(i);
+        }
+      }, items);
+
+      return arr;
+    },
+  },
+  /**
+   * return a new array containing the difference between two arrays
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr1 = ['a', 'e', 'i', 'o', 'u'];
+   * var arr2 = ['a', 'd', 'f', 'o', 'u'];
+   *
+   * console.log(Array.difference(arr1, arr2)); // ['d', 'e', 'f', 'i']
+   * console.log(Array.difference(arr1, arr2, false)); // ['e', 'i']
+   *
+   * console.log(arr1.difference(arr2)); // ['d', 'e', 'f', 'i']
+   * console.log(arr1.difference(arr2, false)); // ['e', 'i']
+   * @memberOf array
+   * @method difference
+   * @instance
+   * @param {array} arr1 - the first array
+   * @param {array} arr2 - the second array
+   * @param {boolean} symmetric - if true does the real difference between both of the two arrays
+   * @return {boolean}
+   */
+  difference: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr1, arr2, symmetric = true) {
+      return Array.prototype.difference.call(arr1, arr2, symmetric);
+    },
+  },
+  /**
+   * return a new array containing the intersection between two arrays
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr1 = ['a', 'e', 'i', 'o', 'u'];
+   * var arr2 = ['a', 'd', 'f', 'o', 'u'];
+   *
+   * console.log(Array.intersection(arr1, arr2)); // ['a', 'o', 'u']
+   *
+   * console.log(arr1.intersection(arr2)); // ['a', 'o', 'u']
+   * @memberOf array
+   * @method intersection
+   * @instance
+   * @param {array} arr1 - the first array
+   * @param {array} arr2 - the second array
+   * @return {boolean}
+   */
+  intersection: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr1, arr2) {
+      return Array.prototype.intersection.call(arr1, arr2);
+    },
+  },
+
+  /**
+   * checks if an Array contains something
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr = ['a', 'e', 'i', 'o', 'u'];
+   *
+   * console.log(Array.contains(arr, 'b')); // false
+   * console.log(Array.contains(arr, 'a')); // true
+   * console.log(Array.contains(arr, ['a', 'b', 'e']); // true
+   * console.log(Array.contains(arr, ['a', 'b', 'e'], true); // false
+   *
+   * console.log(arr.contains('b')); // false
+   * console.log(arr.contains('a')); // true
+   * console.log(arr.contains(['a', 'b', 'e']); // true
+   * console.log(arr.contains(['a', 'b', 'e'], true); // false
+   * @memberOf array
+   * @method contains
+   * @instance
+   * @param {array} arr - the array to be checked
+   * @param {array|*} any - can be anything or an array of anything
+   * @param {boolean} [all=false] - specify to check if the array must contain all items
+   * @return {boolean}
+   */
+  contains: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr, any, all = false) {
+      return Array.prototype.contains.call(arr, any, all);
+    },
+  },
+  /**
+   * returns a new unique items array from an array&lt;br>&lt;br>
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr = ['a', 'a', 'e', 'i', 'o', 'u'];
+   *
+   * console.log(Array.unique(arr); // ['a', 'e', 'i', 'o', 'u']
+   * console.log(arr.unique(); // ['a', 'e', 'i', 'o', 'u']
+   * @memberOf array
+   * @method unique
+   * @instance
+   * @param {array} arr - the array to be uniqued
+   * @return {array}
+   */
+  unique: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.unique.call(arr);
+    },
+  },
+  /**
+   * cleans up an array from falsy values (0, undefined, null, false) out of an array&lt;br>&lt;br>
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr = [false, true, undefined, 0, 1, null, 'a string', {}, []];
+   *
+   * console.log(Array.clean(arr); // [true, 1, 'a string', {}, []]
+   * console.log(arr.clean(); // [true, 1, 'a string', {}, []]
+   * @memberOf array
+   * @method clean
+   * @instance
+   * @param {array} arr - the array to be cleaned
+   * @return {array}
+   */
+  clean: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.clean.call(arr);
+    },
+  },
+  /**
+   * extracts only numbers values out of an array&lt;br>&lt;br>
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var arr = [null, 'a string', 1, false, undefined, {}, [], 7.85, 0, -0.5];
+   *
+   * console.log(Array.numbers(arr); // [1, 7.85, 0, -0.5]
+   * console.log(arr.numbers(); // [1, 7.85, 0, -0.5]
+   * @memberOf array
+   * @method numbers
+   * @instance
+   * @param {array} arr - the array to be filtered
+   * @return {array}
+   */
+  numbers: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.numbers.call(arr);
+    },
+  },
+  /**
+   * flattens array a single level deep,&lt;br>
+   * or with deep parameter (true boolean) recursively flattens array,&lt;br>
+   * or with deep parameter (number) you specify the recursion depth
+   * @example &lt;caption>eg. usage&lt;/caption>
+   * var a = [1, [2, [3, [4]], 5]];
+   *
+   * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
+   * console.log(Array.flatten(a, 1)); // same as above
+   * console.log(a.flatten()); // same as above
+   * console.log(a.flatten(1)); // same as above
+   *
+   * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
+   * console.log(a.flatten(true)); // same as above
+   *
+   * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
+   * console.log(a.flatten(2)); // same as above
+   *
+   * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
+   * console.log(a.flatten(3)); // same as above
+   * @memberOf array
+   * @method flatten
+   * @instance
+   * @param {array} arr - the array
+   * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
+   * @return {array}
+   */
+  flatten: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr, deep = false) {
+      return Array.prototype.flatten.call(arr, deep);
+    },
+  },
+  // /**
+  //  * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var a = [1, 2, 3, 4, 5];
+  //  *
+  //  * console.log(Array.shuffle(a)); // [4, 3, 5, 1, 2]
+  //  * console.log(a.shuffle()); // same as above (or another randomization ;-)
+  //  * @memberOf array
+  //  * @method shuffle
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @return {array}
+  //  */
+  // shuffle(a) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.shuffle.call(a);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * splits an array in n-pieces chunks
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var a = [1, 2, 3, 4, 5];
+  //  *
+  //  * console.log(Array.split(a)); // []
+  //  * console.log(a.split()); // same as above
+  //  *
+  //  * console.log(Array.split(a, 1)); // [[1], [2], [3], [4], [5]]
+  //  * console.log(a.split(1)); // same as above
+  //  *
+  //  * console.log(Array.split(a, 2)); // [[1, 2], [3, 4], [5]]
+  //  * console.log(a.split(2)); // same as above
+  //  *
+  //  * console.log(Array.split(a, 3)); // [[1, 2, 3], [4, 5]]
+  //  * console.log(a.split(3)); // same as above
+  //  * @memberOf array
+  //  * @method split
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @param {number} [n=0] - the n pieces of chunks you want
+  //  * @return {array}
+  //  */
+  // split(a, n = 0) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.split.call(a, n);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * reverses an array, with optional clone parameter to avoid original array mutation
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var a = [1, 2, 3, 4, 5];
+  //  *
+  //  * console.log(Array.reverse(a)); // [5, 4, 3, 2, 1]
+  //  * console.log(a.reverse()); // same as above
+  //  *
+  //  * console.log(a === [5, 4, 3, 2, 1]); // true
+  //  *
+  //  * var b = Array.reverse(a, true); // or var b = a.reverse(true);
+  //  *
+  //  * console.log(a); // [1, 2, 3, 4, 5]
+  //  * console.log(b); // [5, 4, 3, 2, 1]
+  //  * @memberOf array
+  //  * @method tail
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @param {boolean} [clone=false]
+  //  * @return {array}
+  //  */
+  // reverse(a, clone = false) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.reverse.call(a, clone);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * returns a sliced array with all elements but the first item
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var a = [1, 2, 3, 4, 5];
+  //  *
+  //  * console.log(Array.tail(a)); // [2, 3, 4, 5]
+  //  * console.log(a.tail()); // same as above
+  //  * @memberOf array
+  //  * @method tail
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @return {array}
+  //  */
+  // tail(a) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.tail.call(a);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * returns a sliced array with all elements but the last item
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var a = [1, 2, 3, 4, 5];
+  //  *
+  //  * console.log(Array.cut(a)); // [1, 2, 3, 4]
+  //  * console.log(a.cut()); // same as above
+  //  * @memberOf array
+  //  * @method cut
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @return {array}
+  //  */
+  // cut(a) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.cut.call(a);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * clones an array
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var collection = [
+  //  *   {type: 'a', value: 1},
+  //  *   {type: 'b', value: 8},
+  //  *   {type: 'c', value: 5},
+  //  *   {type: 'd', value: 7},
+  //  *   {type: 'e', value: 9},
+  //  *   {type: 'f', value: 3},
+  //  * ];
+  //  *
+  //  * var clone = Array.clone(collection); // or var clone = collection.clone();
+  //  *
+  //  * console.log(collection === clone); // false;
+  //  * @memberOf array
+  //  * @method clone
+  //  * @instance
+  //  * @param {array} a - the array
+  //  * @return {array}
+  //  */
+  // clone(a) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.clone.call(a);
+  //   }
+
+  //   return a;
+  // },
+
+  // /**
+  //  * finds max value by propName in a collection array
+  //  * @example &lt;caption>eg. usage&lt;/caption>
+  //  * var collection = [
+  //  *   {type: 'a', value: 1},
+  //  *   {type: 'b', value: 8},
+  //  *   {type: 'c', value: 5},
+  //  *   {type: 'd', value: 7},
+  //  *   {type: 'e', value: 9},
+  //  *   {type: 'f', value: 3},
+  //  * ];
+  //  *
+  //  * console.log(Array.maxBy(a, 'value')); // {type:'e', value: 9}
+  //  * console.log(Array.maxBy(a, 'type')); // {type:'f', value: 3}
+  //  *
+  //  * console.log(a.maxBy('value')); // {type:'e', value: 9}
+  //  * console.log(a.maxBy('type')); // {type:'f', value: 3}
+  //  * @memberOf array
+  //  * @method maxBy
+  //  * @instance
+  //  * @param {array} a - the array to check for max value
+  //  * @param {string} [propName=null] - the property name to use for comparation
+  //  * @return {object}
+  //  */
+  // maxBy(a, propName) {
+  //   if (Array.isArray(a)) {
+  //     return Array.prototype.maxBy.call(a, propName);
+  //   }
+
+  //   return a;
+  // },
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 17 2019 12:57:04 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

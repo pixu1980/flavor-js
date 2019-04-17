@@ -2172,8 +2172,12 @@
         if (Boolean.isBoolean(deep) && !!deep) {
           var _ref;
 
-          return (_ref = []).concat.apply(_ref, _toConsumableArray(this.map(function (v) {
-            return Array.isArray(v) ? v.flatten(true) : v;
+          return (_ref = []).concat.apply(_ref, _toConsumableArray(this.map(function (item) {
+            if (Array.isArray(item)) {
+              return item.flatten(true);
+            }
+
+            return item;
           })));
         }
 
