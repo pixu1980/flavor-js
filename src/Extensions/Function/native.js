@@ -90,7 +90,7 @@ export default {
    * }, true);
    *
    * // logs 5, 4, 3, 2, 1
-   * @memberOf number
+   * @memberOf function
    * @method times
    * @instance
    * @param {function} iteratee - the iteratee function to invoke<br>

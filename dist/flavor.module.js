@@ -1631,7 +1631,7 @@ var _native$1 = {
    * }, true);
    *
    * // logs 5, 4, 3, 2, 1
-   * @memberOf number
+   * @memberOf function
    * @method times
    * @instance
    * @param {function} iteratee - the iteratee function to invoke<br>
@@ -1755,7 +1755,7 @@ var _native$3 = {
    * console.log(Number.isNumber(function(){})); // false
    *
    * console.log(Number.isNumber(null)); // false
-   * @memberOf function
+   * @memberOf number
    * @method isNumber
    * @instance
    * @param {number} n - the number to be checked
@@ -1966,6 +1966,24 @@ var _native$5 = {
   },
 
   /**
+   * random GUID generator
+   * @example <caption>eg. usage</caption>
+   * console.log(String.GUID()); // e405cd23-2640-4e31-8b6e-fecc268ca9c7
+   * @memberOf string
+   * @method GUID
+   * @return {string}
+   */
+  GUID: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: function value() {
+      // Random GUID generator based on .toString(16);
+      return "".concat(Math.random().toString(16).slice(2, 10), "-").concat(Math.random().toString(16).slice(2, 6), "-4").concat(Math.random().toString(16).slice(2, 5), "-").concat(Math.random().toString(16).slice(2, 6), "-").concat(Math.random().toString(16).slice(2, 14));
+    }
+  },
+
+  /**
    * converts a string to an integer number
    * @example <caption>eg. usage</caption>
    * console.log(String.toInt('550')); // 550
@@ -2076,7 +2094,6 @@ var StringExt = {
  */
 
 var prototype$6 = {
-  //TODO: implement rest arrays difference
   difference: {
     configurable: true,
     enumerable: false,
@@ -2100,7 +2117,6 @@ var prototype$6 = {
       });
     }
   },
-  // //TODO: implement rest arrays intersection
   intersection: {
     configurable: true,
     enumerable: false,
@@ -2461,7 +2477,7 @@ var _native$6 = {
    * @param {array} arr1 - the first array
    * @param {array} arr2 - the second array
    * @param {boolean} symmetric - if true does the real difference between both of the two arrays
-   * @return {boolean}
+   * @return {array}
    */
   difference: {
     configurable: true,
@@ -2487,7 +2503,7 @@ var _native$6 = {
    * @instance
    * @param {array} arr1 - the first array
    * @param {array} arr2 - the second array
-   * @return {boolean}
+   * @return {array}
    */
   intersection: {
     configurable: true,

@@ -32,6 +32,23 @@ export default {
     },
   },
   /**
+   * random GUID generator
+   * @example <caption>eg. usage</caption>
+   * console.log(String.GUID()); // e405cd23-2640-4e31-8b6e-fecc268ca9c7
+   * @memberOf string
+   * @method GUID
+   * @return {string}
+   */
+  GUID: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      // Random GUID generator based on .toString(16);
+      return `${Math.random().toString(16).slice(2, 10)}-${Math.random().toString(16).slice(2, 6)}-4${Math.random().toString(16).slice(2, 5)}-${Math.random().toString(16).slice(2, 6)}-${Math.random().toString(16).slice(2, 14)}`;
+    },
+  },
+  /**
    * converts a string to an integer number
    * @example <caption>eg. usage</caption>
    * console.log(String.toInt('550')); // 550

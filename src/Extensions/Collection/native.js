@@ -14,7 +14,7 @@ export default {
    *
    * console.log(arr1.difference(arr2)); // ['d', 'e', 'f', 'i']
    * console.log(arr1.difference(arr2, false)); // ['e', 'i']
-   * @memberOf array
+   * @memberOf collection
    * @method difference
    * @instance
    * @param {array} arr1 - the first array
@@ -43,7 +43,7 @@ export default {
    * console.log(Array.intersection(arr1, arr2)); // ['a', 'o', 'u']
    *
    * console.log(arr1.intersection(arr2)); // ['a', 'o', 'u']
-   * @memberOf array
+   * @memberOf collection
    * @method intersection
    * @instance
    * @param {array} arr1 - the first array
@@ -77,7 +77,7 @@ export default {
    * console.log(arr.contains('a')); // true
    * console.log(arr.contains(['a', 'b', 'e']); // true
    * console.log(arr.contains(['a', 'b', 'e'], true); // false
-   * @memberOf array
+   * @memberOf collection
    * @method contains
    * @instance
    * @param {array} arr - the array to be checked
@@ -104,7 +104,7 @@ export default {
    *
    * console.log(Array.unique(arr); // ['a', 'e', 'i', 'o', 'u']
    * console.log(arr.unique(); // ['a', 'e', 'i', 'o', 'u']
-   * @memberOf array
+   * @memberOf collection
    * @method unique
    * @instance
    * @param {array} a - the array to be uniqued

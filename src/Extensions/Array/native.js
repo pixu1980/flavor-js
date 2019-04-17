@@ -83,7 +83,7 @@ export default {
    * @param {array} arr1 - the first array
    * @param {array} arr2 - the second array
    * @param {boolean} symmetric - if true does the real difference between both of the two arrays
-   * @return {boolean}
+   * @return {array}
    */
   difference: {
     configurable: true,
@@ -107,7 +107,7 @@ export default {
    * @instance
    * @param {array} arr1 - the first array
    * @param {array} arr2 - the second array
-   * @return {boolean}
+   * @return {array}
    */
   intersection: {
     configurable: true,

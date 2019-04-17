@@ -17,7 +17,7 @@ export default {
    * console.log(Number.isNumber(function(){})); // false
    *
    * console.log(Number.isNumber(null)); // false
-   * @memberOf function
+   * @memberOf number
    * @method isNumber
    * @instance
    * @param {number} n - the number to be checked
