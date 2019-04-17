@@ -4,6 +4,69 @@
  */
 export default {
   /**
+   * loremizes an array
+   * @example <caption>eg. usage</caption>
+   * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
+   *
+   * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
+   *
+   * console.log(Array.lorem(5, {type: 'a', value: 1}));
+   * // it logs
+   * [
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 1}
+   * ];
+   *
+   * console.log(Array.lorem(5, function(index) {
+   *   return {
+   *     type: 'a',
+   *     value: index,
+   *   };
+   * });
+   * // it logs
+   * [
+   *   {type: 'a', value: 1},
+   *   {type: 'a', value: 2},
+   *   {type: 'a', value: 3},
+   *   {type: 'a', value: 4},
+   *   {type: 'a', value: 5}
+   * ];
+   *
+   * @memberOf array
+   * @method lorem
+   * @instance
+   * @param {number} items
+   * @param {function|object} [model=false]
+   * @return {array}
+   */
+  lorem: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(items = 0, model = false) {
+      const arr = [];
+
+      Function.times((i) => {
+        if (!!model) {
+          if (Function.isFunction(model)) {
+            arr.push(model(i));
+          } else {
+            arr.push(model);
+          }
+        } else {
+          arr.push(i);
+        }
+      }, items);
+
+      return arr;
+    },
+  },
+  /**
    * return a new array containing the difference between two arrays
    * @example <caption>eg. usage</caption>
    * var arr1 = ['a', 'e', 'i', 'o', 'u'];
@@ -27,11 +90,7 @@ export default {
     enumerable: false,
     writable: true,
     value(arr1, arr2, symmetric = true) {
-      if (Array.isArray(arr1) && Array.isArray(arr2)) {
-        return Array.prototype.difference.call(arr1, arr2, symmetric);
-      }
-
-      return [];
+      return Array.prototype.difference.call(arr1, arr2, symmetric);
     },
   },
   /**
@@ -55,11 +114,7 @@ export default {
     enumerable: false,
     writable: true,
     value(arr1, arr2) {
-      if (Array.isArray(arr1) && Array.isArray(arr2)) {
-        return Array.prototype.intersection.call(arr1, arr2);
-      }
-
-      return [];
+      return Array.prototype.intersection.call(arr1, arr2);
     },
   },
 
@@ -90,11 +145,7 @@ export default {
     enumerable: false,
     writable: true,
     value(arr, any, all = false) {
-      if (Array.isArray(arr)) {
-        return Array.prototype.contains.call(arr, any, all);
-      }
-
-      return arr;
+      return Array.prototype.contains.call(arr, any, all);
     },
   },
   /**
@@ -107,101 +158,94 @@ export default {
    * @memberOf array
    * @method unique
    * @instance
-   * @param {array} a - the array to be uniqued
+   * @param {array} arr - the array to be uniqued
    * @return {array}
    */
   unique: {
     configurable: true,
     enumerable: false,
     writable: true,
-    value(a) {
-      if (Array.isArray(a)) {
-        return Array.prototype.unique.call(a);
-      }
-
-      return a;
+    value(arr) {
+      return Array.prototype.unique.call(arr);
     },
   },
-
-  // /**
-  //  * loremizes an array
-  //  * @example <caption>eg. usage</caption>
-  //  * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
-  //  *
-  //  * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
-  //  *
-  //  * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
-  //  *
-  //  * console.log(Array.lorem(5, {type: 'a', value: 1}));
-  //  * // it logs
-  //  * [
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'a', value: 1}
-  //  * ];
-  //  *
-  //  * console.log(Array.lorem(5, function(index) {
-  //  *   return {
-  //  *     type: 'a',
-  //  *     value: index,
-  //  *   };
-  //  * });
-  //  * // it logs
-  //  * [
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'a', value: 2},
-  //  *   {type: 'a', value: 3},
-  //  *   {type: 'a', value: 4},
-  //  *   {type: 'a', value: 5}
-  //  * ];
-  //  *
-  //  * @memberOf array
-  //  * @method lorem
-  //  * @instance
-  //  * @param {number} items
-  //  * @param {function|object} [model=false]
-  //  * @return {array}
-  //  */
-  // lorem(items, model = false) {
-  //   return Array.prototype.lorem.call(items, model);
-  // },
-
-  // /**
-  //  * flattens array a single level deep,<br>
-  //  * or with deep parameter (true boolean) recursively flattens array,<br>
-  //  * or with deep parameter (number) you specify the recursion depth
-  //  * @example <caption>eg. usage</caption>
-  //  * var a = [1, [2, [3, [4]], 5]];
-  //  *
-  //  * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
-  //  * console.log(Array.flatten(a, 1)); // same as above
-  //  * console.log(a.flatten()); // same as above
-  //  * console.log(a.flatten(1)); // same as above
-  //  *
-  //  * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
-  //  * console.log(a.flatten(true)); // same as above
-  //  *
-  //  * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
-  //  * console.log(a.flatten(2)); // same as above
-  //  *
-  //  * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
-  //  * console.log(a.flatten(3)); // same as above
-  //  * @memberOf array
-  //  * @method flatten
-  //  * @instance
-  //  * @param {array} a - the array
-  //  * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
-  //  * @return {array}
-  //  */
-  // flatten(a, deep = false) {
-  //   if (Array.isArray(a)) {
-  //     return Array.prototype.flatten.call(a, deep);
-  //   }
-
-  //   return a;
-  // },
+  /**
+   * cleans up an array from falsy values (0, undefined, null, false) out of an array<br><br>
+   * @example <caption>eg. usage</caption>
+   * var arr = [false, true, undefined, 0, 1, null, 'a string', {}, []];
+   *
+   * console.log(Array.clean(arr); // [true, 1, 'a string', {}, []]
+   * console.log(arr.clean(); // [true, 1, 'a string', {}, []]
+   * @memberOf array
+   * @method clean
+   * @instance
+   * @param {array} arr - the array to be cleaned
+   * @return {array}
+   */
+  clean: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.clean.call(arr);
+    },
+  },
+  /**
+   * extracts only numbers values out of an array<br><br>
+   * @example <caption>eg. usage</caption>
+   * var arr = [null, 'a string', 1, false, undefined, {}, [], 7.85, 0, -0.5];
+   *
+   * console.log(Array.numbers(arr); // [1, 7.85, 0, -0.5]
+   * console.log(arr.numbers(); // [1, 7.85, 0, -0.5]
+   * @memberOf array
+   * @method numbers
+   * @instance
+   * @param {array} arr - the array to be filtered
+   * @return {array}
+   */
+  numbers: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.numbers.call(arr);
+    },
+  },
+  /**
+   * flattens array a single level deep,<br>
+   * or with deep parameter (true boolean) recursively flattens array,<br>
+   * or with deep parameter (number) you specify the recursion depth
+   * @example <caption>eg. usage</caption>
+   * var a = [1, [2, [3, [4]], 5]];
+   *
+   * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
+   * console.log(Array.flatten(a, 1)); // same as above
+   * console.log(a.flatten()); // same as above
+   * console.log(a.flatten(1)); // same as above
+   *
+   * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
+   * console.log(a.flatten(true)); // same as above
+   *
+   * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
+   * console.log(a.flatten(2)); // same as above
+   *
+   * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
+   * console.log(a.flatten(3)); // same as above
+   * @memberOf array
+   * @method flatten
+   * @instance
+   * @param {array} arr - the array
+   * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
+   * @return {array}
+   */
+  flatten: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr, deep = false) {
+      return Array.prototype.flatten.call(arr, deep);
+    },
+  },
   // /**
   //  * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
   //  * @example <caption>eg. usage</caption>

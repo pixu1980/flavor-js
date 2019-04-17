@@ -1,4 +1,4 @@
-import { isFunction } from '../../Helpers/index';
+import { isRequired, isFunction, functionErrorHandler } from '../../Helpers/index';
 
 /**
  * @namespace function
@@ -20,15 +20,15 @@ export default {
    * @memberOf function
    * @method isFunction
    * @instance
-   * @param {function} f - the function to be checked
+   * @param {function} fn - the function to be checked
    * @return {boolean}
    */
   isFunction: {
     configurable: true,
     enumerable: false,
     writable: true,
-    value(f) {
-      return isFunction(f);
+    value(fn) {
+      return isFunction(fn);
     },
   },
   /**
@@ -43,37 +43,72 @@ export default {
      *   prop2: 'foo';
      * };
    *
-   * var f = function(a, b, c) {
+   * var fn = function(a, b, c) {
      *   console.log(this.prop1, a, b, c);
      * }
    *
-   * f(a, b, c);
+   * fn(a, b, c);
    * // it logs
    * undefined, 1, Date, function()
    *
-   * var pf = f.proxy(scope);
-   * pf(a, b, c);
+   * var pfn = fn.proxy(scope);
+   * pfn(a, b, c);
    * // it logs
    * 2.53, 1, Date, function()
    *
-   * pf = f.proxy(scope, 2, null);
-   * pf(a, b, c);
+   * pfn = fn.proxy(scope, 2, null);
+   * pfn(a, b, c);
    * // it logs
    * 2.53, 2, null, function()
    * @memberOf function
    * @method proxy
    * @instance
-   * @param {function} f - the function to be proxed
+   * @param {function} fn - the function to be proxed
    * @param {object} scope - the scope object (will be `this` inside the function)
-   * @param {...object} args - pass one or more arguments to override the original handled arguments
+   * @param {...any} args - pass one or more arguments to override the original handled arguments
    * @return {function}
    */
   proxy: {
     configurable: true,
     enumerable: false,
     writable: true,
-    value(f, scope, ...args) {
-      return Function.prototype.proxy.call(f, scope, ...args);
+    value(fn, scope, ...args) {
+      return Function.prototype.proxy.call(fn, scope, ...args);
+    },
+  },
+  /**
+   * repeats a function n times
+   * @example <caption>eg. usage</caption>
+   * Function.times(5, (i) => {
+   *   console.log(i);
+   * });
+   *
+   * // logs 1, 2, 3, 4, 5
+   * @example <caption>or</caption>
+   * Function.times(function(i) {
+   *   console.log(i);
+   * }, true);
+   *
+   * // logs 5, 4, 3, 2, 1
+   * @memberOf number
+   * @method times
+   * @instance
+   * @param {function} iteratee - the iteratee function to invoke<br>
+   * the iteratee will be invoked passing the index as i<br>
+   * so the iteratee has to be something like this<br>
+   * <pre>
+   * function(i) {}
+   * </pre>
+   * @param {number} iteratee.i - the index
+   * @param {number} [times=0] - the number of times
+   * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
+   */
+  times: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(iteratee, times = 0, reverse = false) {
+      Function.prototype.times.call(iteratee, times, reverse);
     },
   },
 };

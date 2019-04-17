@@ -1,3 +1,5 @@
+import { isRequired, isArray, arrayErrorHandler } from '../../Helpers/index';
+
 /**
  * @namespace array
  * @description extensions for the JS primitive Array
@@ -9,6 +11,8 @@ export default {
     enumerable: false,
     writable: true,
     value(arr, symmetric = true) {
+      arrayErrorHandler(this, arr);
+
       if (!!symmetric) {
         return Array.prototype.unique.call([
           ...this.filter(item => !arr.includes(item)),
@@ -25,6 +29,8 @@ export default {
     enumerable: false,
     writable: true,
     value(arr) {
+      arrayErrorHandler(this, arr);
+
       return this.filter(item => arr.includes(item));
     },
   },
@@ -33,6 +39,8 @@ export default {
     enumerable: false,
     writable: true,
     value(any, all = false) {
+      arrayErrorHandler(this);
+
       if (Array.isArray(any)) {
         if (!all) {
           return Array.prototype.intersection.call(this, any).length > 0;
@@ -49,7 +57,53 @@ export default {
     enumerable: false,
     writable: true,
     value() {
+      arrayErrorHandler(this);
+
       return [...new Set(this)];
+    },
+  },
+  clean: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return this.filter(Boolean);
+    },
+  },
+  numbers: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return this.filter((item) => {
+        return item === 0 ? true : Number(item);
+      });
+    },
+  },
+  flatten: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(deep = false) {
+      arrayErrorHandler(this);
+
+      if (Boolean.isBoolean(deep) && !!deep) {
+        return [].concat(...this.map(v => (Array.isArray(v) ? v.flatten(true) : v)));
+      }
+
+      const depth = deep || 1;
+
+      return this.reduce((acc, item) => {
+        if(depth > 1 && Array.isArray(item)) {
+          return acc.concat(item.flatten(depth - 1));
+        }
+
+        return acc.concat(item);
+      }, []);
     },
   },
   // sortBy(propNames, propDirections) {
@@ -252,27 +306,6 @@ export default {
   //   return _.deepMap(this, childrenPropName, iteratee);
   // },
 
-  // lorem(items, model = false) {
-  //   return Number.times(items, (i) => {
-  //     if (!!model) {
-  //       return Function.isFunction(model) ? model(i) : model;
-  //     }
-
-  //     return i;
-  //   });
-  // },
-
-  // flatten(deep) {
-  //   if (!!deep) {
-  //     if (Number.isNumber(deep)) {
-  //       return _.flattenDepth(this, deep);
-  //     } else if (Boolean.isBoolean(deep)) {
-  //       return _.flattenDeep(this);
-  //     }
-  //   }
-
-  //   return _.flatten(this);
-  // },
 
   // shuffle() {
   //   return _.shuffle(this);

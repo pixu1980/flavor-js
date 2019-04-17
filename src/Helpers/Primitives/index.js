@@ -1,30 +1,30 @@
-import isRequired from './isRequired';
-
 import {
   trueTypeOf,
   isNull,
   isUndefined,
   isNullOrUndefined,
   isObject,
-  objectErrorHandler,
   isFunction,
-  functionErrorHandler,
   isBoolean,
-  booleanErrorHandler,
   isNumber,
-  numberErrorHandler,
   isDate,
-  dateErrorHandler,
   isString,
-  stringErrorHandler,
   isRegExp,
-  regexpErrorHandler,
   isArray,
+} from './typeChecking';
+
+import {
+  objectErrorHandler,
+  functionErrorHandler,
+  booleanErrorHandler,
+  numberErrorHandler,
+  dateErrorHandler,
+  stringErrorHandler,
+  regexpErrorHandler,
   arrayErrorHandler,
-} from './Primitives/index';
+} from './errorHandlers';
 
 export {
-  isRequired,
   trueTypeOf,
   isNull,
   isUndefined,
@@ -48,7 +48,6 @@ export {
 };
 
 export default {
-  isRequired,
   trueTypeOf,
   isNull,
   isUndefined,

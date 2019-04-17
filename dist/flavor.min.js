@@ -406,19 +406,12 @@
     }();
   }
 
+  // THANKS TO https://davidwalsh.name/javascript-tricks
+
   // THANKS TO https://gomakethings.com/true-type-checking-with-vanilla-js/
   function trueTypeOf(obj) {
     return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
   } // Object.prototype.toString.call([]); // [object Array]
-  // Object.prototype.toString.call({}); // [object Object]
-  // Object.prototype.toString.call(''); // [object String]
-  // Object.prototype.toString.call(new Date()); // [object Date]
-  // Object.prototype.toString.call(1); // [object Number]
-  // Object.prototype.toString.call(function () {}); // [object Function]
-  // Object.prototype.toString.call(/test/i); // [object RegExp]
-  // Object.prototype.toString.call(true); // [object Boolean]
-  // Object.prototype.toString.call(null); // [object Null]
-  // Object.prototype.toString.call(); // [object Undefined]
 
   function isUndefined(any) {
     return trueTypeOf(any) === 'undefined';
@@ -450,6 +443,30 @@
 
   function isArray(any) {
     return trueTypeOf(any) === 'array';
+  }
+
+  function functionErrorHandler() {
+    for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      fns[_key2] = arguments[_key2];
+    }
+
+    [].concat(fns).forEach(function (fn) {
+      if (!isFunction(fn)) {
+        throw new Error("".concat(fn, " is not a function"));
+      }
+    });
+  }
+
+  function arrayErrorHandler() {
+    for (var _len8 = arguments.length, arrs = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+      arrs[_key8] = arguments[_key8];
+    }
+
+    [].concat(arrs).forEach(function (arr) {
+      if (!isArray(arr)) {
+        throw new Error("".concat(arr, " is not an array"));
+      }
+    });
   }
 
   /* eslint-disable prefer-destructuring */
@@ -1480,6 +1497,7 @@
    * @namespace function
    * @description extensions for the JS primitive Function
    */
+
   var prototype$1 = {
     proxy: {
       configurable: true,
@@ -1490,6 +1508,7 @@
           proxyArgs[_key - 1] = arguments[_key];
         }
 
+        functionErrorHandler(this);
         var func = this;
         return function () {
           for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
@@ -1498,6 +1517,21 @@
 
           return func.apply(scope, proxyArgs.length > 0 ? proxyArgs : args);
         };
+      }
+    },
+    times: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var times = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        functionErrorHandler(this);
+        var index = !!reverse ? times + 1 : 0;
+
+        while (reverse ? --index > 0 : index++ < times) {
+          this(index);
+        }
       }
     }
   };
@@ -1523,15 +1557,15 @@
      * @memberOf function
      * @method isFunction
      * @instance
-     * @param {function} f - the function to be checked
+     * @param {function} fn - the function to be checked
      * @return {boolean}
      */
     isFunction: {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: function value(f) {
-        return isFunction(f);
+      value: function value(fn) {
+        return isFunction(fn);
       }
     },
 
@@ -1547,43 +1581,81 @@
        *   prop2: 'foo';
        * };
      *
-     * var f = function(a, b, c) {
+     * var fn = function(a, b, c) {
        *   console.log(this.prop1, a, b, c);
        * }
      *
-     * f(a, b, c);
+     * fn(a, b, c);
      * // it logs
      * undefined, 1, Date, function()
      *
-     * var pf = f.proxy(scope);
-     * pf(a, b, c);
+     * var pfn = fn.proxy(scope);
+     * pfn(a, b, c);
      * // it logs
      * 2.53, 1, Date, function()
      *
-     * pf = f.proxy(scope, 2, null);
-     * pf(a, b, c);
+     * pfn = fn.proxy(scope, 2, null);
+     * pfn(a, b, c);
      * // it logs
      * 2.53, 2, null, function()
      * @memberOf function
      * @method proxy
      * @instance
-     * @param {function} f - the function to be proxed
+     * @param {function} fn - the function to be proxed
      * @param {object} scope - the scope object (will be `this` inside the function)
-     * @param {...object} args - pass one or more arguments to override the original handled arguments
+     * @param {...any} args - pass one or more arguments to override the original handled arguments
      * @return {function}
      */
     proxy: {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: function value(f, scope) {
+      value: function value(fn, scope) {
         var _Function$prototype$p;
 
         for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
           args[_key - 2] = arguments[_key];
         }
 
-        return (_Function$prototype$p = Function.prototype.proxy).call.apply(_Function$prototype$p, [f, scope].concat(args));
+        return (_Function$prototype$p = Function.prototype.proxy).call.apply(_Function$prototype$p, [fn, scope].concat(args));
+      }
+    },
+
+    /**
+     * repeats a function n times
+     * @example <caption>eg. usage</caption>
+     * Function.times(5, (i) => {
+     *   console.log(i);
+     * });
+     *
+     * // logs 1, 2, 3, 4, 5
+     * @example <caption>or</caption>
+     * Function.times(function(i) {
+     *   console.log(i);
+     * }, true);
+     *
+     * // logs 5, 4, 3, 2, 1
+     * @memberOf number
+     * @method times
+     * @instance
+     * @param {function} iteratee - the iteratee function to invoke<br>
+     * the iteratee will be invoked passing the index as i<br>
+     * so the iteratee has to be something like this<br>
+     * <pre>
+     * function(i) {}
+     * </pre>
+     * @param {number} iteratee.i - the index
+     * @param {number} [times=0] - the number of times
+     * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
+     */
+    times: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(iteratee) {
+        var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var reverse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+        Function.prototype.times.call(iteratee, times, reverse);
       }
     }
   };
@@ -2006,6 +2078,7 @@
    * @namespace array
    * @description extensions for the JS primitive Array
    */
+
   var prototype$6 = {
     //TODO: implement rest arrays difference
     difference: {
@@ -2016,6 +2089,7 @@
         var _this = this;
 
         var symmetric = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        arrayErrorHandler(this, arr);
 
         if (!!symmetric) {
           return Array.prototype.unique.call([].concat(_toConsumableArray(this.filter(function (item) {
@@ -2036,6 +2110,7 @@
       enumerable: false,
       writable: true,
       value: function value(arr) {
+        arrayErrorHandler(this, arr);
         return this.filter(function (item) {
           return arr.includes(item);
         });
@@ -2047,6 +2122,7 @@
       writable: true,
       value: function value(any) {
         var all = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        arrayErrorHandler(this);
 
         if (Array.isArray(any)) {
           if (!all) {
@@ -2064,7 +2140,54 @@
       enumerable: false,
       writable: true,
       value: function value() {
+        arrayErrorHandler(this);
         return _toConsumableArray(new Set(this));
+      }
+    },
+    clean: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.filter(Boolean);
+      }
+    },
+    numbers: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.filter(function (item) {
+          return item === 0 ? true : Number(item);
+        });
+      }
+    },
+    flatten: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var deep = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        arrayErrorHandler(this);
+
+        if (Boolean.isBoolean(deep) && !!deep) {
+          var _ref;
+
+          return (_ref = []).concat.apply(_ref, _toConsumableArray(this.map(function (v) {
+            return Array.isArray(v) ? v.flatten(true) : v;
+          })));
+        }
+
+        var depth = deep || 1;
+        return this.reduce(function (acc, item) {
+          if (depth > 1 && Array.isArray(item)) {
+            return acc.concat(item.flatten(depth - 1));
+          }
+
+          return acc.concat(item);
+        }, []);
       }
     } // sortBy(propNames, propDirections) {
     //   if (String.isString(propNames)) {
@@ -2222,24 +2345,6 @@
     // deepMap(childrenPropName = 'children', iteratee) {
     //   return _.deepMap(this, childrenPropName, iteratee);
     // },
-    // lorem(items, model = false) {
-    //   return Number.times(items, (i) => {
-    //     if (!!model) {
-    //       return Function.isFunction(model) ? model(i) : model;
-    //     }
-    //     return i;
-    //   });
-    // },
-    // flatten(deep) {
-    //   if (!!deep) {
-    //     if (Number.isNumber(deep)) {
-    //       return _.flattenDepth(this, deep);
-    //     } else if (Boolean.isBoolean(deep)) {
-    //       return _.flattenDeep(this);
-    //     }
-    //   }
-    //   return _.flatten(this);
-    // },
     // shuffle() {
     //   return _.shuffle(this);
     // },
@@ -2276,6 +2381,70 @@
    */
   var _native$6 = {
     /**
+     * loremizes an array
+     * @example <caption>eg. usage</caption>
+     * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
+     *
+     * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
+     *
+     * console.log(Array.lorem(5, {type: 'a', value: 1}));
+     * // it logs
+     * [
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 1}
+     * ];
+     *
+     * console.log(Array.lorem(5, function(index) {
+     *   return {
+     *     type: 'a',
+     *     value: index,
+     *   };
+     * });
+     * // it logs
+     * [
+     *   {type: 'a', value: 1},
+     *   {type: 'a', value: 2},
+     *   {type: 'a', value: 3},
+     *   {type: 'a', value: 4},
+     *   {type: 'a', value: 5}
+     * ];
+     *
+     * @memberOf array
+     * @method lorem
+     * @instance
+     * @param {number} items
+     * @param {function|object} [model=false]
+     * @return {array}
+     */
+    lorem: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var model = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        var arr = [];
+        Function.times(function (i) {
+          if (!!model) {
+            if (Function.isFunction(model)) {
+              arr.push(model(i));
+            } else {
+              arr.push(model);
+            }
+          } else {
+            arr.push(i);
+          }
+        }, items);
+        return arr;
+      }
+    },
+
+    /**
      * return a new array containing the difference between two arrays
      * @example <caption>eg. usage</caption>
      * var arr1 = ['a', 'e', 'i', 'o', 'u'];
@@ -2300,12 +2469,7 @@
       writable: true,
       value: function value(arr1, arr2) {
         var symmetric = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-        if (Array.isArray(arr1) && Array.isArray(arr2)) {
-          return Array.prototype.difference.call(arr1, arr2, symmetric);
-        }
-
-        return [];
+        return Array.prototype.difference.call(arr1, arr2, symmetric);
       }
     },
 
@@ -2330,11 +2494,7 @@
       enumerable: false,
       writable: true,
       value: function value(arr1, arr2) {
-        if (Array.isArray(arr1) && Array.isArray(arr2)) {
-          return Array.prototype.intersection.call(arr1, arr2);
-        }
-
-        return [];
+        return Array.prototype.intersection.call(arr1, arr2);
       }
     },
 
@@ -2366,12 +2526,7 @@
       writable: true,
       value: function value(arr, any) {
         var all = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-        if (Array.isArray(arr)) {
-          return Array.prototype.contains.call(arr, any, all);
-        }
-
-        return arr;
+        return Array.prototype.contains.call(arr, any, all);
       }
     },
 
@@ -2385,98 +2540,98 @@
      * @memberOf array
      * @method unique
      * @instance
-     * @param {array} a - the array to be uniqued
+     * @param {array} arr - the array to be uniqued
      * @return {array}
      */
     unique: {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: function value(a) {
-        if (Array.isArray(a)) {
-          return Array.prototype.unique.call(a);
-        }
+      value: function value(arr) {
+        return Array.prototype.unique.call(arr);
+      }
+    },
 
-        return a;
+    /**
+     * cleans up an array from falsy values (0, undefined, null, false) out of an array<br><br>
+     * @example <caption>eg. usage</caption>
+     * var arr = [false, true, undefined, 0, 1, null, 'a string', {}, []];
+     *
+     * console.log(Array.clean(arr); // [true, 1, 'a string', {}, []]
+     * console.log(arr.clean(); // [true, 1, 'a string', {}, []]
+     * @memberOf array
+     * @method clean
+     * @instance
+     * @param {array} arr - the array to be cleaned
+     * @return {array}
+     */
+    clean: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.clean.call(arr);
+      }
+    },
+
+    /**
+     * extracts only numbers values out of an array<br><br>
+     * @example <caption>eg. usage</caption>
+     * var arr = [null, 'a string', 1, false, undefined, {}, [], 7.85, 0, -0.5];
+     *
+     * console.log(Array.numbers(arr); // [1, 7.85, 0, -0.5]
+     * console.log(arr.numbers(); // [1, 7.85, 0, -0.5]
+     * @memberOf array
+     * @method numbers
+     * @instance
+     * @param {array} arr - the array to be filtered
+     * @return {array}
+     */
+    numbers: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.numbers.call(arr);
+      }
+    },
+
+    /**
+     * flattens array a single level deep,<br>
+     * or with deep parameter (true boolean) recursively flattens array,<br>
+     * or with deep parameter (number) you specify the recursion depth
+     * @example <caption>eg. usage</caption>
+     * var a = [1, [2, [3, [4]], 5]];
+     *
+     * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
+     * console.log(Array.flatten(a, 1)); // same as above
+     * console.log(a.flatten()); // same as above
+     * console.log(a.flatten(1)); // same as above
+     *
+     * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
+     * console.log(a.flatten(true)); // same as above
+     *
+     * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
+     * console.log(a.flatten(2)); // same as above
+     *
+     * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
+     * console.log(a.flatten(3)); // same as above
+     * @memberOf array
+     * @method flatten
+     * @instance
+     * @param {array} arr - the array
+     * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
+     * @return {array}
+     */
+    flatten: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        var deep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        return Array.prototype.flatten.call(arr, deep);
       }
     } // /**
-    //  * loremizes an array
-    //  * @example <caption>eg. usage</caption>
-    //  * console.log(Array.lorem(5)); // [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.lorem(5, 1)); // [1, 1, 1, 1, 1];
-    //  *
-    //  * console.log(Array.lorem(5, '1')); // ['1', '1', '1', '1', '1'];
-    //  *
-    //  * console.log(Array.lorem(5, {type: 'a', value: 1}));
-    //  * // it logs
-    //  * [
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'a', value: 1}
-    //  * ];
-    //  *
-    //  * console.log(Array.lorem(5, function(index) {
-    //  *   return {
-    //  *     type: 'a',
-    //  *     value: index,
-    //  *   };
-    //  * });
-    //  * // it logs
-    //  * [
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'a', value: 2},
-    //  *   {type: 'a', value: 3},
-    //  *   {type: 'a', value: 4},
-    //  *   {type: 'a', value: 5}
-    //  * ];
-    //  *
-    //  * @memberOf array
-    //  * @method lorem
-    //  * @instance
-    //  * @param {number} items
-    //  * @param {function|object} [model=false]
-    //  * @return {array}
-    //  */
-    // lorem(items, model = false) {
-    //   return Array.prototype.lorem.call(items, model);
-    // },
-    // /**
-    //  * flattens array a single level deep,<br>
-    //  * or with deep parameter (true boolean) recursively flattens array,<br>
-    //  * or with deep parameter (number) you specify the recursion depth
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, [2, [3, [4]], 5]];
-    //  *
-    //  * console.log(Array.flatten(a)); // [1, 2, [3, [4]], 5]
-    //  * console.log(Array.flatten(a, 1)); // same as above
-    //  * console.log(a.flatten()); // same as above
-    //  * console.log(a.flatten(1)); // same as above
-    //  *
-    //  * console.log(Array.flatten(a, true)); // [1, 2, 3, 4, 5]
-    //  * console.log(a.flatten(true)); // same as above
-    //  *
-    //  * console.log(Array.flatten(a, 2)); // [1, 2, 3, [4], 5]
-    //  * console.log(a.flatten(2)); // same as above
-    //  *
-    //  * console.log(Array.flatten(a, 3)); // [1, 2, 3, 4, 5]
-    //  * console.log(a.flatten(3)); // same as above
-    //  * @memberOf array
-    //  * @method flatten
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @param {boolean|number} [deep=false] - the deep (boolean) or depth (number) parameter specifies to do a full recursion or the recursion depth
-    //  * @return {array}
-    //  */
-    // flatten(a, deep = false) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.flatten.call(a, deep);
-    //   }
-    //   return a;
-    // },
-    // /**
     //  * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
     //  * @example <caption>eg. usage</caption>
     //  * var a = [1, 2, 3, 4, 5];

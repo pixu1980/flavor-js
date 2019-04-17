@@ -1,3 +1,13 @@
+// THANKS TO https://davidwalsh.name/javascript-tricks
+// Assuming "?post=1234&action=edit"
+const urlParams = new URLSearchParams(window.location.search);
+
+console.log(urlParams.has('post')); // true
+console.log(urlParams.get('action')); // "edit"
+console.log(urlParams.getAll('action')); // ["edit"]
+console.log(urlParams.toString()); // "?post=1234&action=edit"
+console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
+
 // export default {
 //   /**
 //    * delays a function by specified ms
@@ -330,38 +340,6 @@
 //     return (collection && collection.length && values && values.length)
 //       ? _basePullAll(collection, values, _baseIteratee(iteratee, 2), comparator)
 //       : collection;
-//   },
-
-//   /**
-//    * a reverse implementation of _.times by lodash<br><br>
-//    * @example <caption>eg. usage</caption>
-//    * _.timesReverse(5, function(i) {
-//    *   console.log(i);
-//    * });
-//    *
-//    * // logs
-//    * 5
-//    * 4
-//    * 3
-//    * 2
-//    * 1
-//    * @memberOf lodash
-//    * @method timesReverse
-//    * @instance
-//    * @param {number} times - num of times to invoke iteratee
-//    * @param {function} iteratee - the iteratee function to invoke<br>
-//    * the iteratee will be invoked passing che cycle indicator as i<br>
-//    * so the iteratee has to be something like this<br>
-//    * <pre>
-//    * function(i) {}
-//    * </pre>
-//    */
-//   timesReverse(times, iteratee) {
-//     let index = times;
-
-//     while (--index >= 0) {
-//       _.isFunction(iteratee) && iteratee(index);
-//     }
 //   },
 
 //   /**
