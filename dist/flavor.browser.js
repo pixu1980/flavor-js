@@ -156,6 +156,10 @@
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
   }
 
+  function _toArray(arr) {
+    return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
+  }
+
   function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
   }
@@ -2206,6 +2210,49 @@
           return acc.concat(item);
         }, []);
       }
+    },
+    shuffle: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+
+        var _this2 = _toArray(this),
+            arr = _this2.slice(0);
+
+        var m = arr.length;
+
+        while (m) {
+          var i = Math.floor(Math.random() * m--);
+          var _ref2 = [arr[i], arr[m]];
+          arr[m] = _ref2[0];
+          arr[i] = _ref2[1];
+        }
+
+        return arr;
+      }
+    },
+    chunks: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var _this3 = this;
+
+        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        arrayErrorHandler(this);
+
+        if (size > 0) {
+          return Array.from({
+            length: Math.ceil(this.length / size)
+          }, function (v, i) {
+            return _this3.slice(i * size, i * size + size);
+          });
+        }
+
+        return this;
+      }
     } // sortBy(propNames, propDirections) {
     //   if (String.isString(propNames)) {
     //     propNames = [propNames];
@@ -2361,12 +2408,6 @@
     // },
     // deepMap(childrenPropName = 'children', iteratee) {
     //   return _.deepMap(this, childrenPropName, iteratee);
-    // },
-    // shuffle() {
-    //   return _.shuffle(this);
-    // },
-    // split(n = 0) {
-    //   return _.chunk(this, n);
     // },
     // reverse(clone = false) {
     //   if (!!clone) {
@@ -2648,55 +2689,62 @@
         var deep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         return Array.prototype.flatten.call(arr, deep);
       }
+    },
+
+    /**
+     * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.shuffle(a)); // [4, 3, 5, 1, 2]
+     * console.log(a.shuffle()); // same as above (or another randomization ;-)
+     * @memberOf array
+     * @method shuffle
+     * @instance
+     * @param {array} arr - the array
+     * @return {array}
+     */
+    shuffle: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.shuffle.call(arr);
+      }
+    },
+
+    /**
+     * splits an array in n-chunks
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.chunks(a)); // []
+     * console.log(a.chunks()); // same as above
+     *
+     * console.log(Array.chunks(a, 1)); // [[1], [2], [3], [4], [5]]
+     * console.log(a.chunks(1)); // same as above
+     *
+     * console.log(Array.chunks(a, 2)); // [[1, 2], [3, 4], [5]]
+     * console.log(a.chunks(2)); // same as above
+     *
+     * console.log(Array.chunks(a, 3)); // [[1, 2, 3], [4, 5]]
+     * console.log(a.chunks(3)); // same as above
+     * @memberOf array
+     * @method chunks
+     * @instance
+     * @param {array} arr - the array
+     * @param {number} [size=0] - the n pieces of chunks you want
+     * @return {array}
+     */
+    chunks: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        return Array.prototype.chunks.call(arr, size);
+      }
     } // /**
-    //  * creates an array of shuffled values, using a version of the Fisher-Yates shuffle. (from lodash documentation)
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.shuffle(a)); // [4, 3, 5, 1, 2]
-    //  * console.log(a.shuffle()); // same as above (or another randomization ;-)
-    //  * @memberOf array
-    //  * @method shuffle
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @return {array}
-    //  */
-    // shuffle(a) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.shuffle.call(a);
-    //   }
-    //   return a;
-    // },
-    // /**
-    //  * splits an array in n-pieces chunks
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.split(a)); // []
-    //  * console.log(a.split()); // same as above
-    //  *
-    //  * console.log(Array.split(a, 1)); // [[1], [2], [3], [4], [5]]
-    //  * console.log(a.split(1)); // same as above
-    //  *
-    //  * console.log(Array.split(a, 2)); // [[1, 2], [3, 4], [5]]
-    //  * console.log(a.split(2)); // same as above
-    //  *
-    //  * console.log(Array.split(a, 3)); // [[1, 2, 3], [4, 5]]
-    //  * console.log(a.split(3)); // same as above
-    //  * @memberOf array
-    //  * @method split
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @param {number} [n=0] - the n pieces of chunks you want
-    //  * @return {array}
-    //  */
-    // split(a, n = 0) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.split.call(a, n);
-    //   }
-    //   return a;
-    // },
-    // /**
     //  * reverses an array, with optional clone parameter to avoid original array mutation
     //  * @example <caption>eg. usage</caption>
     //  * var a = [1, 2, 3, 4, 5];

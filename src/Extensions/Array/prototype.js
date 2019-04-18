@@ -91,7 +91,7 @@ export default {
 
       if (Boolean.isBoolean(deep) && !!deep) {
         return [].concat(...this.map((item) => {
-          if(Array.isArray(item)) {
+          if (Array.isArray(item)) {
             return item.flatten(true);
           }
 
@@ -110,6 +110,44 @@ export default {
       }, []);
     },
   },
+  shuffle: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      const [...arr] = this;
+
+      let m = arr.length;
+
+      while (m) {
+        const i = Math.floor(Math.random() * m--);
+        [arr[m], arr[i]] = [arr[i], arr[m]];
+      }
+
+      return arr;
+    },
+  },
+  chunks: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(size = 0) {
+      arrayErrorHandler(this);
+
+      if(size > 0) {
+        return Array.from({
+          length: Math.ceil(this.length / size),
+        }, (v, i) => {
+          return this.slice(i * size, i * size + size);
+        });
+      }
+
+      return this;
+    },
+  },
+
   // sortBy(propNames, propDirections) {
   //   if (String.isString(propNames)) {
   //     propNames = [propNames];
@@ -310,14 +348,6 @@ export default {
   //   return _.deepMap(this, childrenPropName, iteratee);
   // },
 
-
-  // shuffle() {
-  //   return _.shuffle(this);
-  // },
-
-  // split(n = 0) {
-  //   return _.chunk(this, n);
-  // },
 
   // reverse(clone = false) {
   //   if (!!clone) {
