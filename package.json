@@ -21,7 +21,8 @@
   },
   "keywords": [
     "extend",
-    "natives",
+    "native",
+    "primitives",
     "javascript",
     "flavor-js",
     "ES6"
