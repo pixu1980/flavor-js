@@ -6,7 +6,7 @@ import { isRequired, isFunction, functionErrorHandler } from '../../Helpers/inde
  */
 export default {
   /**
-   * checked if something is a function
+   * checks if something is a function
    * @example <caption>eg. usage</caption>
    * var f = function(){};
    *
@@ -29,6 +29,35 @@ export default {
     writable: true,
     value(fn) {
       return isFunction(fn);
+    },
+  },
+  /**
+   * checks if a function is an async function
+   * @example <caption>eg. usage</caption>
+   * var f = function(){};
+   * var af = async function(){};
+   *
+   * console.log(Function.isAsyncFunction(f)); // false
+   *
+   * console.log(Function.isAsyncFunction(2)); // false
+   *
+   * console.log(Function.isAsyncFunction(function(){})); // false
+   *
+   * console.log(Function.isAsyncFunction(af); // true
+   *
+   * console.log(Function.isAsyncFunction(null)); // false
+   * @memberOf function
+   * @method isFunction
+   * @instance
+   * @param {function} fn - the function to be checked
+   * @return {boolean}
+   */
+  isAsyncFunction: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(fn) {
+      return isFunction(fn) && Function.prototype.isAsyncFunction.call(this);
     },
   },
   /**

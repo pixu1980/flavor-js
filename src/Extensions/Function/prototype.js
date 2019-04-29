@@ -5,6 +5,14 @@ import { isRequired, isFunction, functionErrorHandler } from '../../Helpers/inde
  * @description extensions for the JS primitive Function
  */
 export default {
+  isAsyncFunction: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      return this.constructor.name === 'AsyncFunction';
+    },
+  },
   proxy: {
     configurable: true,
     enumerable: false,
