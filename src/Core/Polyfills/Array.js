@@ -31,6 +31,7 @@ if (!Array.prototype.filter) {
 
       const t = Object(this);
       const len = t.length >>> 0;
+
       if (typeof fun !== 'function') {
         throw new TypeError();
       }
@@ -43,6 +44,7 @@ if (!Array.prototype.filter) {
       for (let i = 0; i < len; i++) {
         if (i in t) {
           val = t[i];
+
           // NOTE: Technically this should Object.defineProperty at
           //       the next index, as push can be affected by
           //       properties on Object.prototype and Array.prototype.
@@ -119,6 +121,7 @@ if (!Array.prototype.includes) {
         if (sameValueZero(o[k], valueToFind)) {
           return true;
         }
+
         // c. Increase k by 1.
         k++;
       }

@@ -4,8 +4,9 @@ import BooleanExt from './Boolean/index';
 import NumberExt from './Number/index';
 import DateExt from './Date/index';
 import StringExt from './String/index';
+import RegExpExt from './RegExp/index';
 import ArrayExt from './Array/index';
-import Collection from './Collection/index';
+import CollectionExt from './Collection/index';
 
 export default {
   Object: ObjectExt,
@@ -14,5 +15,7 @@ export default {
   Number: NumberExt,
   Date: DateExt,
   String: StringExt,
+  RegExp: RegExpExt,
   Array: ArrayExt,
+  Collection: CollectionExt,
 };
