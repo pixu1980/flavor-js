@@ -72,11 +72,7 @@ export default {
     enumerable: false,
     writable: true,
     value(obj, iteratee, scope) {
-      if (isObject(obj)) {
-        return Object.prototype.forEach.call(obj, iteratee, scope);
-      }
-
-      return obj;
+      return Object.prototype.forEach.call(obj, iteratee, scope);
     },
   },
   /**
@@ -140,11 +136,7 @@ export default {
     configurable: true,
     writable: true,
     value(obj, ...objs) {
-      if (Object.isObject(obj)) {
-        return Object.prototype.merge.call(obj, ...objs);
-      }
-
-      return obj;
+      return Object.prototype.merge.call(obj, ...objs);
     },
   },
   /**
@@ -189,11 +181,7 @@ export default {
     configurable: true,
     writable: true,
     value(obj, ...props) {
-      if (Object.isObject(obj)) {
-        return Object.prototype.omit.call(obj, ...props);
-      }
-
-      return obj;
+      return Object.prototype.omit.call(obj, ...props);
     },
   },
   /**
@@ -234,11 +222,7 @@ export default {
     configurable: true,
     writable: true,
     value(obj, ...props) {
-      if (Object.isObject(obj)) {
-        return Object.prototype.pick.call(obj, ...props);
-      }
-
-      return obj;
+      return Object.prototype.pick.call(obj, ...props);
     },
   },
   /**

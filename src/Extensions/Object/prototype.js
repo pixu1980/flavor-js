@@ -1,8 +1,5 @@
 import {
-  isUndefined,
-  isObject,
-  isString,
-  isArray,
+  isUndefined, isRequired, isString, isArray, isObject, objectErrorHandler,
 } from '../../Helpers/index';
 
 /**
@@ -15,9 +12,7 @@ export default {
     configurable: true,
     writable: true,
     value(iteratee, scope) {
-      if (!isObject(this)) {
-        throw new TypeError('Not an object');
-      }
+      objectErrorHandler(this);
 
       scope = scope || window;
 
@@ -33,6 +28,8 @@ export default {
     configurable: true,
     writable: true,
     value() {
+      objectErrorHandler(this);
+
       const clone = {};
 
       Object.keys(this).forEach((key) => {
@@ -51,6 +48,8 @@ export default {
     configurable: true,
     writable: true,
     value(...objs) {
+      objectErrorHandler(this, ...objs);
+
       const mergeObj = [this, ...objs].reduce((acc, obj) => Object.keys(obj).reduce((a, k) => {
         if (acc.hasOwnProperty(k)) {
           if (isArray(acc[k])) {
@@ -75,6 +74,8 @@ export default {
     configurable: true,
     writable: true,
     value(path) {
+      objectErrorHandler(this);
+
       /**
        * Checks if the element exists in an array
        * @param   {Object}  obj The object to check
@@ -155,6 +156,8 @@ export default {
     configurable: true,
     writable: true,
     value(...paths) {
+      objectErrorHandler(this);
+
       let clone = this.clone();
 
       function unsetPath(obj, path) {
@@ -222,6 +225,8 @@ export default {
     configurable: true,
     writable: true,
     value(...props) {
+      objectErrorHandler(this);
+
       return props.reduce((acc, prop) => {
         if (this.hasOwnProperty(prop)) {
           acc[prop] = this[prop];
@@ -236,6 +241,8 @@ export default {
     configurable: true,
     writable: true,
     value(...selectors) {
+      objectErrorHandler(this);
+
       const values = [...selectors].map((selector) => {
         return selector.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter((t) => {
           return t !== '';
@@ -244,7 +251,7 @@ export default {
         }, this);
       });
 
-      if(values.length === 1) {
+      if (values.length === 1) {
         return values[0];
       }
 

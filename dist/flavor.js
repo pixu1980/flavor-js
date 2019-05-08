@@ -453,6 +453,18 @@
     return trueTypeOf(any) === 'array';
   }
 
+  function objectErrorHandler() {
+    for (var _len = arguments.length, objs = new Array(_len), _key = 0; _key < _len; _key++) {
+      objs[_key] = arguments[_key];
+    }
+
+    [].concat(objs).forEach(function (obj) {
+      if (!isObject(obj)) {
+        throw new Error("".concat(obj, " is not an object"));
+      }
+    });
+  }
+
   function functionErrorHandler() {
     for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       fns[_key2] = arguments[_key2];
@@ -461,6 +473,30 @@
     [].concat(fns).forEach(function (fn) {
       if (!isFunction(fn)) {
         throw new Error("".concat(fn, " is not a function"));
+      }
+    });
+  }
+
+  function dateErrorHandler() {
+    for (var _len5 = arguments.length, dts = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+      dts[_key5] = arguments[_key5];
+    }
+
+    [].concat(dts).forEach(function (dt) {
+      if (!isDate(dt)) {
+        throw new Error("".concat(dt, " is not a date"));
+      }
+    });
+  }
+
+  function stringErrorHandler() {
+    for (var _len6 = arguments.length, strs = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+      strs[_key6] = arguments[_key6];
+    }
+
+    [].concat(strs).forEach(function (str) {
+      if (!isString(str)) {
+        throw new Error("".concat(str, " is not a string"));
       }
     });
   }
@@ -906,10 +942,7 @@
       value: function value(iteratee, scope) {
         var _this = this;
 
-        if (!isObject(this)) {
-          throw new TypeError('Not an object');
-        }
-
+        objectErrorHandler(this);
         scope = scope || window;
         Object.keys(this).forEach(function (key) {
           iteratee.call(scope, _this[key], key, _this);
@@ -924,6 +957,7 @@
       value: function value() {
         var _this2 = this;
 
+        objectErrorHandler(this);
         var clone = {};
         Object.keys(this).forEach(function (key) {
           if (isObject(_this2[key])) {
@@ -944,6 +978,7 @@
           objs[_key] = arguments[_key];
         }
 
+        objectErrorHandler.apply(void 0, [this].concat(objs));
         var mergeObj = [this].concat(objs).reduce(function (acc, obj) {
           return Object.keys(obj).reduce(function (a, k) {
             if (acc.hasOwnProperty(k)) {
@@ -969,6 +1004,7 @@
       configurable: true,
       writable: true,
       value: function value(path) {
+        objectErrorHandler(this);
         /**
          * Checks if the element exists in an array
          * @param   {Object}  obj The object to check
@@ -976,6 +1012,7 @@
          * @param   {Number}  index  The array index to check on object.prop
          * @returns {Boolean} Returns true if element in array on object.prop is defined
          */
+
         function hasArray(obj, prop, index) {
           return obj.hasOwnProperty(prop) && (isArray(obj[prop]) || isObject(obj[prop])) && !isUndefined(obj[prop][index]);
         }
@@ -1047,6 +1084,7 @@
       configurable: true,
       writable: true,
       value: function value() {
+        objectErrorHandler(this);
         var clone = this.clone();
 
         function unsetPath(obj, path) {
@@ -1119,6 +1157,8 @@
       value: function value() {
         var _this3 = this;
 
+        objectErrorHandler(this);
+
         for (var _len3 = arguments.length, props = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
           props[_key3] = arguments[_key3];
         }
@@ -1138,6 +1178,8 @@
       writable: true,
       value: function value() {
         var _this4 = this;
+
+        objectErrorHandler(this);
 
         for (var _len4 = arguments.length, selectors = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
           selectors[_key4] = arguments[_key4];
@@ -1234,11 +1276,7 @@
       enumerable: false,
       writable: true,
       value: function value(obj, iteratee, scope) {
-        if (isObject(obj)) {
-          return Object.prototype.forEach.call(obj, iteratee, scope);
-        }
-
-        return obj;
+        return Object.prototype.forEach.call(obj, iteratee, scope);
       }
     },
 
@@ -1304,17 +1342,13 @@
       configurable: true,
       writable: true,
       value: function value(obj) {
-        if (Object.isObject(obj)) {
-          var _Object$prototype$mer;
+        var _Object$prototype$mer;
 
-          for (var _len = arguments.length, objs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-            objs[_key - 1] = arguments[_key];
-          }
-
-          return (_Object$prototype$mer = Object.prototype.merge).call.apply(_Object$prototype$mer, [obj].concat(objs));
+        for (var _len = arguments.length, objs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          objs[_key - 1] = arguments[_key];
         }
 
-        return obj;
+        return (_Object$prototype$mer = Object.prototype.merge).call.apply(_Object$prototype$mer, [obj].concat(objs));
       }
     },
 
@@ -1360,17 +1394,13 @@
       configurable: true,
       writable: true,
       value: function value(obj) {
-        if (Object.isObject(obj)) {
-          var _Object$prototype$omi;
+        var _Object$prototype$omi;
 
-          for (var _len2 = arguments.length, props = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-            props[_key2 - 1] = arguments[_key2];
-          }
-
-          return (_Object$prototype$omi = Object.prototype.omit).call.apply(_Object$prototype$omi, [obj].concat(props));
+        for (var _len2 = arguments.length, props = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+          props[_key2 - 1] = arguments[_key2];
         }
 
-        return obj;
+        return (_Object$prototype$omi = Object.prototype.omit).call.apply(_Object$prototype$omi, [obj].concat(props));
       }
     },
 
@@ -1412,17 +1442,13 @@
       configurable: true,
       writable: true,
       value: function value(obj) {
-        if (Object.isObject(obj)) {
-          var _Object$prototype$pic;
+        var _Object$prototype$pic;
 
-          for (var _len3 = arguments.length, props = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-            props[_key3 - 1] = arguments[_key3];
-          }
-
-          return (_Object$prototype$pic = Object.prototype.pick).call.apply(_Object$prototype$pic, [obj].concat(props));
+        for (var _len3 = arguments.length, props = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+          props[_key3 - 1] = arguments[_key3];
         }
 
-        return obj;
+        return (_Object$prototype$pic = Object.prototype.pick).call.apply(_Object$prototype$pic, [obj].concat(props));
       }
     },
 
@@ -1785,6 +1811,7 @@
    * @namespace number
    * @description extensions for the JS primitive Number
    */
+
   var prototype$3 = {};
 
   /**
@@ -1834,12 +1861,14 @@
    * @namespace date
    * @description extensions for the JS primitive Date
    */
+
   var prototype$4 = {
     toTimestamp: {
       configurable: true,
       enumerable: false,
       writable: true,
       value: function value() {
+        dateErrorHandler(this);
         return Math.round(this);
       }
     }
@@ -1938,19 +1967,25 @@
    * @namespace string
    * @description extensions for the JS primitive String
    */
+
   var prototype$5 = {
+    isPercentage: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        stringErrorHandler(this);
+        return new RegExp(/^((\d{1,2}|100)(?:(\.|,)\d{1,4})?)%$/).test(this);
+      }
+    },
     toInt: {
       configurable: true,
       enumerable: false,
       writable: true,
       value: function value() {
         var radix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-
-        if (String.isString(this)) {
-          return Number.parseInt(this, radix);
-        }
-
-        return this;
+        stringErrorHandler(this);
+        return Number.parseInt(this, radix);
       }
     },
     toFloat: {
@@ -1958,11 +1993,8 @@
       enumerable: false,
       writable: true,
       value: function value() {
-        if (String.isString(this)) {
-          return Number.parseFloat(this);
-        }
-
-        return this;
+        stringErrorHandler(this);
+        return Number.parseFloat(this);
       }
     },
     pad: {
@@ -1972,12 +2004,8 @@
       value: function value() {
         var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
         var chars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
-
-        if (String.isString(this)) {
-          return this.padStart((this.length + length) / 2, chars).padEnd(length, chars);
-        }
-
-        return this;
+        stringErrorHandler(this);
+        return this.padStart((this.length + length) / 2, chars).padEnd(length, chars);
       }
     }
   };
@@ -2012,6 +2040,41 @@
       writable: true,
       value: function value(str) {
         return isString(str);
+      }
+    },
+
+    /**
+     * checks if a string is a percentage number between 0 and 100 (inclusive of course ;-) with up to 4 decimal places and comma or dot separated
+     * @example <caption>eg. usage</caption>
+     * console.log(String.isPercentage('50,25%')); // true
+     *
+     * console.log(String.isPercentage('50.25%')); // true
+     *
+     * console.log(String.isPercentage('50.25')); // false
+     *
+     * console.log(String.isPercentage('50.2565%')); // true
+     *
+     * console.log(String.isPercentage('50,2546776545%')); // false
+     *
+     * console.log(String.isPercentage('100%')); // true
+     *
+     * console.log(String.isPercentage('101%')); // false
+     *
+     * console.log(String.isPercentage('0%')); // true
+     *
+     * console.log(String.isPercentage('5')); // false
+     * @memberOf string
+     * @method parsePercentage
+     * @instance
+     * @param {string} str - the string to be checked
+     * @return {boolean}
+     */
+    isPercentage: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(str) {
+        return String.prototype.isPercentage.call(str);
       }
     },
 
@@ -2142,6 +2205,7 @@
    * @namespace regexp
    * @description extensions for the JS primitive RegExp
    */
+
   var prototype$6 = {};
 
   /**
@@ -2193,6 +2257,15 @@
    */
 
   var prototype$7 = {
+    clone: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return _toConsumableArray(this);
+      }
+    },
     difference: {
       configurable: true,
       enumerable: false,
@@ -2346,6 +2419,42 @@
         }
 
         return this;
+      }
+    },
+    head: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.length >= 1 ? this[0] : null;
+      }
+    },
+    tail: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.length > 1 ? this.slice(1) : this;
+      }
+    },
+    cut: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.length > 1 ? this.slice(0, -1) : this;
+      }
+    },
+    last: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        arrayErrorHandler(this);
+        return this.length >= 1 ? this[this.length - 1] : null;
       }
     } // sortBy(propNames, propDirections) {
     //   if (String.isString(propNames)) {
@@ -2509,15 +2618,6 @@
     //   }
     //   return _.reverse(this);
     // },
-    // tail() {
-    //   return _.tail(this);
-    // },
-    // cut() {
-    //   return _.initial(this);
-    // },
-    // clone() {
-    //   return [...this];
-    // },
     // maxBy(propName = null) {
     //   if (propName) {
     //     return _.maxBy(this, propName);
@@ -2593,6 +2693,36 @@
           }
         }, items);
         return arr;
+      }
+    },
+
+    /**
+     * clones an array
+     * @example <caption>eg. usage</caption>
+     * var arr1 = [
+     *   {type: 'a', value: 1},
+     *   {type: 'b', value: 8},
+     *   {type: 'c', value: 5},
+     *   {type: 'd', value: 7},
+     *   {type: 'e', value: 9},
+     *   {type: 'f', value: 3},
+     * ];
+     *
+     * var arrClone = Array.clone(arr1); // or var arrClone = arr1.clone();
+     *
+     * console.log(arr1 === arrClone); // false;
+     * @memberOf array
+     * @method clone
+     * @instance
+     * @param {array} arr - the array
+     * @return {array}
+     */
+    clone: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.clone.call(arr);
       }
     },
 
@@ -2838,99 +2968,95 @@
         var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
         return Array.prototype.chunks.call(arr, size);
       }
+    },
+
+    /**
+     * returns the first item in an array
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.head(a)); // 1
+     * console.log(a.head()); // same as above
+     * @memberOf array
+     * @method tail
+     * @instance
+     * @param {array} arr - the array
+     * @return {any}
+     */
+    head: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.head.call(arr);
+      }
+    },
+
+    /**
+     * returns a sliced array with all elements but the first item
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.tail(a)); // [2, 3, 4, 5]
+     * console.log(a.tail()); // same as above
+     * @memberOf array
+     * @method tail
+     * @instance
+     * @param {array} arr - the array
+     * @return {array}
+     */
+    tail: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.tail.call(arr);
+      }
+    },
+
+    /**
+     * returns a sliced array with all elements but the last item
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.cut(a)); // [1, 2, 3, 4]
+     * console.log(a.cut()); // same as above
+     * @memberOf array
+     * @method cut
+     * @instance
+     * @param {array} arr - the array
+     * @return {array}
+     */
+    cut: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.cut.call(arr);
+      }
+    },
+
+    /**
+     * returns the last item in an array
+     * @example <caption>eg. usage</caption>
+     * var a = [1, 2, 3, 4, 5];
+     *
+     * console.log(Array.last(a)); // 5
+     * console.log(a.last()); // same as above
+     * @memberOf array
+     * @method tail
+     * @instance
+     * @param {array} arr - the array
+     * @return {any}
+     */
+    last: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(arr) {
+        return Array.prototype.last.call(arr);
+      }
     } // /**
-    //  * reverses an array, with optional clone parameter to avoid original array mutation
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.reverse(a)); // [5, 4, 3, 2, 1]
-    //  * console.log(a.reverse()); // same as above
-    //  *
-    //  * console.log(a === [5, 4, 3, 2, 1]); // true
-    //  *
-    //  * var b = Array.reverse(a, true); // or var b = a.reverse(true);
-    //  *
-    //  * console.log(a); // [1, 2, 3, 4, 5]
-    //  * console.log(b); // [5, 4, 3, 2, 1]
-    //  * @memberOf array
-    //  * @method tail
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @param {boolean} [clone=false]
-    //  * @return {array}
-    //  */
-    // reverse(a, clone = false) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.reverse.call(a, clone);
-    //   }
-    //   return a;
-    // },
-    // /**
-    //  * returns a sliced array with all elements but the first item
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.tail(a)); // [2, 3, 4, 5]
-    //  * console.log(a.tail()); // same as above
-    //  * @memberOf array
-    //  * @method tail
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @return {array}
-    //  */
-    // tail(a) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.tail.call(a);
-    //   }
-    //   return a;
-    // },
-    // /**
-    //  * returns a sliced array with all elements but the last item
-    //  * @example <caption>eg. usage</caption>
-    //  * var a = [1, 2, 3, 4, 5];
-    //  *
-    //  * console.log(Array.cut(a)); // [1, 2, 3, 4]
-    //  * console.log(a.cut()); // same as above
-    //  * @memberOf array
-    //  * @method cut
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @return {array}
-    //  */
-    // cut(a) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.cut.call(a);
-    //   }
-    //   return a;
-    // },
-    // /**
-    //  * clones an array
-    //  * @example <caption>eg. usage</caption>
-    //  * var collection = [
-    //  *   {type: 'a', value: 1},
-    //  *   {type: 'b', value: 8},
-    //  *   {type: 'c', value: 5},
-    //  *   {type: 'd', value: 7},
-    //  *   {type: 'e', value: 9},
-    //  *   {type: 'f', value: 3},
-    //  * ];
-    //  *
-    //  * var clone = Array.clone(collection); // or var clone = collection.clone();
-    //  *
-    //  * console.log(collection === clone); // false;
-    //  * @memberOf array
-    //  * @method clone
-    //  * @instance
-    //  * @param {array} a - the array
-    //  * @return {array}
-    //  */
-    // clone(a) {
-    //   if (Array.isArray(a)) {
-    //     return Array.prototype.clone.call(a);
-    //   }
-    //   return a;
-    // },
-    // /**
     //  * finds max value by propName in a collection array
     //  * @example <caption>eg. usage</caption>
     //  * var collection = [
@@ -3244,132 +3370,7 @@
    * @namespace collection
    * @description extensions for the JS Collection
    */
-  var _native$8 = {
-    /**
-     * return a new array containing the difference between two arrays
-     * @example <caption>eg. usage</caption>
-     * var arr1 = ['a', 'e', 'i', 'o', 'u'];
-     * var arr2 = ['a', 'd', 'f', 'o', 'u'];
-     *
-     * console.log(Array.difference(arr1, arr2)); // ['d', 'e', 'f', 'i']
-     * console.log(Array.difference(arr1, arr2, false)); // ['e', 'i']
-     *
-     * console.log(arr1.difference(arr2)); // ['d', 'e', 'f', 'i']
-     * console.log(arr1.difference(arr2, false)); // ['e', 'i']
-     * @memberOf collection
-     * @method difference
-     * @instance
-     * @param {array} arr1 - the first array
-     * @param {array} arr2 - the second array
-     * @param {boolean} symmetric - if true does the real difference between both of the two arrays
-     * @return {boolean}
-     */
-    difference: {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: function value(arr1, arr2) {
-        var symmetric = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-        if (Array.isArray(arr1) && Array.isArray(arr2)) {
-          return Array.prototype.difference.call(arr1, arr2, symmetric);
-        }
-
-        return [];
-      }
-    },
-
-    /**
-     * return a new array containing the intersection between two arrays
-     * @example <caption>eg. usage</caption>
-     * var arr1 = ['a', 'e', 'i', 'o', 'u'];
-     * var arr2 = ['a', 'd', 'f', 'o', 'u'];
-     *
-     * console.log(Array.intersection(arr1, arr2)); // ['a', 'o', 'u']
-     *
-     * console.log(arr1.intersection(arr2)); // ['a', 'o', 'u']
-     * @memberOf collection
-     * @method intersection
-     * @instance
-     * @param {array} arr1 - the first array
-     * @param {array} arr2 - the second array
-     * @return {boolean}
-     */
-    intersection: {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: function value(arr1, arr2) {
-        if (Array.isArray(arr1) && Array.isArray(arr2)) {
-          return Array.prototype.intersection.call(arr1, arr2);
-        }
-
-        return [];
-      }
-    },
-
-    /**
-     * checks if an Array contains something
-     * @example <caption>eg. usage</caption>
-     * var arr = ['a', 'e', 'i', 'o', 'u'];
-     *
-     * console.log(Array.contains(arr, 'b')); // false
-     * console.log(Array.contains(arr, 'a')); // true
-     * console.log(Array.contains(arr, ['a', 'b', 'e']); // true
-     * console.log(Array.contains(arr, ['a', 'b', 'e'], true); // false
-     *
-     * console.log(arr.contains('b')); // false
-     * console.log(arr.contains('a')); // true
-     * console.log(arr.contains(['a', 'b', 'e']); // true
-     * console.log(arr.contains(['a', 'b', 'e'], true); // false
-     * @memberOf collection
-     * @method contains
-     * @instance
-     * @param {array} arr - the array to be checked
-     * @param {array|*} any - can be anything or an array of anything
-     * @param {boolean} [all=false] - specify to check if the array must contain all items
-     * @return {boolean}
-     */
-    contains: {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: function value(arr, any) {
-        var all = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-        if (Array.isArray(arr)) {
-          return Array.prototype.contains.call(arr, any, all);
-        }
-
-        return arr;
-      }
-    },
-
-    /**
-     * returns a new unique items array from an array<br><br>
-     * @example <caption>eg. usage</caption>
-     * var arr = ['a', 'a', 'e', 'i', 'o', 'u'];
-     *
-     * console.log(Array.unique(arr); // ['a', 'e', 'i', 'o', 'u']
-     * console.log(arr.unique(); // ['a', 'e', 'i', 'o', 'u']
-     * @memberOf collection
-     * @method unique
-     * @instance
-     * @param {array} a - the array to be uniqued
-     * @return {array}
-     */
-    unique: {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: function value(a) {
-        if (Array.isArray(a)) {
-          return Array.prototype.unique.call(a);
-        }
-
-        return a;
-      }
-    } // /**
+  var _native$8 = {// /**
     //  * creates an array of unique array values not included in the other provided arrays
     //  * @example <caption>eg. usage</caption>
     //  * var arr = ['a', 'e', 'i', 'o', 'u'];
@@ -4594,7 +4595,6 @@
     //   }
     //   return a;
     // },
-
   };
 
   /* eslint-disable no-useless-constructor */
@@ -4841,4 +4841,3 @@
   return Flavor;
 
 }));
-//# sourceMappingURL=flavor.js.map

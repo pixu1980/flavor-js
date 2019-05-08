@@ -5,6 +5,16 @@ import { isRequired, isArray, arrayErrorHandler } from '../../Helpers/index';
  * @description extensions for the JS primitive Array
  */
 export default {
+  clone: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return [...this];
+    },
+  },
   difference: {
     configurable: true,
     enumerable: false,
@@ -136,7 +146,7 @@ export default {
     value(size = 0) {
       arrayErrorHandler(this);
 
-      if(size > 0) {
+      if (size > 0) {
         return Array.from({
           length: Math.ceil(this.length / size),
         }, (v, i) => {
@@ -147,7 +157,46 @@ export default {
       return this;
     },
   },
+  head: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
 
+      return this.length >= 1 ? this[0] : null;
+    },
+  },
+  tail: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return this.length > 1 ? this.slice(1) : this;
+    },
+  },
+  cut: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return this.length > 1 ? this.slice(0, -1) : this;
+    },
+  },
+  last: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      arrayErrorHandler(this);
+
+      return this.length >= 1 ? this[this.length - 1] : null;
+    },
+  },
   // sortBy(propNames, propDirections) {
   //   if (String.isString(propNames)) {
   //     propNames = [propNames];
@@ -355,18 +404,6 @@ export default {
   //   }
 
   //   return _.reverse(this);
-  // },
-
-  // tail() {
-  //   return _.tail(this);
-  // },
-
-  // cut() {
-  //   return _.initial(this);
-  // },
-
-  // clone() {
-  //   return [...this];
   // },
 
   // maxBy(propName = null) {

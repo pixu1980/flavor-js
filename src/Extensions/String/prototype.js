@@ -1,18 +1,28 @@
+import { isRequired, isString, stringErrorHandler } from '../../Helpers/index';
+
 /**
  * @namespace string
  * @description extensions for the JS primitive String
  */
 export default {
+  isPercentage: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value() {
+      stringErrorHandler(this);
+
+      return new RegExp(/^((\d{1,2}|100)(?:(\.|,)\d{1,4})?)%$/).test(this);
+    },
+  },
   toInt: {
     configurable: true,
     enumerable: false,
     writable: true,
     value(radix = 10) {
-      if(String.isString(this)) {
-        return Number.parseInt(this, radix);
-      }
+      stringErrorHandler(this);
 
-      return this;
+      return Number.parseInt(this, radix);
     },
   },
   toFloat: {
@@ -20,11 +30,9 @@ export default {
     enumerable: false,
     writable: true,
     value() {
-      if(String.isString(this)) {
-        return Number.parseFloat(this);
-      }
+      stringErrorHandler(this);
 
-      return this;
+      return Number.parseFloat(this);
     },
   },
   pad: {
@@ -32,11 +40,9 @@ export default {
     enumerable: false,
     writable: true,
     value(length = 0, chars = ' ') {
-      if(String.isString(this)) {
-        return this.padStart((this.length + length) / 2, chars).padEnd(length, chars);
-      }
+      stringErrorHandler(this);
 
-      return this;
+      return this.padStart((this.length + length) / 2, chars).padEnd(length, chars);
     },
   },
 };

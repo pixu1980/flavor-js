@@ -1,3 +1,5 @@
+import { isRequired, isDate, dateErrorHandler } from '../../Helpers/index';
+
 /**
  * @namespace date
  * @description extensions for the JS primitive Date
@@ -8,6 +10,8 @@ export default {
     enumerable: false,
     writable: true,
     value() {
+      dateErrorHandler(this);
+
       return Math.round(this);
     },
   },

@@ -34,7 +34,9 @@
   },
   "homepage": "https://blackmirror1980.github.io/flavor-js",
   "documentation": "https://blackmirror1980.github.io/flavor-js/docs/index.html",
-  "dependencies": {},
+  "dependencies": {
+    "marked": "^0.6.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
@@ -45,7 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "ink-docstrap": "^1.3.2",
-    "jsdoc": "^3.5.5",
+    "jsdoc": "^3.6.1",
     "jshint": "^2.10.2",
     "rollup": "^1.10.1",
     "rollup-plugin-babel": "^4.3.2",

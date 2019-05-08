@@ -32,6 +32,40 @@ export default {
     },
   },
   /**
+   * checks if a string is a percentage number between 0 and 100 (inclusive of course ;-) with up to 4 decimal places and comma or dot separated
+   * @example <caption>eg. usage</caption>
+   * console.log(String.isPercentage('50,25%')); // true
+   *
+   * console.log(String.isPercentage('50.25%')); // true
+   *
+   * console.log(String.isPercentage('50.25')); // false
+   *
+   * console.log(String.isPercentage('50.2565%')); // true
+   *
+   * console.log(String.isPercentage('50,2546776545%')); // false
+   *
+   * console.log(String.isPercentage('100%')); // true
+   *
+   * console.log(String.isPercentage('101%')); // false
+   *
+   * console.log(String.isPercentage('0%')); // true
+   *
+   * console.log(String.isPercentage('5')); // false
+   * @memberOf string
+   * @method parsePercentage
+   * @instance
+   * @param {string} str - the string to be checked
+   * @return {boolean}
+   */
+  isPercentage: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(str) {
+      return String.prototype.isPercentage.call(str);
+    },
+  },
+  /**
    * random GUID generator
    * @example <caption>eg. usage</caption>
    * console.log(String.GUID()); // e405cd23-2640-4e31-8b6e-fecc268ca9c7

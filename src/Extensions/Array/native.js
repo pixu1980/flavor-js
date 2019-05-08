@@ -67,6 +67,35 @@ export default {
     },
   },
   /**
+   * clones an array
+   * @example <caption>eg. usage</caption>
+   * var arr1 = [
+   *   {type: 'a', value: 1},
+   *   {type: 'b', value: 8},
+   *   {type: 'c', value: 5},
+   *   {type: 'd', value: 7},
+   *   {type: 'e', value: 9},
+   *   {type: 'f', value: 3},
+   * ];
+   *
+   * var arrClone = Array.clone(arr1); // or var arrClone = arr1.clone();
+   *
+   * console.log(arr1 === arrClone); // false;
+   * @memberOf array
+   * @method clone
+   * @instance
+   * @param {array} arr - the array
+   * @return {array}
+   */
+  clone: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.clone.call(arr);
+    },
+  },
+  /**
    * return a new array containing the difference between two arrays
    * @example <caption>eg. usage</caption>
    * var arr1 = ['a', 'e', 'i', 'o', 'u'];
@@ -298,107 +327,90 @@ export default {
       return Array.prototype.chunks.call(arr, size);
     },
   },
-
-  // /**
-  //  * reverses an array, with optional clone parameter to avoid original array mutation
-  //  * @example <caption>eg. usage</caption>
-  //  * var a = [1, 2, 3, 4, 5];
-  //  *
-  //  * console.log(Array.reverse(a)); // [5, 4, 3, 2, 1]
-  //  * console.log(a.reverse()); // same as above
-  //  *
-  //  * console.log(a === [5, 4, 3, 2, 1]); // true
-  //  *
-  //  * var b = Array.reverse(a, true); // or var b = a.reverse(true);
-  //  *
-  //  * console.log(a); // [1, 2, 3, 4, 5]
-  //  * console.log(b); // [5, 4, 3, 2, 1]
-  //  * @memberOf array
-  //  * @method tail
-  //  * @instance
-  //  * @param {array} a - the array
-  //  * @param {boolean} [clone=false]
-  //  * @return {array}
-  //  */
-  // reverse(a, clone = false) {
-  //   if (Array.isArray(a)) {
-  //     return Array.prototype.reverse.call(a, clone);
-  //   }
-
-  //   return a;
-  // },
-
-  // /**
-  //  * returns a sliced array with all elements but the first item
-  //  * @example <caption>eg. usage</caption>
-  //  * var a = [1, 2, 3, 4, 5];
-  //  *
-  //  * console.log(Array.tail(a)); // [2, 3, 4, 5]
-  //  * console.log(a.tail()); // same as above
-  //  * @memberOf array
-  //  * @method tail
-  //  * @instance
-  //  * @param {array} a - the array
-  //  * @return {array}
-  //  */
-  // tail(a) {
-  //   if (Array.isArray(a)) {
-  //     return Array.prototype.tail.call(a);
-  //   }
-
-  //   return a;
-  // },
-
-  // /**
-  //  * returns a sliced array with all elements but the last item
-  //  * @example <caption>eg. usage</caption>
-  //  * var a = [1, 2, 3, 4, 5];
-  //  *
-  //  * console.log(Array.cut(a)); // [1, 2, 3, 4]
-  //  * console.log(a.cut()); // same as above
-  //  * @memberOf array
-  //  * @method cut
-  //  * @instance
-  //  * @param {array} a - the array
-  //  * @return {array}
-  //  */
-  // cut(a) {
-  //   if (Array.isArray(a)) {
-  //     return Array.prototype.cut.call(a);
-  //   }
-
-  //   return a;
-  // },
-
-  // /**
-  //  * clones an array
-  //  * @example <caption>eg. usage</caption>
-  //  * var collection = [
-  //  *   {type: 'a', value: 1},
-  //  *   {type: 'b', value: 8},
-  //  *   {type: 'c', value: 5},
-  //  *   {type: 'd', value: 7},
-  //  *   {type: 'e', value: 9},
-  //  *   {type: 'f', value: 3},
-  //  * ];
-  //  *
-  //  * var clone = Array.clone(collection); // or var clone = collection.clone();
-  //  *
-  //  * console.log(collection === clone); // false;
-  //  * @memberOf array
-  //  * @method clone
-  //  * @instance
-  //  * @param {array} a - the array
-  //  * @return {array}
-  //  */
-  // clone(a) {
-  //   if (Array.isArray(a)) {
-  //     return Array.prototype.clone.call(a);
-  //   }
-
-  //   return a;
-  // },
-
+  /**
+   * returns the first item in an array
+   * @example <caption>eg. usage</caption>
+   * var a = [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.head(a)); // 1
+   * console.log(a.head()); // same as above
+   * @memberOf array
+   * @method tail
+   * @instance
+   * @param {array} arr - the array
+   * @return {any}
+   */
+  head: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.head.call(arr);
+    },
+  },
+  /**
+   * returns a sliced array with all elements but the first item
+   * @example <caption>eg. usage</caption>
+   * var a = [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.tail(a)); // [2, 3, 4, 5]
+   * console.log(a.tail()); // same as above
+   * @memberOf array
+   * @method tail
+   * @instance
+   * @param {array} arr - the array
+   * @return {array}
+   */
+  tail: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.tail.call(arr);
+    },
+  },
+  /**
+   * returns a sliced array with all elements but the last item
+   * @example <caption>eg. usage</caption>
+   * var a = [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.cut(a)); // [1, 2, 3, 4]
+   * console.log(a.cut()); // same as above
+   * @memberOf array
+   * @method cut
+   * @instance
+   * @param {array} arr - the array
+   * @return {array}
+   */
+  cut: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.cut.call(arr);
+    },
+  },
+  /**
+   * returns the last item in an array
+   * @example <caption>eg. usage</caption>
+   * var a = [1, 2, 3, 4, 5];
+   *
+   * console.log(Array.last(a)); // 5
+   * console.log(a.last()); // same as above
+   * @memberOf array
+   * @method tail
+   * @instance
+   * @param {array} arr - the array
+   * @return {any}
+   */
+  last: {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value(arr) {
+      return Array.prototype.last.call(arr);
+    },
+  },
   // /**
   //  * finds max value by propName in a collection array
   //  * @example <caption>eg. usage</caption>
