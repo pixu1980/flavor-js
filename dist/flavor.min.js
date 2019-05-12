@@ -415,7 +415,7 @@
   // THANKS TO https://gomakethings.com/true-type-checking-with-vanilla-js/
   function trueTypeOf(obj) {
     return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-  } // Object.prototype.toString.call([]); // [object Array]
+  }
 
   function isUndefined(any) {
     return trueTypeOf(any) === 'undefined';
@@ -473,6 +473,18 @@
     [].concat(fns).forEach(function (fn) {
       if (!isFunction(fn)) {
         throw new Error("".concat(fn, " is not a function"));
+      }
+    });
+  }
+
+  function numberErrorHandler() {
+    for (var _len4 = arguments.length, nbrs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+      nbrs[_key4] = arguments[_key4];
+    }
+
+    [].concat(nbrs).forEach(function (nbr) {
+      if (!isNumber(nbr)) {
+        throw new Error("".concat(nbr, " is not a number"));
       }
     });
   }
@@ -1696,9 +1708,9 @@
     /**
      * repeats a function n times
      * @example <caption>eg. usage</caption>
-     * Function.times(5, (i) => {
+     * Function.times((i) => {
      *   console.log(i);
-     * });
+     * }, 5);
      *
      * // logs 1, 2, 3, 4, 5
      * @example <caption>or</caption>
@@ -1710,6 +1722,7 @@
      * @memberOf function
      * @method times
      * @instance
+     * @param {number} [times=0] - the number of times
      * @param {function} iteratee - the iteratee function to invoke<br>
      * the iteratee will be invoked passing the index as i<br>
      * so the iteratee has to be something like this<br>
@@ -1717,7 +1730,6 @@
      * function(i) {}
      * </pre>
      * @param {number} iteratee.i - the index
-     * @param {number} [times=0] - the number of times
      * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
      */
     times: {
@@ -1812,7 +1824,26 @@
    * @description extensions for the JS primitive Number
    */
 
-  var prototype$3 = {};
+  var prototype$3 = {
+    isBetween: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Number.MIN_VALUE;
+        var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Number.MAX_VALUE;
+        numberErrorHandler(this);
+
+        if (!!to && from > to) {
+          var _ref = [from, to];
+          to = _ref[0];
+          from = _ref[1];
+        }
+
+        return to == null ? this >= 0 && this < from : this >= from && this < to;
+      }
+    }
+  };
 
   /**
    * @namespace number
@@ -1821,7 +1852,7 @@
 
   var _native$3 = {
     /**
-     * checked if something is a function
+     * checked if something is a number
      * @example <caption>eg. usage</caption>
      * var f = function(){};
      *
@@ -1844,6 +1875,95 @@
       writable: true,
       value: function value(n) {
         return isNumber(n);
+      }
+    },
+
+    /**
+     * checks if a number is between a range
+     * @example <caption>eg. usage</caption>
+     * console.log((5).between(1, 10)); // true
+     *
+     * console.log((5).between(1, 4)); // false
+     * @memberOf number
+     * @method between
+     * @instance
+     * @param {number} n - the number
+     * @param {number} [from=Number.MIN_VALUE] - the from number
+     * @param {number} [to=Number.MAX_VALUE] - the to number
+     * @return {*|boolean}
+     */
+    isBetween: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(n) {
+        var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Number.MIN_VALUE;
+        var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Number.MAX_VALUE;
+        return Number.prototype.isBetween.call(n, from, to);
+      }
+    },
+
+    /**
+     * parse a number value, returns null if parsing failes
+     * @example <caption>eg. usage</caption>
+     * console.log(Number.parse("1")); // 1
+     *
+     * console.log(Number.parse("1,25")); // 1.25
+     *
+     * console.log(Number.parse({})); // null
+     * @memberOf number
+     * @method parse
+     * @instance
+     * @param {*} n - the value to be parsed
+     * @param {number} radix [10] - the radix to use for the parsing
+     * @return {number|null}
+     */
+    parse: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value(n) {
+        var radix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+        return parseInt(n, radix) || null;
+      }
+    },
+
+    /**
+     * randomizes a number
+     * @example <caption>eg. usage</caption>
+     * console.log(Number.random(1, 5)); // a number between 1 and 5
+     *
+     * console.log(Number.random(1, 5, true)); // a number between 1.0 and 5.0
+     *
+     * console.log(Number.random()); // a number between Number.MIN_VALUE and Number.MAX_VALUE
+     * @memberOf number
+     * @method random
+     * @instance
+     * @param {number} [lower=Number.MIN_VALUE] - the lower number
+     * @param {number} [upper=Number.MAX_VALUE] - the upper number
+     * @param {boolean} [floating=false] - ask to return a floating number value
+     * @return {number}
+     */
+    random: {
+      configurable: true,
+      enumerable: false,
+      writable: true,
+      value: function value() {
+        var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Number.MIN_VALUE;
+        var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Number.MAX_VALUE;
+        var floating = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+        if (!!to && from > to) {
+          var _ref = [from, to];
+          to = _ref[0];
+          from = _ref[1];
+        }
+
+        if (!!floating) {
+          return Math.floor(Math.random() * (to - from + 1)) + from;
+        }
+
+        return Math.random() * (to - from) + from;
       }
     }
   };
@@ -2172,7 +2292,7 @@
      * @instance
      * @param {string} str - the string to be padded
      * @param {number} length [0] - the string length you need
-     * @param {string} chars [' '] - the char/chars to be used to pad the string
+     * @param {string} chars [' '] - the char/chars used to pad the string
      * @return {string}
      */
     pad: {

@@ -4,121 +4,7 @@
 //  */
 // export default {
 //   native: {
-//     /**
-//      * check if something is a number
-//      * @example <caption>eg. usage</caption>
-//      * var n = 1;
-//      *
-//      * console.log(Number.isNumber(n)); // true
-//      *
-//      * console.log(Number.isNumber(2)); // true
-//      *
-//      * console.log(Number.isNumber('')); // false
-//      *
-//      * console.log(Number.isNumber(null)); // false
-//      * @memberOf number
-//      * @method isNumber
-//      * @instance
-//      * @return {boolean}
-//      */
-//     isNumber(n) {
-//       return Number.prototype.isNumber.call(n);
-//     },
 
-//     /**
-//      * checks if a number is between a range
-//      * @example <caption>eg. usage</caption>
-//      * console.log((5).between(1, 10)); // true
-//      *
-//      * console.log((5).between(1, 4)); // false
-//      * @memberOf number
-//      * @method between
-//      * @instance
-//      * @param {number} n - the number
-//      * @param {number} [from=Number.MIN_VALUE] - the from number
-//      * @param {number} [to=Number.MAX_VALUE] - the to number
-//      * @return {*|boolean}
-//      */
-//     isBetween(n, from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
-//       if (!Number.isNumber(n)) {
-//         return false;
-//       }
-
-//       return Number.prototype.isBetween.call(n, from, to);
-//     },
-
-//     /**
-//      * parse a number value, returns null if parsing failes
-//      * @example <caption>eg. usage</caption>
-//      * console.log(Number.parse("1")); // 1
-//      *
-//      * console.log(Number.parse("1,25")); // 1.25
-//      *
-//      * console.log(Number.parse({})); // null
-//      * @memberOf number
-//      * @method parse
-//      * @instance
-//      * @param {*} n - the value to be parsed
-//      * @return {number|null}
-//      */
-//     parse(n) {
-//       return _.parseInt(n);
-//     },
-
-//     /**
-//      * repeats a function n times
-//      * @example <caption>eg. usage</caption>
-//      * (5).times(function(i) {
-//      *   console.log(i);
-//      * });
-//      *
-//      * // logs 1, 2, 3, 4, 5
-//      * @example <caption>or</caption>
-//      * (5).times(function(i) {
-//      *   console.log(i);
-//      * }, true);
-//      *
-//      * // logs 5, 4, 3, 2, 1
-//      * @memberOf number
-//      * @method times
-//      * @instance
-//      * @param {number} n - the number of times
-//      * @param {function} iteratee - the iteratee function to invoke<br>
-//      * the iteratee will be invoked passing the index as i<br>
-//      * so the iteratee has to be something like this<br>
-//      * <pre>
-//      * function(i) {}
-//      * </pre>
-//      * @param {number} iteratee.i - the index
-//      * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
-//      */
-//     times(n, iteratee, reverse = false) {
-//       if (Number.isNumber(n) && Number.isInteger(n)) {
-//         return Number.prototype.times.call(n, iteratee, reverse);
-//       }
-
-//       return n;
-//     },
-
-//     /**
-//      * randomizes a number
-//      * @example <caption>eg. usage</caption>
-//      * console.log(Number.random(1, 5)); // a number between 1 and 5
-//      *
-//      * console.log(Number.random(1, 5, true)); // a number between 1.0 and 5.0
-//      *
-//      * console.log(Number.random()); // a number between Number.MIN_VALUE and Number.MAX_VALUE
-//      * @memberOf number
-//      * @method random
-//      * @instance
-//      * @param {number} [lower=Number.MIN_VALUE] - the lower number
-//      * @param {number} [upper=Number.MAX_VALUE] - the upper number
-//      * @param {boolean} [floating=false] - ask to return a floating number value
-//      * @return {number}
-//      */
-//     random(lower = Number.MIN_VALUE, upper = Number.MAX_VALUE, floating = false) {
-//       return _.random(lower, upper, floating);
-//     },
 
 //     /**
 //      * converts a Romans Number String in a Decimal Number
@@ -503,18 +389,6 @@
 //     },
 //   },
 //   prototype: {
-//     isNumber() {
-//       return _.isNumber(this);
-//     },
-
-//     isBetween(from = Number.MIN_VALUE, to = Number.MAX_VALUE) {
-//       return from <= this && this <= to;
-//     },
-
-//     times(iteratee, reverse = false) {
-//       return (!!reverse) ? _.timesReverse(this, iteratee) : _.times(this, iteratee);
-//     },
-
 //     toRoman() {
 //       let num = this;
 //       let result = '';

@@ -108,9 +108,9 @@ export default {
   /**
    * repeats a function n times
    * @example <caption>eg. usage</caption>
-   * Function.times(5, (i) => {
+   * Function.times((i) => {
    *   console.log(i);
-   * });
+   * }, 5);
    *
    * // logs 1, 2, 3, 4, 5
    * @example <caption>or</caption>
@@ -122,6 +122,7 @@ export default {
    * @memberOf function
    * @method times
    * @instance
+   * @param {number} [times=0] - the number of times
    * @param {function} iteratee - the iteratee function to invoke<br>
    * the iteratee will be invoked passing the index as i<br>
    * so the iteratee has to be something like this<br>
@@ -129,7 +130,6 @@ export default {
    * function(i) {}
    * </pre>
    * @param {number} iteratee.i - the index
-   * @param {number} [times=0] - the number of times
    * @param {boolean} [reverse=false] - true if you want to do a times reverse cycle
    */
   times: {

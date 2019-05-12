@@ -154,7 +154,7 @@ export default {
    * @instance
    * @param {string} str - the string to be padded
    * @param {number} length [0] - the string length you need
-   * @param {string} chars [' '] - the char/chars to be used to pad the string
+   * @param {string} chars [' '] - the char/chars used to pad the string
    * @return {string}
    */
   pad: {
