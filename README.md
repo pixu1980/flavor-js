@@ -4,7 +4,7 @@
 Black Mirror
 
 ## Version
-v0.4.10
+v0.4.11
 
 ## Badges
 
@@ -36,7 +36,9 @@ npm install flavor-js --save
 
 ## Dependencies
 
+- [js-yaml](https://ghub.io/js-yaml): YAML 1.2 parser and serializer
 - [lodash](https://ghub.io/lodash): Lodash modular utilities.
+- [marked](https://ghub.io/marked): A markdown parser built for speed
 
 ## Dev Dependencies
 
