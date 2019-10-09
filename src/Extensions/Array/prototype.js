@@ -24,12 +24,18 @@ export default {
 
       if (!!symmetric) {
         return Array.prototype.unique.call([
-          ...this.filter(item => !arr.includes(item)),
-          ...arr.filter(item => !this.includes(item)),
+          ...this.filter((item) => {
+            return !arr.includes(item);
+          }),
+          ...arr.filter((item) => {
+            return !this.includes(item);
+          }),
         ]);
       }
 
-      return this.filter(item => !arr.includes(item));
+      return this.filter((item) => {
+        return !arr.includes(item);
+      });
     },
   },
   intersection: {
@@ -39,7 +45,9 @@ export default {
     value(arr) {
       arrayErrorHandler(this, arr);
 
-      return this.filter(item => arr.includes(item));
+      return this.filter((item) => {
+        return arr.includes(item);
+      });
     },
   },
   contains: {

@@ -11,12 +11,18 @@ export default {
     value(arr, symmetric = true) {
       if (!!symmetric) {
         return Array.prototype.unique.call([
-          ...this.filter(item => !arr.includes(item)),
-          ...arr.filter(item => !this.includes(item)),
+          ...this.filter((item) => {
+            return !arr.includes(item);
+          }),
+          ...arr.filter((item) => {
+            return !this.includes(item);
+          }),
         ]);
       }
 
-      return this.filter(item => !arr.includes(item));
+      return this.filter((item) => {
+        return !arr.includes(item);
+      });
     },
   },
   // //TODO: implement rest arrays intersection
@@ -25,7 +31,7 @@ export default {
     enumerable: false,
     writable: true,
     value(arr) {
-      return this.filter(item => arr.includes(item));
+      return this.filter((item) => arr.includes(item));
     },
   },
   contains: {

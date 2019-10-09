@@ -184,6 +184,10 @@
   }
 
   function _iterableToArrayLimit(arr, i) {
+    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+      return;
+    }
+
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -216,21 +220,6 @@
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
-
-  /**
-   * @typedef {array|object} collection
-   * @description an array or an object to be used as collection
-   */
-
-  /**
-   * @typedef {object} prototype
-   * @description the prototype of a class
-   */
-
-  /**
-   * @typedef {number} timestamp
-   * @description the number that identifies a specific time as a timestamp
-   */
 
   /* eslint-disable prefer-destructuring */
 
@@ -409,8 +398,6 @@
       };
     }();
   }
-
-  // THANKS TO https://davidwalsh.name/javascript-tricks
 
   // THANKS TO https://gomakethings.com/true-type-checking-with-vanilla-js/
   function trueTypeOf(obj) {
@@ -938,8 +925,6 @@
       }
     });
   }
-
-  // check if needed https://github.com/airbnb/js-shims
 
   /**
    * @namespace object

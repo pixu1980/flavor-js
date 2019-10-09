@@ -1,5 +1,5 @@
 # Project specifid ignores
-uglifyjs-cache.json
+*uglifyjs-cache*
 
 # Numerous always-ignore extensions
 *.diff

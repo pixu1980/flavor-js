@@ -7,7 +7,7 @@ import fs from 'fs';
 
 import pkg from './package.json';
 
-const cacheFileName = ".uglifyjs-cache.json";
+const cacheFileName = "uglifyjs-cache.json";
 const uglifyOptions = {
     mangle: false,
     nameCache: JSON.parse(fs.readFileSync(cacheFileName, "utf8"))
