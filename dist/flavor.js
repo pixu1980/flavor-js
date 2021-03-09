@@ -1,10 +1,12 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Flavor = factory());
-}(this, function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Flavor = factory());
+}(this, (function () { 'use strict';
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -71,7 +73,7 @@
     return _setPrototypeOf(o, p);
   }
 
-  function isNativeReflectConstruct() {
+  function _isNativeReflectConstruct() {
     if (typeof Reflect === "undefined" || !Reflect.construct) return false;
     if (Reflect.construct.sham) return false;
     if (typeof Proxy === "function") return true;
@@ -85,7 +87,7 @@
   }
 
   function _construct(Parent, args, Class) {
-    if (isNativeReflectConstruct()) {
+    if (_isNativeReflectConstruct()) {
       _construct = Reflect.construct;
     } else {
       _construct = function _construct(Parent, args, Class) {
@@ -155,24 +157,39 @@
     return _assertThisInitialized(self);
   }
 
+  function _createSuper(Derived) {
+    var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+    return function _createSuperInternal() {
+      var Super = _getPrototypeOf(Derived),
+          result;
+
+      if (hasNativeReflectConstruct) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+
+      return _possibleConstructorReturn(this, result);
+    };
+  }
+
   function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
   function _toArray(arr) {
-    return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
+    return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
   }
 
   function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
   }
 
   function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) {
-      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-      return arr2;
-    }
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
   }
 
   function _arrayWithHoles(arr) {
@@ -180,14 +197,11 @@
   }
 
   function _iterableToArray(iter) {
-    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+    if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
   }
 
   function _iterableToArrayLimit(arr, i) {
-    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-      return;
-    }
-
+    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -213,12 +227,29 @@
     return _arr;
   }
 
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+
   function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance");
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
   function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
   /* eslint-disable prefer-destructuring */
@@ -4704,25 +4735,23 @@
 
   /* eslint-disable no-useless-constructor */
 
-  var Collection =
-  /*#__PURE__*/
-  function (_Array) {
+  var Collection = /*#__PURE__*/function (_Array) {
     _inherits(Collection, _Array);
 
-    function Collection() {
-      var _getPrototypeOf2;
+    var _super = _createSuper(Collection);
 
+    function Collection() {
       _classCallCheck(this, Collection);
 
       for (var _len = arguments.length, items = new Array(_len), _key = 0; _key < _len; _key++) {
         items[_key] = arguments[_key];
       }
 
-      return _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Collection)).call.apply(_getPrototypeOf2, [this].concat(items)));
+      return _super.call.apply(_super, [this].concat(items));
     }
 
     return Collection;
-  }(_wrapNativeSuper(Array));
+  }( /*#__PURE__*/_wrapNativeSuper(Array));
 
   if (!!window) {
     window.Collection = Collection;
@@ -4751,9 +4780,7 @@
    * @public
    */
 
-  var Flavor =
-  /*#__PURE__*/
-  function () {
+  var Flavor = /*#__PURE__*/function () {
     function Flavor() {
       _classCallCheck(this, Flavor);
 
@@ -4945,4 +4972,5 @@
 
   return Flavor;
 
-}));
+})));
+//# sourceMappingURL=flavor.js.map

@@ -405,7 +405,6 @@ export default {
   //   return _.deepMap(this, childrenPropName, iteratee);
   // },
 
-
   // reverse(clone = false) {
   //   if (!!clone) {
   //     return _.reverse(_.clone(this));

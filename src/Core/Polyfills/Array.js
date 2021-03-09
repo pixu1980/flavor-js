@@ -271,7 +271,7 @@ if (!Array.prototype.forEach) {
     enumerable: false,
     configurable: true,
     writable: true,
-    value(callback/*, thisArg*/) {
+    value(callback /*, thisArg*/) {
       let T;
       let k;
 
