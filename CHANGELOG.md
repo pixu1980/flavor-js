@@ -1,52 +1,52 @@
-## [Version 0.4.10](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.10) (2018-4-27)
+## [Version 0.4.10](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.10) (2018-4-27)
 
 ### Bug fixes
 
-- - added hoek last version as dependency in order to fix security issues - dumped other dependencies: [`ec932ec`](https://github.com/blackmirror1980/flavor-js/commit/ec932ec)
+- - added hoek last version as dependency in order to fix security issues - dumped other dependencies: [`ec932ec`](https://github.com/pixu1980/flavor-js/commit/ec932ec)
 
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.9...v0.4.10)
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.9...v0.4.10)
 
-## [Version 0.4.9](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.9) (2018-3-20)
-
-### Bug fixes
-
-- fixed string issues startsWith endsWith: [`e9c1a42`](https://github.com/blackmirror1980/flavor-js/commit/e9c1a42)
-
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.8...v0.4.9)
-
-## [Version 0.4.8](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.8) (2018-3-20)
+## [Version 0.4.9](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.9) (2018-3-20)
 
 ### Bug fixes
 
-- fixed version status added build:release command: [`82e0f04`](https://github.com/blackmirror1980/flavor-js/commit/82e0f04)
+- fixed string issues startsWith endsWith: [`e9c1a42`](https://github.com/pixu1980/flavor-js/commit/e9c1a42)
 
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.7...v0.4.8)
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.8...v0.4.9)
 
-## [Version 0.4.7](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.7) (2018-3-8)
-
-### Bug fixes
-
-- v0.4.6: [`6d0d642`](https://github.com/blackmirror1980/flavor-js/commit/6d0d642)
-
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.6...v0.4.7)
-
-## [Version 0.4.6](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.6) (2018-3-8)
+## [Version 0.4.8](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.8) (2018-3-20)
 
 ### Bug fixes
 
-- v0.4.5: [`2484f21`](https://github.com/blackmirror1980/flavor-js/commit/2484f21)
-- updated dependencies: [`aad6edc`](https://github.com/blackmirror1980/flavor-js/commit/aad6edc)
+- fixed version status added build:release command: [`82e0f04`](https://github.com/pixu1980/flavor-js/commit/82e0f04)
 
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.5...v0.4.6)
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.7...v0.4.8)
 
-## [Version 0.4.5](https://github.com/blackmirror1980/flavor-js/releases/tag/v0.4.5) (2018-3-8)
+## [Version 0.4.7](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.7) (2018-3-8)
 
 ### Bug fixes
 
-- updated license: [`cf0d669`](https://github.com/blackmirror1980/flavor-js/commit/cf0d669)
-- bumped ssri to v5.2.4 in order to fix the security vulnerability issue: [`3c584de`](https://github.com/blackmirror1980/flavor-js/commit/3c584de)
+- v0.4.6: [`6d0d642`](https://github.com/pixu1980/flavor-js/commit/6d0d642)
 
-[...full changes](https://github.com/blackmirror1980/flavor-js/compare/v0.4.4...v0.4.5)
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.6...v0.4.7)
+
+## [Version 0.4.6](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.6) (2018-3-8)
+
+### Bug fixes
+
+- v0.4.5: [`2484f21`](https://github.com/pixu1980/flavor-js/commit/2484f21)
+- updated dependencies: [`aad6edc`](https://github.com/pixu1980/flavor-js/commit/aad6edc)
+
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.5...v0.4.6)
+
+## [Version 0.4.5](https://github.com/pixu1980/flavor-js/releases/tag/v0.4.5) (2018-3-8)
+
+### Bug fixes
+
+- updated license: [`cf0d669`](https://github.com/pixu1980/flavor-js/commit/cf0d669)
+- bumped ssri to v5.2.4 in order to fix the security vulnerability issue: [`3c584de`](https://github.com/pixu1980/flavor-js/commit/3c584de)
+
+[...full changes](https://github.com/pixu1980/flavor-js/compare/v0.4.4...v0.4.5)
 
 
 ---

@@ -212,9 +212,9 @@
 //     /**
 //      * decodes an URI string
 //      * @example <caption>eg. usage</caption>
-//      * console.log(String.decodeURI('https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com')); // 'https://flavorjs.io/page.html?name=black mirror&email=username@example.com'
+//      * console.log(String.decodeURI('https%3A%2F%2Fflavor.js.org%2Fpage.html%3Fname%3Dpixu%201980%26email%3Dusername%40example.com')); // 'https://flavor.js.org/page.html?name=Pixu&email=username@example.com'
 //      *
-//      * console.log(('https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com').decodeURI()); // 'https://flavorjs.io/page.html?name=black mirror&email=username@example.com'
+//      * console.log(('https%3A%2F%2Fflavor.js.org%2Fpage.html%3Fname%3Dpixu%201980%26email%3Dusername%40example.com').decodeURI()); // 'https://flavor.js.org/page.html?name=Pixu&email=username@example.com'
 //      * @memberOf string
 //      * @method decodeURI
 //      * @instance
@@ -228,9 +228,9 @@
 //     /**
 //      * encodes an URI string
 //      * @example <caption>eg. usage</caption>
-//      * console.log(String.encodeURI('https://flavorjs.io/page.html?name=black mirror&email=username@example.com')); // 'https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com'
+//      * console.log(String.encodeURI('https://flavor.js.org/page.html?name=Pixu&email=username@example.com')); // 'https%3A%2F%2Fflavor.js.org%2Fpage.html%3Fname%3Dpixu%201980%26email%3Dusername%40example.com'
 //      *
-//      * console.log(('https://flavorjs.io/page.html?name=black mirror&email=username@example.com').encodeURI()); // 'https%3A%2F%2Fflavorjs.io%2Fpage.html%3Fname%3Dblack%20mirror%26email%3Dusername%40example.com'
+//      * console.log(('https://flavor.js.org/page.html?name=Pixu&email=username@example.com').encodeURI()); // 'https%3A%2F%2Fflavor.js.org%2Fpage.html%3Fname%3Dpixu%201980%26email%3Dusername%40example.com'
 //      * @memberOf string
 //      * @method encodeURI
 //      * @instance
@@ -307,9 +307,9 @@
 //      * extracts the query string object from an URI string
 //      * @example <caption>eg. usage</caption>
 //      * @example <caption>eg. usage</caption>
-//      * console.log(String.extractQueryString('https://flavorjs.io/page.html?name=black mirror&email=username@example.com')); // {name: 'black mirror', email: 'username@example.com'}
+//      * console.log(String.extractQueryString('https://flavor.js.org/page.html?name=Pixu&email=username@example.com')); // {name: 'Pixu', email: 'username@example.com'}
 //      *
-//      * console.log(('https://flavorjs.io/page.html?name=black mirror&email=username@example.com').extractQueryString()); // {name: 'black mirror', email: 'username@example.com'}
+//      * console.log(('https://flavor.js.org/page.html?name=Pixu&email=username@example.com').extractQueryString()); // {name: 'Pixu', email: 'username@example.com'}
 //      * @memberOf string
 //      * @method extractQueryString
 //      * @instance

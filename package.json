@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackmirror1980/flavor-js.git"
+    "url": "git+https://github.com/pixu1980/flavor-js.git"
   },
   "keywords": [
     "extend",
@@ -27,13 +27,13 @@
     "flavor-js",
     "ES6"
   ],
-  "author": "Black Mirror",
+  "author": "Pixu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blackmirror1980/flavor-js/issues"
+    "url": "https://github.com/pixu1980/flavor-js/issues"
   },
-  "homepage": "https://blackmirror1980.github.io/flavor-js",
-  "documentation": "https://blackmirror1980.github.io/flavor-js/docs/index.html",
+  "homepage": "https://flavor.js.org",
+  "documentation": "https://flavor.js.org/docs/index.html",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.13.8",
